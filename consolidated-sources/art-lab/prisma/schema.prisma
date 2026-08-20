@@ -1,0 +1,144 @@
+// Noiacore — Esquema de base de datos
+// Usuarios (identidad local simulada), Obras generativas, Likes y Colecciones.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  handle    String    @unique
+  name      String
+  createdAt DateTime  @default(now())
+  obras     Obra[]
+  likes     Like[]
+  saves     Save[]
+  comments  Comment[]
+}
+
+model Obra {
+  id         String   @id @default(cuid())
+  title      String
+  authorId   String
+  author     User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  shader     String
+  hue        Float
+  complexity Float
+  intensity  Float
+  excerpt    String
+  tags       String
+  likes      Int      @default(0)
+  views      Int      @default(0)
+  collected  Int      @default(0)
+  createdAt  DateTime @default(now())
+  likeRows   Like[]
+  saveRows   Save[]
+  comments   Comment[]
+
+  @@index([authorId])
+  @@index([createdAt])
+}
+
+model Like {
+  id      String @id @default(cuid())
+  userId  String
+  obraId  String
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  obra    Obra   @relation(fields: [obraId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, obraId])
+  @@index([obraId])
+}
+
+model Save {
+  id      String @id @default(cuid())
+  userId  String
+  obraId  String
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  obra    Obra   @relation(fields: [obraId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, obraId])
+  @@index([obraId])
+}
+
+model Event {
+  id        String   @id @default(cuid())
+  kind      String
+  user      String
+  target    String
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  obraId    String
+  userId    String?
+  handle    String
+  body      String
+  likes     Int      @default(0)
+  createdAt DateTime @default(now())
+  obra      Obra     @relation(fields: [obraId], references: [id], onDelete: Cascade)
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([obraId])
+  @@index([createdAt])
+}
+
+// Fábrica Creativa Eterna — assets autogenerados
+model FactoryAsset {
+  id            String   @id @default(cuid())
+  assetType     String   // skin, set, skill_vfx, animation, concept, moodboard
+  title         String
+  producerId    Int
+  producerName  String
+  shader        String
+  hue           Float
+  complexity    Float
+  intensity     Float
+  narrative     String
+  tags          String
+  season        String
+  loreNode      String
+  version       Int      @default(1)
+  status        String   @default("active") // active, legacy, archived
+  qualityScore  Int      @default(0)
+  briefId       String?
+  relations     String   @default("[]") // JSON array of asset IDs
+  createdAt     DateTime @default(now())
+
+  @@index([assetType])
+  @@index([season])
+  @@index([status])
+  @@index([createdAt])
+}
+
+// Temporadas de la fábrica
+model FactorySeason {
+  id          String   @id @default(cuid())
+  name        String
+  theme       String
+  startDate   DateTime @default(now())
+  endDate    DateTime?
+  assetCount  Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+// Tendencias detectadas (simuladas)
+model FactoryTrend {
+  id          String   @id @default(cuid())
+  name        String
+  source      String   // twitter, tiktok, reddit, etc.
+  score       Float    @default(0)
+  description String
+  createdAt   DateTime @default(now())
+
+  @@index([score])
+  @@index([createdAt])
+}

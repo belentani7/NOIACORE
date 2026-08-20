@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+:root { font-family: 'Manrope', sans-serif; color-scheme: dark; background: #03060b; color: #e8f0ff; font-synthesis: none; text-rendering: optimizeLegibility; }
+* { box-sizing: border-box; }
+html { background: #03060b; }
+body { margin: 0; min-width: 320px; background: #03060b; }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 1px solid rgba(207, 235, 255, .7); outline-offset: 3px; }
+::selection { background: rgba(186, 230, 253, .3); color: #fff; }
+.font-mono { font-family: 'DM Mono', monospace; }
+@media (prefers-reduced-motion: no-preference) { * { transition-property: color, background-color, border-color, opacity, transform, box-shadow; transition-duration: 180ms; transition-timing-function: cubic-bezier(.23,1,.32,1); } }
