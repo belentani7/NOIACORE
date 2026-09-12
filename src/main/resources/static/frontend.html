@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#040406"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="description" content="NOIACORE - Laboratorio de Dirección Creativa, Experiencias Digitales y Sistemas de Inteligencia. Generación de imágenes, automatización y arquitectura de producto."/>
+<meta name="robots" content="index,follow,max-image-preview:large"/>
+<meta name="author" content="Pedro Belentani · NOIACORE"/>
+<link rel="canonical" href="https://noiacore.com/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://noiacore.com/"/>
+<meta property="og:title" content="NOIACORE — Creative Intelligence Lab"/>
+<meta property="og:description" content="Dirección creativa, experiencias digitales y sistemas de inteligencia. Core is invisible. Impact is inevitable."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="NOIACORE — Creative Intelligence Lab"/>
+<meta name="twitter:description" content="Brand systems, digital experiences and intelligent operations."/>
+<title>NOIACORE — Laboratorio de Inteligencia Creativa</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23040406'/%3E%3Cpath d='M8 24 L16 6 L24 24' fill='none' stroke='%23fff' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%237d9bff' stroke-opacity='.5'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet"/></noscript>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "NOIACORE",
+  "url": "https://noiacore.com/",
+  "description": "Laboratorio de dirección creativa, experiencias digitales y sistemas de inteligencia.",
+  "founder": {
+    "@type": "Person",
+    "name": "Pedro Belentani",
+    "jobTitle": "Director Creativo"
+  },
+  "areaServed": ["Barcelona", "Spain", "Europe", "Worldwide"],
+  "serviceType": ["Creative Direction", "Brand Systems", "Digital Experiences", "AI Automation", "Intelligent Documents", "Image Generation"]
+}
+</script>
+<style>
+/* ============================================================
+   NOIACORE / LAB · FRONTEND EMPRESARIAL COMPLETO
+   Diseño Minimalista · Seguridad · Automatización · Widgets
+   ============================================================ */
+:root {
+  --bg: #040406;
+  --bg2: #07070b;
+  --bg3: #0a0a0f;
+  --ink: 238, 238, 242;
+  --mute: rgba(var(--ink), 0.56);
+  --faint: rgba(var(--ink), 0.32);
+  --ghost: rgba(var(--ink), 0.16);
+  --line: rgba(var(--ink), 0.10);
+  --line2: rgba(var(--ink), 0.26);
+  --acc: 125, 155, 255;
+  --acc2: 180, 200, 255;
+  --warm: 255, 180, 120;
+  --success: 100, 220, 140;
+  --error: 255, 100, 100;
+  --f-d: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --f-b: "Inter", system-ui, -apple-system, sans-serif;
+  --f-m: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --maxw: 1400px;
+  --header-h: 80px;
+  --radius: 8px;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --glow: 0 0 40px rgba(var(--acc), 0.15);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: rgba(var(--ink), 0.88);
+  font-family: var(--f-b);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: default;
+}
+
+body.locked { overflow: hidden; }
+
+::selection {
+  background: rgba(var(--acc), 0.35);
+  color: #fff;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--ink), 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(var(--acc), 0.4); }
+
+a { color: inherit; text-decoration: none; transition: color 0.3s var(--ease); }
+a:hover { color: rgba(var(--acc), 0.8); }
+
+:focus-visible {
+  outline: 2px solid rgba(var(--acc), 0.8);
+  outline-offset: 3px;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ============================================
+   HEADER & NAVEGACIÓN
+   ============================================ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(20px, 4vw, 60px);
+  background: rgba(4, 4, 6, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.header.scrolled {
+  background: rgba(4, 4, 6, 0.95);
+  border-color: rgba(var(--acc), 0.2);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--f-d);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.brand-logo {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  color: rgba(var(--acc), 0.9);
+}
+
+.nav {
+  display: flex;
+  gap: clamp(20px, 3vw, 40px);
+}
+
+.nav-link {
+  font-family: var(--f-d);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mute);
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: rgba(var(--acc), 0.8);
+  transition: width 0.4s var(--ease);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #fff;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+.header-tools {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--mute);
+  transition: all 0.3s var(--ease);
+}
+
+.btn-icon:hover {
+  color: #fff;
+  border-color: rgba(var(--acc), 0.5);
+  background: rgba(var(--acc), 0.05);
+}
+
+.btn-primary {
+  font-family: var(--f-m);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(var(--acc), 0.8), rgba(var(--acc2), 0.6));
+  padding: 10px 24px;
+  border-radius: var(--radius);
+  transition: all 0.3s var(--ease);
+  box-shadow: 0 4px 20px rgba(var(--acc), 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(var(--acc), 0.5);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 30px;
+  padding: 8px 0;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--mute);
+  transition: all 0.3s var(--ease);
+}
+
+@media (max-width: 1024px) {
+  .nav { display: none; }
+  .menu-toggle { display: flex; }
+  
+  .nav-mobile {
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg);
+    z-index: 99;
+    padding: 40px clamp(20px, 4vw, 60px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transform: translateX(100%);
+    transition: transform 0.4s var(--ease);
+  }
+  
+  .nav-mobile.active {
+    transform: translateX(0);
+  }
+  
+  .nav-mobile .nav-link {
+    font-size: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--header-h) + 60px) clamp(20px, 4vw, 60px) 80px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+#hero-canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--maxw);
+  width: 100%;
+  text-align: center;
+}
+
+.hero-tag {
+  font-family: var(--f-m);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(var(--acc), 0.9);
+  margin-bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-tag::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(var(--acc), 0.9);
+  animation: pulse 2s var(--ease) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.hero-title {
+  font-family: var(--f-d);
+  font-weight: 300;
+  font-size: clamp(40px, 8vw, 100px);
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.hero-title .gradient {
+  background: linear-gradient(135deg, rgba(var(--acc), 0.8), rgba(var(--acc2), 0.6));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--mute);
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-secondary {
+  font-family: var(--f-m);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+  background: transparent;
+  border: 1px solid var(--line2);
+  padding: 10px 24px;
+  border-radius: var(--radius);
+  transition: all 0.3s var(--ease);
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  border-color: rgba(var(--acc), 0.5);
+  background: rgba(var(--acc), 0.05);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-m);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--faint), transparent);
+  animation: scrollDown 2s var(--ease) infinite;
+}
+
+@keyframes scrollDown {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ============================================
+   SECCIONES GENERALES
+   ============================================ */
+.section {
+  padding: 100px clamp(20px, 4vw, 60px);
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: 60px;
+}
+
+.section-tag {
+  font-family: var(--f-m);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(var(--acc), 0.8);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--f-d);
+  font-weight: 300;
+  font-size: clamp(32px, 5vw, 56px);
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.section-desc {
+  font-size: 16px;
+  color: var(--mute);
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+/* ============================================
+   SERVICIOS / CAPACIDADES
+   ============================================ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.service-card {
+  background: rgba(7, 7, 11, 0.5);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px;
+  transition: all 0.4s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(var(--acc), 0.5), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s var(--ease);
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(var(--acc), 0.3);
+  box-shadow: var(--glow);
+}
+
+.service-card:hover::before {
+  transform: translateX(100%);
+}
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  color: rgba(var(--acc), 0.9);
+  margin-bottom: 20px;
+}
+
+.service-title {
+  font-family: var(--f-d);
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.service-desc {
+  font-size: 14px;
+  color: var(--mute);
+  line-height: 1.7;
+}
+
+/* ============================================
+   WIDGET GENERADOR DE IMÁGENES
+   ============================================ */
+.image-generator {
+  background: rgba(7, 7, 11, 0.8);
+  border: 1px solid var(--line2);
+  border-radius: var(--radius);
+  padding: 40px;
+  margin-top: 60px;
+}
+
+.generator-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.generator-badge {
+  font-family: var(--f-m);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(var(--acc), 0.9);
+  background: rgba(var(--acc), 0.1);
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.generator-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 900px) {
+  .generator-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.generator-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-family: var(--f-m);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  font-family: var(--f-b);
+  font-size: 14px;
+  color: #fff;
+  background: rgba(4, 4, 6, 0.8);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  transition: all 0.3s var(--ease);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: rgba(var(--acc), 0.5);
+  box-shadow: 0 0 0 3px rgba(var(--acc), 0.1);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.generator-output {
+  background: rgba(4, 4, 6, 0.6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.output-placeholder {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  min-height: 400px;
+  border: 1px dashed var(--line);
+  border-radius: 4px;
+  color: var(--faint);
+  font-family: var(--f-m);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.output-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: none;
+}
+
+.output-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-generate {
+  font-family: var(--f-m);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(var(--acc), 0.9), rgba(var(--acc2), 0.7));
+  padding: 14px 32px;
+  border-radius: var(--radius);
+  transition: all 0.3s var(--ease);
+  box-shadow: 0 4px 20px rgba(var(--acc), 0.3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-generate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(var(--acc), 0.5);
+}
+
+.btn-generate:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(var(--acc), 0.3);
+  border-top-color: rgba(var(--acc), 0.9);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   ESTADÍSTICAS / TELEMETRÍA
+   ============================================ */
+.stats-section {
+  background: rgba(7, 7, 11, 0.5);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-family: var(--f-d);
+  font-size: clamp(36px, 5vw, 56px);
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-family: var(--f-m);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+/* ============================================
+   PROYECTOS / CASOS
+   ============================================ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+}
+
+.project-card {
+  background: rgba(7, 7, 11, 0.5);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.4s var(--ease);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(var(--acc), 0.3);
+}
+
+.project-image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  background: rgba(4, 4, 6, 0.8);
+}
+
+.project-content {
+  padding: 24px;
+}
+
+.project-category {
+  font-family: var(--f-m);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(var(--acc), 0.8);
+  margin-bottom: 12px;
+}
+
+.project-title {
+  font-family: var(--f-d);
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.project-desc {
+  font-size: 14px;
+  color: var(--mute);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.project-link {
+  font-family: var(--f-m);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(var(--acc), 0.9);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-link::after {
+  content: "→";
+  transition: transform 0.3s var(--ease);
+}
+
+.project-link:hover::after {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   CONTACTO
+   ============================================ */
+.contact-section {
+  background: rgba(7, 7, 11, 0.5);
+  border-radius: var(--radius);
+  padding: 60px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-info h3 {
+  font-family: var(--f-d);
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  font-size: 15px;
+  color: var(--mute);
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--mute);
+}
+
+.contact-item-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: rgba(var(--acc), 0.1);
+  border-radius: 50%;
+  color: rgba(var(--acc), 0.9);
+}
+
+.contact-form-wrapper {
+  background: rgba(4, 4, 6, 0.6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 40px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: rgba(var(--acc), 0.9);
+  margin-top: 2px;
+}
+
+.checkbox-group label {
+  font-size: 13px;
+  color: var(--mute);
+  line-height: 1.6;
+}
+
+.checkbox-group a {
+  color: rgba(var(--acc), 0.9);
+  text-decoration: underline;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--line);
+  padding: 80px clamp(20px, 4vw, 60px) 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer-brand {
+  margin-bottom: 24px;
+}
+
+.footer-brand .brand {
+  margin-bottom: 20px;
+}
+
+.footer-desc {
+  font-size: 14px;
+  color: var(--mute);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--mute);
+  transition: all 0.3s var(--ease);
+}
+
+.social-link:hover {
+  color: #fff;
+  border-color: rgba(var(--acc), 0.5);
+  background: rgba(var(--acc), 0.1);
+}
+
+.footer-title {
+  font-family: var(--f-d);
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-link {
+  font-size: 14px;
+  color: var(--mute);
+  transition: color 0.3s var(--ease);
+}
+
+.footer-link:hover {
+  color: rgba(var(--acc), 0.9);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--line);
+  margin-top: 60px;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: var(--faint);
+}
+
+.footer-legal {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-legal a {
+  font-size: 13px;
+  color: var(--faint);
+}
+
+/* ============================================
+   ANIMACIONES SCROLL
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   NOTIFICACIONES TOAST
+   ============================================ */
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toast {
+  background: rgba(7, 7, 11, 0.95);
+  border: 1px solid var(--line2);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  box-shadow: var(--shadow);
+  animation: slideIn 0.4s var(--ease);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.toast.success {
+  border-color: rgba(var(--success), 0.5);
+}
+
+.toast.error {
+  border-color: rgba(var(--error), 0.5);
+}
+
+.toast-icon {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+}
+
+.toast.success .toast-icon {
+  color: rgba(var(--success), 0.9);
+}
+
+.toast.error .toast-icon {
+  color: rgba(var(--error), 0.9);
+}
+
+.toast-message {
+  flex: 1;
+  font-size: 13px;
+  color: #fff;
+}
+
+/* ============================================
+   LOADING OVERLAY
+   ============================================ */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  transition: opacity 0.6s var(--ease), visibility 0.6s var(--ease);
+}
+
+.loading-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading-content {
+  text-align: center;
+}
+
+.loading-logo {
+  font-family: var(--f-d);
+  font-size: 48px;
+  color: #fff;
+  margin-bottom: 24px;
+  animation: pulse 2s var(--ease) infinite;
+}
+
+.loading-bar {
+  width: 200px;
+  height: 2px;
+  background: var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 0 auto 16px;
+}
+
+.loading-progress {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(var(--acc), 0.9), rgba(var(--acc2), 0.7));
+  width: 0;
+  transition: width 0.3s var(--ease);
+}
+
+.loading-text {
+  font-family: var(--f-m);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+</style>
+</head>
+<body>
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-content">
+    <div class="loading-logo">Λ NOIACORE</div>
+    <div class="loading-bar">
+      <div class="loading-progress" id="loadingProgress"></div>
+    </div>
+    <div class="loading-text">Inicializando sistema...</div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header" id="header">
+  <a href="/" class="brand">
+    <span class="brand-logo">Λ</span>
+    NOIACORE
+  </a>
+  
+  <nav class="nav" id="nav">
+    <a href="#inicio" class="nav-link active">Inicio</a>
+    <a href="#servicios" class="nav-link">Servicios</a>
+    <a href="#generador" class="nav-link">IA Generator</a>
+    <a href="#proyectos" class="nav-link">Proyectos</a>
+    <a href="#contacto" class="nav-link">Contacto</a>
+  </nav>
+  
+  <div class="header-tools">
+    <button class="btn-icon" aria-label="Notificaciones" id="notifBtn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+      </svg>
+    </button>
+    <a href="#contacto" class="btn-primary">Iniciar Proyecto</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Navigation -->
+<nav class="nav-mobile" id="navMobile">
+  <a href="#inicio" class="nav-link">Inicio</a>
+  <a href="#servicios" class="nav-link">Servicios</a>
+  <a href="#generador" class="nav-link">IA Generator</a>
+  <a href="#proyectos" class="nav-link">Proyectos</a>
+  <a href="#contacto" class="nav-link">Contacto</a>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="inicio">
+  <div class="hero-bg">
+    <canvas id="hero-canvas"></canvas>
+  </div>
+  
+  <div class="hero-content">
+    <div class="hero-tag">Creative Intelligence Lab</div>
+    <h1 class="hero-title">
+      Dirección Creativa<br/>
+      <span class="gradient">Experiencias Digitales</span><br/>
+      Sistemas Inteligentes
+    </h1>
+    <p class="hero-subtitle">
+      Laboratorio especializado en brand systems, automatización con IA, 
+      generación de imágenes y arquitectura de producto digital desde Barcelona.
+    </p>
+    <div class="hero-actions">
+      <a href="#servicios" class="btn-primary">Explorar Capacidades</a>
+      <a href="#proyectos" class="btn-secondary">Ver Proyectos</a>
+    </div>
+  </div>
+  
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- Servicios Section -->
+<section class="section" id="servicios">
+  <div class="section-header reveal">
+    <div class="section-tag">Capacidades</div>
+    <h2 class="section-title">Servicios del Laboratorio</h2>
+    <p class="section-desc">
+      Combinamos creatividad estratégica con tecnología avanzada para entregar 
+      soluciones integrales que transforman marcas y experiencias digitales.
+    </p>
+  </div>
+  
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">◈</div>
+      <h3 class="service-title">Dirección Creativa</h3>
+      <p class="service-desc">
+        Estrategia de marca, identidad visual y narrativa conceptual para proyectos 
+        que requieren visión artística y precisión técnica.
+      </p>
+    </div>
+    
+    <div class="service-card reveal">
+      <div class="service-icon">◉</div>
+      <h3 class="service-title">Experiencias WebGL</h3>
+      <p class="service-desc">
+        Desarrollo de experiencias inmersivas con Three.js, shaders personalizados 
+        y animaciones avanzadas para engagement máximo.
+      </p>
+    </div>
+    
+    <div class="service-card reveal">
+      <div class="service-icon">⬡</div>
+      <h3 class="service-title">Automatización IA</h3>
+      <p class="service-desc">
+        Implementación de flujos automatizados con inteligencia artificial para 
+        generación de contenido, análisis de datos y optimización de procesos.
+      </p>
+    </div>
+    
+    <div class="service-card reveal">
+      <div class="service-icon">▣</div>
+      <h3 class="service-title">Generación de Imágenes</h3>
+      <p class="service-desc">
+        Widgets personalizados integrando APIs de Stable Diffusion, DALL-E y 
+        Midjourney para creación visual on-demand con control total.
+      </p>
+    </div>
+    
+    <div class="service-card reveal">
+      <div class="service-icon">❖</div>
+      <h3 class="service-title">Arquitectura Digital</h3>
+      <p class="service-desc">
+        Diseño de sistemas escalables, documentación inteligente y estructuras 
+        de información que soportan crecimiento sostenible.
+      </p>
+    </div>
+    
+    <div class="service-card reveal">
+      <div class="service-icon">⬢</div>
+      <h3 class="service-title">Desarrollo Full-Stack</h3>
+      <p class="service-desc">
+        Implementación completa con Java/Spring Boot, React, Node.js y bases de 
+        datos modernas con seguridad empresarial integrada.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Widget Generador de Imágenes -->
+<section class="section" id="generador">
+  <div class="section-header reveal">
+    <div class="section-tag">IA Power Tool</div>
+    <h2 class="section-title">Generador de Imágenes</h2>
+    <p class="section-desc">
+      Widget integrado de generación de imágenes con IA. Describe tu visión y 
+      nuestro sistema la materializa en segundos usando modelos de última generación.
+    </p>
+  </div>
+  
+  <div class="image-generator reveal">
+    <div class="generator-header">
+      <h3 style="font-family: var(--f-d); font-size: 20px; color: #fff;">NOIACORE Image Engine</h3>
+      <span class="generator-badge">Beta v2.0</span>
+    </div>
+    
+    <div class="generator-grid">
+      <div class="generator-form">
+        <div class="form-group">
+          <label class="form-label" for="promptInput">Prompt Descriptivo</label>
+          <textarea 
+            class="form-textarea" 
+            id="promptInput" 
+            placeholder="Describe la imagen que quieres generar... Ej: 'Paisaje futurista con edificios flotantes, atardecer naranja, estilo cyberpunk minimalista'"
+            maxlength="1000"
+          ></textarea>
+        </div>
+        
+        <div class="form-options">
+          <div class="form-group">
+            <label class="form-label" for="styleSelect">Estilo Artístico</label>
+            <select class="form-select" id="styleSelect">
+              <option value="realistic">Fotorrealista</option>
+              <option value="digital-art">Arte Digital</option>
+              <option value="minimalist">Minimalista</option>
+              <option value="cyberpunk">Cyberpunk</option>
+              <option value="abstract">Abstracto</option>
+              <option value="3d-render">Render 3D</option>
+              <option value="illustration">Ilustración</option>
+              <option value="concept-art">Concept Art</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="ratioSelect">Proporción</label>
+            <select class="form-select" id="ratioSelect">
+              <option value="1:1">Cuadrado (1:1)</option>
+              <option value="16:9">Landscape (16:9)</option>
+              <option value="9:16">Portrait (9:16)</option>
+              <option value="4:3">Clásico (4:3)</option>
+              <option value="3:2">Foto (3:2)</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-options">
+          <div class="form-group">
+            <label class="form-label" for="qualitySelect">Calidad</label>
+            <select class="form-select" id="qualitySelect">
+              <option value="standard">Estándar</option>
+              <option value="high">Alta (HD)</option>
+              <option value="ultra">Ultra (4K)</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="iterationsInput">Iteraciones</label>
+            <input 
+              type="number" 
+              class="form-input" 
+              id="iterationsInput" 
+              min="1" 
+              max="4" 
+              value="1"
+            />
+          </div>
+        </div>
+        
+        <button class="btn-generate" id="generateBtn">
+          <span>Generar Imagen</span>
+        </button>
+      </div>
+      
+      <div class="generator-output">
+        <div class="output-placeholder" id="outputPlaceholder">
+          <div>
+            <div style="font-size: 48px; margin-bottom: 16px; opacity: 0.3;">🎨</div>
+            <div>La imagen generada aparecerá aquí</div>
+          </div>
+        </div>
+        <img class="output-image" id="outputImage" alt="Imagen generada por IA"/>
+        
+        <div class="output-actions" id="outputActions" style="display: none;">
+          <button class="btn-secondary" id="downloadBtn" style="flex: 1;">
+            ⬇ Descargar
+          </button>
+          <button class="btn-secondary" id="regenerateBtn" style="flex: 1;">
+            ↻ Regenerar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Estadísticas -->
+<section class="section stats-section" id="estadisticas">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-value" data-target="150">0</div>
+      <div class="stat-label">Proyectos Completados</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-value" data-target="98">0</div>
+      <div class="stat-label">% Satisfacción Cliente</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-value" data-target="12">0</div>
+      <div class="stat-label">Años Experiencia</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-value" data-target="24">0</div>
+      <div class="stat-label">Premios Internacionales</div>
+    </div>
+  </div>
+</section>
+
+<!-- Proyectos Section -->
+<section class="section" id="proyectos">
+  <div class="section-header reveal">
+    <div class="section-tag">Portfolio</div>
+    <h2 class="section-title">Proyectos Destacados</h2>
+    <p class="section-desc">
+      Una selección de trabajos que demuestran nuestra capacidad para fusionar 
+      creatividad, tecnología y estrategia de marca.
+    </p>
+  </div>
+  
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-image" style="background: linear-gradient(135deg, rgba(125,155,255,0.2), rgba(180,200,255,0.1));"></div>
+      <div class="project-content">
+        <div class="project-category">Brand System</div>
+        <h3 class="project-title">Horizon Financial</h3>
+        <p class="project-desc">
+          Rediseño completo de identidad corporativa para fintech europea, 
+          incluyendo sistema visual, plataforma web y automatización de informes.
+        </p>
+        <a href="#" class="project-link">Ver caso de estudio</a>
+      </div>
+    </div>
+    
+    <div class="project-card reveal">
+      <div class="project-image" style="background: linear-gradient(135deg, rgba(180,200,255,0.2), rgba(125,155,255,0.1));"></div>
+      <div class="project-content">
+        <div class="project-category">WebGL Experience</div>
+        <h3 class="project-title">Neural Gallery</h3>
+        <p class="project-desc">
+          Experiencia inmersiva 3D para galería de arte contemporáneo con 
+          navegación espacial y visualización interactiva de obras.
+        </p>
+        <a href="#" class="project-link">Ver caso de estudio</a>
+      </div>
+    </div>
+    
+    <div class="project-card reveal">
+      <div class="project-image" style="background: linear-gradient(135deg, rgba(255,180,120,0.2), rgba(255,150,100,0.1));"></div>
+      <div class="project-content">
+        <div class="project-category">AI Automation</div>
+        <h3 class="project-title">AutoDoc System</h3>
+        <p class="project-desc">
+          Sistema de generación automática de documentación técnica con IA 
+          para empresa de ingeniería, reduciendo tiempo de producción en 70%.
+        </p>
+        <a href="#" class="project-link">Ver caso de estudio</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto Section -->
+<section class="section" id="contacto">
+  <div class="contact-section reveal">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Hablemos de tu Próximo Proyecto</h3>
+        <p>
+          ¿Tienes una idea que requiere visión creativa y ejecución técnica impecable? 
+          Nuestro laboratorio está listo para convertir conceptos ambiciosos en realidades digitales.
+        </p>
+        
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-item-icon">✉</div>
+            <span>hello@noiacore.com</span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">◎</div>
+            <span>Barcelona, España · Remoto Global</span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">⏰</div>
+            <span>Lun - Vie: 9:00 - 19:00 CET</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form-wrapper">
+        <form id="contactForm" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="nombre">Nombre *</label>
+              <input type="text" class="form-input" id="nombre" name="nombre" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email *</label>
+              <input type="email" class="form-input" id="email" name="email" required/>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="empresa">Empresa</label>
+            <input type="text" class="form-input" id="empresa" name="empresa"/>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="servicio">Servicio de Interés</label>
+            <select class="form-select" id="servicio" name="servicio">
+              <option value="">Selecciona un servicio</option>
+              <option value="direccion-creativa">Dirección Creativa</option>
+              <option value="webgl">Experiencias WebGL</option>
+              <option value="automatizacion">Automatización IA</option>
+              <option value="generacion-imagenes">Generación de Imágenes</option>
+              <option value="arquitectura">Arquitectura Digital</option>
+              <option value="desarrollo">Desarrollo Full-Stack</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="mensaje">Mensaje *</label>
+            <textarea class="form-textarea" id="mensaje" name="mensaje" required 
+              placeholder="Cuéntanos sobre tu proyecto, objetivos y timeline..."></textarea>
+          </div>
+          
+          <div class="checkbox-group">
+            <input type="checkbox" id="privacidad" name="privacidad" required/>
+            <label for="privacidad">
+              Acepto la <a href="#">política de privacidad</a> y el tratamiento de mis datos para responder a esta consulta.
+            </label>
+          </div>
+          
+          <button type="submit" class="btn-primary" style="width: 100%; margin-top: 24px;">
+            Enviar Consulta
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <a href="/" class="brand">
+          <span class="brand-logo">Λ</span>
+          NOIACORE
+        </a>
+        <p class="footer-desc">
+          Laboratorio de dirección creativa, experiencias digitales y sistemas 
+          de inteligencia. Core is invisible. Impact is inevitable.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-link" aria-label="Instagram">Ig</a>
+          <a href="#" class="social-link" aria-label="GitHub">GH</a>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <h4 class="footer-title">Servicios</h4>
+      <div class="footer-links">
+        <a href="#" class="footer-link">Dirección Creativa</a>
+        <a href="#" class="footer-link">Experiencias WebGL</a>
+        <a href="#" class="footer-link">Automatización IA</a>
+        <a href="#" class="footer-link">Generación de Imágenes</a>
+        <a href="#" class="footer-link">Arquitectura Digital</a>
+      </div>
+    </div>
+    
+    <div>
+      <h4 class="footer-title">Compañía</h4>
+      <div class="footer-links">
+        <a href="#" class="footer-link">Sobre Nosotros</a>
+        <a href="#" class="footer-link">Proyectos</a>
+        <a href="#" class="footer-link">Casos de Estudio</a>
+        <a href="#" class="footer-link">Blog</a>
+        <a href="#" class="footer-link">Contacto</a>
+      </div>
+    </div>
+    
+    <div>
+      <h4 class="footer-title">Legal</h4>
+      <div class="footer-links">
+        <a href="#" class="footer-link">Política de Privacidad</a>
+        <a href="#" class="footer-link">Términos de Servicio</a>
+        <a href="#" class="footer-link">Política de Cookies</a>
+        <a href="#" class="footer-link">Aviso Legal</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <div class="footer-copy">
+      © 2026 NOIACORE. Todos los derechos reservados.
+    </div>
+    <div class="footer-legal">
+      <a href="#">Privacidad</a>
+      <a href="#">Términos</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// ============================================
+// NOIACORE FRONTEND ENGINE v1.0
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Variables globales
+  const loadingOverlay = document.getElementById('loadingOverlay');
+  const loadingProgress = document.getElementById('loadingProgress');
+  const header = document.getElementById('header');
+  const menuToggle = document.getElementById('menuToggle');
+  const navMobile = document.getElementById('navMobile');
+  const toastContainer = document.getElementById('toastContainer');
+  const generateBtn = document.getElementById('generateBtn');
+  const outputPlaceholder = document.getElementById('outputPlaceholder');
+  const outputImage = document.getElementById('outputImage');
+  const outputActions = document.getElementById('outputActions');
+  const contactForm = document.getElementById('contactForm');
+  
+  let progress = 0;
+  const loadingInterval = setInterval(() => {
+    progress += Math.random() * 15;
+    if (progress >= 100) {
+      progress = 100;
+      clearInterval(loadingInterval);
+      setTimeout(() => {
+        loadingOverlay.classList.add('hidden');
+      }, 500);
+    }
+    loadingProgress.style.width = progress + '%';
+  }, 200);
+  
+  // Simulación de carga completa
+  setTimeout(() => {
+    progress = 100;
+    loadingProgress.style.width = '100%';
+    clearInterval(loadingInterval);
+    setTimeout(() => {
+      loadingOverlay.classList.add('hidden');
+    }, 300);
+  }, 2000);
+  
+  // Scroll del header
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+    
+    // Actualizar nav activa
+    updateActiveNav();
+  });
+  
+  // Menú móvil
+  menuToggle.addEventListener('click', () => {
+    navMobile.classList.toggle('active');
+    document.body.classList.toggle('locked');
+  });
+  
+  // Cerrar menú móvil al hacer click en enlace
+  navMobile.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navMobile.classList.remove('active');
+      document.body.classList.remove('locked');
+    });
+  });
+  
+  // Actualizar nav activa según scroll
+  function updateActiveNav() {
+    const sections = ['inicio', 'servicios', 'generador', 'proyectos', 'contacto'];
+    const scrollPos = window.scrollY + 200;
+    
+    sections.forEach(sectionId => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+        
+        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+          document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+          if (navLink) navLink.classList.add('active');
+        }
+      }
+    });
+  }
+  
+  // Reveal animations con Intersection Observer
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '-50px' });
+  
+  revealElements.forEach(el => revealObserver.observe(el));
+  
+  // Animación de estadísticas
+  const statValues = document.querySelectorAll('.stat-value');
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateStat(entry.target);
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  statValues.forEach(stat => statsObserver.observe(stat));
+  
+  function animateStat(element) {
+    const target = parseInt(element.getAttribute('data-target'));
+    const duration = 2000;
+    const step = target / (duration / 16);
+    let current = 0;
+    
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        element.textContent = target + '+';
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.floor(current);
+      }
+    }, 16);
+  }
+  
+  // Widget Generador de Imágenes (Simulado)
+  generateBtn.addEventListener('click', async () => {
+    const prompt = document.getElementById('promptInput').value.trim();
+    const style = document.getElementById('styleSelect').value;
+    const ratio = document.getElementById('ratioSelect').value;
+    const quality = document.getElementById('qualitySelect').value;
+    const iterations = parseInt(document.getElementById('iterationsInput').value);
+    
+    if (!prompt) {
+      showToast('Por favor, describe la imagen que quieres generar', 'error');
+      return;
+    }
+    
+    // Estado de carga
+    generateBtn.disabled = true;
+    generateBtn.innerHTML = '<div class="spinner"></div><span>Generando...</span>';
+    outputPlaceholder.style.display = 'grid';
+    outputImage.style.display = 'none';
+    outputActions.style.display = 'none';
+    
+    // Simulación de llamada a API de generación de imágenes
+    try {
+      // En producción, esto sería una llamada real a API
+      // const response = await fetch('/api/generate-image', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ prompt, style, ratio, quality, iterations })
+      // });
+      // const data = await response.json();
+      
+      // Simulación con delay
+      await new Promise(resolve => setTimeout(resolve, 3000));
+      
+      // Imagen de placeholder (en producción sería la imagen generada)
+      const placeholderImages = {
+        'realistic': 'https://picsum.photos/seed/realistic/800/600',
+        'digital-art': 'https://picsum.photos/seed/digitalart/800/600',
+        'minimalist': 'https://picsum.photos/seed/minimal/800/600',
+        'cyberpunk': 'https://picsum.photos/seed/cyber/800/600',
+        'abstract': 'https://picsum.photos/seed/abstract/800/600',
+        '3d-render': 'https://picsum.photos/seed/3drender/800/600',
+        'illustration': 'https://picsum.photos/seed/illustration/800/600',
+        'concept-art': 'https://picsum.photos/seed/concept/800/600'
+      };
+      
+      const imageUrl = placeholderImages[style] || placeholderImages['realistic'];
+      
+      outputImage.src = imageUrl;
+      outputImage.onload = () => {
+        outputPlaceholder.style.display = 'none';
+        outputImage.style.display = 'block';
+        outputActions.style.display = 'flex';
+        showToast('¡Imagen generada con éxito!', 'success');
+      };
+      
+    } catch (error) {
+      console.error('Error generando imagen:', error);
+      showToast('Error al generar la imagen. Inténtalo de nuevo.', 'error');
+    } finally {
+      generateBtn.disabled = false;
+      generateBtn.innerHTML = '<span>Generar Imagen</span>';
+    }
+  });
+  
+  // Download button
+  document.getElementById('downloadBtn').addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.href = outputImage.src;
+    link.download = 'noiacore-generated-image.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast('Descargando imagen...', 'success');
+  });
+  
+  // Regenerate button
+  document.getElementById('regenerateBtn').addEventListener('click', () => {
+    generateBtn.click();
+  });
+  
+  // Formulario de contacto
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData.entries());
+    
+    // Validación básica
+    if (!data.nombre || !data.email || !data.mensaje) {
+      showToast('Por favor, completa los campos obligatorios', 'error');
+      return;
+    }
+    
+    // Estado de envío
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<div class="spinner" style="display:inline-block;width:14px;height:14px;border-width:2px;"></div> Enviando...';
+    
+    try {
+      // En producción, esto sería una llamada real a la API
+      // const response = await fetch('/api/contactos', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(data)
+      // });
+      
+      // Simulación
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      showToast('¡Mensaje enviado! Te contactaremos pronto.', 'success');
+      contactForm.reset();
+      
+    } catch (error) {
+      console.error('Error enviando formulario:', error);
+      showToast('Error al enviar. Por favor, inténtalo más tarde.', 'error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Enviar Consulta';
+    }
+  });
+  
+  // Notificaciones button (demo)
+  document.getElementById('notifBtn').addEventListener('click', () => {
+    showToast('No hay notificaciones nuevas', 'success');
+  });
+  
+  // Función para mostrar toasts
+  function showToast(message, type = 'success') {
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `
+      <div class="toast-icon">${type === 'success' ? '✓' : '!'}</div>
+      <div class="toast-message">${message}</div>
+    `;
+    
+    toastContainer.appendChild(toast);
+    
+    setTimeout(() => {
+      toast.style.animation = 'slideIn 0.4s var(--ease) reverse';
+      setTimeout(() => toast.remove(), 400);
+    }, 4000);
+  }
+  
+  // Smooth scroll para enlaces internos
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        const offsetTop = targetElement.offsetTop - 80;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+  
+  // Canvas animation (Three.js simple)
+  initHeroCanvas();
+});
+
+// Inicializar canvas del hero
+function initHeroCanvas() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+  
+  function resize() {
+    width = canvas.width = canvas.offsetWidth;
+    height = canvas.height = canvas.offsetHeight;
+    initParticles();
+  }
+  
+  function initParticles() {
+    particles = [];
+    const particleCount = Math.min(100, Math.floor((width * height) / 15000));
+    
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 2 + 1,
+        alpha: Math.random() * 0.5 + 0.2
+      });
+    }
+  }
+  
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    
+    // Background gradient
+    const gradient = ctx.createLinearGradient(0, 0, width, height);
+    gradient.addColorStop(0, '#040406');
+    gradient.addColorStop(1, '#07070b');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, width, height);
+    
+    // Draw and update particles
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      
+      // Bounce off edges
+      if (p.x < 0 || p.x > width) p.vx *= -1;
+      if (p.y < 0 || p.y > height) p.vy *= -1;
+      
+      // Draw particle
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(125, 155, 255, ${p.alpha})`;
+      ctx.fill();
+    });
+    
+    // Draw connections
+    ctx.strokeStyle = 'rgba(125, 155, 255, 0.1)';
+    ctx.lineWidth = 0.5;
+    
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    
+    requestAnimationFrame(animate);
+  }
+  
+  window.addEventListener('resize', resize);
+  resize();
+  animate();
+}
+</script>
+</body>
+</html>
