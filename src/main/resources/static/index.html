@@ -1437,7 +1437,7 @@ body.core-sleeping #gl,body.core-sleeping .fb{filter:brightness(.42) saturate(.5
   <div class="wrap">
     <div class="idx reveal"><span class="blink"></span>008 — Contacto / Project Brief</div>
     <div class="contact-shell reveal">
-      <div class="contact-copy"><span class="eyebrow">Start with the real problem</span><h2>Trae la fricción.<br/>Diseñamos el sistema.</h2><p>Cuéntanos qué quieres transformar: una marca, una experiencia, un proceso o una idea que todavía no tiene forma. El primer paso no es una venta; es comprobar si el problema merece convertirse en proyecto.</p><div class="contact-meta"><span><b>Director</b>Pedro Belentani</span><span><b>Base</b>Barcelona · España</span><a href="https://noiacore.com"><b>Web</b>noiacore.com</a><a href="mailto:belentani7pedro@gmail.com"><b>Email</b>belentani7pedro@gmail.com</a></div></div>
+      <div class="contact-copy"><span class="eyebrow">Start with the real problem</span><h2>Trae la fricción.<br/>Diseñamos el sistema.</h2><p>Cuéntanos qué quieres transformar: una marca, una experiencia, un proceso o una idea que todavía no tiene forma. El primer paso no es una venta; es comprobar si el problema merece convertirse en proyecto.</p><div class="contact-meta"><span><b>Director</b>Pedro Belentani</span><span><b>Base</b>Barcelona · España</span><a href="https://noiacore.com"><b>Web</b>noiacore.com</a><a href="mailto:belentani7studio@proton.me"><b>Email</b>belentani7studio@proton.me</a></div></div>
       <form class="brief-form" id="project-brief">
         <div class="field"><label for="brief-name">Nombre</label><input id="brief-name" name="name" autocomplete="name" required placeholder="Tu nombre"/></div>
         <div class="field"><label for="brief-email">Email</label><input id="brief-email" name="email" type="email" autocomplete="email" required placeholder="tu@empresa.com"/></div>
@@ -2347,7 +2347,7 @@ briefForm?.addEventListener('submit',async e=>{
     ? ('Brief #'+saved.id+' guardado en el sistema · abriendo tu aplicación de correo…')
     : 'No se pudo guardar en el sistema (¿backend caído?) · abriendo tu aplicación de correo…';
   labEvent('lead','Project brief '+(saved?'guardado (#'+saved.id+')':'preparado sin backend'),{type:d.get('type')});
-  location.href=`mailto:belentani7pedro@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  location.href=`mailto:belentani7studio@proton.me?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
 $('#copy-brief')?.addEventListener('click',async()=>{if(!briefForm.reportValidity())return;const text=briefText();try{await navigator.clipboard.writeText(text);briefStatus.textContent='Briefing copiado al portapapeles.';showToast('BRIEF COPIED','Ya puedes pegarlo en email, WhatsApp o un documento');}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();briefStatus.textContent='Briefing copiado.';}labEvent('lead','Project brief copied');});
 
