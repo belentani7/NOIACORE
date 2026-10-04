@@ -1,0 +1,1 @@
+ALTER TABLE `operation_commands` ADD CONSTRAINT `operation_commands_owner_idempotency_unique` UNIQUE(`ownerId`,`idempotencyKey`);

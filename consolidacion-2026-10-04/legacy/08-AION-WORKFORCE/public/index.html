@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AION Workforce — Gestión de turnos</title>
+<style>
+  :root {
+    --bg: #05060f;
+    --panel: rgba(255, 255, 255, 0.04);
+    --border: rgba(140, 190, 255, 0.16);
+    --neon: #5be7ff;
+    --neon2: #ff3b6b;
+    --text: #e8f4ff;
+    --muted: #7f93ad;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(1000px 500px at 80% -10%, rgba(91, 231, 255, 0.14), transparent 60%),
+      radial-gradient(800px 400px at -10% 110%, rgba(255, 59, 107, 0.12), transparent 60%),
+      var(--bg);
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 60px; }
+  header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+  .logo { font-size: 1.35rem; font-weight: 700; letter-spacing: 0.35em; }
+  .logo em { color: var(--neon); font-style: normal; text-shadow: 0 0 18px rgba(91, 231, 255, 0.7); }
+  .badge {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--neon); border: 1px solid var(--border); border-radius: 999px;
+    padding: 6px 14px; background: rgba(91, 231, 255, 0.06);
+  }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 28px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
+    padding: 20px; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  }
+  .card .k { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase; }
+  .card .v { font-size: 2rem; font-weight: 700; margin-top: 6px; }
+  .card .v em { color: var(--neon2); font-style: normal; text-shadow: 0 0 16px rgba(255, 59, 107, 0.6); }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 12px 10px; border-bottom: 1px solid var(--border); }
+  td { padding: 14px 10px; border-bottom: 1px solid rgba(140, 190, 255, 0.07); font-size: 0.92rem; }
+  tr:hover td { background: rgba(91, 231, 255, 0.04); }
+  .pill { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .pill.activo { color: #6dffb4; border: 1px solid rgba(109, 255, 180, 0.35); background: rgba(109, 255, 180, 0.07); }
+  .pill.pausa { color: #ffd166; border: 1px solid rgba(255, 209, 102, 0.35); background: rgba(255, 209, 102, 0.07); }
+  form { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 28px; }
+  input {
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px; color: var(--text); font-size: 0.9rem; outline: none;
+  }
+  input:focus { border-color: var(--neon); box-shadow: 0 0 0 3px rgba(91, 231, 255, 0.12); }
+  button {
+    background: linear-gradient(120deg, var(--neon), #4a9eff); border: none; border-radius: 10px;
+    padding: 12px 18px; font-weight: 700; color: #031018; cursor: pointer; letter-spacing: 0.06em;
+  }
+  button:hover { filter: brightness(1.1); }
+  .foot { margin-top: 24px; color: var(--muted); font-size: 0.75rem; text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">AION <em>WORKFORCE</em></div>
+    <div class="badge" id="apiState">modo demo local</div>
+  </header>
+
+  <section class="stats">
+    <div class="card"><div class="k">Turnos activos</div><div class="v" id="statActive">0</div></div>
+    <div class="card"><div class="k">Trabajadores</div><div class="v" id="statWorkers">0</div></div>
+    <div class="card"><div class="k">Sitios</div><div class="v"><em id="statSites">0</em></div></div>
+    <div class="card"><div class="k">Cobertura 24h</div><div class="v" id="statCoverage">—</div></div>
+  </section>
+
+  <section class="card">
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Trabajador</th><th>Rol</th><th>Horario</th><th>Sitio</th><th>Estado</th></tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <form id="form">
+      <input name="worker" placeholder="Nombre trabajador" required />
+      <input name="role" placeholder="Rol / Turno" required />
+      <input name="start" placeholder="Inicio (HH:MM)" required />
+      <input name="end" placeholder="Fin (HH:MM)" required />
+      <input name="site" placeholder="Sitio" />
+      <button type="submit">Añadir turno</button>
+    </form>
+  </section>
+
+  <p class="foot">AION Workforce — pila completa: Express + frontend glassmorphism. Audit trail inmutable.</p>
+</div>
+
+<script src="/app.js" defer></script>
+</body>
+</html>

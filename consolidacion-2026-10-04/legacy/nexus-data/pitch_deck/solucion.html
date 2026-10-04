@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>NEXUS DATA — La solución</title>
+  <style>
+    *{box-sizing:border-box}
+    .slide-container{width:1280px;min-height:720px;background:#EBF4FF;color:#0A2540;font-family:Arial,Helvetica,sans-serif;padding:58px 72px 0}
+    .eyebrow{font-size:19px;letter-spacing:4px;font-weight:800;color:#DD6B20}
+    .header{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-top:18px}
+    .title{font-size:72px;line-height:.94;letter-spacing:-4px;font-weight:800;margin:0;max-width:520px}
+    .thesis{font-size:24px;line-height:1.18;color:#1E3A8A;font-weight:500;max-width:470px;margin:0}
+    .body-grid{display:grid;grid-template-columns:41% 59%;gap:36px;margin-top:34px;min-height:470px}
+    .steps{border-top:3px solid #0A2540}
+    .step{display:grid;grid-template-columns:54px 1fr;gap:16px;padding:17px 0 14px;border-bottom:2px solid #0A2540}
+    .step-number{font-size:32px;line-height:1;font-weight:800;color:#DD6B20}
+    .step h3{font-size:24px;line-height:1.05;margin:0 0 6px;font-weight:800}
+    .step p{font-size:18px;line-height:1.2;color:#1E3A8A;margin:0;max-width:350px}
+    .callout{margin-top:22px;background:#DD6B20;color:#EBF4FF;padding:17px 20px 0;min-height:80px;font-size:23px;line-height:1.05;font-weight:800}
+    .diagram-wrap{background:#0A2540;min-height:470px;padding:16px 16px 0;display:flex;align-items:center;justify-content:center}
+    .diagram{display:block;width:650px;height:420px;object-fit:contain;background:#EBF4FF}
+    .caption{font-size:14px;color:#EBF4FF;letter-spacing:.5px;margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="eyebrow">04 / LA SOLUCIÓN</div>
+    <div class="header">
+      <h1 class="title">No entregamos filas.<br>Entregamos contexto.</h1>
+      <p class="thesis">NEXUS convierte fuentes públicas autorizadas en una capa vertical de inteligencia para recruiting técnico.</p>
+    </div>
+    <div class="body-grid">
+      <section class="steps">
+        <div class="step"><div class="step-number">01</div><div><h3>Conectar</h3><p>Remotive, Arbeitnow y Jobicy mediante APIs públicas y procedencia visible.</p></div></div>
+        <div class="step"><div class="step-number">02</div><div><h3>Normalizar</h3><p>Un esquema común para cargos, empresas, ubicación, modalidad y fechas.</p></div></div>
+        <div class="step"><div class="step-number">03</div><div><h3>Enriquecer</h3><p>Skills, seniority, deduplicación, cobertura salarial y señales de calidad.</p></div></div>
+        <div class="step"><div class="step-number">04</div><div><h3>Decidir</h3><p>Benchmarks, anomalías e informes accionables para equipos de talento.</p></div></div>
+        <div class="callout">Valor vertical: de extracción genérica a decisiones de recruiting.</div>
+      </section>
+      <section>
+        <div class="diagram-wrap">
+          <img class="diagram" src="/home/ubuntu/nexus_data/arquitectura.png" alt="Diagrama de arquitectura NEXUS DATA: fuentes públicas, ingesta, calidad, SQLite, inteligencia, Streamlit y exportación">
+        </div>
+        <div class="caption">Arquitectura del prototipo · cumplimiento incorporado en el flujo</div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

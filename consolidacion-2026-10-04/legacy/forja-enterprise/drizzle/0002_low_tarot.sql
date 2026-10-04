@@ -1,0 +1,1 @@
+ALTER TABLE `workspace_members` ADD `inviteEmail` varchar(320);

@@ -1,0 +1,19 @@
+# Database
+DATABASE_URL=postgresql+asyncpg://noiacore_user:noiacore_pass_dev@localhost:5432/noiacore_db
+
+# Security
+ADMIN_TOKEN=your-secure-32-character-admin-token-here-xxx
+STRIPE_SECRET_KEY=<YOUR_STRIPE_SECRET_KEY>
+STRIPE_WEBHOOK_SECRET=<YOUR_STRIPE_WEBHOOK_SECRET>
+
+# API
+FRONTEND_URL=http://localhost:3000
+PUBLIC_API_URL=http://localhost:8000
+
+# Environment
+ENVIRONMENT=development
+DEBUG=false
+LOG_LEVEL=INFO
+
+# Optional
+SENTRY_DSN=

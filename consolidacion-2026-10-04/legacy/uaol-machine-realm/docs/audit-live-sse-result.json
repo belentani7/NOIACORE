@@ -1,0 +1,10 @@
+{
+  "completedAt": "2026-08-26T05:45:14.087Z",
+  "mode": "SIMULATION_ONLY",
+  "sseHttpStatus": 200,
+  "sseContentType": "text/event-stream",
+  "heartbeatHttpStatus": 200,
+  "heartbeatAccepted": true,
+  "receivedGatewayEvent": true,
+  "sample": "event: operational\ndata: {\"topic\":\"event\",\"payload\":{\"eventType\":\"GATEWAY_HEARTBEAT\",\"machineId\":null,\"commandId\":null,\"status\":\"online\",\"latencyMs\":1,\"simulationOnly\":true},\"emittedAt\":\"2026-08-26T05:45:14.081Z\"}\n\nevent: operational\ndata: {\"topic\":\"gateway\",\"payload\":{\"gatewayId\":120001,\"status\":\"online\",\"heartbeat\":true,\"simulationOnly\":true},\"emittedAt\":\"2026-08-26T05:45:14.081Z\"}"
+}

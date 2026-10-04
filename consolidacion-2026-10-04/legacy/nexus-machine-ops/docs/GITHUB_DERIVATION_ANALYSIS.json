@@ -1,0 +1,6 @@
+{
+  "criterion": "Name/description triage only; no code equivalence claimed. Similarity threshold Jaccard >= 0.5 with at least four union tokens.",
+  "repositoryCount": 75,
+  "exactDescriptionPairs": [],
+  "similarDescriptionPairs": []
+}

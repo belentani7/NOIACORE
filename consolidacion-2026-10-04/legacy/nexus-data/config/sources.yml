@@ -1,0 +1,114 @@
+settings:
+  user_agent: "NexusData/0.4 (compliant-public-api-client)"
+  default_rate_limit_seconds: 2.0
+  max_retries: 3
+  timeout_seconds: 25
+  max_connections: 8
+  demo_mode: false
+sources:
+  - name: usaspending_awards
+    domain: api.usaspending.gov
+    country: US
+    rate_limit_seconds: 2.0
+    kind: api_json
+    enabled: true
+    url: https://api.usaspending.gov/api/v2/search/spending_by_award/
+    source_url_template: "https://www.usaspending.gov/award/{source_id}"
+    method: POST
+    body:
+      filters:
+        time_period:
+          - start_date: "{{days_ago:365}}"
+            end_date: "{{today}}"
+        award_type_codes: ["A", "B", "C", "D"]
+      fields: ["Award ID", "Recipient Name", "Start Date", "End Date", "Award Amount", "Awarding Agency", "Award Type", "Description"]
+      page: 1
+      limit: 25
+      sort: "Award Amount"
+      order: "desc"
+    item_path: results
+    id_field: "Award ID"
+    constants:
+      country: US
+      currency: USD
+      record_type: award
+    fields:
+      title: "Description"
+      buyer: "Awarding Agency"
+      deadline: "End Date"
+      amount: "Award Amount"
+      category: "Award Type"
+      description: "Description"
+  - name: contracts_finder_uk
+    domain: www.contractsfinder.service.gov.uk
+    country: GB
+    rate_limit_seconds: 2.0
+    kind: api_json
+    enabled: true
+    url: https://www.contractsfinder.service.gov.uk/api/rest/2/search_notices/json
+    source_url_template: "https://www.contractsfinder.service.gov.uk/Notice/{source_id}"
+    method: POST
+    body:
+      searchCriteria:
+        types: ["Contract"]
+        statuses: ["Open"]
+        keyword: "software"
+        queryString: null
+        regions: null
+        postcode: null
+        radius: 0
+        valueFrom: null
+        valueTo: null
+        publishedFrom: null
+        publishedTo: null
+        deadlineFrom: null
+        deadlineTo: null
+        approachMarketFrom: null
+        approachMarketTo: null
+        awardedFrom: null
+        awardedTo: null
+        isSubcontract: null
+        suitableForSme: null
+        suitableForVco: null
+        awardedToSme: null
+        awardedToVcse: null
+        cpvCodes: null
+      size: 25
+    item_path: noticeList
+    id_field: item.id
+    constants:
+      country: GB
+      currency: GBP
+      record_type: opportunity
+    fields:
+      title: item.title
+      buyer: item.organisationName
+      published_date: item.publishedDate
+      deadline: item.deadlineDate
+      amount: item.valueHigh
+      category: item.cpvDescription
+      description: item.description
+  - name: chicago_contracts
+    domain: data.cityofchicago.org
+    country: US
+    rate_limit_seconds: 2.0
+    kind: api_json
+    enabled: true
+    url: https://data.cityofchicago.org/resource/rsxa-ify5.json
+    source_url_template: "https://data.cityofchicago.org/Administration-Finance/Contracts/rsxa-ify5"
+    params:
+      $limit: 25
+      $order: approval_date DESC
+    item_path: ""
+    id_field: purchase_order_contract_number
+    constants:
+      country: US
+      currency: USD
+      record_type: award
+    fields:
+      title: purchase_order_description
+      buyer: department
+      published_date: approval_date
+      amount: award_amount
+      category: contract_type
+      description: purchase_order_description

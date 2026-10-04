@@ -1,0 +1,15 @@
+Severidades posteriores:
+      1 "severity": "critical"
+      8 "severity": "high"
+      9 "severity": "low"
+     32 "severity": "moderate"
+
+Módulos con severidad alta o crítica:
+      "module_name": "drizzle-orm",
+      "module_name": "fast-xml-parser",
+      "module_name": "lodash",
+      "module_name": "lodash-es",
+      "module_name": "nanoid",
+      "module_name": "path-to-regexp",
+      "severity": "critical",
+      "severity": "high",

@@ -1,0 +1,1 @@
+ALTER TABLE `realm_machines` MODIFY COLUMN `state` enum('offline','standby','idle','calibrating','starting','operating','paused','maintenance','stopped','error','emergency') NOT NULL DEFAULT 'standby';

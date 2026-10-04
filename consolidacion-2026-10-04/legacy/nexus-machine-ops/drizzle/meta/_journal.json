@@ -1,0 +1,34 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1787717616478,
+      "tag": "0000_luxuriant_titanium_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1787717778958,
+      "tag": "0001_windy_rocket_racer",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1787717794563,
+      "tag": "0002_little_infant_terrible",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1787717880307,
+      "tag": "0003_deep_millenium_guard",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+pnpm_audit_exit=1
+Severidades finales:
+      4 "severity": "high"
+      7 "severity": "low"
+     30 "severity": "moderate"
+Hallazgos altos/críticos:
+      "module_name": "lodash",
+      "module_name": "lodash-es",
+      "module_name": "nanoid",
+      "module_name": "path-to-regexp",
+      "severity": "high",

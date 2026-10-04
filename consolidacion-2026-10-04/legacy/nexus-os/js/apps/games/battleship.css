@@ -1,0 +1,62 @@
+.bs-wrapper {
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, rgba(10,10,15,0.95), rgba(20,10,30,0.95));
+  font-family: 'Courier New', monospace; overflow: auto; padding: 20px;
+}
+.bs-container {
+  background: rgba(30,20,40,0.6); backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,0,60,0.3); border-radius: 20px; padding: 25px;
+  box-shadow: 0 8px 32px rgba(255,0,60,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  max-width: 800px; width: 100%;
+}
+.bs-title {
+  text-align: center; color: #ff003c; font-size: 28px; margin: 0 0 12px;
+  text-shadow: 0 0 20px rgba(255,0,60,0.8), 0 0 40px rgba(255,0,60,0.4); letter-spacing: 6px;
+}
+.bs-hud { display: flex; justify-content: space-around; margin-bottom: 12px; font-size: 13px; }
+.bs-stat { color: #ff4488; text-shadow: 0 0 10px rgba(255,68,136,0.6); }
+.bs-message {
+  text-align: center; color: #00ff88; font-size: 14px; margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(0,255,136,0.6); letter-spacing: 1px; font-weight: bold; min-height: 20px;
+}
+.bs-boards { display: flex; gap: 20px; justify-content: center; margin-bottom: 15px; flex-wrap: wrap; }
+.bs-board-section { text-align: center; }
+.bs-board-label {
+  color: #ff4488; font-size: 12px; margin-bottom: 8px; letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(255,68,136,0.6);
+}
+.bs-board {
+  display: grid; grid-template-columns: repeat(10, 1fr); gap: 2px;
+  background: rgba(20,15,30,0.9); padding: 4px; border-radius: 8px;
+  border: 2px solid rgba(255,0,60,0.4); box-shadow: 0 0 20px rgba(255,0,60,0.3);
+  width: 280px;
+}
+.bs-cell {
+  aspect-ratio: 1; background: rgba(10,20,40,0.9); border-radius: 2px;
+  cursor: pointer; transition: all 0.2s;
+}
+.bs-cell:hover { background: rgba(255,0,60,0.3); box-shadow: 0 0 8px rgba(255,0,60,0.5); }
+.bs-cell.ship {
+  background: rgba(100,100,120,0.9); border: 1px solid rgba(150,150,170,0.6);
+}
+.bs-cell.preview {
+  background: rgba(0,255,136,0.3); border: 1px solid rgba(0,255,136,0.6);
+}
+.bs-cell.hit {
+  background: rgba(255,0,60,0.7); box-shadow: 0 0 12px rgba(255,0,60,0.8);
+  border: 1px solid #ff003c;
+}
+.bs-cell.miss {
+  background: rgba(100,100,150,0.4); border: 1px solid rgba(100,100,150,0.6);
+}
+.bs-controls { display: flex; gap: 15px; justify-content: center; }
+.bs-btn {
+  padding: 10px 25px; background: rgba(255,0,60,0.2); border: 2px solid #ff003c;
+  border-radius: 8px; color: #ff003c; font-family: 'Courier New', monospace; font-size: 13px;
+  font-weight: bold; cursor: pointer; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255,0,60,0.8);
+  box-shadow: 0 4px 15px rgba(255,0,60,0.3); transition: all 0.3s;
+}
+.bs-btn:hover {
+  background: rgba(255,0,60,0.4); box-shadow: 0 6px 25px rgba(255,0,60,0.5);
+  transform: translateY(-2px);
+}

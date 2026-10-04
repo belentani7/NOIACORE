@@ -1,0 +1,40 @@
+/* NEXUS OS — Gradient Maker — Neon Glassmorphism */
+.ngr-root{display:flex;height:100%;background:#0a0a0f;font-family:'Segoe UI',system-ui,sans-serif;color:#e0e0e0;overflow:hidden}
+.ngr-left{flex:1;display:flex;flex-direction:column;padding:16px;gap:12px}
+.ngr-preview{flex:1;border-radius:12px;border:1px solid rgba(255,0,60,.15);min-height:200px;position:relative;overflow:hidden;box-shadow:0 0 30px rgba(255,0,60,.08)}
+.ngr-preview-inner{width:100%;height:100%}
+.ngr-code-area{background:rgba(15,15,25,.95);border:1px solid rgba(255,0,60,.1);border-radius:8px;padding:12px;max-height:180px;overflow:auto}
+.ngr-code-area::-webkit-scrollbar{width:4px}
+.ngr-code-area::-webkit-scrollbar-thumb{background:#ff003c33;border-radius:2px}
+.ngr-code{font-family:'Courier New',monospace;font-size:12px;color:#ff2d6b;white-space:pre-wrap;word-break:break-all;line-height:1.5}
+.ngr-copy-btn{position:absolute;top:8px;right:8px;padding:6px 14px;background:rgba(15,15,25,.9);border:1px solid rgba(255,0,60,.3);border-radius:6px;color:#ff003c;cursor:pointer;font-size:11px;transition:all .2s;z-index:2}
+.ngr-copy-btn:hover{background:rgba(255,0,60,.2)}
+.ngr-right{width:300px;background:rgba(15,15,25,.95);border-left:1px solid rgba(255,0,60,.15);display:flex;flex-direction:column;overflow-y:auto;padding:16px;gap:10px}
+.ngr-right::-webkit-scrollbar{width:4px}
+.ngr-right::-webkit-scrollbar-thumb{background:#ff003c33;border-radius:2px}
+.ngr-title{font-size:14px;font-weight:600;color:#ff2d6b;padding-bottom:8px;border-bottom:1px solid rgba(255,0,60,.15)}
+.ngr-section{font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1px;margin:8px 0 4px}
+.ngr-type-row{display:flex;gap:6px;margin-bottom:8px}
+.ngr-type-btn{flex:1;padding:7px;background:rgba(255,255,255,.03);border:1px solid rgba(255,0,60,.1);border-radius:6px;color:#888;cursor:pointer;font-size:12px;text-align:center;transition:all .2s}
+.ngr-type-btn:hover{border-color:rgba(255,0,60,.3)}
+.ngr-type-btn.active{background:rgba(255,0,60,.15);color:#ff003c;border-color:#ff003c}
+.ngr-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ngr-row label{font-size:11px;color:#888;min-width:50px}
+.ngr-slider{flex:1;-webkit-appearance:none;height:3px;background:rgba(255,255,255,.1);border-radius:2px;outline:none}
+.ngr-slider::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;background:#ff003c;border-radius:50%;cursor:pointer;box-shadow:0 0 4px #ff003c}
+.ngr-val{font-size:11px;color:#ff2d6b;width:32px;text-align:right}
+.ngr-stop-list{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+.ngr-stop-item{display:flex;align-items:center;gap:6px;padding:6px 8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,0,60,.08);border-radius:6px}
+.ngr-stop-color{width:28px;height:24px;border:1px solid rgba(255,0,60,.2);border-radius:4px;background:none;cursor:pointer;padding:0}
+.ngr-stop-pct{width:48px;background:rgba(255,255,255,.05);border:1px solid rgba(255,0,60,.15);color:#ccc;padding:3px 6px;border-radius:4px;font-size:11px;outline:none;text-align:center}
+.ngr-stop-del{background:none;border:none;color:#ff003c44;cursor:pointer;font-size:13px;padding:0 2px}
+.ngr-stop-del:hover{color:#ff003c}
+.ngr-add-stop{padding:6px 12px;background:rgba(255,0,60,.1);border:1px solid rgba(255,0,60,.2);border-radius:6px;color:#ff003c;cursor:pointer;font-size:11px;transition:all .2s;width:100%}
+.ngr-add-stop:hover{background:rgba(255,0,60,.2)}
+.ngr-preset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.ngr-preset{height:36px;border-radius:6px;cursor:pointer;border:1px solid rgba(255,0,60,.1);transition:all .2s}
+.ngr-preset:hover{border-color:#ff003c;transform:scale(1.05)}
+.ngr-btn{padding:8px 16px;background:rgba(255,0,60,.2);border:1px solid rgba(255,0,60,.5);border-radius:6px;color:#ff003c;cursor:pointer;font-size:12px;transition:all .2s;width:100%}
+.ngr-btn:hover{background:rgba(255,0,60,.3);box-shadow:0 0 10px rgba(255,0,60,.15)}
+.ngr-btn-row{display:flex;gap:6px}
+.ngr-btn-row .ngr-btn{flex:1}

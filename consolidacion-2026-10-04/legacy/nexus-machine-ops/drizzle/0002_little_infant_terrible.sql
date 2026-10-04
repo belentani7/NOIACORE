@@ -1,0 +1,1 @@
+ALTER TABLE `simulatedMachines` DROP INDEX `simulated_machines_key_unique`;

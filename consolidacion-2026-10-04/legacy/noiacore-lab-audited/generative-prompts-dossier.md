@@ -1,0 +1,24 @@
+# NOIACORE LAB / DOSSIER DE PROMPTS GENERATIVOS DE MÁXIMA DENSIDAD (3000+ PALABRAS DESGLOSADAS)
+
+Este documento contiene la especificación hiper-detallada de los prompts de generación visual derivados del análisis OCR de las imágenes aportadas, orientados a modelos de difusión avanzados (Midjourney v6, Flux, Stable Diffusion 3).
+
+---
+
+## PROMPT 1: EL UMBRAL DE LUZ VERTICAL (BASADO EN REFERENCIA FOTO OCR 1)
+> **Parámetros de Estilo**: Absolutist black background (`#000000`), absolute minimalist geometry, brutalist architectural monolith, single vertical razor-thin slit of blinding white and deep violet luminescence piercing through heavy volumetric dark clouds and obsidian floor plates, specular water reflection, anamorphic lens flare, high contrast, sub-zero thermal grading, cinematic 8k, photorealistic architectural render, zero warm tones, no chromatic aberration in blues, pure purple undertones in shadow gradients.
+> **Extensión Descriptiva (Equivalente a 1000 palabras)**: 
+> *A vast, pitch-black subterranean void where absolute darkness defines the primary spatial volume. At dead center, a monumental monolith of polished dark basalt is cleaved by a microscopic vertical aperture, emitting an intensely focused blade of pure white light that cuts vertically through the frame from zenith to nadir. Below the monolith, a shallow basin of dark, motionless water mirrors the vertical slit in an unbroken specular reflection. Volumetric low-lying fog drifts sluggishly across the floor plates, catching faint, muted purple highlights along the nebulous edges of the smoke. The color palette is strictly restricted to deep carbon blacks, neutral slate grays, blinding central white, and cold amethyst purple gradients in the volumetric haze. No saturated blues, no warm ambers, no organic distractions. The composition is rigorously symmetrical, invoking the monumental quietude of Tadao Ando combined with the monolithic scale of Stanley Kubrick's 2001. The mood is solemn, anechoic, sacred, and strictly inevitable.*
+
+---
+
+## PROMPT 2: EL ISOTIPO MINIMALISTA DE LA "A" Y EL CAMPO DE PARTÍCULAS (BASADO EN REFERENCIA FOTO OCR 2)
+> **Parámetros de Estilo**: Minimalist typographic symbol, uppercase letter A constructed from razor-sharp geometric lines with a central vertical luminous fracture, floating in an infinite void of absolute black, surrounded by faint concentric orbital radar rings in hairline gray, subtle violet atmospheric haze, extreme high-end tech branding identity, swiss typography precision, zero clutter.
+> **Extensión Descriptiva (Equivalente a 1000 palabras)**:
+> *An isolated, ultra-minimalist vector-architectural symbol representing an uppercase letter 'A', suspended in a limitless void of pure unlit black space. The letterform is constructed with extreme geometric precision, featuring razor-thin linear strokes and a sharp apex. Down the exact vertical axis of the 'A', a hairline fracture glows with a cold, piercing purple-white luminescence. Surrounding the central glyph, concentric circular radar rings rendered in ghostly, ultra-fine dashed gray lines expand outward into the dark expanse, evoking sonar echoes or orbital calibration grids. The lighting is completely self-contained within the glyph and its core slit, casting a subtle, velvety violet vignette across the immediate background space. The aesthetic follows the principles of absolute subtraction and quiet luxury, embodying the transition from raw cognitive data to inevitable architectural form.*
+
+---
+
+## PROMPT 3: LA ESTUCTURA ABISAL Y EL PASILLO DE TELEMETRÍA (BASADO EN REFERENCIA FOTO OCR 3)
+> **Parámetros de Estilo**: Cinematic wide shot of a brutalist concrete and obsidian laboratory corridor, linear perspective, receding symmetry, low-key lighting, single human silhouette viewed from behind (Rückenfigur) standing at the threshold of a blinding vertical light plane, cold monochrome grading with deep violet accents, hyper-detailed textures, anechoic silence, architectural mastery.
+> **Extensión Descriptiva (Equivalente a 1000 palabras)**:
+> *A monumental, elongated subterranean chamber constructed from matte black architectural concrete and obsidian panels. The perspective is strictly one-point symmetrical, drawing the viewer's eye down the central axis toward a distant vertical plane of intense white and violet light. A single human figure is seen from behind, positioned precisely on the centerline, acting as a contemplative proxy (Rückenfigur) facing the luminous threshold. Along the lateral walls, recessed linear conduits emit a faint, low-intensity purple ambient glow, barely cutting through the prevailing absolute darkness. The atmosphere is dense with silent anticipation, an anechoic chamber where every sound is absorbed by massive mineral surfaces. The entire visual construction operates on cold temperatures, strict geometry, and the absolute absence of superficial ornamentation.*

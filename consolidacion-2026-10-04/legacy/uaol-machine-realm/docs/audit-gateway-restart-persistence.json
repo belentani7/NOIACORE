@@ -1,0 +1,33 @@
+{
+  "completedAt": "2026-08-27T04:19:31.857Z",
+  "mode": "SIMULATION_ONLY",
+  "gatewayId": 120001,
+  "persistentHeartbeats": {
+    "before": 6,
+    "afterFirstProcess": 7,
+    "afterSecondProcess": 8,
+    "statuses": [
+      "online",
+      "online",
+      "online",
+      "online",
+      "online",
+      "online",
+      "online",
+      "online"
+    ]
+  },
+  "processRuns": {
+    "firstExitCode": 0,
+    "secondExitCode": 0,
+    "firstOutputLines": [
+      "[dotenv@17.2.3] injecting env (0) from gateway-local/.env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }",
+      "{\"event\":\"GATEWAY_HEARTBEAT\",\"at\":\"2026-08-27T04:19:30.928Z\",\"accepted\":true,\"gatewayId\":120001,\"simulationOnly\":true}"
+    ],
+    "secondOutputLines": [
+      "[dotenv@17.2.3] injecting env (0) from gateway-local/.env -- tip: 🔑 add access controls to secrets: https://dotenvx.com/ops",
+      "{\"event\":\"GATEWAY_HEARTBEAT\",\"at\":\"2026-08-27T04:19:31.760Z\",\"accepted\":true,\"gatewayId\":120001,\"simulationOnly\":true}"
+    ]
+  },
+  "persistedAcrossRestart": true
+}

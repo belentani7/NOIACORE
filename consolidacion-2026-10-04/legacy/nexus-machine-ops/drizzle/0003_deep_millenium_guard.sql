@@ -1,0 +1,2 @@
+ALTER TABLE `machineTelemetry` MODIFY COLUMN `state` enum('stopped','calibrating','operating','paused','maintenance','emergency') NOT NULL;--> statement-breakpoint
+ALTER TABLE `simulatedMachines` MODIFY COLUMN `state` enum('stopped','calibrating','operating','paused','maintenance','emergency') NOT NULL DEFAULT 'stopped';

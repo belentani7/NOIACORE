@@ -1,0 +1,201 @@
+--- START ---
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+> uaol-machine-realm@1.0.0 local-protocol:client /home/ubuntu/uaol-machine-realm
+> tsx local-protocol/src/client.mts -- start --port 45125
+
+{
+  "protocol": "ULSP/1",
+  "type": "response",
+  "requestId": "local-aeb5e8f4-a6ed-4fee-a1c0-aeb1a330001d",
+  "ok": true,
+  "simulationOnly": true,
+  "timestamp": "2026-08-27T05:32:29.964Z",
+  "payload": {
+    "event": {
+      "id": "local-sim-1",
+      "at": "2026-08-27T05:32:29.962Z",
+      "type": "SIMULATION_COMMAND",
+      "command": "start",
+      "previousState": "idle",
+      "newState": "running"
+    },
+    "state": "running",
+    "cycleCount": 1,
+    "telemetry": {
+      "temperatureC": 27,
+      "pressureKpa": 411,
+      "speedRpm": 1200,
+      "powerPercent": 64
+    },
+    "circuit": {
+      "inputs": {
+        "guardClosed": true,
+        "thermalTrip": false,
+        "emergencyLatched": false
+      },
+      "outputs": {
+        "motorContactor": true,
+        "runLamp": true,
+        "faultLamp": false,
+        "alarmSiren": false
+      },
+      "interlockHealthy": true
+    },
+    "recentEvents": [
+      {
+        "id": "local-sim-1",
+        "at": "2026-08-27T05:32:29.962Z",
+        "type": "SIMULATION_COMMAND",
+        "command": "start",
+        "previousState": "idle",
+        "newState": "running"
+      }
+    ]
+  }
+}
+--- GUARD OPEN ---
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+> uaol-machine-realm@1.0.0 local-protocol:client /home/ubuntu/uaol-machine-realm
+> tsx local-protocol/src/client.mts -- guard-open --port 45125
+
+{
+  "protocol": "ULSP/1",
+  "type": "response",
+  "requestId": "local-13539f6e-8762-4605-ae5c-fdcd0a5f9c0b",
+  "ok": true,
+  "simulationOnly": true,
+  "timestamp": "2026-08-27T05:32:31.138Z",
+  "payload": {
+    "event": {
+      "id": "local-sim-2",
+      "at": "2026-08-27T05:32:31.138Z",
+      "type": "SIMULATION_INPUT",
+      "signal": "guardClosed",
+      "previousValue": true,
+      "newValue": false,
+      "previousState": "running",
+      "newState": "stopped"
+    },
+    "state": "stopped",
+    "cycleCount": 1,
+    "telemetry": {
+      "temperatureC": 23,
+      "pressureKpa": 100,
+      "speedRpm": 0,
+      "powerPercent": 0
+    },
+    "circuit": {
+      "inputs": {
+        "guardClosed": false,
+        "thermalTrip": false,
+        "emergencyLatched": false
+      },
+      "outputs": {
+        "motorContactor": false,
+        "runLamp": false,
+        "faultLamp": true,
+        "alarmSiren": false
+      },
+      "interlockHealthy": false
+    },
+    "recentEvents": [
+      {
+        "id": "local-sim-1",
+        "at": "2026-08-27T05:32:29.962Z",
+        "type": "SIMULATION_COMMAND",
+        "command": "start",
+        "previousState": "idle",
+        "newState": "running"
+      },
+      {
+        "id": "local-sim-2",
+        "at": "2026-08-27T05:32:31.138Z",
+        "type": "SIMULATION_INPUT",
+        "signal": "guardClosed",
+        "previousValue": true,
+        "newValue": false,
+        "previousState": "running",
+        "newState": "stopped"
+      }
+    ]
+  }
+}
+--- START BLOQUEADO ---
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+> uaol-machine-realm@1.0.0 local-protocol:client /home/ubuntu/uaol-machine-realm
+> tsx local-protocol/src/client.mts -- start --port 45125
+
+{
+  "protocol": "ULSP/1",
+  "type": "response",
+  "requestId": "local-3e33cb6c-3d95-4615-933c-a48903c62494",
+  "ok": false,
+  "simulationOnly": true,
+  "timestamp": "2026-08-27T05:32:32.355Z",
+  "error": {
+    "code": "INVALID_TRANSITION",
+    "message": "El comando start requiere guarda cerrada y ausencia de disparo térmico y emergencia enclavada."
+  }
+}
+ ELIFECYCLE  Command failed with exit code 1.
+--- SNAPSHOT ---
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+> uaol-machine-realm@1.0.0 local-protocol:client /home/ubuntu/uaol-machine-realm
+> tsx local-protocol/src/client.mts -- snapshot --port 45125
+
+{
+  "protocol": "ULSP/1",
+  "type": "response",
+  "requestId": "local-ee56b68b-34ed-415f-a85a-943843766e48",
+  "ok": true,
+  "simulationOnly": true,
+  "timestamp": "2026-08-27T05:32:33.598Z",
+  "payload": {
+    "state": "stopped",
+    "cycleCount": 1,
+    "telemetry": {
+      "temperatureC": 23,
+      "pressureKpa": 100,
+      "speedRpm": 0,
+      "powerPercent": 0
+    },
+    "circuit": {
+      "inputs": {
+        "guardClosed": false,
+        "thermalTrip": false,
+        "emergencyLatched": false
+      },
+      "outputs": {
+        "motorContactor": false,
+        "runLamp": false,
+        "faultLamp": true,
+        "alarmSiren": false
+      },
+      "interlockHealthy": false
+    },
+    "recentEvents": [
+      {
+        "id": "local-sim-1",
+        "at": "2026-08-27T05:32:29.962Z",
+        "type": "SIMULATION_COMMAND",
+        "command": "start",
+        "previousState": "idle",
+        "newState": "running"
+      },
+      {
+        "id": "local-sim-2",
+        "at": "2026-08-27T05:32:31.138Z",
+        "type": "SIMULATION_INPUT",
+        "signal": "guardClosed",
+        "previousValue": true,
+        "newValue": false,
+        "previousState": "running",
+        "newState": "stopped"
+      }
+    ]
+  }
+}

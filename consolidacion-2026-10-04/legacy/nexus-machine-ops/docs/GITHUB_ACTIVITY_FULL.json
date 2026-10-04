@@ -1,0 +1,493 @@
+{
+  "observedAt": "2026-08-28T00:00:00Z",
+  "inactivityCriterion": "no push in the 90 days preceding observedAt",
+  "cutoff": "2026-05-30T00:00:00Z",
+  "total": 75,
+  "recent90dCount": 75,
+  "inactive90dCount": 0,
+  "publicCount": 63,
+  "privateCount": 12,
+  "recent90d": [
+    {
+      "nameWithOwner": "noiacore-revenue-pipeline",
+      "pushedAt": "2026-08-28T09:51:52Z",
+      "isPrivate": true,
+      "primaryLanguage": "Python"
+    },
+    {
+      "nameWithOwner": "noir-informatica-privada-barcelona",
+      "pushedAt": "2026-08-28T09:33:18Z",
+      "isPrivate": true,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "circuit-ai-support",
+      "pushedAt": "2026-08-28T08:56:59Z",
+      "isPrivate": true,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "Cruzando-el-charco",
+      "pushedAt": "2026-08-28T01:29:29Z",
+      "isPrivate": false,
+      "primaryLanguage": "JavaScript"
+    },
+    {
+      "nameWithOwner": "belentani7",
+      "pushedAt": "2026-08-28T01:07:55Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "ivy-la-vie",
+      "pushedAt": "2026-08-28T01:02:17Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "duck-belentani-os-audited-2026-08-23",
+      "pushedAt": "2026-08-28T00:56:46Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "duck-studio-suite",
+      "pushedAt": "2026-08-28T00:46:10Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "ManosAbiertas",
+      "pushedAt": "2026-08-28T00:40:30Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "linguaforge",
+      "pushedAt": "2026-08-28T00:29:53Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "duck-music-lab",
+      "pushedAt": "2026-08-28T00:23:30Z",
+      "isPrivate": false,
+      "primaryLanguage": "Shell"
+    },
+    {
+      "nameWithOwner": "duck-unified-master",
+      "pushedAt": "2026-08-28T00:16:01Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "belentani-local",
+      "pushedAt": "2026-08-28T00:06:49Z",
+      "isPrivate": true,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "belentani-ecosystem-control",
+      "pushedAt": "2026-08-28T00:04:25Z",
+      "isPrivate": true,
+      "primaryLanguage": "Python"
+    },
+    {
+      "nameWithOwner": "uaol-machine-realm",
+      "pushedAt": "2026-08-28T00:02:39Z",
+      "isPrivate": true,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "manus-ai-skill-pack",
+      "pushedAt": "2026-08-27T16:05:54Z",
+      "isPrivate": false,
+      "primaryLanguage": "Python"
+    },
+    {
+      "nameWithOwner": "belentani-omega-template",
+      "pushedAt": "2026-08-27T16:05:40Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "judas-experience",
+      "pushedAt": "2026-08-27T16:05:30Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "latam-europa",
+      "pushedAt": "2026-08-27T11:12:31Z",
+      "isPrivate": true,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "cuidar-conecta-marcia",
+      "pushedAt": "2026-08-27T11:03:37Z",
+      "isPrivate": true,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "ux-academy-professional-program",
+      "pushedAt": "2026-08-27T11:01:51Z",
+      "isPrivate": true,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "fashion-stylist-ai",
+      "pushedAt": "2026-08-27T10:57:05Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "maos-abertas-linguaforge",
+      "pushedAt": "2026-08-27T06:48:12Z",
+      "isPrivate": true,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "qwen-input-cache-max-context",
+      "pushedAt": "2026-08-27T06:01:36Z",
+      "isPrivate": true,
+      "primaryLanguage": "Python"
+    },
+    {
+      "nameWithOwner": "Maod-abertas",
+      "pushedAt": "2026-08-27T04:45:55Z",
+      "isPrivate": false,
+      "primaryLanguage": "Unknown"
+    },
+    {
+      "nameWithOwner": "aion",
+      "pushedAt": "2026-08-27T04:10:26Z",
+      "isPrivate": true,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "jvictorbarbosa",
+      "pushedAt": "2026-08-26T06:46:45Z",
+      "isPrivate": false,
+      "primaryLanguage": "Unknown"
+    },
+    {
+      "nameWithOwner": "belentani7-gestaltAI",
+      "pushedAt": "2026-08-26T02:17:06Z",
+      "isPrivate": false,
+      "primaryLanguage": "Unknown"
+    },
+    {
+      "nameWithOwner": "ManosAbiertas-backup-v1",
+      "pushedAt": "2026-08-25T04:35:11Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "belentani_Omega",
+      "pushedAt": "2026-08-25T01:18:06Z",
+      "isPrivate": false,
+      "primaryLanguage": "JavaScript"
+    },
+    {
+      "nameWithOwner": "duck-ecosystem",
+      "pushedAt": "2026-08-24T20:21:10Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "duck-2026",
+      "pushedAt": "2026-08-24T13:05:32Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "duck-full-studio-pro",
+      "pushedAt": "2026-08-24T13:05:23Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "Steven-renovation",
+      "pushedAt": "2026-08-24T12:08:56Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "mimo-companion",
+      "pushedAt": "2026-08-24T11:56:00Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "meta-skill",
+      "pushedAt": "2026-08-24T11:55:56Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "claude-skills-pack",
+      "pushedAt": "2026-08-24T11:55:53Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "arte-que-veste",
+      "pushedAt": "2026-08-24T11:55:46Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "judas-omega-static",
+      "pushedAt": "2026-08-24T11:55:14Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "heyduck",
+      "pushedAt": "2026-08-23T16:12:37Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "Belentani",
+      "pushedAt": "2026-08-23T14:46:30Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "oss-compass",
+      "pushedAt": "2026-08-23T14:21:42Z",
+      "isPrivate": false,
+      "primaryLanguage": "Python"
+    },
+    {
+      "nameWithOwner": "omniagent",
+      "pushedAt": "2026-08-23T14:21:36Z",
+      "isPrivate": false,
+      "primaryLanguage": "Python"
+    },
+    {
+      "nameWithOwner": "temporal-artifact-detector",
+      "pushedAt": "2026-08-23T14:21:29Z",
+      "isPrivate": false,
+      "primaryLanguage": "Python"
+    },
+    {
+      "nameWithOwner": "latent-consistency-bench",
+      "pushedAt": "2026-08-23T14:21:21Z",
+      "isPrivate": false,
+      "primaryLanguage": "Python"
+    },
+    {
+      "nameWithOwner": "comfyui-json-compiler",
+      "pushedAt": "2026-08-23T14:20:54Z",
+      "isPrivate": false,
+      "primaryLanguage": "Python"
+    },
+    {
+      "nameWithOwner": "qbp-core",
+      "pushedAt": "2026-08-23T14:20:48Z",
+      "isPrivate": false,
+      "primaryLanguage": "Python"
+    },
+    {
+      "nameWithOwner": "pbr-validator",
+      "pushedAt": "2026-08-23T14:20:40Z",
+      "isPrivate": false,
+      "primaryLanguage": "Python"
+    },
+    {
+      "nameWithOwner": "gpu-cost-optimizer",
+      "pushedAt": "2026-08-23T14:20:33Z",
+      "isPrivate": false,
+      "primaryLanguage": "Python"
+    },
+    {
+      "nameWithOwner": "llm-vfx-orchestrator",
+      "pushedAt": "2026-08-23T14:20:26Z",
+      "isPrivate": false,
+      "primaryLanguage": "Python"
+    },
+    {
+      "nameWithOwner": "cinematic-prompt-formatter",
+      "pushedAt": "2026-08-23T14:20:19Z",
+      "isPrivate": false,
+      "primaryLanguage": "Python"
+    },
+    {
+      "nameWithOwner": "duck-lab",
+      "pushedAt": "2026-08-23T14:18:33Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "ai-command-center-level10",
+      "pushedAt": "2026-08-23T14:16:41Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "evidence-ledger",
+      "pushedAt": "2026-08-23T14:16:24Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "nataliamarinho",
+      "pushedAt": "2026-08-23T14:16:07Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "Netlify",
+      "pushedAt": "2026-08-23T14:15:58Z",
+      "isPrivate": false,
+      "primaryLanguage": "JavaScript"
+    },
+    {
+      "nameWithOwner": "duck-apps",
+      "pushedAt": "2026-08-23T14:15:50Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "entrenador-jorge-bcn",
+      "pushedAt": "2026-08-23T14:15:43Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "Belentani.cv-ai",
+      "pushedAt": "2026-08-23T14:15:25Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "Duck-Omega",
+      "pushedAt": "2026-08-23T14:15:16Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "harmonia-hub",
+      "pushedAt": "2026-08-23T14:14:58Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "belentaniexperience",
+      "pushedAt": "2026-08-23T14:14:50Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "DUCK-ZION-PREMIUM",
+      "pushedAt": "2026-08-23T11:01:28Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "CARQUIDEC",
+      "pushedAt": "2026-08-23T05:13:20Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "registro-proyectos-2026",
+      "pushedAt": "2026-08-23T04:14:30Z",
+      "isPrivate": false,
+      "primaryLanguage": "Unknown"
+    },
+    {
+      "nameWithOwner": "DuckHTML",
+      "pushedAt": "2026-08-23T04:14:24Z",
+      "isPrivate": false,
+      "primaryLanguage": "HTML"
+    },
+    {
+      "nameWithOwner": "duck-zion-apex-public",
+      "pushedAt": "2026-08-23T04:13:07Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "Oculus-Tv",
+      "pushedAt": "2026-08-23T04:13:00Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "tender-words-connect",
+      "pushedAt": "2026-08-23T04:12:57Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "abrazo-tender-words",
+      "pushedAt": "2026-08-23T04:12:53Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "rh-fiscal-ultra-elite",
+      "pushedAt": "2026-08-23T04:10:30Z",
+      "isPrivate": false,
+      "primaryLanguage": "Python"
+    },
+    {
+      "nameWithOwner": "Duck-Deck",
+      "pushedAt": "2026-08-23T04:10:25Z",
+      "isPrivate": false,
+      "primaryLanguage": "Unknown"
+    },
+    {
+      "nameWithOwner": "proofmesh",
+      "pushedAt": "2026-08-22T09:16:28Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "omega-max-duck",
+      "pushedAt": "2026-08-22T07:25:43Z",
+      "isPrivate": false,
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "nameWithOwner": "local-agent",
+      "pushedAt": "2026-08-02T18:45:02Z",
+      "isPrivate": false,
+      "primaryLanguage": "PowerShell"
+    }
+  ],
+  "inactive90d": [],
+  "languages": [
+    {
+      "language": "TypeScript",
+      "count": 30
+    },
+    {
+      "language": "HTML",
+      "count": 20
+    },
+    {
+      "language": "Python",
+      "count": 15
+    },
+    {
+      "language": "Unknown",
+      "count": 5
+    },
+    {
+      "language": "JavaScript",
+      "count": 3
+    },
+    {
+      "language": "Shell",
+      "count": 1
+    },
+    {
+      "language": "PowerShell",
+      "count": 1
+    }
+  ]
+}

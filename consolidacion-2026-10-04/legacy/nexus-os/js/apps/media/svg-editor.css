@@ -1,0 +1,44 @@
+/* NEXUS OS — SVG Editor — Neon Glassmorphism */
+.nse-root{display:flex;height:100%;background:#0a0a0f;font-family:'Segoe UI',system-ui,sans-serif;color:#e0e0e0;overflow:hidden;user-select:none}
+.nse-toolbar{width:52px;background:rgba(15,15,25,.95);border-right:1px solid rgba(255,0,60,.15);display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:4px;overflow-y:auto}
+.nse-tool{width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.03);border:1px solid rgba(255,0,60,.08);border-radius:8px;cursor:pointer;font-size:16px;transition:all .15s;color:#aaa}
+.nse-tool:hover{background:rgba(255,0,60,.1);color:#ff003c;border-color:rgba(255,0,60,.3)}
+.nse-tool.active{background:rgba(255,0,60,.2);color:#ff003c;border-color:#ff003c;box-shadow:0 0 8px rgba(255,0,60,.2)}
+.nse-tool-sep{width:28px;height:1px;background:rgba(255,0,60,.1);margin:4px 0}
+.nse-canvas-area{flex:1;display:flex;flex-direction:column;min-width:0}
+.nse-svg-wrap{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;background:repeating-conic-gradient(#0d0d15 0% 25%,#0a0a12 0% 50%) 0 0/20px 20px;position:relative}
+.nse-svg-container{position:relative;background:#fff;box-shadow:0 0 30px rgba(255,0,60,.1)}
+.nse-svg-container svg{display:block}
+.nse-bottom-bar{display:flex;align-items:center;gap:8px;padding:6px 12px;background:rgba(15,15,25,.95);border-top:1px solid rgba(255,0,60,.1);font-size:12px}
+.nse-bar-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,0,60,.15);color:#ccc;padding:4px 12px;border-radius:4px;cursor:pointer;font-size:11px;transition:all .2s}
+.nse-bar-btn:hover{background:rgba(255,0,60,.1);color:#ff003c}
+.nse-bar-btn.primary{background:rgba(255,0,60,.15);color:#ff003c;border-color:rgba(255,0,60,.4)}
+.nse-spacer{flex:1}
+.nse-right{width:240px;background:rgba(15,15,25,.95);border-left:1px solid rgba(255,0,60,.15);display:flex;flex-direction:column;overflow-y:auto;padding:12px;gap:10px}
+.nse-right::-webkit-scrollbar{width:4px}
+.nse-right::-webkit-scrollbar-thumb{background:#ff003c33;border-radius:2px}
+.nse-panel-title{font-size:12px;color:#ff2d6b;font-weight:600;margin-bottom:6px}
+.nse-section{font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1px;margin:8px 0 4px}
+.nse-prop-row{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.nse-prop-label{font-size:11px;color:#888;min-width:24px}
+.nse-prop-input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,0,60,.15);color:#ccc;padding:4px 8px;border-radius:4px;font-size:12px;outline:none}
+.nse-prop-input:focus{border-color:#ff003c}
+.nse-color-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.nse-color-label{font-size:11px;color:#888;min-width:40px}
+.nse-color-input{width:30px;height:26px;border:1px solid rgba(255,0,60,.2);border-radius:4px;background:none;cursor:pointer;padding:0}
+.nse-color-hex{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,0,60,.15);color:#ccc;padding:4px 6px;border-radius:4px;font-size:11px;font-family:monospace;outline:none}
+.nse-slider-row{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.nse-slider-row label{font-size:11px;color:#888;min-width:40px}
+.nse-slider{flex:1;-webkit-appearance:none;height:3px;background:rgba(255,255,255,.1);border-radius:2px;outline:none}
+.nse-slider::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;background:#ff003c;border-radius:50%;cursor:pointer;box-shadow:0 0 4px #ff003c}
+.nse-slider-val{font-size:11px;color:#ff2d6b;width:30px;text-align:right}
+.nse-layer-list{display:flex;flex-direction:column;gap:3px}
+.nse-layer-item{display:flex;align-items:center;gap:6px;padding:5px 8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,0,60,.08);border-radius:4px;cursor:pointer;font-size:11px;transition:all .15s}
+.nse-layer-item:hover{border-color:rgba(255,0,60,.2)}
+.nse-layer-item.selected{background:rgba(255,0,60,.1);border-color:rgba(255,0,60,.3)}
+.nse-layer-icon{color:#ff2d6b;font-size:13px}
+.nse-layer-name{flex:1;color:#ccc}
+.nse-layer-del{background:none;border:none;color:#ff003c44;cursor:pointer;font-size:12px;padding:0 2px}
+.nse-layer-del:hover{color:#ff003c}
+.nse-no-fill{display:flex;align-items:center;gap:6px;font-size:11px;color:#888;cursor:pointer}
+.nse-no-fill input{accent-color:#ff003c}

@@ -1,0 +1,111 @@
+{
+  "count": 100,
+  "mimeTypes": [
+    {
+      "mimeType": "application/vnd.google-apps.folder",
+      "count": 62
+    },
+    {
+      "mimeType": "application/zip",
+      "count": 19
+    },
+    {
+      "mimeType": "text/plain",
+      "count": 7
+    },
+    {
+      "mimeType": "application/vnd.google-apps.document",
+      "count": 5
+    },
+    {
+      "mimeType": "text/markdown",
+      "count": 2
+    },
+    {
+      "mimeType": "application/vnd.google-apps.vid",
+      "count": 2
+    },
+    {
+      "mimeType": "video/mp4",
+      "count": 1
+    },
+    {
+      "mimeType": "audio/x-wav",
+      "count": 1
+    },
+    {
+      "mimeType": "image/png",
+      "count": 1
+    }
+  ],
+  "thematic": {
+    "machine": 17,
+    "revenue": 1,
+    "music": 1,
+    "education": 2,
+    "governance": 0,
+    "project": 5
+  },
+  "recentNames": [
+    "noiacore-revenue-pipeline.zip",
+    "DeudaFix_Revision_Manus_informe.md",
+    "DeudaFix_Revision_Manus_expediente_reorganizado.zip",
+    "DeudaFix Revision Manus",
+    "LATAM-Europa-final-3e473ba.zip",
+    "LATAM-Europa-final-bae4d05.zip",
+    "LATAM-Europa-final-df74b9c.zip",
+    "LATAM-Europa-audited-dfac099.zip",
+    "LATAM-Europa-source-9a61ed4b.zip",
+    "qwen-input-cache-max-context-repo-2026-08-27.zip",
+    "SHA256SUMS-a392a3c.txt",
+    "uaol-machine-realm-a392a3c-audit-evidence.zip",
+    "uaol-machine-realm-a392a3c-sanitized-source.zip",
+    "SHA256SUMS-e122ea3.txt",
+    "uaol-machine-realm-e122ea3-audit-evidence.zip",
+    "uaol-machine-realm-e122ea3-sanitized-source.zip",
+    "belentani-ecosystem-control-ronda-2-2026-08-27.zip.sha256",
+    "belentani-ecosystem-control-ronda-2-2026-08-27.zip",
+    "SHA256SUMS-2f2c018.txt",
+    "uaol-machine-realm-2f2c018-audit-evidence.zip",
+    "Ronda 2 incremental — 2026-08-27",
+    "uaol-machine-realm-2f2c018-sanitized-source.zip",
+    "SHA256SUMS-f3c2a25.txt",
+    "uaol-machine-realm-f3c2a25-audit-evidence.zip",
+    "uaol-machine-realm-f3c2a25-sanitized-source.zip",
+    "SHA256SUMS.txt",
+    "uaol-machine-realm-23593376-sanitized-source.zip",
+    "UAOL–Máquina Realm — Respaldo privado",
+    "belentani-ecosystem-control-2026-08-27.zip.sha256",
+    "belentani-ecosystem-control-2026-08-27.zip",
+    "Belentani Ecosystem Control — Auditoría 2026-08-27",
+    "Saved from Chrome",
+    "pedro_belentani_cv.md",
+    "pedro_executive_summary.md",
+    "pedro_belentani_cv.md",
+    "pedro_manus_prompt_5000.md",
+    "Documento sin título",
+    "O Narcisista Vulnerável - Análise Psicológica Médica Social 1000 Páginas",
+    "YouCut_20260619_001153892-23/8/2026, 9:41.mp4",
+    "YouCut_20260619_001153892",
+    "YouCut_20260619_001153892",
+    "Judas_VOCAL_SEPARADA.wav",
+    "duck logo.png",
+    "django_oauth1",
+    "rfc5849",
+    "be",
+    "setimmediate",
+    "heads",
+    "refs",
+    "skill-audit",
+    "oauth2",
+    "providers",
+    "workflows",
+    "smoke",
+    "browser",
+    "obscura-browser",
+    "crates",
+    "logs",
+    "auto-documenter",
+    "docs"
+  ]
+}

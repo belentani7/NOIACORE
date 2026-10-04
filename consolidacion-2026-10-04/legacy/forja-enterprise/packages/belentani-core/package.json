@@ -1,0 +1,24 @@
+{
+  "name": "@belentani7/belentani-core",
+  "version": "0.1.0",
+  "description": "Shared validation, trace, ledger and metadata-only repository audit contracts for Belentani7 products.",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "scripts": {
+    "check": "tsc --noEmit",
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^24.7.0",
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.4"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "completedAt": "2026-08-26T05:43:34.932Z",
+  "mode": "SIMULATION_ONLY",
+  "command": {
+    "commandId": "cmd-EjPP4RK4aHO9RXoF",
+    "type": "start",
+    "initialStatus": "queued",
+    "finalStatus": "succeeded",
+    "idempotencyKey": "audit-e2e-1787723011545-1",
+    "replayed": false,
+    "duplicateCount": 1
+  },
+  "authorization": {
+    "validationDecision": "allowed",
+    "validationStatus": "passed",
+    "requiresConfirmation": true
+  },
+  "gateway": {
+    "exitCode": 0,
+    "heartbeatAndResultOutput": [
+      "[dotenv@17.2.3] injecting env (0) from gateway-local/.env -- tip: 🔑 add access controls to secrets: https://dotenvx.com/ops",
+      "{\"event\":\"GATEWAY_HEARTBEAT\",\"at\":\"2026-08-26T05:43:34.121Z\",\"accepted\":true,\"gatewayId\":120001,\"simulationOnly\":true}"
+    ]
+  },
+  "machine": {
+    "beforeState": "idle",
+    "afterState": "starting",
+    "connection": "connected"
+  },
+  "persistence": {
+    "commandExecution": "succeeded",
+    "telemetryRows": 1,
+    "eventTypes": [
+      "COMMAND_REQUESTED",
+      "COMMAND_VALIDATING",
+      "COMMAND_APPROVED",
+      "COMMAND_QUEUED",
+      "COMMAND_VALIDATING",
+      "COMMAND_APPROVED",
+      "COMMAND_QUEUED",
+      "COMMAND_EXECUTING",
+      "MACHINE_STARTED"
+    ],
+    "auditLedgerId": 510015
+  },
+  "complete": true
+}

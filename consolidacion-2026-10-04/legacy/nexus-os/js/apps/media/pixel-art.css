@@ -1,0 +1,41 @@
+/* NEXUS OS — Pixel Art — Neon Glassmorphism */
+.npa-root{display:flex;height:100%;background:#0a0a0f;font-family:'Segoe UI',system-ui,sans-serif;color:#e0e0e0;overflow:hidden;user-select:none}
+.npa-toolbar{width:52px;background:rgba(15,15,25,.95);border-right:1px solid rgba(255,0,60,.15);display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:4px;overflow-y:auto}
+.npa-tool{width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.03);border:1px solid rgba(255,0,60,.08);border-radius:8px;cursor:pointer;font-size:16px;transition:all .15s;color:#aaa}
+.npa-tool:hover{background:rgba(255,0,60,.1);color:#ff003c;border-color:rgba(255,0,60,.3)}
+.npa-tool.active{background:rgba(255,0,60,.2);color:#ff003c;border-color:#ff003c;box-shadow:0 0 8px rgba(255,0,60,.2)}
+.npa-tool-sep{width:28px;height:1px;background:rgba(255,0,60,.1);margin:4px 0}
+.npa-canvas-area{flex:1;display:flex;flex-direction:column;min-width:0}
+.npa-canvas-wrap{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;background:repeating-conic-gradient(#0d0d15 0% 25%,#0a0a12 0% 50%) 0 0/20px 20px;position:relative}
+.npa-canvas-container{position:relative;image-rendering:pixelated}
+.npa-canvas-container canvas{position:absolute;top:0;left:0;image-rendering:pixelated}
+.npa-grid-overlay{position:absolute;top:0;left:0;pointer-events:none}
+.npa-bottom-bar{display:flex;align-items:center;gap:8px;padding:6px 12px;background:rgba(15,15,25,.95);border-top:1px solid rgba(255,0,60,.1);font-size:12px}
+.npa-bottom-bar span{color:#666}
+.npa-zoom-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,0,60,.15);color:#ccc;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:12px;transition:all .2s}
+.npa-zoom-btn:hover{background:rgba(255,0,60,.1);color:#ff003c}
+.npa-bar-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,0,60,.15);color:#ccc;padding:4px 12px;border-radius:4px;cursor:pointer;font-size:11px;transition:all .2s}
+.npa-bar-btn:hover{background:rgba(255,0,60,.1);color:#ff003c}
+.npa-bar-btn.primary{background:rgba(255,0,60,.15);color:#ff003c;border-color:rgba(255,0,60,.4)}
+.npa-spacer{flex:1}
+.npa-right{width:240px;background:rgba(15,15,25,.95);border-left:1px solid rgba(255,0,60,.15);display:flex;flex-direction:column;overflow-y:auto;padding:12px;gap:10px}
+.npa-right::-webkit-scrollbar{width:4px}
+.npa-right::-webkit-scrollbar-thumb{background:#ff003c33;border-radius:2px}
+.npa-panel-title{font-size:12px;color:#ff2d6b;font-weight:600;margin-bottom:6px}
+.npa-section{font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1px;margin:8px 0 4px}
+.npa-color-main{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.npa-color-swatch{width:40px;height:40px;border-radius:8px;border:2px solid rgba(255,0,60,.3);cursor:pointer}
+.npa-color-hex{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,0,60,.15);color:#ccc;padding:6px 8px;border-radius:6px;font-size:12px;font-family:monospace;outline:none}
+.npa-palette{display:grid;grid-template-columns:repeat(8,1fr);gap:3px}
+.npa-palette-color{width:100%;aspect-ratio:1;border-radius:4px;cursor:pointer;border:1px solid transparent;transition:all .15s}
+.npa-palette-color:hover{border-color:#fff;transform:scale(1.15)}
+.npa-palette-color.active{border-color:#ff003c;box-shadow:0 0 4px #ff003c}
+.npa-layer-list{display:flex;flex-direction:column;gap:4px}
+.npa-layer-item{display:flex;align-items:center;gap:6px;padding:6px 8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,0,60,.08);border-radius:6px;cursor:pointer;font-size:11px;transition:all .15s}
+.npa-layer-item:hover{border-color:rgba(255,0,60,.2)}
+.npa-layer-item.active{background:rgba(255,0,60,.1);border-color:rgba(255,0,60,.3)}
+.npa-layer-vis{background:none;border:none;color:#888;cursor:pointer;font-size:14px;padding:0 2px}
+.npa-layer-name{flex:1;color:#ccc;overflow:hidden;text-overflow:ellipsis}
+.npa-size-row{display:flex;align-items:center;gap:6px}
+.npa-size-input{width:50px;background:rgba(255,255,255,.05);border:1px solid rgba(255,0,60,.15);color:#ccc;padding:4px 6px;border-radius:4px;font-size:12px;outline:none;text-align:center}
+.npa-size-x{color:#555;font-size:12px}

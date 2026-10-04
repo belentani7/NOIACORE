@@ -1,0 +1,185 @@
+/* ═══════════════════════════════════════════════════════════════
+   NEXUS OS — JSON Formatter
+   Neon glassmorphism JSON formatting and validation interface
+   ═══════════════════════════════════════════════════════════════ */
+
+.nexus-json-formatter {
+  width: 100%; height: 100%;
+  background: rgba(10, 5, 20, 0.96);
+  border: 1px solid rgba(100, 100, 255, 0.2);
+  border-radius: 8px;
+  display: flex; flex-direction: column;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  color: #e0e0e0;
+  overflow: hidden;
+  position: relative;
+}
+
+.nexus-json-formatter::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(100, 100, 255, 0.5), transparent);
+}
+
+.jf-header {
+  padding: 14px 16px;
+  background: rgba(100, 100, 255, 0.06);
+  border-bottom: 1px solid rgba(100, 100, 255, 0.15);
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.jf-header h3 {
+  margin: 0; font-size: 13px; font-weight: 600;
+  color: #6464ff;
+  text-shadow: 0 0 10px rgba(100, 100, 255, 0.5);
+  letter-spacing: 1px;
+}
+
+.jf-toolbar {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(100, 100, 255, 0.1);
+  display: flex; gap: 6px; flex-wrap: wrap;
+}
+
+.jf-tool-btn {
+  padding: 4px 10px;
+  background: rgba(100, 100, 255, 0.1);
+  border: 1px solid rgba(100, 100, 255, 0.2);
+  border-radius: 4px;
+  color: #999;
+  font-size: 10px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.jf-tool-btn:hover {
+  background: rgba(100, 100, 255, 0.2);
+  border-color: rgba(100, 100, 255, 0.4);
+  color: #6464ff;
+}
+
+.jf-search-wrap {
+  padding: 6px 16px;
+  border-bottom: 1px solid rgba(100, 100, 255, 0.1);
+  display: flex; gap: 6px;
+}
+
+.jf-search {
+  flex: 1;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(100, 100, 255, 0.15);
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 11px;
+  font-family: inherit;
+  outline: none;
+}
+
+.jf-search:focus { border-color: rgba(100, 100, 255, 0.4); }
+
+.jf-body {
+  flex: 1; display: flex; overflow: hidden;
+}
+
+.jf-panel {
+  flex: 1; display: flex; flex-direction: column;
+  overflow: hidden;
+}
+
+.jf-panel-label {
+  padding: 6px 12px;
+  font-size: 10px; color: #666;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  background: rgba(100, 100, 255, 0.04);
+  border-bottom: 1px solid rgba(100, 100, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.jf-editor {
+  flex: 1;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #e0e0e0;
+  font-size: 12px;
+  font-family: inherit;
+  line-height: 1.5;
+  border: none;
+  outline: none;
+  resize: none;
+  overflow: auto;
+  tab-size: 2;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 100, 255, 0.3) transparent;
+}
+
+.jf-editor::-webkit-scrollbar { width: 6px; }
+.jf-editor::-webkit-scrollbar-track { background: transparent; }
+.jf-editor::-webkit-scrollbar-thumb { background: rgba(100, 100, 255, 0.3); border-radius: 3px; }
+
+.jf-divider {
+  width: 1px;
+  background: rgba(100, 100, 255, 0.15);
+  flex-shrink: 0;
+}
+
+.jf-output {
+  flex: 1;
+  padding: 10px;
+  overflow: auto;
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: pre;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 100, 255, 0.3) transparent;
+}
+
+.jf-output::-webkit-scrollbar { width: 6px; }
+.jf-output::-webkit-scrollbar-track { background: transparent; }
+.jf-output::-webkit-scrollbar-thumb { background: rgba(100, 100, 255, 0.3); border-radius: 3px; }
+
+/* JSON syntax highlighting */
+.jf-key { color: #6464ff; }
+.jf-string { color: #00ff88; }
+.jf-number { color: #ff6400; }
+.jf-boolean { color: #ff003c; }
+.jf-null { color: #888; font-style: italic; }
+.jf-bracket { color: #999; }
+.jf-comma { color: #666; }
+.jf-search-match { background: rgba(255, 200, 0, 0.25); border-radius: 2px; }
+
+.jf-status {
+  padding: 6px 16px;
+  font-size: 10px;
+  display: flex; gap: 14px;
+  border-top: 1px solid rgba(100, 100, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.jf-status-item { color: #555; }
+.jf-status-item span { font-weight: 600; }
+.jf-valid { color: #00ff88; }
+.jf-invalid { color: #ff4444; }
+
+.jf-error-bar {
+  padding: 6px 16px;
+  background: rgba(255, 68, 68, 0.08);
+  border-top: 1px solid rgba(255, 68, 68, 0.2);
+  color: #ff4444;
+  font-size: 11px;
+  flex-shrink: 0;
+  display: none;
+}
+
+.jf-error-bar.visible { display: block; }
+
+.jf-footer {
+  padding: 6px 16px;
+  background: rgba(100, 100, 255, 0.04);
+  border-top: 1px solid rgba(100, 100, 255, 0.1);
+  font-size: 10px;
+  color: #555;
+  display: flex; justify-content: space-between;
+}

@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `enterpriseRole` enum('junior_dev','senior_dev','ciso','admin') DEFAULT 'junior_dev' NOT NULL;

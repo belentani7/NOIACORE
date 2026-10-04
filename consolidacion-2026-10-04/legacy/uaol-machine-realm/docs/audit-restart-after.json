@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-08-26T05:56:37.567Z",
+  "label": "after-restart",
+  "mode": "SIMULATION_ONLY",
+  "owner": {
+    "id": 1,
+    "role": "admin"
+  },
+  "persistentRows": {
+    "machines": 3,
+    "operationCommands": 1,
+    "telemetrySnapshots": 1,
+    "operationalEvents": 19,
+    "operationalReports": 0,
+    "gateways": 1,
+    "gatewayHeartbeats": 4,
+    "accessAuditLogs": 46
+  },
+  "latestRecords": {
+    "command": {
+      "id": 390004,
+      "commandId": "cmd-EjPP4RK4aHO9RXoF",
+      "status": "succeeded",
+      "requestedAt": "2026-08-26T05:43:31.000Z"
+    },
+    "accessAudit": {
+      "id": 300003,
+      "action": "auth.signIn",
+      "createdAt": "2026-08-26T05:56:25.000Z"
+    }
+  },
+  "persistencePresent": true
+}

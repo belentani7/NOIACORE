@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="nexus-dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NEXUS OS — Neon Glass Operating System Shell">
+  <meta name="theme-color" content="#ff003c">
+  <title>NEXUS OS</title>
+
+  <!-- ============================================================
+       NEXUS OS — Main Entry Point
+       A web-based operating system with neon glassmorphism aesthetic
+       ============================================================ -->
+
+  <!-- ============================================================
+       STYLESHEETS — Load order matters:
+       1. animations (keyframes, no dependencies)
+       2. glass (glassmorphism depth system)
+       3. components (UI component library)
+       4. themes/neon-red (primary theme tokens + overrides)
+       5. desktop (OS-specific layout + shell)
+       ============================================================ -->
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/glass.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/themes/neon-red.css" id="theme-stylesheet">
+  <link rel="stylesheet" href="css/desktop.css">
+
+  <!-- System Tools CSS -->
+  <link rel="stylesheet" href="css/tools/task-manager.css">
+  <link rel="stylesheet" href="css/tools/backup-tool.css">
+  <link rel="stylesheet" href="css/tools/disk-analyzer.css">
+  <link rel="stylesheet" href="css/tools/network-monitor.css">
+  <link rel="stylesheet" href="css/tools/clipboard-manager.css">
+  <link rel="stylesheet" href="css/tools/hash-calculator.css">
+  <link rel="stylesheet" href="css/tools/regex-tester.css">
+  <link rel="stylesheet" href="css/tools/json-formatter.css">
+
+  <!-- Games CSS -->
+  <link rel="stylesheet" href="js/apps/games/chess.css">
+  <link rel="stylesheet" href="js/apps/games/wordle.css">
+  <link rel="stylesheet" href="js/apps/games/hangman.css">
+  <link rel="stylesheet" href="js/apps/games/trivia.css">
+  <link rel="stylesheet" href="js/apps/games/tic-tac-toe.css">
+  <link rel="stylesheet" href="js/apps/games/connect-four.css">
+  <link rel="stylesheet" href="js/apps/games/battleship.css">
+  <link rel="stylesheet" href="js/apps/games/blackjack.css">
+  <link rel="stylesheet" href="js/apps/games/simon-says.css">
+  <link rel="stylesheet" href="js/apps/games/breakout.css">
+  <link rel="stylesheet" href="js/apps/games/space-invaders.css">
+</head>
+<body class="nexus-body" data-state="boot">
+
+  <!-- ===========================================================
+       BOOT SCREEN — Full immersive boot experience
+       =========================================================== -->
+  <div id="boot-screen" class="boot-screen" aria-hidden="true">
+    <div class="boot-scanlines"></div>
+    <div class="boot-crt-overlay"></div>
+    <div class="boot-grid-bg"></div>
+
+    <!-- BIOS text output -->
+    <div class="boot-bios" id="boot-bios">
+      <div class="bios-line" data-delay="0">NEXUS BIOS v4.2.1 — Neural Execution Unified System</div>
+      <div class="bios-line" data-delay="200">Copyright (C) 2024-2026 NEXUS Corp. All rights reserved.</div>
+      <div class="bios-line" data-delay="400">─────────────────────────────────────────────────────</div>
+      <div class="bios-line" data-delay="600">Initializing quantum memory banks........... <span class="ok">OK</span></div>
+      <div class="bios-line" data-delay="800">Loading neural network drivers............... <span class="ok">OK</span></div>
+      <div class="bios-line" data-delay="1000">Mounting virtual filesystem.................. <span class="ok">OK</span></div>
+      <div class="bios-line" data-delay="1200">Calibrating display matrix................... <span class="ok">OK</span></div>
+      <div class="bios-line" data-delay="1400">Syncing holographic interface................ <span class="ok">OK</span></div>
+      <div class="bios-line" data-delay="1600">Establishing network uplink.................. <span class="ok">OK</span></div>
+      <div class="bios-line" data-delay="1800">Loading kernel modules....................... <span class="ok">OK</span></div>
+      <div class="bios-line" data-delay="2000">Starting desktop environment................. <span class="ok">OK</span></div>
+      <div class="bios-line" data-delay="2200">─────────────────────────────────────────────────────</div>
+      <div class="bios-line" data-delay="2400">All systems nominal. Booting NEXUS OS...</div>
+    </div>
+
+    <!-- NEXUS Logo with massive plasma glow -->
+    <div class="boot-logo" id="boot-logo">
+      <div class="boot-logo-glow"></div>
+      <svg class="nexus-logo-svg" viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="plasmaGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur1"/>
+            <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur2"/>
+            <feGaussianBlur in="SourceGraphic" stdDeviation="30" result="blur3"/>
+            <feMerge>
+              <feMergeNode in="blur3"/>
+              <feMergeNode in="blur2"/>
+              <feMergeNode in="blur1"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#ff003c"/>
+            <stop offset="50%" style="stop-color:#ff2d6b"/>
+            <stop offset="100%" style="stop-color:#ff003c"/>
+          </linearGradient>
+        </defs>
+        <text x="300" y="105" text-anchor="middle" font-family="'Courier New', monospace"
+              font-size="80" font-weight="bold" fill="url(#neonGrad)" filter="url(#plasmaGlow)"
+              letter-spacing="20">NEXUS</text>
+        <text x="300" y="150" text-anchor="middle" font-family="'Courier New', monospace"
+              font-size="24" fill="#ff2d6b" filter="url(#plasmaGlow)" letter-spacing="12"
+              opacity="0.9">OPERATING SYSTEM</text>
+      </svg>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="boot-progress" id="boot-progress">
+      <div class="boot-progress-bar" id="boot-progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- ===========================================================
+       LOCK SCREEN — Time display and unlock prompt
+       =========================================================== -->
+  <div id="lock-screen" class="lock-screen hidden" aria-hidden="true">
+    <div class="lock-bg-grid"></div>
+    <div class="lock-particles" id="lock-particles"></div>
+
+    <div class="lock-card glass-panel">
+      <!-- Avatar -->
+      <div class="lock-avatar">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="avatarGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="glow"/>
+              <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <circle cx="40" cy="40" r="36" fill="none" stroke="#ff003c" stroke-width="2" filter="url(#avatarGlow)"/>
+          <circle cx="40" cy="30" r="12" fill="none" stroke="#ff2d6b" stroke-width="1.5" filter="url(#avatarGlow)"/>
+          <path d="M16 62 C16 48 64 48 64 62" fill="none" stroke="#ff2d6b" stroke-width="1.5" filter="url(#avatarGlow)"/>
+        </svg>
+      </div>
+
+      <div class="lock-username" id="lock-username">OPERATOR</div>
+
+      <!-- Clock -->
+      <div class="lock-clock">
+        <div class="lock-time glitch-text" id="lock-time">00:00</div>
+        <div class="lock-date" id="lock-date">Monday, January 1</div>
+      </div>
+
+      <!-- Unlock input -->
+      <div class="lock-input-group">
+        <input type="password" id="lock-password" class="lock-input glass-input"
+               placeholder="Enter passphrase or press Enter" autocomplete="off">
+        <button class="lock-unlock-btn glass-btn" id="lock-unlock-btn" aria-label="Unlock">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 11V7a7 7 0 0114 0v4"/>
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <circle cx="12" cy="16" r="1.5"/>
+          </svg>
+        </button>
+      </div>
+      <div class="lock-hint">Press Enter to unlock</div>
+    </div>
+  </div>
+
+  <!-- ===========================================================
+       DESKTOP ENVIRONMENT — Main workspace
+       =========================================================== -->
+  <div id="desktop" class="desktop hidden" role="main">
+
+    <!-- Animated background grid -->
+    <div class="desktop-bg">
+      <div class="bg-grid"></div>
+      <div class="bg-particles" id="bg-particles"></div>
+      <div class="bg-vignette"></div>
+    </div>
+
+    <!-- =========================================================
+         DESKTOP ICONS — App shortcuts on desktop
+         ========================================================= -->
+    <div class="desktop-icons" id="desktop-icons" role="grid" aria-label="Desktop shortcuts">
+      <!-- Icons populated by JS -->
+    </div>
+
+    <!-- =========================================================
+         WINDOW CONTAINER — All app windows render here
+         ========================================================= -->
+    <div class="window-container" id="window-container" aria-live="polite">
+      <!-- Windows injected by WindowManager -->
+    </div>
+
+    <!-- =========================================================
+         WORKSPACE SWITCHER — Multiple desktop pill bar
+         ========================================================= -->
+    <div class="workspace-switcher" id="workspace-switcher" role="tablist" aria-label="Workspace switcher">
+      <button class="workspace-pill active" data-workspace="0" role="tab" aria-selected="true">
+        <svg viewBox="0 0 16 16" width="14" height="14"><rect x="1" y="1" width="14" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span>WS 1</span>
+      </button>
+      <button class="workspace-pill" data-workspace="1" role="tab" aria-selected="false">
+        <svg viewBox="0 0 16 16" width="14" height="14"><rect x="1" y="1" width="14" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span>WS 2</span>
+      </button>
+      <button class="workspace-pill" data-workspace="2" role="tab" aria-selected="false">
+        <svg viewBox="0 0 16 16" width="14" height="14"><rect x="1" y="1" width="14" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span>WS 3</span>
+      </button>
+      <button class="workspace-pill workspace-add" id="workspace-add-btn" aria-label="Add workspace">
+        <svg viewBox="0 0 16 16" width="14" height="14"><line x1="8" y1="3" x2="8" y2="13" stroke="currentColor" stroke-width="1.5"/><line x1="3" y1="8" x2="13" y2="8" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+
+    <!-- =========================================================
+         TASKBAR — Bottom bar with start, apps, system tray
+         ========================================================= -->
+    <div class="taskbar" id="taskbar" role="navigation" aria-label="Taskbar">
+
+      <!-- Start Button -->
+      <button class="taskbar-start" id="start-btn" aria-label="Open start menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="startGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2" result="g"/>
+              <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <polygon points="4,2 4,22 20,12" fill="#ff003c" filter="url(#startGlow)"/>
+        </svg>
+      </button>
+
+      <!-- Search Button -->
+      <button class="taskbar-search-btn" id="taskbar-search-btn" aria-label="Search (Ctrl+K)">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="22" y2="22"/>
+        </svg>
+      </button>
+
+      <!-- Pinned / Running Apps -->
+      <div class="taskbar-apps" id="taskbar-apps" role="list" aria-label="Open applications">
+        <!-- Populated by taskbar.js -->
+      </div>
+
+      <!-- System Tray -->
+      <div class="system-tray" id="system-tray">
+
+        <!-- Workspace indicator -->
+        <button class="tray-btn tray-workspace" id="tray-workspace-btn" aria-label="Switch workspace">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="2" width="8" height="8" rx="1.5"/><rect x="14" y="2" width="8" height="8" rx="1.5"/>
+            <rect x="2" y="14" width="8" height="8" rx="1.5"/><rect x="14" y="14" width="8" height="8" rx="1.5"/>
+          </svg>
+        </button>
+
+        <!-- WiFi -->
+        <button class="tray-btn tray-wifi" id="tray-wifi-btn" aria-label="Network: Connected">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M2 8.5C5.5 4.5 10 3 12 3s6.5 1.5 10 5.5"/>
+            <path d="M5 12c2-2.5 4.5-3.5 7-3.5s5 1 7 3.5"/>
+            <path d="M8.5 15.5C9.5 14 10.7 13.5 12 13.5s2.5.5 3.5 2"/>
+            <circle cx="12" cy="19" r="1.5" fill="currentColor"/>
+          </svg>
+        </button>
+
+        <!-- Volume -->
+        <button class="tray-btn tray-volume" id="tray-volume-btn" aria-label="Volume: 75%">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polygon points="4,9 4,15 8,15 13,19 13,5 8,9" fill="currentColor" opacity="0.6"/>
+            <path d="M16 8.5c1.5 1.5 1.5 5.5 0 7"/>
+            <path d="M18.5 6c3 3 3 9 0 12"/>
+          </svg>
+        </button>
+
+        <!-- Battery -->
+        <button class="tray-btn tray-battery" id="tray-battery-btn" aria-label="Battery: 87%">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="7" width="18" height="10" rx="2"/>
+            <rect x="4" y="9" width="12" height="6" rx="1" fill="currentColor" opacity="0.5"/>
+            <path d="M22 10v4" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <!-- Notifications -->
+        <button class="tray-btn tray-notifications" id="tray-notif-btn" aria-label="Notifications">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 8a6 6 0 0112 0c0 7 3 9 3 9H3s3-2 3-9"/>
+            <path d="M10 21a2 2 0 004 0"/>
+          </svg>
+          <span class="notif-badge hidden" id="notif-badge">0</span>
+        </button>
+
+        <!-- Clock -->
+        <button class="tray-clock" id="tray-clock" aria-label="System clock">
+          <span class="clock-time" id="clock-time">00:00</span>
+          <span class="clock-date" id="clock-date">Jan 1</span>
+        </button>
+
+        <!-- Show Desktop -->
+        <button class="tray-show-desktop" id="tray-show-desktop" aria-label="Show desktop">
+          <div class="show-desktop-line"></div>
+        </button>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         START MENU — App grid with categories and search
+         ========================================================= -->
+    <div class="start-menu glass-panel hidden" id="start-menu" role="dialog" aria-label="Start menu">
+      <div class="start-menu-inner">
+
+        <!-- Search bar inside start menu -->
+        <div class="start-search">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="start-search-icon">
+            <circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="22" y2="22"/>
+          </svg>
+          <input type="text" id="start-search-input" class="start-search-input glass-input"
+                 placeholder="Search apps, files, settings..." autocomplete="off">
+        </div>
+
+        <!-- Pinned apps row -->
+        <div class="start-section">
+          <div class="start-section-title">Pinned</div>
+          <div class="start-pinned-row" id="start-pinned">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- App categories -->
+        <div class="start-categories" id="start-categories">
+          <!-- AI Category -->
+          <div class="start-category" data-category="ai">
+            <div class="start-category-header">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ff003c" stroke-width="1.5">
+                <circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
+              <span>AI & Neural</span>
+            </div>
+            <div class="start-app-grid" id="apps-ai">
+              <!-- Apps injected by JS -->
+            </div>
+          </div>
+
+          <!-- Music Category -->
+          <div class="start-category" data-category="music">
+            <div class="start-category-header">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ff2d6b" stroke-width="1.5">
+                <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+              </svg>
+              <span>Music & Audio</span>
+            </div>
+            <div class="start-app-grid" id="apps-music"></div>
+          </div>
+
+          <!-- Games Category -->
+          <div class="start-category" data-category="games">
+            <div class="start-category-header">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ff4488" stroke-width="1.5">
+                <rect x="2" y="6" width="20" height="12" rx="3"/>
+                <circle cx="8" cy="12" r="2"/><circle cx="16" cy="10" r="1" fill="currentColor"/>
+                <circle cx="18" cy="12" r="1" fill="currentColor"/><circle cx="16" cy="14" r="1" fill="currentColor"/>
+                <circle cx="14" cy="12" r="1" fill="currentColor"/>
+              </svg>
+              <span>Games</span>
+            </div>
+            <div class="start-app-grid" id="apps-games"></div>
+          </div>
+
+          <!-- Media Category -->
+          <div class="start-category" data-category="media">
+            <div class="start-category-header">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ff6699" stroke-width="1.5">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+              </svg>
+              <span>Media & Creative</span>
+            </div>
+            <div class="start-app-grid" id="apps-media"></div>
+          </div>
+
+          <!-- Tools Category -->
+          <div class="start-category" data-category="tools">
+            <div class="start-category-header">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ff003c" stroke-width="1.5">
+                <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+              </svg>
+              <span>Tools & Utilities</span>
+            </div>
+            <div class="start-app-grid" id="apps-tools"></div>
+          </div>
+
+          <!-- System Category -->
+          <div class="start-category" data-category="system">
+            <div class="start-category-header">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ff2d6b" stroke-width="1.5">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1.08-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1.08 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001.08 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1.08z"/>
+              </svg>
+              <span>System</span>
+            </div>
+            <div class="start-app-grid" id="apps-system"></div>
+          </div>
+        </div>
+
+        <!-- Bottom bar: user, power -->
+        <div class="start-footer">
+          <div class="start-user">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-7 8-7s8 3 8 7"/>
+            </svg>
+            <span>Operator</span>
+          </div>
+          <div class="start-power">
+            <button class="start-power-btn" id="btn-lock" aria-label="Lock screen" title="Lock">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+              </svg>
+            </button>
+            <button class="start-power-btn" id="btn-restart" aria-label="Restart" title="Restart">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 105.64-11.36L1 10"/>
+              </svg>
+            </button>
+            <button class="start-power-btn start-power-shutdown" id="btn-shutdown" aria-label="Shutdown" title="Shutdown">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v10"/><circle cx="12" cy="14" r="8" fill="none"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         CONTEXT MENU — Right-click menu on desktop
+         ========================================================= -->
+    <div class="context-menu glass-panel hidden" id="context-menu" role="menu">
+      <div class="context-menu-item" data-action="new-folder" role="menuitem">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/>
+          <line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/>
+        </svg>
+        <span>New Folder</span>
+      </div>
+      <div class="context-menu-item" data-action="new-file" role="menuitem">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+          <polyline points="14,2 14,8 20,8"/><line x1="12" y1="12" x2="12" y2="18"/>
+          <line x1="9" y1="15" x2="15" y2="15"/>
+        </svg>
+        <span>New File</span>
+      </div>
+      <div class="context-divider"></div>
+      <div class="context-menu-item" data-action="refresh" role="menuitem">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 105.64-11.36L1 10"/>
+        </svg>
+        <span>Refresh Desktop</span>
+      </div>
+      <div class="context-menu-item" data-action="sort" role="menuitem">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="4" y1="6" x2="16" y2="6"/><line x1="4" y1="12" x2="12" y2="12"/><line x1="4" y1="18" x2="8" y2="18"/>
+        </svg>
+        <span>Sort By</span>
+      </div>
+      <div class="context-divider"></div>
+      <div class="context-menu-item" data-action="terminal" role="menuitem">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <polyline points="4,17 10,11 4,5"/><line x1="12" y1="19" x2="20" y2="19"/>
+        </svg>
+        <span>Open Terminal</span>
+      </div>
+      <div class="context-menu-item" data-action="settings" role="menuitem">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1.08-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1.08 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001.08 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1.08z"/>
+        </svg>
+        <span>Display Settings</span>
+      </div>
+      <div class="context-divider"></div>
+      <div class="context-menu-item" data-action="wallpaper" role="menuitem">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="M21 15l-5-5L5 21"/>
+        </svg>
+        <span>Change Wallpaper</span>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         NOTIFICATION CENTER — Slide-in panel from right
+         =========================================================== -->
+    <div class="notification-center glass-panel hidden" id="notification-center" role="complementary" aria-label="Notifications">
+      <div class="notif-header">
+        <h3 class="notif-title">Notifications</h3>
+        <button class="notif-clear-btn glass-btn" id="notif-clear-btn">Clear All</button>
+      </div>
+      <div class="notif-quick-actions">
+        <button class="quick-action-btn glass-btn" data-action="wifi" aria-label="Toggle WiFi">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M2 8.5C5.5 4.5 10 3 12 3s6.5 1.5 10 5.5"/>
+            <path d="M5 12c2-2.5 4.5-3.5 7-3.5s5 1 7 3.5"/>
+            <circle cx="12" cy="19" r="1.5" fill="currentColor"/>
+          </svg>
+          <span>WiFi</span>
+        </button>
+        <button class="quick-action-btn glass-btn active" data-action="bluetooth" aria-label="Toggle Bluetooth">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="6.5,6.5 17.5,17.5 12,23 12,1 17.5,6.5 6.5,17.5"/>
+          </svg>
+          <span>BT</span>
+        </button>
+        <button class="quick-action-btn glass-btn" data-action="dnd" aria-label="Toggle Do Not Disturb">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/><line x1="4" y1="4" x2="20" y2="20"/>
+          </svg>
+          <span>DND</span>
+        </button>
+        <button class="quick-action-btn glass-btn" data-action="nightmode" aria-label="Toggle Night Mode">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          </svg>
+          <span>Night</span>
+        </button>
+      </div>
+      <div class="notif-list" id="notif-list">
+        <div class="notif-empty" id="notif-empty">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4">
+            <path d="M6 8a6 6 0 0112 0c0 7 3 9 3 9H3s3-2 3-9"/>
+            <path d="M10 21a2 2 0 004 0"/>
+          </svg>
+          <span>No notifications</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         VOLUME POPUP — Small glass card with slider
+         =========================================================== -->
+    <div class="volume-popup glass-panel hidden" id="volume-popup" role="dialog" aria-label="Volume control">
+      <div class="volume-popup-inner">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" class="volume-icon">
+          <polygon points="4,9 4,15 8,15 13,19 13,5 8,9" fill="currentColor" opacity="0.5"/>
+          <path d="M16 8.5c1.5 1.5 1.5 5.5 0 7"/>
+          <path d="M18.5 6c3 3 3 9 0 12"/>
+        </svg>
+        <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="75"
+               aria-label="Volume level">
+        <span class="volume-value" id="volume-value">75%</span>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         SEARCH OVERLAY — Ctrl+K full-screen search
+         =========================================================== -->
+    <div class="search-overlay hidden" id="search-overlay" role="dialog" aria-label="System search">
+      <div class="search-backdrop"></div>
+      <div class="search-container glass-panel">
+        <div class="search-input-row">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" class="search-icon-glow">
+            <circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="22" y2="22"/>
+          </svg>
+          <input type="text" id="search-main-input" class="search-main-input"
+                 placeholder="Search everything..." autocomplete="off" autofocus>
+          <kbd class="search-kbd">ESC</kbd>
+        </div>
+        <div class="search-results" id="search-results">
+          <div class="search-hint">Type to search apps, files, settings, and more</div>
+        </div>
+        <div class="search-footer">
+          <span class="search-footer-hint">
+            <kbd>↑↓</kbd> navigate &nbsp; <kbd>↵</kbd> open &nbsp; <kbd>esc</kbd> close
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         DIALOG CONTAINER — Modal dialogs render here
+         =========================================================== -->
+    <div class="dialog-overlay hidden" id="dialog-overlay">
+      <div class="dialog-box glass-panel" id="dialog-box" role="alertdialog">
+        <div class="dialog-header">
+          <span class="dialog-title" id="dialog-title">Dialog</span>
+        </div>
+        <div class="dialog-body" id="dialog-body">
+          <p class="dialog-message" id="dialog-message"></p>
+          <input type="text" class="dialog-input glass-input hidden" id="dialog-input">
+        </div>
+        <div class="dialog-footer" id="dialog-footer">
+          <button class="dialog-btn glass-btn" id="dialog-cancel">Cancel</button>
+          <button class="dialog-btn dialog-btn-primary glass-btn" id="dialog-ok">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         TOAST CONTAINER — System toast notifications
+         =========================================================== -->
+    <div class="toast-container" id="toast-container" aria-live="polite">
+      <!-- Toasts injected by kernel.js -->
+    </div>
+
+  </div><!-- end #desktop -->
+
+  <!-- ===========================================================
+       SCRIPTS — Load order:
+       1. Engine (event-bus, storage, network, process-manager, audio-engine, ai-core)
+       2. OS Core (filesystem, kernel, window-manager, taskbar)
+       3. Apps (all applications)
+       4. App Loader (maps appId to classes)
+       =========================================================== -->
+
+  <!-- Engine Layer -->
+  <script src="js/engine/event-bus.js"></script>
+  <script src="js/engine/storage.js"></script>
+  <script src="js/engine/network.js"></script>
+  <script src="js/engine/process-manager.js"></script>
+  <script src="js/engine/audio-engine.js"></script>
+  <script src="js/engine/ai-core.js"></script>
+
+  <!-- OS Core Layer -->
+  <script src="js/os/filesystem.js"></script>
+  <script src="js/os/kernel.js"></script>
+  <script src="js/os/window-manager.js"></script>
+  <script src="js/os/taskbar.js"></script>
+
+  <!-- Application Layer -->
+  <script src="js/apps/terminal.js"></script>
+  <script src="js/apps/file-explorer.js"></script>
+  <script src="js/apps/code-editor.js"></script>
+  <script src="js/apps/calculator.js"></script>
+  <script src="js/apps/notepad.js"></script>
+  <script src="js/apps/clock.js"></script>
+  <script src="js/apps/weather.js"></script>
+  <script src="js/apps/paint.js"></script>
+  <script src="js/apps/video-player.js"></script>
+  <script src="js/apps/image-viewer.js"></script>
+  <script src="js/apps/audio-visualizer.js"></script>
+  <script src="js/apps/neon-photo-viewer.js"></script>
+  <script src="js/apps/glitch-art.js"></script>
+  <script src="js/apps/screen-recorder.js"></script>
+  <script src="js/apps/media-converter.js"></script>
+  <script src="js/apps/media/qr-generator.js"></script>
+  <script src="js/apps/media/meme-generator.js"></script>
+  <script src="js/apps/media/pixel-art.js"></script>
+  <script src="js/apps/media/svg-editor.js"></script>
+  <script src="js/apps/media/ascii-art.js"></script>
+  <script src="js/apps/media/gradient-maker.js"></script>
+  <script src="js/apps/media/color-palette.js"></script>
+  <script src="js/apps/media/gif-maker.js"></script>
+  <script src="js/apps/music-studio.js"></script>
+  <script src="js/apps/synth-lab.js"></script>
+  <script src="js/apps/drum-machine.js"></script>
+  <script src="js/apps/voice-recorder.js"></script>
+  <script src="js/apps/sequencer.js"></script>
+  <script src="js/apps/tarot.js"></script>
+  <script src="js/apps/oracle.js"></script>
+  <script src="js/apps/archetype-interpreter.js"></script>
+  <script src="js/apps/ai-chat.js"></script>
+  <script src="js/apps/horoscope.js"></script>
+  <script src="js/apps/numerology.js"></script>
+  <script src="js/apps/dream-analyzer.js"></script>
+  <script src="js/apps/escape-room.js"></script>
+  <script src="js/apps/terminal-hacker.js"></script>
+  <script src="js/apps/neon-pong.js"></script>
+  <script src="js/apps/memory-game.js"></script>
+  <script src="js/apps/cyber-puzzle.js"></script>
+  <script src="js/apps/snake.js"></script>
+  <script src="js/apps/tetris.js"></script>
+  <script src="js/apps/games/chess.js"></script>
+  <script src="js/apps/games/wordle.js"></script>
+  <script src="js/apps/games/hangman.js"></script>
+  <script src="js/apps/games/trivia.js"></script>
+  <script src="js/apps/games/tic-tac-toe.js"></script>
+  <script src="js/apps/games/connect-four.js"></script>
+  <script src="js/apps/games/battleship.js"></script>
+  <script src="js/apps/games/blackjack.js"></script>
+  <script src="js/apps/games/simon-says.js"></script>
+  <script src="js/apps/games/breakout.js"></script>
+  <script src="js/apps/games/space-invaders.js"></script>
+  <script src="js/apps/settings.js"></script>
+  <script src="js/apps/song-writer.js"></script>
+
+  <!-- System Tools -->
+  <script src="js/apps/tools/task-manager.js"></script>
+  <script src="js/apps/tools/backup-tool.js"></script>
+  <script src="js/apps/tools/disk-analyzer.js"></script>
+  <script src="js/apps/tools/network-monitor.js"></script>
+  <script src="js/apps/tools/clipboard-manager.js"></script>
+  <script src="js/apps/tools/hash-calculator.js"></script>
+  <script src="js/apps/tools/regex-tester.js"></script>
+  <script src="js/apps/tools/json-formatter.js"></script>
+
+  <!-- App Loader (maps appId to classes, handles both API patterns) -->
+  <script src="js/os/app-loader.js"></script>
+
+  <!-- Boot initializer -->
+  <script>
+    // ============================================================
+    // NEXUS OS Boot Sequence
+    // ============================================================
+    (function bootNexus() {
+      'use strict';
+
+      const bootScreen = document.getElementById('boot-screen');
+      const lockScreen = document.getElementById('lock-screen');
+      const desktop = document.getElementById('desktop');
+      const biosLines = document.querySelectorAll('.bios-line');
+      const bootLogo = document.getElementById('boot-logo');
+      const progressBar = document.getElementById('boot-progress-bar');
+
+      // Phase 1: BIOS text lines appear sequentially
+      biosLines.forEach(line => {
+        const delay = parseInt(line.dataset.delay) || 0;
+        setTimeout(() => {
+          line.classList.add('visible');
+        }, delay);
+      });
+
+      // Phase 2: Show logo after BIOS text
+      setTimeout(() => {
+        bootLogo.classList.add('visible');
+      }, 2600);
+
+      // Phase 3: Progress bar fills
+      setTimeout(() => {
+        progressBar.classList.add('filling');
+      }, 3000);
+
+      // Phase 4: Transition to lock screen
+      setTimeout(() => {
+        bootScreen.classList.add('fade-out');
+        setTimeout(() => {
+          bootScreen.classList.add('hidden');
+          lockScreen.classList.remove('hidden');
+          document.body.dataset.state = 'locked';
+          NexusKernel.lockScreen.init();
+        }, 600);
+      }, 4500);
+
+      // Initialize kernel in background
+      setTimeout(() => {
+        NexusKernel.init();
+      }, 2800);
+    })();
+  </script>
+</body>
+</html>

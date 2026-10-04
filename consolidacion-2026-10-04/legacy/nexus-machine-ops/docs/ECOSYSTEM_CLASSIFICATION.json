@@ -1,0 +1,399 @@
+{
+  "github_count": 75,
+  "drive_count": 100,
+  "github_category_counts": [
+    [
+      "AI / agentes / skills",
+      21
+    ],
+    [
+      "DUCK / música / audio",
+      21
+    ],
+    [
+      "creative tech / design / media",
+      20
+    ],
+    [
+      "uncategorized",
+      12
+    ],
+    [
+      "documentos / educación / inclusión",
+      12
+    ],
+    [
+      "negocio / ventas / operaciones",
+      11
+    ],
+    [
+      "evidencia / auditoría / seguridad",
+      9
+    ]
+  ],
+  "drive_category_counts": [
+    [
+      "uncategorized",
+      73
+    ],
+    [
+      "documentos / educación / inclusión",
+      10
+    ],
+    [
+      "evidencia / auditoría / seguridad",
+      10
+    ],
+    [
+      "negocio / ventas / operaciones",
+      6
+    ],
+    [
+      "AI / agentes / skills",
+      5
+    ],
+    [
+      "DUCK / música / audio",
+      3
+    ]
+  ],
+  "high_signal_repositories": [
+    {
+      "name": "noiacore-revenue-pipeline",
+      "description": "",
+      "language": "Python",
+      "pushedAt": "2026-08-28T09:51:52Z",
+      "categories": [
+        "negocio / ventas / operaciones"
+      ]
+    },
+    {
+      "name": "Cruzando-el-charco",
+      "description": "Cruzando el Charco, impulsado por noiacore.com y creado por Pedro Belentani, es un portal gratuito y confidencial de acogida, supervivencia y arraigo para hombres migrantes LGBT+ en L'Hospitalet y Barcelona. Información directa y práctica sobre papeles, salud, vivienda y comunidad.",
+      "language": "JavaScript",
+      "pushedAt": "2026-08-28T01:29:29Z",
+      "categories": [
+        "AI / agentes / skills",
+        "documentos / educación / inclusión"
+      ]
+    },
+    {
+      "name": "duck-belentani-os-audited-2026-08-23",
+      "description": "DUCK Belentani OS - snapshot auditado 2026-08-23 del sistema operativo creativo.",
+      "language": "TypeScript",
+      "pushedAt": "2026-08-28T00:56:46Z",
+      "categories": [
+        "DUCK / música / audio",
+        "evidencia / auditoría / seguridad"
+      ]
+    },
+    {
+      "name": "duck-unified-master",
+      "description": "DUCK Unified Master - Consolidação completa do ecossistema DUCK (9 repos, 1838 arquivos)",
+      "language": "HTML",
+      "pushedAt": "2026-08-28T00:16:01Z",
+      "categories": [
+        "DUCK / música / audio",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "belentani-ecosystem-control",
+      "description": "",
+      "language": "Python",
+      "pushedAt": "2026-08-28T00:04:25Z",
+      "categories": [
+        "negocio / ventas / operaciones"
+      ]
+    },
+    {
+      "name": "belentani-omega-template",
+      "description": "BELENTANI OMEGA: Plantilla de experiencia web inmersiva y canon conceptual.",
+      "language": "HTML",
+      "pushedAt": "2026-08-27T16:05:40Z",
+      "categories": [
+        "uncategorized"
+      ]
+    },
+    {
+      "name": "judas-experience",
+      "description": "Proyecto Judas - experiencia musical demo",
+      "language": "HTML",
+      "pushedAt": "2026-08-27T16:05:30Z",
+      "categories": [
+        "DUCK / música / audio",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "belentani_Omega",
+      "description": "Artist ecosystem",
+      "language": "JavaScript",
+      "pushedAt": "2026-08-25T01:18:06Z",
+      "categories": [
+        "negocio / ventas / operaciones",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "duck-ecosystem",
+      "description": "Ecosistema DUCK - herramientas, GUIs y apps del estudio creativo DUCK.",
+      "language": "TypeScript",
+      "pushedAt": "2026-08-24T20:21:10Z",
+      "categories": [
+        "DUCK / música / audio",
+        "negocio / ventas / operaciones"
+      ]
+    },
+    {
+      "name": "duck-full-studio-pro",
+      "description": "DUCK Full Studio Pro - FL Studio Ecosystem & Vault (Audited 10/10)",
+      "language": "HTML",
+      "pushedAt": "2026-08-24T13:05:23Z",
+      "categories": [
+        "DUCK / música / audio",
+        "evidencia / auditoría / seguridad",
+        "negocio / ventas / operaciones"
+      ]
+    },
+    {
+      "name": "Steven-renovation",
+      "description": "Este proyecto contiene la estructura local de una web comercial para servicios de reformas. La carpeta agrupa variantes HTML, recursos visuales, vídeos y documentación breve preparada para organizar el material antes de subirlo a GitHub.",
+      "language": "HTML",
+      "pushedAt": "2026-08-24T12:08:56Z",
+      "categories": [
+        "documentos / educación / inclusión",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "judas-omega-static",
+      "description": "JUDAS OMEGA - storyboard cinematografico estatico",
+      "language": "HTML",
+      "pushedAt": "2026-08-24T11:55:14Z",
+      "categories": [
+        "DUCK / música / audio"
+      ]
+    },
+    {
+      "name": "omniagent",
+      "description": "One CLI to route AI tasks to the best model.",
+      "language": "Python",
+      "pushedAt": "2026-08-23T14:21:36Z",
+      "categories": [
+        "AI / agentes / skills"
+      ]
+    },
+    {
+      "name": "temporal-artifact-detector",
+      "description": "Python tool for detecting flickering and temporal artifacts in AI-generated videos.",
+      "language": "Python",
+      "pushedAt": "2026-08-23T14:21:29Z",
+      "categories": [
+        "AI / agentes / skills",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "latent-consistency-bench",
+      "description": "Benchmarking visual consistency in AI-generated content.",
+      "language": "Python",
+      "pushedAt": "2026-08-23T14:21:21Z",
+      "categories": [
+        "AI / agentes / skills",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "comfyui-json-compiler",
+      "description": "Translate natural language creative briefs into valid ComfyUI JSON workflows using LLMs.",
+      "language": "Python",
+      "pushedAt": "2026-08-23T14:20:54Z",
+      "categories": [
+        "AI / agentes / skills",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "qbp-core",
+      "description": "Core SDK for the Quadrachy Binding Protocol - structured format for defining and validating.",
+      "language": "Python",
+      "pushedAt": "2026-08-23T14:20:48Z",
+      "categories": [
+        "evidencia / auditoría / seguridad"
+      ]
+    },
+    {
+      "name": "pbr-validator",
+      "description": "Validates PBR texture sets for correctness and compatibility with game engines.",
+      "language": "Python",
+      "pushedAt": "2026-08-23T14:20:40Z",
+      "categories": [
+        "evidencia / auditoría / seguridad",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "gpu-cost-optimizer",
+      "description": "Optimize GPU compute costs in diffusion pipelines by up to 70%.",
+      "language": "Python",
+      "pushedAt": "2026-08-23T14:20:33Z",
+      "categories": [
+        "negocio / ventas / operaciones",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "llm-vfx-orchestrator",
+      "description": "Autonomous VFX pipeline orchestration using LLMs connected to ComfyUI APIs.",
+      "language": "Python",
+      "pushedAt": "2026-08-23T14:20:26Z",
+      "categories": [
+        "AI / agentes / skills",
+        "negocio / ventas / operaciones",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "cinematic-prompt-formatter",
+      "description": "Translate cinematic language into optimized prompts for Stable Diffusion, Flux, and SDXL models.",
+      "language": "Python",
+      "pushedAt": "2026-08-23T14:20:19Z",
+      "categories": [
+        "AI / agentes / skills",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "evidence-ledger",
+      "description": "Local-first evidence receipts for AI and Trust & Safety decisions",
+      "language": "TypeScript",
+      "pushedAt": "2026-08-23T14:16:24Z",
+      "categories": [
+        "AI / agentes / skills",
+        "evidencia / auditoría / seguridad"
+      ]
+    },
+    {
+      "name": "Belentani.cv-ai",
+      "description": "📄 Belentani Document Studio - Crea CV, cartas y presentaciones con IA. 0.99€ pago único. . GDPR. AES-256. Hecho para todos.",
+      "language": "TypeScript",
+      "pushedAt": "2026-08-23T14:15:25Z",
+      "categories": [
+        "AI / agentes / skills",
+        "DUCK / música / audio",
+        "documentos / educación / inclusión",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "Duck-Omega",
+      "description": "DUCK Omega - ecosistema artistico y productivo del proyecto Duck/Zion (Belentani).",
+      "language": "TypeScript",
+      "pushedAt": "2026-08-23T14:15:16Z",
+      "categories": [
+        "DUCK / música / audio",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "harmonia-hub",
+      "description": "Harmonia Hub - plataforma de coordinacion y bienestar.",
+      "language": "TypeScript",
+      "pushedAt": "2026-08-23T14:14:58Z",
+      "categories": [
+        "DUCK / música / audio"
+      ]
+    },
+    {
+      "name": "belentaniexperience",
+      "description": "Portfolio premium de Pedro Belentani: Trust & Safety, sistemas de IA, automatización, ingeniería de software y creative tech.",
+      "language": "TypeScript",
+      "pushedAt": "2026-08-23T14:14:50Z",
+      "categories": [
+        "evidencia / auditoría / seguridad",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "DUCK-ZION-PREMIUM",
+      "description": "DUCK/BELENTANI Canal Zion — Studio OS, Ecosystem y Toolkit de producción musical, afinación y mastering.",
+      "language": "HTML",
+      "pushedAt": "2026-08-23T11:01:28Z",
+      "categories": [
+        "DUCK / música / audio",
+        "negocio / ventas / operaciones"
+      ]
+    },
+    {
+      "name": "DuckHTML",
+      "description": "Experimentos HTML del universo DUCK - interfaces y prototipos rapidos.",
+      "language": "HTML",
+      "pushedAt": "2026-08-23T04:14:24Z",
+      "categories": [
+        "DUCK / música / audio",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "duck-zion-apex-public",
+      "description": "DUCK ZION Apex — professional vocal production platform; audited snapshot, gate currently 57/60",
+      "language": "TypeScript",
+      "pushedAt": "2026-08-23T04:13:07Z",
+      "categories": [
+        "DUCK / música / audio",
+        "evidencia / auditoría / seguridad"
+      ]
+    },
+    {
+      "name": "Oculus-Tv",
+      "description": "Repositório multilíngue de código aberto com livros e materiais audiovisuais educativos.",
+      "language": "TypeScript",
+      "pushedAt": "2026-08-23T04:13:00Z",
+      "categories": [
+        "AI / agentes / skills",
+        "DUCK / música / audio",
+        "documentos / educación / inclusión"
+      ]
+    },
+    {
+      "name": "Duck-Deck",
+      "description": "Music production assets on Html",
+      "language": "Unknown",
+      "pushedAt": "2026-08-23T04:10:25Z",
+      "categories": [
+        "DUCK / música / audio",
+        "creative tech / design / media"
+      ]
+    },
+    {
+      "name": "proofmesh",
+      "description": "Evidence-first change intelligence with strict 6-criteria, 3-node, 3-level gates",
+      "language": "TypeScript",
+      "pushedAt": "2026-08-22T09:16:28Z",
+      "categories": [
+        "evidencia / auditoría / seguridad"
+      ]
+    },
+    {
+      "name": "omega-max-duck",
+      "description": "DUCK Ω-MAX Studio OS — CRM, producción musical, operaciones y automatizaciones para clientes y proyectos.",
+      "language": "TypeScript",
+      "pushedAt": "2026-08-22T07:25:43Z",
+      "categories": [
+        "DUCK / música / audio",
+        "negocio / ventas / operaciones"
+      ]
+    },
+    {
+      "name": "local-agent",
+      "description": "Archived reference: Windows OpenManus/Ollama setup. Preserved for documentation; current work uses remote providers on modest hardware.",
+      "language": "PowerShell",
+      "pushedAt": "2026-08-02T18:45:02Z",
+      "categories": [
+        "AI / agentes / skills",
+        "documentos / educación / inclusión"
+      ]
+    }
+  ]
+}

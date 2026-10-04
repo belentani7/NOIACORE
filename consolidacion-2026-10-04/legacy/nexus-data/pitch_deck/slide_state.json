@@ -1,0 +1,122 @@
+{
+  "project_info": {
+    "title": "De datos públicos a decisiones de negocio",
+    "created": 1787109392.24,
+    "last_updated": 1787324321.806,
+    "total_slides": 10
+  },
+  "slides": [
+    {
+      "id": "cover",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "problem",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "solution",
+      "state": "edited",
+      "pageNum": 3
+    },
+    {
+      "id": "why_now",
+      "state": "edited",
+      "pageNum": 4
+    },
+    {
+      "id": "demo",
+      "state": "edited",
+      "pageNum": 5
+    },
+    {
+      "id": "customer",
+      "state": "edited",
+      "pageNum": 6
+    },
+    {
+      "id": "competition",
+      "state": "edited",
+      "pageNum": 7
+    },
+    {
+      "id": "pricing",
+      "state": "edited",
+      "pageNum": 8
+    },
+    {
+      "id": "moat_risks",
+      "state": "edited",
+      "pageNum": 9
+    },
+    {
+      "id": "roadmap",
+      "state": "edited",
+      "pageNum": 10
+    }
+  ],
+  "outline": [
+    {
+      "id": "cover",
+      "title": "De datos públicos a decisiones de negocio",
+      "summary": "NEXUS DATA transforma avisos de contratación pública en oportunidades priorizadas para pymes.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "problem",
+      "title": "El problema no es encontrar datos",
+      "summary": "Las pymes pierden horas vigilando portales y no tienen una decisión bid/no-bid trazable.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "solution",
+      "title": "Una capa vertical de inteligencia",
+      "summary": "Conectores oficiales, esquema canónico, scoring, anomalías e informe accionable.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "why_now",
+      "title": "Un mercado grande y publicable",
+      "summary": "La contratación pública representa 12,7% del PIB de la OCDE y cerca de 15% en la UE.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "demo",
+      "title": "El prototipo ya cierra el ciclo",
+      "summary": "Tres fuentes, nueve avisos demo, limpieza, priorización e importación CSV/JSON en una ejecución.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "customer",
+      "title": "Cliente inicial y valor",
+      "summary": "Pymes de software, datos, ciberseguridad y consultoras de bids; menos vigilancia, más cobertura.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "competition",
+      "title": "La competencia vende infraestructura",
+      "summary": "Los cinco competidores cubren extracción; NEXUS DATA cubre decisión vertical y trazabilidad.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "pricing",
+      "title": "Pricing por profundidad, no por peticiones",
+      "summary": "Freemium para adquisición y suscripción por volumen, histórico y colaboración.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "moat_risks",
+      "title": "Foso defendible, riesgos explícitos",
+      "summary": "Taxonomía, histórico, feedback y cumplimiento; riesgos técnicos, legales y de mercado mitigados.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "roadmap",
+      "title": "12 meses para probar valor",
+      "summary": "Del MVP a una beta pagada con 10–20 pymes y expansión jurisdiccional.",
+      "image_plan": "Use a suitable image if needed"
+    }
+  ]
+}

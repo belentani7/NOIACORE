@@ -1,0 +1,174 @@
+{
+  "algorithm": "SHA-256",
+  "count": 19,
+  "uniqueHashes": 17,
+  "exactDuplicateGroups": [
+    [
+      {
+        "id": "1-XkC4YMAHtynR_KgSI6rVBcAMJqYul25",
+        "name": "uaol-machine-realm-a392a3c-audit-evidence.zip",
+        "size": 97762,
+        "sha256": "601889b198003628bb0a68ca1d81f0febff08c1e41fecbc2c32a323ccf8d7985",
+        "modifiedTime": "2026-08-27T05:39:30.344Z"
+      },
+      {
+        "id": "1yoETAzet3JosAMukJX29Gdn6XdfllNLn",
+        "name": "uaol-machine-realm-e122ea3-audit-evidence.zip",
+        "size": 97762,
+        "sha256": "601889b198003628bb0a68ca1d81f0febff08c1e41fecbc2c32a323ccf8d7985",
+        "modifiedTime": "2026-08-27T05:37:54.956Z"
+      }
+    ],
+    [
+      {
+        "id": "16TBUEKzK8RgaZiNHN3WoEMtGmHu0XCtw",
+        "name": "uaol-machine-realm-f3c2a25-audit-evidence.zip",
+        "size": 91681,
+        "sha256": "784f998090471bf7756afad474e05e9ade079e0d133e4155993036020bf107ed",
+        "modifiedTime": "2026-08-27T05:15:20.979Z"
+      },
+      {
+        "id": "1FhzRaGMlPswWm9KEX_sK3rZ5GdtGlw4t",
+        "name": "uaol-machine-realm-2f2c018-audit-evidence.zip",
+        "size": 91681,
+        "sha256": "784f998090471bf7756afad474e05e9ade079e0d133e4155993036020bf107ed",
+        "modifiedTime": "2026-08-27T05:16:33.538Z"
+      }
+    ]
+  ],
+  "files": [
+    {
+      "id": "1-XkC4YMAHtynR_KgSI6rVBcAMJqYul25",
+      "name": "uaol-machine-realm-a392a3c-audit-evidence.zip",
+      "size": 97762,
+      "sha256": "601889b198003628bb0a68ca1d81f0febff08c1e41fecbc2c32a323ccf8d7985",
+      "modifiedTime": "2026-08-27T05:39:30.344Z"
+    },
+    {
+      "id": "12iX0miUQDD9qbDXT25dlxGde4CkDWw9l",
+      "name": "LATAM-Europa-final-df74b9c.zip",
+      "size": 255702,
+      "sha256": "78f65bc75bb2ca7ad6d0e313f50427060518eeaa70ef9e0d875cc3f464ee1f02",
+      "modifiedTime": "2026-08-27T07:25:11.756Z"
+    },
+    {
+      "id": "14HuYyhFZ3du57WFPwK9sVeRIprROFOgc",
+      "name": "uaol-machine-realm-2f2c018-sanitized-source.zip",
+      "size": 697598,
+      "sha256": "9e9e3cac7f90456d04b962c71feab5056828b5f3cd6c25ab736e05a39922d759",
+      "modifiedTime": "2026-08-27T05:16:32.093Z"
+    },
+    {
+      "id": "16TBUEKzK8RgaZiNHN3WoEMtGmHu0XCtw",
+      "name": "uaol-machine-realm-f3c2a25-audit-evidence.zip",
+      "size": 91681,
+      "sha256": "784f998090471bf7756afad474e05e9ade079e0d133e4155993036020bf107ed",
+      "modifiedTime": "2026-08-27T05:15:20.979Z"
+    },
+    {
+      "id": "19QbusKzAiSHkA82cJesreO9Was2Xkbhq",
+      "name": "DeudaFix_Revision_Manus_expediente_reorganizado.zip",
+      "size": 39164089,
+      "sha256": "53019314315838810873fdc0f0d0a43561b02b590c5156647a3c4210f6ec61ba",
+      "modifiedTime": "2026-08-28T10:10:39.145Z"
+    },
+    {
+      "id": "1AjAscR3_XBykkU7ZiMJfnkj58wYzLfrn",
+      "name": "belentani-ecosystem-control-ronda-2-2026-08-27.zip",
+      "size": 77508,
+      "sha256": "6246d416d924d98d10df1be899e2351bc71473006bec21a6d52d563edc95daf0",
+      "modifiedTime": "2026-08-27T05:16:40.844Z"
+    },
+    {
+      "id": "1C6uq9CToUFpewUR-FQLzILKo6uurFa_N",
+      "name": "belentani-ecosystem-control-2026-08-27.zip",
+      "size": 51309,
+      "sha256": "3fe909f395fe118242162f2da752550edc42bdf47e05f72ddf9c45f82e1ef881",
+      "modifiedTime": "2026-08-27T05:09:26.307Z"
+    },
+    {
+      "id": "1E7ooIZsKy6AnCuDe1snrcDqQZKGxw25s",
+      "name": "LATAM-Europa-final-bae4d05.zip",
+      "size": 255701,
+      "sha256": "ee100f4007560a9db52918821e315bf790c03ff741f39f63369c096a97601265",
+      "modifiedTime": "2026-08-27T07:26:00.197Z"
+    },
+    {
+      "id": "1FhzRaGMlPswWm9KEX_sK3rZ5GdtGlw4t",
+      "name": "uaol-machine-realm-2f2c018-audit-evidence.zip",
+      "size": 91681,
+      "sha256": "784f998090471bf7756afad474e05e9ade079e0d133e4155993036020bf107ed",
+      "modifiedTime": "2026-08-27T05:16:33.538Z"
+    },
+    {
+      "id": "1J3DZTxHgNpESXBUFiyoXcSRl76b36c8X",
+      "name": "LATAM-Europa-final-3e473ba.zip",
+      "size": 255719,
+      "sha256": "05e3b1fe3f98733c528611940fe2f44af7974287bf8e5c5a5b4e014be332f2a8",
+      "modifiedTime": "2026-08-27T11:12:50.205Z"
+    },
+    {
+      "id": "1LvHGbC7vsKuLivwnwveFyo7YUl26SrAC",
+      "name": "uaol-machine-realm-a392a3c-sanitized-source.zip",
+      "size": 706327,
+      "sha256": "6f1a633018edf346592e4f457a55c506afc8b9a3f869d2f7ca46fb1cb2b60142",
+      "modifiedTime": "2026-08-27T05:39:29.067Z"
+    },
+    {
+      "id": "1N0JPuQen8aF_-w3ulDyliUa4wjKB2OHd",
+      "name": "noiacore-revenue-pipeline.zip",
+      "size": 9038,
+      "sha256": "b5ecc109a8649d65f4a254f7369883f0e3f81f3c567fd9d6d11a317a80520017",
+      "modifiedTime": "2026-08-28T10:11:04.078Z"
+    },
+    {
+      "id": "1aM84z1FWsUcIE2-X4kJtUVHrzLRz-AB2",
+      "name": "uaol-machine-realm-23593376-sanitized-source.zip",
+      "size": 697358,
+      "sha256": "5b237b12fc520755befaf1afedae50a8b31b566b23d1b58bae6a2f07a9affa75",
+      "modifiedTime": "2026-08-27T05:13:27.861Z"
+    },
+    {
+      "id": "1iy5xVBl0ERQRM7zDubfVT46MowGkFBQJ",
+      "name": "uaol-machine-realm-e122ea3-sanitized-source.zip",
+      "size": 706329,
+      "sha256": "f3b651449a6a7f4e7380800e0d697d30380b3979dbabef5cf342d9f66b871c29",
+      "modifiedTime": "2026-08-27T05:37:53.628Z"
+    },
+    {
+      "id": "1maUKnKIv0FPKI-U5syca8niTn2-fZiSP",
+      "name": "uaol-machine-realm-f3c2a25-sanitized-source.zip",
+      "size": 697601,
+      "sha256": "44c0b7fda8b2f245fbfa98890166a5917b53bad5dec2e66800ce881e87c2259d",
+      "modifiedTime": "2026-08-27T05:15:19.527Z"
+    },
+    {
+      "id": "1rlBE9FsVwKOgf92Rq179yGaHAcKCjQBS",
+      "name": "qwen-input-cache-max-context-repo-2026-08-27.zip",
+      "size": 131239,
+      "sha256": "45bedbd1077c347a849f9f45008aa6fc81318727793ab3fa548440737a2a93c9",
+      "modifiedTime": "2026-08-27T05:45:32.429Z"
+    },
+    {
+      "id": "1t4gN4uzQcqr4EylNxRwqSZCp6TsHKVst",
+      "name": "LATAM-Europa-audited-dfac099.zip",
+      "size": 252807,
+      "sha256": "c27801400a6a64a7e2ad878ac8b571df64759d0a07e0f54d88b078003959d983",
+      "modifiedTime": "2026-08-27T06:56:29.952Z"
+    },
+    {
+      "id": "1xtuHx1W3GMfxQ5uiIT4f1LnaaHJzUMTm",
+      "name": "LATAM-Europa-source-9a61ed4b.zip",
+      "size": 269722,
+      "sha256": "e78f68897bd17b8bef5c4043944be8ea7c3a2a9fbc985278548c99190c69c036",
+      "modifiedTime": "2026-08-27T05:52:33.218Z"
+    },
+    {
+      "id": "1yoETAzet3JosAMukJX29Gdn6XdfllNLn",
+      "name": "uaol-machine-realm-e122ea3-audit-evidence.zip",
+      "size": 97762,
+      "sha256": "601889b198003628bb0a68ca1d81f0febff08c1e41fecbc2c32a323ccf8d7985",
+      "modifiedTime": "2026-08-27T05:37:54.956Z"
+    }
+  ]
+}

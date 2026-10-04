@@ -1,0 +1,648 @@
+# Terminal Full Output
+# Terminal: git_push_retry
+# Command: echo ".cache/" >> .gitignore && echo ".local/" >> .gitignore && echo ".config/" >> .gitignore && echo ".npm/" >> .gitignore && echo ".pnpm-store/" >> .gitignore && git add . && git commit -m "feat: initial release of LIOS V5 Event Horizon - The ultimate local intelligence ecosystem" && git branch -M main && gh repo create lios-v5-event-horizon --private --description "LIOS V5 Event Horizon: Local Intelligence Operating System with Generational Legacy, MCTS Future Simulation, Thermodynamic Optimization, and Ontological Safety." --source=. --remote=origin --push
+# PID: 2523
+# Timestamp: 2026-08-18_12-16-59.643555
+# Original Length: 45101 characters
+# ----------------------------------------
+
+[32mubuntu@sandbox:~$ [0mecho ".cache/" >> .gitignore && echo ".local/" >> .gitignore && echo ".config/" >> .gitignore && echo ".npm/" >> .gitignore && echo ".pnpm-store/" >> .gitignore && git add . && git commit -m "feat: initial release of LIOS V5 Event Horizon - The ultimate local intelligence ecosystem" && git branch -M main && gh repo create lios-v5-event-horizon --private --description "LIOS V5 Event Horizon: Local Intelligence Operating System with Generational Legacy, MCTS Future Simulation, Thermodynamic Optimization, and Ontological Safety." --source=. --remote=origin --push
+{
+source /home/ubuntu/.user_env && cd . && echo ".cache/" >> .gitignore && echo ".local/" >> .gitignore && echo ".config/" >> .gitignore && echo ".npm/" >> .gitignore && echo ".pnpm-store/" >> .gitignore && git add . && git commit -m "feat: initial release of LIOS V5 Event Horizon - The ultimate local intelligence ecosystem" && git branch -M main && gh repo create lios-v5-event-horizon --private --description "LIOS V5 Event Horizon: Local Intelligence Operating System with Generational Legacy, MCT
+S Future Simulation, Thermodynamic Optimization, and Ontological Safety." --source=. --remote=origin --push
+}
+warning: adding embedded git repository: .nvm
+[33mhint: You've added another git repository inside your current repository.
+[m[33mhint: Clones of the outer repository will not contain the contents of
+[m[33mhint: the embedded repository and will not know how to obtain it.
+[m[33mhint: If you meant to add a submodule, use:
+[m[33mhint: 
+[m[33mhint: 	git submodule add <url> .nvm
+[m[33mhint: 
+[m[33mhint: If you added this path by mistake, you can remove it from the
+[m[33mhint: index with:
+[m[33mhint: 
+[m[33mhint: 	git rm --cached .nvm
+[m[33mhint: 
+[m[33mhint: See "git help submodule" for more information.
+[m[master (root-commit) ae380a7] feat: initial release of LIOS V5 Event Horizon - The ultimate local intelligence ecosystem
+ 603 files changed, 264624 insertions(+)
+ create mode 100644 .bash_logout
+ create mode 100644 .bashrc
+ create mode 100644 .browser_data_dir/ActorSafetyLists/9.5220.3721/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/ActorSafetyLists/9.5220.3721/listdata.json
+ create mode 100644 .browser_data_dir/ActorSafetyLists/9.5220.3721/manifest.json
+ create mode 100644 .browser_data_dir/AmountExtractionHeuristicRegexes/4/_metadata/verified_contents.json
+ create mode 100755 .browser_data_dir/AmountExtractionHeuristicRegexes/4/heuristic_regexes.binarypb
+ create mode 100644 .browser_data_dir/AmountExtractionHeuristicRegexes/4/manifest.json
+ create mode 100644 .browser_data_dir/CaptchaProviders/8.5419.4434/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/CaptchaProviders/8.5419.4434/captcha_providers.json
+ create mode 100644 .browser_data_dir/CaptchaProviders/8.5419.4434/manifest.json
+ create mode 100644 .browser_data_dir/CertificateRevocation/10722/LICENSE
+ create mode 100644 .browser_data_dir/CertificateRevocation/10722/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/CertificateRevocation/10722/crl-set
+ create mode 100644 .browser_data_dir/CertificateRevocation/10722/manifest.json
+ create mode 100644 .browser_data_dir/Crowd Deny/2026.8.17.84/Preload Data
+ create mode 100644 .browser_data_dir/Crowd Deny/2026.8.17.84/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/Crowd Deny/2026.8.17.84/manifest.json
+ create mode 100644 .browser_data_dir/Default/.org.chromium.Chromium.7MyyCq
+ create mode 100644 .browser_data_dir/Default/.org.chromium.Chromium.JRlt3k
+ create mode 100644 .browser_data_dir/Default/Account Web Data
+ create mode 100644 .browser_data_dir/Default/Account Web Data-journal
+ create mode 100644 .browser_data_dir/Default/Affiliation Database
+ create mode 100644 .browser_data_dir/Default/Affiliation Database-journal
+ create mode 100644 .browser_data_dir/Default/AutofillAiModelCache/LOCK
+ create mode 100644 .browser_data_dir/Default/AutofillAiModelCache/LOG
+ create mode 100644 .browser_data_dir/Default/AutofillAiModelCache/LOG.old
+ create mode 100644 .browser_data_dir/Default/AutofillStrikeDatabase/LOCK
+ create mode 100644 .browser_data_dir/Default/AutofillStrikeDatabase/LOG
+ create mode 100644 .browser_data_dir/Default/AutofillStrikeDatabase/LOG.old
+ create mode 100644 .browser_data_dir/Default/BookmarkMergedSurfaceOrdering
+ create mode 100644 .browser_data_dir/Default/BudgetDatabase/LOCK
+ create mode 100644 .browser_data_dir/Default/BudgetDatabase/LOG
+ create mode 100644 .browser_data_dir/Default/BudgetDatabase/LOG.old
+ create mode 100644 .browser_data_dir/Default/Cache/Cache_Data/118fb0fa2505d3b2_0
+ create mode 100644 .browser_data_dir/Default/Cache/Cache_Data/15145040f7f12f31_0
+ create mode 100644 .browser_data_dir/Default/Cache/Cache_Data/5761d302839d26b6_0
+ create mode 100644 .browser_data_dir/Default/Cache/Cache_Data/5ae8c3510eeaec10_0
+ create mode 100644 .browser_data_dir/Default/Cache/Cache_Data/6351cd107efed247_0
+ create mode 100644 .browser_data_dir/Default/Cache/Cache_Data/6d2c644768983afc_0
+ create mode 100644 .browser_data_dir/Default/Cache/Cache_Data/7a06fd6d0b782474_0
+ create mode 100644 .browser_data_dir/Default/Cache/Cache_Data/93d81321f8c35eab_0
+ create mode 100644 .browser_data_dir/Default/Cache/Cache_Data/index
+ create mode 100644 .browser_data_dir/Default/Cache/Cache_Data/index-dir/the-real-index
+ create mode 100644 .browser_data_dir/Default/Cache/No_Vary_Search/journal.baj
+ create mode 100644 .browser_data_dir/Default/Cache/No_Vary_Search/snapshot.baf
+ create mode 100644 .browser_data_dir/Default/ClientCertificates/LOCK
+ create mode 100644 .browser_data_dir/Default/ClientCertificates/LOG
+ create mode 100644 .browser_data_dir/Default/ClientCertificates/LOG.old
+ create mode 100644 .browser_data_dir/Default/Code Cache/js/3d4e66a0f8e97013_0
+ create mode 100644 .browser_data_dir/Default/Code Cache/js/59e9a57d2c6ebd9b_0
+ create mode 100644 .browser_data_dir/Default/Code Cache/js/8a32fbdeb840d215_0
+ create mode 100644 .browser_data_dir/Default/Code Cache/js/b4440afc2f079428_0
+ create mode 100644 .browser_data_dir/Default/Code Cache/js/f31cb384bcb1b33c_0
+ create mode 100644 .browser_data_dir/Default/Code Cache/js/f622b2959adc5cd4_0
+ create mode 100644 .browser_data_dir/Default/Code Cache/js/index
+ create mode 100644 .browser_data_dir/Default/Code Cache/js/index-dir/the-real-index
+ create mode 100644 .browser_data_dir/Default/Code Cache/wasm/index
+ create mode 100644 .browser_data_dir/Default/Code Cache/wasm/index-dir/the-real-index
+ create mode 100644 .browser_data_dir/Default/Cookies
+ create mode 100644 .browser_data_dir/Default/Cookies-journal
+ create mode 100644 .browser_data_dir/Default/DIPS
+ create mode 100644 .browser_data_dir/Default/DIPS-wal
+ create mode 100644 .browser_data_dir/Default/DawnGraphiteCache/data_0
+ create mode 100644 .browser_data_dir/Default/DawnGraphiteCache/data_1
+ create mode 100644 .browser_data_dir/Default/DawnGraphiteCache/data_2
+ create mode 100644 .browser_data_dir/Default/DawnGraphiteCache/data_3
+ create mode 100644 .browser_data_dir/Default/DawnGraphiteCache/index
+ create mode 100644 .browser_data_dir/Default/DawnWebGPUCache/data_0
+ create mode 100644 .browser_data_dir/Default/DawnWebGPUCache/data_1
+ create mode 100644 .browser_data_dir/Default/DawnWebGPUCache/data_2
+ create mode 100644 .browser_data_dir/Default/DawnWebGPUCache/data_3
+ create mode 100644 .browser_data_dir/Default/DawnWebGPUCache/index
+ create mode 100644 .browser_data_dir/Default/Download Service/EntryDB/LOCK
+ create mode 100644 .browser_data_dir/Default/Download Service/EntryDB/LOG
+ create mode 100644 .browser_data_dir/Default/Download Service/EntryDB/LOG.old
+ create mode 100644 .browser_data_dir/Default/Extension Rules/000003.log
+ create mode 100644 .browser_data_dir/Default/Extension Rules/CURRENT
+ create mode 100644 .browser_data_dir/Default/Extension Rules/LOCK
+ create mode 100644 .browser_data_dir/Default/Extension Rules/LOG
+ create mode 100644 .browser_data_dir/Default/Extension Rules/LOG.old
+ create mode 100644 .browser_data_dir/Default/Extension Rules/MANIFEST-000001
+ create mode 100644 .browser_data_dir/Default/Extension Scripts/000003.log
+ create mode 100644 .browser_data_dir/Default/Extension Scripts/CURRENT
+ create mode 100644 .browser_data_dir/Default/Extension Scripts/LOCK
+ create mode 100644 .browser_data_dir/Default/Extension Scripts/LOG
+ create mode 100644 .browser_data_dir/Default/Extension Scripts/LOG.old
+ create mode 100644 .browser_data_dir/Default/Extension Scripts/MANIFEST-000001
+ create mode 100644 .browser_data_dir/Default/Extension State/000003.log
+ create mode 100644 .browser_data_dir/Default/Extension State/CURRENT
+ create mode 100644 .browser_data_dir/Default/Extension State/LOCK
+ create mode 100644 .browser_data_dir/Default/Extension State/LOG
+ create mode 100644 .browser_data_dir/Default/Extension State/LOG.old
+ create mode 100644 .browser_data_dir/Default/Extension State/MANIFEST-000001
+ create mode 100644 .browser_data_dir/Default/Favicons
+ create mode 100644 .browser_data_dir/Default/Favicons-journal
+ create mode 100644 .browser_data_dir/Default/Feature Engagement Tracker/AvailabilityDB/LOCK
+ create mode 100644 .browser_data_dir/Default/Feature Engagement Tracker/AvailabilityDB/LOG
+ create mode 100644 .browser_data_dir/Default/Feature Engagement Tracker/AvailabilityDB/LOG.old
+ create mode 100644 .browser_data_dir/Default/Feature Engagement Tracker/EventDB/LOCK
+ create mode 100644 .browser_data_dir/Default/Feature Engagement Tracker/EventDB/LOG
+ create mode 100644 .browser_data_dir/Default/Feature Engagement Tracker/EventDB/LOG.old
+ create mode 100644 .browser_data_dir/Default/GCM Store/000003.log
+ create mode 100644 .browser_data_dir/Default/GCM Store/CURRENT
+ create mode 100644 .browser_data_dir/Default/GCM Store/Encryption/000003.log
+ create mode 100644 .browser_data_dir/Default/GCM Store/Encryption/CURRENT
+ create mode 100644 .browser_data_dir/Default/GCM Store/Encryption/LOCK
+ create mode 100644 .browser_data_dir/Default/GCM Store/Encryption/LOG
+ create mode 100644 .browser_data_dir/Default/GCM Store/Encryption/LOG.old
+ create mode 100644 .browser_data_dir/Default/GCM Store/Encryption/MANIFEST-000001
+ create mode 100644 .browser_data_dir/Default/GCM Store/LOCK
+ create mode 100644 .browser_data_dir/Default/GCM Store/LOG
+ create mode 100644 .browser_data_dir/Default/GCM Store/LOG.old
+ create mode 100644 .browser_data_dir/Default/GCM Store/MANIFEST-000001
+ create mode 100644 .browser_data_dir/Default/GPUCache/data_0
+ create mode 100644 .browser_data_dir/Default/GPUCache/data_1
+ create mode 100644 .browser_data_dir/Default/GPUCache/data_2
+ create mode 100644 .browser_data_dir/Default/GPUCache/data_3
+ create mode 100644 .browser_data_dir/Default/GPUCache/index
+ create mode 100644 .browser_data_dir/Default/History
+ create mode 100644 .browser_data_dir/Default/History-journal
+ create mode 100644 .browser_data_dir/Default/LOCK
+ create mode 100644 .browser_data_dir/Default/LOG
+ create mode 100644 .browser_data_dir/Default/LOG.old
+ create mode 100644 .browser_data_dir/Default/Local Storage/leveldb/000003.log
+ create mode 100644 .browser_data_dir/Default/Local Storage/leveldb/CURRENT
+ create mode 100644 .browser_data_dir/Default/Local Storage/leveldb/LOCK
+ create mode 100644 .browser_data_dir/Default/Local Storage/leveldb/LOG
+ create mode 100644 .browser_data_dir/Default/Local Storage/leveldb/LOG.old
+ create mode 100644 .browser_data_dir/Default/Local Storage/leveldb/MANIFEST-000001
+ create mode 100644 .browser_data_dir/Default/Login Data
+ create mode 100644 .browser_data_dir/Default/Login Data For Account
+ create mode 100644 .browser_data_dir/Default/Login Data For Account-journal
+ create mode 100644 .browser_data_dir/Default/Login Data-journal
+ create mode 100644 .browser_data_dir/Default/MediaDeviceSalts
+ create mode 100644 .browser_data_dir/Default/MediaDeviceSalts-journal
+ create mode 100644 .browser_data_dir/Default/Network Action Predictor
+ create mode 100644 .browser_data_dir/Default/Network Action Predictor-journal
+ create mode 100644 .browser_data_dir/Default/Network Persistent State
+ create mode 100644 .browser_data_dir/Default/PersistentOriginTrials/LOCK
+ create mode 100644 .browser_data_dir/Default/PersistentOriginTrials/LOG
+ create mode 100644 .browser_data_dir/Default/PersistentOriginTrials/LOG.old
+ create mode 100644 .browser_data_dir/Default/Preferences
+ create mode 100644 .browser_data_dir/Default/PreferredApps
+ create mode 100644 .browser_data_dir/Default/README
+ create mode 100644 .browser_data_dir/Default/Reporting and NEL
+ create mode 100644 .browser_data_dir/Default/Reporting and NEL-journal
+ create mode 100644 .browser_data_dir/Default/SCT Auditing Pending Reports
+ create mode 100644 .browser_data_dir/Default/Secure Preferences
+ create mode 100644 .browser_data_dir/Default/Segmentation Platform/SegmentInfoDB/LOCK
+ create mode 100644 .browser_data_dir/Default/Segmentation Platform/SegmentInfoDB/LOG
+ create mode 100644 .browser_data_dir/Default/Segmentation Platform/SegmentInfoDB/LOG.old
+ create mode 100644 .browser_data_dir/Default/Segmentation Platform/SignalDB/LOCK
+ create mode 100644 .browser_data_dir/Default/Segmentation Platform/SignalDB/LOG
+ create mode 100644 .browser_data_dir/Default/Segmentation Platform/SignalDB/LOG.old
+ create mode 100644 .browser_data_dir/Default/Segmentation Platform/SignalStorageConfigDB/LOCK
+ create mode 100644 .browser_data_dir/Default/Segmentation Platform/SignalStorageConfigDB/LOG
+ create mode 100644 .browser_data_dir/Default/Segmentation Platform/SignalStorageConfigDB/LOG.old
+ create mode 100644 .browser_data_dir/Default/ServerCertificate
+ create mode 100644 .browser_data_dir/Default/ServerCertificate-journal
+ create mode 100644 .browser_data_dir/Default/Service Worker/Database/000003.log
+ create mode 100644 .browser_data_dir/Default/Service Worker/Database/CURRENT
+ create mode 100644 .browser_data_dir/Default/Service Worker/Database/LOCK
+ create mode 100644 .browser_data_dir/Default/Service Worker/Database/LOG
+ create mode 100644 .browser_data_dir/Default/Service Worker/Database/LOG.old
+ create mode 100644 .browser_data_dir/Default/Service Worker/Database/MANIFEST-000001
+ create mode 100644 .browser_data_dir/Default/Service Worker/ScriptCache/index
+ create mode 100644 .browser_data_dir/Default/Service Worker/ScriptCache/index-dir/the-real-index
+ create mode 100644 .browser_data_dir/Default/Session Storage/000003.log
+ create mode 100644 .browser_data_dir/Default/Session Storage/CURRENT
+ create mode 100644 .browser_data_dir/Default/Session Storage/LOCK
+ create mode 100644 .browser_data_dir/Default/Session Storage/LOG
+ create mode 100644 .browser_data_dir/Default/Session Storage/LOG.old
+ create mode 100644 .browser_data_dir/Default/Session Storage/MANIFEST-000001
+ create mode 100644 .browser_data_dir/Default/Sessions/Session_13430559134233265
+ create mode 100644 .browser_data_dir/Default/Sessions/Session_13431528971824478
+ create mode 100644 .browser_data_dir/Default/Sessions/Tabs_13430559136950986
+ create mode 100644 .browser_data_dir/Default/Sessions/Tabs_13431528973010669
+ create mode 100644 .browser_data_dir/Default/Shared Dictionary/cache/index
+ create mode 100644 .browser_data_dir/Default/Shared Dictionary/cache/index-dir/the-real-index
+ create mode 100644 .browser_data_dir/Default/Shared Dictionary/db
+ create mode 100644 .browser_data_dir/Default/Shared Dictionary/db-journal
+ create mode 100644 .browser_data_dir/Default/SharedStorage
+ create mode 100644 .browser_data_dir/Default/SharedStorage-wal
+ create mode 100644 .browser_data_dir/Default/Shortcuts
+ create mode 100644 .browser_data_dir/Default/Shortcuts-journal
+ create mode 100644 .browser_data_dir/Default/Site Characteristics Database/000003.log
+ create mode 100644 .browser_data_dir/Default/Site Characteristics Database/CURRENT
+ create mode 100644 .browser_data_dir/Default/Site Characteristics Database/LOCK
+ create mode 100644 .browser_data_dir/Default/Site Characteristics Database/LOG
+ create mode 100644 .browser_data_dir/Default/Site Characteristics Database/LOG.old
+ create mode 100644 .browser_data_dir/Default/Site Characteristics Database/MANIFEST-000001
+ create mode 100644 .browser_data_dir/Default/Sync Data/LevelDB/000003.log
+ create mode 100644 .browser_data_dir/Default/Sync Data/LevelDB/CURRENT
+ create mode 100644 .browser_data_dir/Default/Sync Data/LevelDB/LOCK
+ create mode 100644 .browser_data_dir/Default/Sync Data/LevelDB/LOG
+ create mode 100644 .browser_data_dir/Default/Sync Data/LevelDB/LOG.old
+ create mode 100644 .browser_data_dir/Default/Sync Data/LevelDB/MANIFEST-000001
+ create mode 100644 .browser_data_dir/Default/Top Sites
+ create mode 100644 .browser_data_dir/Default/Top Sites-journal
+ create mode 100644 .browser_data_dir/Default/TransportSecurity
+ create mode 100644 .browser_data_dir/Default/Trust Tokens
+ create mode 100644 .browser_data_dir/Default/Trust Tokens-journal
+ create mode 100644 .browser_data_dir/Default/Web Data
+ create mode 100644 .browser_data_dir/Default/Web Data-journal
+ create mode 100644 .browser_data_dir/Default/WebStorage/QuotaManager
+ create mode 100644 .browser_data_dir/Default/WebStorage/QuotaManager-journal
+ create mode 100644 .browser_data_dir/Default/chrome_cart_db/LOCK
+ create mode 100644 .browser_data_dir/Default/chrome_cart_db/LOG
+ create mode 100644 .browser_data_dir/Default/chrome_cart_db/LOG.old
+ create mode 100644 .browser_data_dir/Default/commerce_subscription_db/LOCK
+ create mode 100644 .browser_data_dir/Default/commerce_subscription_db/LOG
+ create mode 100644 .browser_data_dir/Default/commerce_subscription_db/LOG.old
+ create mode 100644 .browser_data_dir/Default/declarative_performance_observer.db
+ create mode 100644 .browser_data_dir/Default/declarative_performance_observer.db-journal
+ create mode 100644 .browser_data_dir/Default/discount_infos_db/LOCK
+ create mode 100644 .browser_data_dir/Default/discount_infos_db/LOG
+ create mode 100644 .browser_data_dir/Default/discount_infos_db/LOG.old
+ create mode 100644 .browser_data_dir/Default/discounts_db/LOCK
+ create mode 100644 .browser_data_dir/Default/discounts_db/LOG
+ create mode 100644 .browser_data_dir/Default/discounts_db/LOG.old
+ create mode 100644 .browser_data_dir/Default/engine_allowlist.bf
+ create mode 100644 .browser_data_dir/Default/heavy_ad_intervention_opt_out.db
+ create mode 100644 .browser_data_dir/Default/heavy_ad_intervention_opt_out.db-journal
+ create mode 100644 .browser_data_dir/Default/optimization_guide_hint_cache_store/LOCK
+ create mode 100644 .browser_data_dir/Default/optimization_guide_hint_cache_store/LOG
+ create mode 100644 .browser_data_dir/Default/optimization_guide_hint_cache_store/LOG.old
+ create mode 100644 .browser_data_dir/Default/parcel_tracking_db/LOCK
+ create mode 100644 .browser_data_dir/Default/parcel_tracking_db/LOG
+ create mode 100644 .browser_data_dir/Default/parcel_tracking_db/LOG.old
+ create mode 100644 .browser_data_dir/Default/shared_proto_db/000003.log
+ create mode 100644 .browser_data_dir/Default/shared_proto_db/CURRENT
+ create mode 100644 .browser_data_dir/Default/shared_proto_db/LOCK
+ create mode 100644 .browser_data_dir/Default/shared_proto_db/LOG
+ create mode 100644 .browser_data_dir/Default/shared_proto_db/LOG.old
+ create mode 100644 .browser_data_dir/Default/shared_proto_db/MANIFEST-000001
+ create mode 100644 .browser_data_dir/Default/shared_proto_db/metadata/000003.log
+ create mode 100644 .browser_data_dir/Default/shared_proto_db/metadata/CURRENT
+ create mode 100644 .browser_data_dir/Default/shared_proto_db/metadata/LOCK
+ create mode 100644 .browser_data_dir/Default/shared_proto_db/metadata/LOG
+ create mode 100644 .browser_data_dir/Default/shared_proto_db/metadata/LOG.old
+ create mode 100644 .browser_data_dir/Default/shared_proto_db/metadata/MANIFEST-000001
+ create mode 100644 .browser_data_dir/Default/trusted_vault.pb
+ create mode 100644 .browser_data_dir/Dictionaries/en-US-10-1.bdic
+ create mode 100644 .browser_data_dir/FileTypePolicies/145.0.7584.0/_metadata/verified_contents.json
+ create mode 100755 .browser_data_dir/FileTypePolicies/145.0.7584.0/download_file_types.pb
+ create mode 100644 .browser_data_dir/FileTypePolicies/145.0.7584.0/manifest.json
+ create mode 100644 .browser_data_dir/FirstPartySetsPreloaded/2025.7.24.0/LICENSE
+ create mode 100644 .browser_data_dir/FirstPartySetsPreloaded/2025.7.24.0/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/FirstPartySetsPreloaded/2025.7.24.0/manifest.json
+ create mode 100644 .browser_data_dir/FirstPartySetsPreloaded/2025.7.24.0/sets.json
+ create mode 100644 .browser_data_dir/GPUPersistentCache/GPUCache/YTGNBSWHY7FXQOGW3B7XXSAF4R2QSLIY/cache.db
+ create mode 100644 .browser_data_dir/GPUPersistentCache/GPUCache/YTGNBSWHY7FXQOGW3B7XXSAF4R2QSLIY/cache.db-wal
+ create mode 100644 .browser_data_dir/Last Version
+ create mode 100644 .browser_data_dir/Local State
+ create mode 100644 .browser_data_dir/MEIPreload/1.1.0.3/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/MEIPreload/1.1.0.3/manifest.json
+ create mode 100755 .browser_data_dir/MEIPreload/1.1.0.3/preloaded_data.pb
+ create mode 100644 .browser_data_dir/OnDeviceHeadSuggestModel/20251024.824731831.14/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/OnDeviceHeadSuggestModel/20251024.824731831.14/cr_en-us_500000_index.bin
+ create mode 100644 .browser_data_dir/OnDeviceHeadSuggestModel/20251024.824731831.14/manifest.json
+ create mode 100644 .browser_data_dir/OptimizationHints/728/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/OptimizationHints/728/manifest.json
+ create mode 100644 .browser_data_dir/OptimizationHints/728/optimization-hints.pb
+ create mode 100644 .browser_data_dir/PKIMetadata/1748/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/PKIMetadata/1748/crs.pb
+ create mode 100644 .browser_data_dir/PKIMetadata/1748/ct_config.pb
+ create mode 100644 .browser_data_dir/PKIMetadata/1748/kp_pinslist.pb
+ create mode 100644 .browser_data_dir/PKIMetadata/1748/manifest.json
+ create mode 100644 .browser_data_dir/PKIMetadata/1748/mtc_config.pb
+ create mode 100644 .browser_data_dir/PrivacySandboxAttestationsPreloaded/2025.6.16.0/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/PrivacySandboxAttestationsPreloaded/2025.6.16.0/manifest.json
+ create mode 100644 .browser_data_dir/PrivacySandboxAttestationsPreloaded/2025.6.16.0/privacy-sandbox-attestations.dat
+ create mode 100644 .browser_data_dir/SSLErrorAssistant/7/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/SSLErrorAssistant/7/manifest.json
+ create mode 100755 .browser_data_dir/SSLErrorAssistant/7/ssl_error_assistant.pb
+ create mode 100644 .browser_data_dir/SafetyTips/3091/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/SafetyTips/3091/manifest.json
+ create mode 100755 .browser_data_dir/SafetyTips/3091/safety_tips.pb
+ create mode 120000 .browser_data_dir/SingletonCookie
+ create mode 120000 .browser_data_dir/SingletonLock
+ create mode 120000 .browser_data_dir/SingletonSocket
+ create mode 100644 .browser_data_dir/Subresource Filter/Indexed Rules/38/9.70.0/Ruleset Data
+ create mode 100644 .browser_data_dir/Subresource Filter/Unindexed Rules/9.70.0/Filtering Rules
+ create mode 100644 .browser_data_dir/Subresource Filter/Unindexed Rules/9.70.0/LICENSE.txt
+ create mode 100644 .browser_data_dir/Subresource Filter/Unindexed Rules/9.70.0/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/Subresource Filter/Unindexed Rules/9.70.0/manifest.json
+ create mode 100644 .browser_data_dir/TrustTokenKeyCommitments/2026.8.3.1/LICENSE
+ create mode 100644 .browser_data_dir/TrustTokenKeyCommitments/2026.8.3.1/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/TrustTokenKeyCommitments/2026.8.3.1/keys.json
+ create mode 100644 .browser_data_dir/TrustTokenKeyCommitments/2026.8.3.1/manifest.json
+ create mode 100644 .browser_data_dir/Variations
+ create mode 100644 .browser_data_dir/WasmTtsEngine/20260806.1/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/WasmTtsEngine/20260806.1/background_compiled.js
+ create mode 100644 .browser_data_dir/WasmTtsEngine/20260806.1/bindings_main.js
+ create mode 100644 .browser_data_dir/WasmTtsEngine/20260806.1/bindings_main.wasm
+ create mode 100644 .browser_data_dir/WasmTtsEngine/20260806.1/manifest.json
+ create mode 100644 .browser_data_dir/WasmTtsEngine/20260806.1/offscreen.html
+ create mode 100644 .browser_data_dir/WasmTtsEngine/20260806.1/offscreen_compiled.js
+ create mode 100644 .browser_data_dir/WasmTtsEngine/20260806.1/streaming_worklet_processor.js
+ create mode 100644 .browser_data_dir/WasmTtsEngine/20260806.1/voices.json
+ create mode 100644 .browser_data_dir/WasmTtsEngine/20260806.1/wasm_tts_manifest_v3.json
+ create mode 100644 .browser_data_dir/ZxcvbnData/3/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/ZxcvbnData/3/english_wikipedia.txt
+ create mode 100644 .browser_data_dir/ZxcvbnData/3/female_names.txt
+ create mode 100644 .browser_data_dir/ZxcvbnData/3/male_names.txt
+ create mode 100644 .browser_data_dir/ZxcvbnData/3/manifest.json
+ create mode 100644 .browser_data_dir/ZxcvbnData/3/passwords.txt
+ create mode 100644 .browser_data_dir/ZxcvbnData/3/ranked_dicts
+ create mode 100644 .browser_data_dir/ZxcvbnData/3/surnames.txt
+ create mode 100644 .browser_data_dir/ZxcvbnData/3/us_tv_and_film.txt
+ create mode 100644 .browser_data_dir/component_crx_cache/0f00f599331407c475b724e344180f211a4f9e70a78226d976d9cf0fb94dc023
+ create mode 100644 .browser_data_dir/component_crx_cache/269b53acf425802431432dd578284e91a80d505b6a0d06b16e1917bbb7dfec99
+ create mode 100644 .browser_data_dir/component_crx_cache/4eac288c2bca5c365c25f59e5381ade56a1dac9f5fe24c7173432d0063a95fe7
+ create mode 100644 .browser_data_dir/component_crx_cache/57d139ba6ba3160287788817c3bf3228d44720b80144f66d583d4de0730a5d27
+ create mode 100644 .browser_data_dir/component_crx_cache/949ff89611e4c99870c839177d2528b3949036716d8a10f7a24d1a90346da809
+ create mode 100644 .browser_data_dir/component_crx_cache/metadata.json
+ create mode 100644 .browser_data_dir/extensions_crx_cache/metadata.json
+ create mode 100644 .browser_data_dir/first_party_sets.db
+ create mode 100644 .browser_data_dir/first_party_sets.db-journal
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/_metadata/verified_contents.json
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-af.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-as.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-be.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-bg.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-bn.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-cs.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-cu.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-cy.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-da.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-de-1901.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-de-1996.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-de-ch-1901.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-el.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-en-gb.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-en-us.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-es.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-et.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-eu.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-fr.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-ga.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-gl.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-gu.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-hi.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-hr.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-hu.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-hy.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-it.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-ka.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-kn.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-la.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-lt.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-lv.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-ml.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-mn-cyrl.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-mr.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-mul-ethi.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-nb.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-nl.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-nn.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-or.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-pa.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-pt.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-ru.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-sk.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-sl.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-sq.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-sv.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-ta.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-te.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-tk.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-uk.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/hyph-und-ethi.hyb
+ create mode 100644 .browser_data_dir/hyphen-data/120.0.6050.0/manifest.json
+ create mode 100644 .browser_data_dir/segmentation_platform/ukm_db
+ create mode 100644 .browser_data_dir/segmentation_platform/ukm_db-wal
+ create mode 100644 .env
+ create mode 100644 .gdrive-rclone.ini
+ create mode 100644 .gitconfig
+ create mode 100644 .gitignore
+ create mode 100644 .manus/config/multiAccounts.json
+ create mode 160000 .nvm
+ create mode 100644 .profile
+ create mode 100644 .safety_warning.md
+ create mode 100644 .secrets/sandbox_api_token
+ create mode 100644 .sudo_as_admin_successful
+ create mode 100644 .user_env
+ create mode 100644 .zshrc
+ create mode 100644 README.md
+ create mode 100644 README_V2.md
+ create mode 100644 README_V3.md
+ create mode 100644 README_V4.md
+ create mode 100644 README_V5.md
+ create mode 100644 agente_local_audio.py
+ create mode 100644 agente_local_core.py
+ create mode 100644 agente_local_core_v2.py
+ create mode 100644 agente_local_llm.py
+ create mode 100644 agente_local_ui.py
+ create mode 100644 agente_local_ui_v2.py
+ create mode 100644 agente_local_vision.py
+ create mode 100644 agente_local_voz.py
+ create mode 100644 agente_local_watcher.py
+ create mode 100644 cognition/.gitkeep
+ create mode 100644 cognition/self_modifying_core.py
+ create mode 100644 cognition/world_model.py
+ create mode 100644 deep_time/dna_storage.py
+ create mode 100644 diseno_arquitectura_LIOS_V4.md
+ create mode 100644 diseno_arquitectura_LIOS_V5.md
+ create mode 100644 diseno_arquitectura_agente_local.md
+ create mode 100644 diseno_arquitectura_avanzada.md
+ create mode 100644 investigacion_agente_avanzado.md
+ create mode 100644 investigacion_agente_local.md
+ create mode 100644 investigacion_notificaciones.md
+ create mode 100644 knowledge_curator.py
+ create mode 100644 legacy_broker.py
+ create mode 100644 main_agente.py
+ create mode 100644 main_agente_v2.py
+ create mode 100644 main_agente_v3.py
+ create mode 100644 main_agente_v4.py
+ create mode 100644 main_agente_v5.py
+ create mode 100644 ontology/kill_switch_ontological.py
+ create mode 100644 pattern_archivist.py
+ create mode 100644 physics/thermodynamic_optimizer.py
+ create mode 100644 requirements.txt
+ create mode 100644 sandbox.txt
+ create mode 100644 skills/.skill_versions.json
+ create mode 100644 skills/automation-and-scheduling/SKILL.md
+ create mode 100644 skills/automation-and-scheduling/references/implementation-patterns.md
+ create mode 100644 skills/builtin-llm-models/SKILL.md
+ create mode 100644 skills/builtin-llm-models/scripts/llm_batch.py
+ create mode 100644 skills/data-backup-restoration/SKILL.md
+ create mode 100644 skills/data-backup-restoration/references/mobile-apps.md
+ create mode 100644 skills/data-backup-restoration/references/websites.md
+ create mode 100644 skills/finance-pro-playbooks/SKILL.md
+ create mode 100644 skills/finance-pro-playbooks/formats/document_standards.md
+ create mode 100644 skills/finance-pro-playbooks/formats/excel_standards.md
+ create mode 100644 skills/finance-pro-playbooks/formats/metric_disambiguation.md
+ create mode 100644 skills/finance-pro-playbooks/references/company_analysis.md
+ create mode 100644 skills/finance-pro-playbooks/references/deal_materials.md
+ create mode 100644 skills/finance-pro-playbooks/references/due_diligence.md
+ create mode 100644 skills/finance-pro-playbooks/references/financial_models.md
+ create mode 100644 skills/finance-pro-playbooks/references/lbo_structuring.md
+ create mode 100644 skills/finance-pro-playbooks/references/market_research.md
+ create mode 100644 skills/finance-pro-playbooks/references/returns_analysis.md
+ create mode 100644 skills/finance-pro-playbooks/references/valuation.md
+ create mode 100644 skills/game-dev/LICENSE.txt
+ create mode 100644 skills/game-dev/NOTICE.md
+ create mode 100644 skills/game-dev/SKILL.md
+ create mode 100644 skills/game-dev/references/godogen-stages/architecture.md
+ create mode 100644 skills/game-dev/references/godogen-stages/asset-gen.md
+ create mode 100644 skills/game-dev/references/godogen-stages/asset-planner.md
+ create mode 100644 skills/game-dev/references/godogen-stages/capture.md
+ create mode 100644 skills/game-dev/references/godogen-stages/decomposer.md
+ create mode 100644 skills/game-dev/references/godogen-stages/godogen-skill-overview.md
+ create mode 100644 skills/game-dev/references/godogen-stages/quirks.md
+ create mode 100644 skills/game-dev/references/godogen-stages/rembg.md
+ create mode 100644 skills/game-dev/references/godogen-stages/scaffold.md
+ create mode 100644 skills/game-dev/references/godogen-stages/scene-generation.md
+ create mode 100644 skills/game-dev/references/godogen-stages/task-execution.md
+ create mode 100644 skills/game-dev/references/godogen-stages/visual-target.md
+ create mode 100644 skills/game-dev/references/manus-adaptations.md
+ create mode 100644 skills/game-dev/templates/GameCanvas.tsx
+ create mode 100644 skills/gws-best-practices/SKILL.md
+ create mode 100644 skills/imagegen/LICENSE.txt
+ create mode 100644 skills/imagegen/SKILL.md
+ create mode 100644 skills/imagegen/references/prompt-recipes.md
+ create mode 100644 skills/imagegen/references/quality-checklist.md
+ create mode 100644 skills/imagegen/references/scene-decision-matrix.md
+ create mode 100644 skills/manus-api/SKILL.md
+ create mode 100644 skills/manus-api/docs/v1/api-overview.mdx
+ create mode 100644 skills/manus-api/docs/v1/connectors/gmail.mdx
+ create mode 100644 skills/manus-api/docs/v1/connectors/google-calendar.mdx
+ create mode 100644 skills/manus-api/docs/v1/connectors/notion.mdx
+ create mode 100644 skills/manus-api/docs/v1/connectors/overview.mdx
+ create mode 100644 skills/manus-api/docs/v1/create-file.mdx
+ create mode 100644 skills/manus-api/docs/v1/create-project.mdx
+ create mode 100644 skills/manus-api/docs/v1/create-task.mdx
+ create mode 100644 skills/manus-api/docs/v1/create-webhook.mdx
+ create mode 100644 skills/manus-api/docs/v1/data-integrations/overview.mdx
+ create mode 100644 skills/manus-api/docs/v1/data-integrations/similarweb.mdx
+ create mode 100644 skills/manus-api/docs/v1/delete-file.mdx
+ create mode 100644 skills/manus-api/docs/v1/delete-task.mdx
+ create mode 100644 skills/manus-api/docs/v1/delete-webhook.mdx
+ create mode 100644 skills/manus-api/docs/v1/get-file.mdx
+ create mode 100644 skills/manus-api/docs/v1/get-task.mdx
+ create mode 100644 skills/manus-api/docs/v1/get-tasks.mdx
+ create mode 100644 skills/manus-api/docs/v1/integrations/overview.mdx
+ create mode 100644 skills/manus-api/docs/v1/integrations/slack.mdx
+ create mode 100644 skills/manus-api/docs/v1/list-files.mdx
+ create mode 100644 skills/manus-api/docs/v1/list-projects.mdx
+ create mode 100644 skills/manus-api/docs/v1/openai-compatibility/overview.mdx
+ create mode 100644 skills/manus-api/docs/v1/openapi.json
+ create mode 100644 skills/manus-api/docs/v1/overview.mdx
+ create mode 100644 skills/manus-api/docs/v1/quickstart.mdx
+ create mode 100644 skills/manus-api/docs/v1/update-task.mdx
+ create mode 100644 skills/manus-api/docs/v1/webhooks.mdx
+ create mode 100644 skills/manus-api/docs/v1/webhooks/overview.mdx
+ create mode 100644 skills/manus-api/docs/v1/webhooks/security.mdx
+ create mode 100644 skills/manus-api/docs/v2/agent.detail.mdx
+ create mode 100644 skills/manus-api/docs/v2/agent.list.mdx
+ create mode 100644 skills/manus-api/docs/v2/agent.update.mdx
+ create mode 100644 skills/manus-api/docs/v2/agents-overview.mdx
+ create mode 100644 skills/manus-api/docs/v2/authentication.mdx
+ create mode 100644 skills/manus-api/docs/v2/browser.onlineList.mdx
+ create mode 100644 skills/manus-api/docs/v2/connector.list.mdx
+ create mode 100644 skills/manus-api/docs/v2/connectors.mdx
+ create mode 100644 skills/manus-api/docs/v2/data-integrations-overview.mdx
+ create mode 100644 skills/manus-api/docs/v2/data-integrations-similarweb.mdx
+ create mode 100644 skills/manus-api/docs/v2/file.delete.mdx
+ create mode 100644 skills/manus-api/docs/v2/file.detail.mdx
+ create mode 100644 skills/manus-api/docs/v2/file.upload.mdx
+ create mode 100644 skills/manus-api/docs/v2/integrations-overview.mdx
+ create mode 100644 skills/manus-api/docs/v2/integrations-slack.mdx
+ create mode 100644 skills/manus-api/docs/v2/introduction.mdx
+ create mode 100644 skills/manus-api/docs/v2/open-app.mdx
+ create mode 100644 skills/manus-api/docs/v2/openapi_v2.json
+ create mode 100644 skills/manus-api/docs/v2/project.create.mdx
+ create mode 100644 skills/manus-api/docs/v2/project.list.mdx
+ create mode 100644 skills/manus-api/docs/v2/rate-limits.mdx
+ create mode 100644 skills/manus-api/docs/v2/skill.list.mdx
+ create mode 100644 skills/manus-api/docs/v2/structured-output.mdx
+ create mode 100644 skills/manus-api/docs/v2/task-lifecycle.mdx
+ create mode 100644 skills/manus-api/docs/v2/task.confirmAction.mdx
+ create mode 100644 skills/manus-api/docs/v2/task.create.mdx
+ create mode 100644 skills/manus-api/docs/v2/task.delete.mdx
+ create mode 100644 skills/manus-api/docs/v2/task.detail.mdx
+ create mode 100644 skills/manus-api/docs/v2/task.list.mdx
+ create mode 100644 skills/manus-api/docs/v2/task.listMessages.mdx
+ create mode 100644 skills/manus-api/docs/v2/task.sendMessage.mdx
+ create mode 100644 skills/manus-api/docs/v2/task.stop.mdx
+ create mode 100644 skills/manus-api/docs/v2/task.update.mdx
+ create mode 100644 skills/manus-api/docs/v2/usage.availableCredits.mdx
+ create mode 100644 skills/manus-api/docs/v2/usage.list.mdx
+ create mode 100644 skills/manus-api/docs/v2/usage.teamLog.mdx
+ create mode 100644 skills/manus-api/docs/v2/usage.teamStatistic.mdx
+ create mode 100644 skills/manus-api/docs/v2/webhook.create.mdx
+ create mode 100644 skills/manus-api/docs/v2/webhook.delete.mdx
+ create mode 100644 skills/manus-api/docs/v2/webhook.list.mdx
+ create mode 100644 skills/manus-api/docs/v2/webhook.publicKey.mdx
+ create mode 100644 skills/manus-api/docs/v2/webhooks-overview.mdx
+ create mode 100644 skills/manus-api/docs/v2/webhooks-security.mdx
+ create mode 100644 skills/manus-api/docs/v2/website.listCheckpoints.mdx
+ create mode 100644 skills/manus-api/docs/v2/website.mdx
+ create mode 100644 skills/manus-api/docs/v2/website.publish.mdx
+ create mode 100644 skills/manus-api/docs/v2/website.status.mdx
+ create mode 100644 skills/manus-api/docs/v2/website.update.mdx
+ create mode 100644 skills/manus-config/SKILL.md
+ create mode 100644 skills/manus-pptx/SKILL.md
+ create mode 100644 skills/music-prompter/SKILL.md
+ create mode 100644 skills/persistent-computing/SKILL.md
+ create mode 100644 skills/persistent-computing/references/cloud-computer-reference.md
+ create mode 100644 skills/persistent-computing/references/migrate-webdev-to-cloud-computer.md
+ create mode 100644 skills/persistent-computing/references/reserved-hosting-reference.md
+ create mode 100644 skills/persistent-computing/references/work-with-connectors.md
+ create mode 100644 skills/read-special-images/SKILL.md
+ create mode 100644 skills/read-special-images/agents/openai.yaml
+ create mode 100644 skills/read-special-images/scripts/slice_image.py
+ create mode 100644 skills/skill-creator/LICENSE.txt
+ create mode 100644 skills/skill-creator/SKILL.md
+ create mode 100644 skills/skill-creator/references/output-patterns.md
+ create mode 100644 skills/skill-creator/references/progressive-disclosure-patterns.md
+ create mode 100644 skills/skill-creator/references/workflows.md
+ create mode 100644 skills/skill-creator/scripts/init_skill.py
+ create mode 100644 skills/skill-creator/scripts/quick_validate.py
+ create mode 100644 skills/tts-prompter/SKILL.md
+ create mode 100644 skills/typst-pdf-maker/SKILL.md
+ create mode 100644 skills/typst-pdf-maker/assets/markdown-entry.typ
+ create mode 100644 skills/typst-pdf-maker/assets/report-entry.typ
+ create mode 100644 skills/typst-pdf-maker/assets/report-theme.typ
+ create mode 100644 skills/typst-pdf-maker/references/layout-rhythm.md
+ create mode 100644 skills/typst-pdf-maker/references/production-workflow.md
+ create mode 100644 skills/typst-pdf-maker/references/routing-catalog.json
+ create mode 100644 skills/typst-pdf-maker/references/typst-patterns.md
+ create mode 100755 skills/typst-pdf-maker/scripts/generate_pdf.py
+ create mode 100644 skills/typst-pdf-maker/scripts/plan_document.py
+ create mode 100644 skills/typst-pdf-maker/scripts/prepare_document.py
+ create mode 100755 skills/typst-pdf-maker/scripts/render_review.py
+ create mode 100644 skills/typst-pdf-maker/scripts/verify_pdf.py
+ create mode 100644 skills/webdev-custom-dockerfile/SKILL.md
+ create mode 100644 skills/webdev-data-api/SKILL.md
+ create mode 100644 skills/webdev-file-storage/SKILL.md
+ create mode 100644 skills/webdev-image-generation/SKILL.md
+ create mode 100644 skills/webdev-llm-integration/SKILL.md
+ create mode 100644 skills/webdev-manus-oauth/SKILL.md
+ create mode 100644 skills/webdev-maps-integration/SKILL.md
+ create mode 100644 skills/webdev-owner-notifications/SKILL.md
+ create mode 100644 skills/webdev-periodic-updates/SKILL.md
+ create mode 100644 skills/webdev-readme-fullstack/SKILL.md
+ create mode 100644 skills/webdev-readme-mobile-backend/SKILL.md
+ create mode 100644 skills/webdev-readme-mobile/SKILL.md
+ create mode 100644 skills/webdev-readme-static/SKILL.md
+ create mode 100644 skills/webdev-ssr-conversion/SKILL.md
+ create mode 100644 skills/webdev-ssr-conversion/references/pitfalls.md
+ create mode 100644 skills/webdev-ssr-conversion/references/ssr-playbook.md
+ create mode 100755 skills/webdev-ssr-conversion/scripts/verify-ssr.sh
+ create mode 100644 skills/webdev-voice-transcription/SKILL.md
+ create mode 100644 terminal_full_output/2026-08-18_11-50-25_977244_1129.txt
+ create mode 100644 terminal_full_output/2026-08-18_11-51-27_231977_1129.txt
+ create mode 100644 upload/pasted_content.txt
+ create mode 100644 upload/pasted_content_2.txt
+ create mode 100644 upload/pasted_content_3.txt
+ create mode 100644 upload/pasted_content_4.txt
+ create mode 100644 upload/pasted_content_5.txt
+[0;32m✓[0m Created repository belentani7/lios-v5-event-horizon on github.com
+  https://github.com/belentani7/lios-v5-event-horizon
+[0;32m✓[0m Added remote https://github.com/belentani7/lios-v5-event-horizon.git
+Enumerating objects: 650, done.
+Counting objects: 100% (650/650), done.
+Delta compression using up to 6 threads
+Compressing objects: 100% (566/566), done.
+Writing objects: 100% (650/650), 25.41 MiB | 6.68 MiB/s, done.
+Total 650 (delta 68), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (68/68), done.
+To https://github.com/belentani7/lios-v5-event-horizon.git
+ * [new branch]      HEAD -> main
+branch 'main' set up to track 'origin/main'.
+[0;32m✓[0m Pushed commits to https://github.com/belentani7/lios-v5-event-horizon.git
+ubuntu@sandbox:~$ ;1R
+[32mubuntu@sandbox:~$ [0m

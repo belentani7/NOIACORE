@@ -1,0 +1,207 @@
+{
+  "criterion": "Potential duplicate/derived family: normalized base name after removing version, delivery, audit, backup and hash tokens. This is a triage signal, not proof of identical content.",
+  "github": {
+    "total": 75,
+    "familiesWithMultipleEntries": 0,
+    "repositoriesInFamilies": 0,
+    "families": []
+  },
+  "drive": {
+    "total": 100,
+    "familiesWithMultipleEntries": 5,
+    "filesInFamilies": 23,
+    "families": [
+      {
+        "family": "uaol-machine-realm",
+        "count": 9,
+        "files": [
+          {
+            "name": "uaol-machine-realm-a392a3c-audit-evidence.zip",
+            "mimeType": "application/zip",
+            "modifiedTime": "2026-08-27T05:39:30.344Z",
+            "size": "97762",
+            "id": "1-XkC4YMAHtynR_KgSI6rVBcAMJqYul25"
+          },
+          {
+            "name": "uaol-machine-realm-a392a3c-sanitized-source.zip",
+            "mimeType": "application/zip",
+            "modifiedTime": "2026-08-27T05:39:29.067Z",
+            "size": "706327",
+            "id": "1LvHGbC7vsKuLivwnwveFyo7YUl26SrAC"
+          },
+          {
+            "name": "uaol-machine-realm-e122ea3-audit-evidence.zip",
+            "mimeType": "application/zip",
+            "modifiedTime": "2026-08-27T05:37:54.956Z",
+            "size": "97762",
+            "id": "1yoETAzet3JosAMukJX29Gdn6XdfllNLn"
+          },
+          {
+            "name": "uaol-machine-realm-e122ea3-sanitized-source.zip",
+            "mimeType": "application/zip",
+            "modifiedTime": "2026-08-27T05:37:53.628Z",
+            "size": "706329",
+            "id": "1iy5xVBl0ERQRM7zDubfVT46MowGkFBQJ"
+          },
+          {
+            "name": "uaol-machine-realm-2f2c018-audit-evidence.zip",
+            "mimeType": "application/zip",
+            "modifiedTime": "2026-08-27T05:16:33.538Z",
+            "size": "91681",
+            "id": "1FhzRaGMlPswWm9KEX_sK3rZ5GdtGlw4t"
+          },
+          {
+            "name": "uaol-machine-realm-2f2c018-sanitized-source.zip",
+            "mimeType": "application/zip",
+            "modifiedTime": "2026-08-27T05:16:32.093Z",
+            "size": "697598",
+            "id": "14HuYyhFZ3du57WFPwK9sVeRIprROFOgc"
+          },
+          {
+            "name": "uaol-machine-realm-f3c2a25-audit-evidence.zip",
+            "mimeType": "application/zip",
+            "modifiedTime": "2026-08-27T05:15:20.979Z",
+            "size": "91681",
+            "id": "16TBUEKzK8RgaZiNHN3WoEMtGmHu0XCtw"
+          },
+          {
+            "name": "uaol-machine-realm-f3c2a25-sanitized-source.zip",
+            "mimeType": "application/zip",
+            "modifiedTime": "2026-08-27T05:15:19.527Z",
+            "size": "697601",
+            "id": "1maUKnKIv0FPKI-U5syca8niTn2-fZiSP"
+          },
+          {
+            "name": "uaol-machine-realm-23593376-sanitized-source.zip",
+            "mimeType": "application/zip",
+            "modifiedTime": "2026-08-27T05:13:27.861Z",
+            "size": "697358",
+            "id": "1aM84z1FWsUcIE2-X4kJtUVHrzLRz-AB2"
+          }
+        ]
+      },
+      {
+        "family": "latam-europa",
+        "count": 5,
+        "files": [
+          {
+            "name": "LATAM-Europa-final-3e473ba.zip",
+            "mimeType": "application/zip",
+            "modifiedTime": "2026-08-27T11:12:50.205Z",
+            "size": "255719",
+            "id": "1J3DZTxHgNpESXBUFiyoXcSRl76b36c8X"
+          },
+          {
+            "name": "LATAM-Europa-final-bae4d05.zip",
+            "mimeType": "application/zip",
+            "modifiedTime": "2026-08-27T07:26:00.197Z",
+            "size": "255701",
+            "id": "1E7ooIZsKy6AnCuDe1snrcDqQZKGxw25s"
+          },
+          {
+            "name": "LATAM-Europa-final-df74b9c.zip",
+            "mimeType": "application/zip",
+            "modifiedTime": "2026-08-27T07:25:11.756Z",
+            "size": "255702",
+            "id": "12iX0miUQDD9qbDXT25dlxGde4CkDWw9l"
+          },
+          {
+            "name": "LATAM-Europa-audited-dfac099.zip",
+            "mimeType": "application/zip",
+            "modifiedTime": "2026-08-27T06:56:29.952Z",
+            "size": "252807",
+            "id": "1t4gN4uzQcqr4EylNxRwqSZCp6TsHKVst"
+          },
+          {
+            "name": "LATAM-Europa-source-9a61ed4b.zip",
+            "mimeType": "application/zip",
+            "modifiedTime": "2026-08-27T05:52:33.218Z",
+            "size": "269722",
+            "id": "1xtuHx1W3GMfxQ5uiIT4f1LnaaHJzUMTm"
+          }
+        ]
+      },
+      {
+        "family": "sha256sums",
+        "count": 5,
+        "files": [
+          {
+            "name": "SHA256SUMS-a392a3c.txt",
+            "mimeType": "text/plain",
+            "modifiedTime": "2026-08-27T05:39:31.785Z",
+            "size": "353",
+            "id": "1AvtOwXOSyHSp-Cr5HOIKpEmiOv5L-YfN"
+          },
+          {
+            "name": "SHA256SUMS-e122ea3.txt",
+            "mimeType": "text/plain",
+            "modifiedTime": "2026-08-27T05:37:56.285Z",
+            "size": "353",
+            "id": "1u_GJ4RIE48w5vuGiuv3fgBtrrUu7kmcz"
+          },
+          {
+            "name": "SHA256SUMS-2f2c018.txt",
+            "mimeType": "text/plain",
+            "modifiedTime": "2026-08-27T05:16:34.839Z",
+            "size": "353",
+            "id": "1-Br-ZPyUckf71-CHA70wwbG1Ag5JWaRE"
+          },
+          {
+            "name": "SHA256SUMS-f3c2a25.txt",
+            "mimeType": "text/plain",
+            "modifiedTime": "2026-08-27T05:15:22.363Z",
+            "size": "353",
+            "id": "140Y0CP0j7RCkCTXbgyYlD9EtpBmL0ZsF"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "mimeType": "text/plain",
+            "modifiedTime": "2026-08-27T05:13:29.197Z",
+            "size": "137",
+            "id": "11XFgjPiYXkDyO539RukNSCbY_nTaSPQs"
+          }
+        ]
+      },
+      {
+        "family": "pedro-belentani-cv",
+        "count": 2,
+        "files": [
+          {
+            "name": "pedro_belentani_cv.md",
+            "mimeType": "application/vnd.google-apps.document",
+            "modifiedTime": "2026-08-26T08:19:22.862Z",
+            "size": "17113",
+            "id": "1-7MBShy6kpPpLBzscJZhfzy2gdbMjGfsP1vZ82KfqYQ"
+          },
+          {
+            "name": "pedro_belentani_cv.md",
+            "mimeType": "application/vnd.google-apps.document",
+            "modifiedTime": "2026-08-26T04:47:18.576Z",
+            "size": "17096",
+            "id": "1KliE5wKgUy_qNjq_bEOJl7GvRSbYzhdjt1LDBdtfyuk"
+          }
+        ]
+      },
+      {
+        "family": "youcut",
+        "count": 2,
+        "files": [
+          {
+            "name": "YouCut_20260619_001153892",
+            "mimeType": "application/vnd.google-apps.vid",
+            "modifiedTime": "2026-08-23T07:40:17.442Z",
+            "size": "74275495",
+            "id": "1o2TdeGa3uZSz-weIHQDHU0VtpOqdwSJ46KF4wsXYqOM"
+          },
+          {
+            "name": "YouCut_20260619_001153892",
+            "mimeType": "application/vnd.google-apps.vid",
+            "modifiedTime": "2026-08-23T07:37:40.075Z",
+            "size": "74275496",
+            "id": "1WS65LUO4h42DHZFLoTgyWrbch0ihoxKl-FWRc1ry520"
+          }
+        ]
+      }
+    ]
+  }
+}

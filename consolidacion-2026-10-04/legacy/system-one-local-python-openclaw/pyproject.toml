@@ -1,0 +1,23 @@
+[project]
+name = "system-one-local"
+version = "0.1.0"
+description = "API local de decisiones tipadas (estilo Jev/TypeSafe): recibe un estado y preguntas Choice/Score/Bool y devuelve valor + confidence. Sin texto libre."
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi==0.141.1",
+  "uvicorn[standard]==0.38.0",
+  "pydantic==2.13.5",
+  "httpx==0.28.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.4.2"]
+
+[project.scripts]
+systemone = "systemone.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

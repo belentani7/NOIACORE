@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#040406"/>
+<meta name="color-scheme" content="dark"/>
+<title>NOIACORE — Observatório de Sistema</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23040406'/%3E%3Cpath d='M8 24 L16 6 L24 24' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#040406;--ink:238,238,242;--mute:rgba(var(--ink),.56);--faint:rgba(var(--ink),.32);
+  --ghost:rgba(var(--ink),.16);--line:rgba(var(--ink),.10);--acc:125,155,255;--acc2:180,200,255;
+  --f-d:"Space Grotesk",system-ui,sans-serif;--f-b:"Inter",system-ui,sans-serif;--f-m:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:rgba(var(--ink),.88);font-family:var(--f-b);font-weight:300;line-height:1.6;min-height:100vh}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;
+  padding:18px clamp(16px,4vw,44px);border-bottom:1px solid var(--line);background:rgba(4,4,6,.85);backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--f-d);font-size:13px;letter-spacing:.26em;text-transform:uppercase}
+.brand i{font-style:normal;font-size:16px}
+.back{font-family:var(--f-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);
+  border:1px solid var(--line);padding:8px 14px;text-decoration:none;transition:.3s}
+.back:hover{color:#fff;border-color:rgba(var(--acc),.6)}
+main{max-width:980px;margin:0 auto;padding:60px 24px 100px}
+.idx{font-family:var(--f-m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.blink{width:6px;height:6px;border-radius:50%;background:rgba(var(--acc),.9);box-shadow:0 0 10px rgba(var(--acc),.7);animation:blink 2.2s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+h1{font-family:var(--f-d);font-weight:300;font-size:clamp(30px,5vw,52px);margin:0 0 16px}
+.lead{max-width:640px;color:var(--mute);margin-bottom:16px}
+.disclaimer{border:1px solid rgba(var(--acc),.28);background:rgba(var(--acc),.05);padding:14px 18px;
+  font-family:var(--f-m);font-size:11px;letter-spacing:.03em;color:rgba(var(--acc2),.9);margin-bottom:40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:40px}
+.tile{border:1px solid var(--line);background:rgba(255,255,255,.015);padding:16px}
+.tile .k{font-family:var(--f-m);font-size:9px;letter-spacing:.14em;color:var(--ghost);text-transform:uppercase}
+.tile .v{font-family:var(--f-d);font-size:24px;margin-top:8px}
+.note{border-top:1px solid var(--line);padding-top:16px;font-family:var(--f-m);font-size:12px;line-height:1.9;color:var(--mute)}
+.hint{margin-top:24px;font-family:var(--f-m);font-size:11px;color:var(--ghost)}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><i>Λ</i> NOIACORE</a>
+  <a class="back" href="/">← Voltar ao núcleo</a>
+</header>
+<main>
+  <div class="idx"><span class="blink"></span>LAB.17 — OBSERVATÓRIO DE SISTEMA</div>
+  <h1>Observações Reais da Sessão</h1>
+  <p class="lead">Estes números vêm do mesmo armazenamento local (localStorage) que o núcleo em <a href="/" style="color:rgba(var(--acc2),.9)">/</a> usa — não são inventados aqui, nem enviados a nenhum servidor.</p>
+  <div class="disclaimer">⚠ Dados 100% locais ao seu navegador. Sem conta, sem servidor, sem terceiros.</div>
+  <div class="grid" id="grid"></div>
+  <div class="note" id="note">A carregar observações…</div>
+  <p class="hint">Dica: volte à home, use o terminal (comandos, temas, sinais) e recarregue esta página — os números mudam de verdade.</p>
+</main>
+<script>
+(function(){
+  function readJSON(raw,fallback){try{const v=JSON.parse(raw);return v&&typeof v==='object'?v:fallback;}catch(e){return fallback;}}
+  let metrics={clicks:0,overloads:0,commands:0,themes:0,signals:0,exports:0};
+  let total=0;
+  try{
+    metrics=Object.assign(metrics,readJSON(localStorage.getItem('noi_metrics_v7')||'{}',{}));
+    total=parseInt(localStorage.getItem('noi_total')||'0',10)||0;
+  }catch(e){}
+  const tiles=[
+    ['Ondas emitidas (cliques)',metrics.clicks],
+    ['Comandos de terminal',metrics.commands],
+    ['Bandas de sinal',metrics.signals],
+    ['Temas explorados',metrics.themes],
+    ['Overloads forçados',metrics.overloads],
+    ['Exportações de estado',metrics.exports],
+    ['Reboots reais do núcleo',total]
+  ];
+  document.getElementById('grid').innerHTML = tiles.map(function(t){
+    return '<div class="tile"><div class="k">'+t[0]+'</div><div class="v">'+t[1]+'</div></div>';
+  }).join('');
+  const ranked=tiles.slice(0,6).slice().sort(function(a,b){return b[1]-a[1];});
+  const top=ranked[0];
+  const note=document.getElementById('note');
+  note.textContent = top[1]>0
+    ? ('O sistema observa: "'+top[0]+'" é a ação mais repetida nesta máquina ('+top[1]+'×) · núcleo reiniciado '+total+' vez(es) ao todo.')
+    : 'O sistema observa: ainda não há ações registadas nesta máquina — volte à home e interaja com o núcleo.';
+})();
+</script>
+</body>
+</html>

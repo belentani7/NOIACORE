@@ -1,0 +1,3067 @@
+/* ==========================================================================
+   NEXUS OS — NEON RED THEME (Primary)
+   Thick neon glassmorphism with plasmatic red/pink liquid light
+   Frosted glass looking at a nuclear reactor of red neon light
+   ========================================================================== */
+
+@layer theme-neon-red;
+
+@layer theme-neon-red {
+
+/* ==========================================================================
+   §1  DESIGN TOKENS — Custom Properties
+   ========================================================================== */
+
+:root {
+  /* ── Background ── */
+  --nexus-bg: #0a0005;
+  --nexus-bg-secondary: #120010;
+  --nexus-bg-tertiary: #1a0018;
+  --nexus-bg-elevated: #200020;
+
+  /* ── Glass ── */
+  --nexus-glass-bg: rgba(20, 0, 10, 0.65);
+  --nexus-glass-bg-hover: rgba(30, 0, 15, 0.75);
+  --nexus-glass-border: rgba(255, 20, 80, 0.3);
+  --nexus-glass-border-hover: rgba(255, 20, 80, 0.6);
+  --nexus-glass-border-active: rgba(255, 20, 80, 0.9);
+
+  /* ── Neon Palette ── */
+  --nexus-neon-primary: #ff0040;
+  --nexus-neon-secondary: #ff2060;
+  --nexus-neon-accent: #ff0066;
+  --nexus-neon-highlight: #ff4080;
+  --nexus-neon-deep: #cc0033;
+  --nexus-neon-glow: rgba(255, 0, 60, 0.4);
+  --nexus-neon-glow-strong: rgba(255, 0, 60, 0.8);
+  --nexus-neon-glow-soft: rgba(255, 0, 60, 0.15);
+
+  /* ── Text ── */
+  --nexus-text-primary: #fff0f5;
+  --nexus-text-secondary: #cc8099;
+  --nexus-text-dim: #664455;
+  --nexus-text-inverse: #0a0005;
+  --nexus-text-link: #ff4080;
+  --nexus-text-link-hover: #ff80aa;
+
+  /* ── Shadows ── */
+  --nexus-shadow-neon: 0 0 20px rgba(255,0,60,0.4), 0 0 60px rgba(255,0,60,0.2);
+  --nexus-shadow-neon-strong: 0 0 30px rgba(255,0,60,0.6), 0 0 80px rgba(255,0,60,0.3), 0 0 120px rgba(255,0,60,0.1);
+  --nexus-shadow-neon-subtle: 0 0 10px rgba(255,0,60,0.2), 0 0 30px rgba(255,0,60,0.1);
+  --nexus-shadow-depth: 0 8px 32px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
+  --nexus-shadow-inset: inset 0 1px 0 rgba(255,255,255,0.05), inset 0 -1px 0 rgba(0,0,0,0.3);
+
+  /* ── Effects ── */
+  --nexus-blur: 20px;
+  --nexus-blur-heavy: 40px;
+  --nexus-blur-light: 10px;
+  --nexus-radius: 12px;
+  --nexus-radius-sm: 6px;
+  --nexus-radius-lg: 20px;
+  --nexus-radius-xl: 28px;
+  --nexus-radius-round: 9999px;
+
+  /* ── Spacing ── */
+  --nexus-space-xs: 4px;
+  --nexus-space-sm: 8px;
+  --nexus-space-md: 16px;
+  --nexus-space-lg: 24px;
+  --nexus-space-xl: 32px;
+  --nexus-space-2xl: 48px;
+  --nexus-space-3xl: 64px;
+
+  /* ── Transitions ── */
+  --nexus-transition-fast: 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  --nexus-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --nexus-transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --nexus-transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Typography ── */
+  --nexus-font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --nexus-font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --nexus-font-display: 'Orbitron', 'Rajdhani', var(--nexus-font-sans);
+  --nexus-font-size-xs: 0.75rem;
+  --nexus-font-size-sm: 0.875rem;
+  --nexus-font-size-base: 1rem;
+  --nexus-font-size-lg: 1.125rem;
+  --nexus-font-size-xl: 1.25rem;
+  --nexus-font-size-2xl: 1.5rem;
+  --nexus-font-size-3xl: 2rem;
+  --nexus-font-size-4xl: 3rem;
+
+  /* ── Z-Index Scale ── */
+  --nexus-z-base: 1;
+  --nexus-z-dropdown: 100;
+  --nexus-z-sticky: 200;
+  --nexus-z-overlay: 300;
+  --nexus-z-modal: 400;
+  --nexus-z-popover: 500;
+  --nexus-z-tooltip: 600;
+  --nexus-z-toast: 700;
+  --nexus-z-max: 9999;
+
+  /* ── Semantic Colors ── */
+  --nexus-success: #00ff88;
+  --nexus-success-glow: rgba(0, 255, 136, 0.3);
+  --nexus-warning: #ffaa00;
+  --nexus-warning-glow: rgba(255, 170, 0, 0.3);
+  --nexus-danger: #ff0040;
+  --nexus-danger-glow: rgba(255, 0, 64, 0.4);
+  --nexus-info: #00aaff;
+  --nexus-info-glow: rgba(0, 170, 255, 0.3);
+
+  /* ── Gradient Presets ── */
+  --nexus-gradient-neon: linear-gradient(135deg, #ff0040, #ff0066, #ff2060);
+  --nexus-gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  --nexus-gradient-dark: linear-gradient(180deg, #0a0005, #120010);
+  --nexus-gradient-radial-neon: radial-gradient(ellipse at center, rgba(255,0,60,0.15), transparent 70%);
+
+  /* ── Border Width ── */
+  --nexus-border-width: 1px;
+  --nexus-border-width-thick: 2px;
+
+  /* ── Noise Texture ── */
+  --nexus-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+
+/* ==========================================================================
+   §2  KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+/* ── Neon pulse: glow intensity oscillation ── */
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow:
+      0 0 4px var(--nexus-neon-primary),
+      0 0 11px var(--nexus-neon-primary),
+      0 0 19px var(--nexus-neon-primary),
+      0 0 40px var(--nexus-neon-accent),
+      0 0 80px var(--nexus-neon-accent);
+    filter: brightness(1);
+  }
+  50% {
+    text-shadow:
+      0 0 2px var(--nexus-neon-primary),
+      0 0 8px var(--nexus-neon-primary),
+      0 0 14px var(--nexus-neon-primary),
+      0 0 30px var(--nexus-neon-accent),
+      0 0 60px var(--nexus-neon-accent);
+    filter: brightness(0.9);
+  }
+}
+
+/* ── Neon flicker: random electrical flicker ── */
+@keyframes neon-flicker {
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: 1;
+    text-shadow:
+      0 0 4px var(--nexus-neon-primary),
+      0 0 11px var(--nexus-neon-primary),
+      0 0 19px var(--nexus-neon-primary),
+      0 0 40px var(--nexus-neon-accent),
+      0 0 80px var(--nexus-neon-accent);
+  }
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0.4;
+    text-shadow: none;
+  }
+}
+
+/* ── Liquid flow: flowing gradient movement ── */
+@keyframes liquid-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 100%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ── Plasma drift: background plasma animation ── */
+@keyframes plasma-drift {
+  0% {
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+  }
+  33% {
+    background-position: 100% 0%, 0% 100%, 25% 75%;
+  }
+  66% {
+    background-position: 50% 100%, 50% 0%, 75% 25%;
+  }
+  100% {
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+  }
+}
+
+/* ── Glitch layer 1: primary clip-path glitch ── */
+@keyframes glitch-1 {
+  0% {
+    clip-path: inset(40% 0 61% 0);
+    transform: translate(-2px, 2px);
+  }
+  20% {
+    clip-path: inset(92% 0 1% 0);
+    transform: translate(1px, -1px);
+  }
+  40% {
+    clip-path: inset(43% 0 1% 0);
+    transform: translate(-1px, 3px);
+  }
+  60% {
+    clip-path: inset(25% 0 58% 0);
+    transform: translate(3px, 1px);
+  }
+  80% {
+    clip-path: inset(54% 0 7% 0);
+    transform: translate(-3px, -2px);
+  }
+  100% {
+    clip-path: inset(58% 0 43% 0);
+    transform: translate(2px, -3px);
+  }
+}
+
+/* ── Glitch layer 2: secondary offset glitch ── */
+@keyframes glitch-2 {
+  0% {
+    clip-path: inset(65% 0 13% 0);
+    transform: translate(2px, -1px);
+  }
+  20% {
+    clip-path: inset(10% 0 85% 0);
+    transform: translate(-1px, 2px);
+  }
+  40% {
+    clip-path: inset(78% 0 2% 0);
+    transform: translate(1px, -2px);
+  }
+  60% {
+    clip-path: inset(5% 0 72% 0);
+    transform: translate(-2px, 1px);
+  }
+  80% {
+    clip-path: inset(31% 0 49% 0);
+    transform: translate(3px, 2px);
+  }
+  100% {
+    clip-path: inset(89% 0 3% 0);
+    transform: translate(-1px, -1px);
+  }
+}
+
+/* ── Scanline: CRT scanline sweep ── */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* ── Chromatic aberration: RGB split ── */
+@keyframes chromatic-aberration {
+  0%, 100% {
+    text-shadow:
+      -1px 0 rgba(255, 0, 0, 0.7),
+      1px 0 rgba(0, 0, 255, 0.7);
+  }
+  25% {
+    text-shadow:
+      -2px 0 rgba(255, 0, 0, 0.7),
+      2px 0 rgba(0, 0, 255, 0.7);
+  }
+  50% {
+    text-shadow:
+      -1px -1px rgba(255, 0, 0, 0.7),
+      1px 1px rgba(0, 0, 255, 0.7);
+  }
+  75% {
+    text-shadow:
+      -3px 0 rgba(255, 0, 0, 0.5),
+      3px 0 rgba(0, 0, 255, 0.5);
+  }
+}
+
+/* ── Holographic shimmer: rainbow shift ── */
+@keyframes holo-shimmer {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* ── Border glow pulse ── */
+@keyframes border-glow-pulse {
+  0%, 100% {
+    border-color: var(--nexus-glass-border);
+    box-shadow: var(--nexus-shadow-neon-subtle);
+  }
+  50% {
+    border-color: var(--nexus-glass-border-hover);
+    box-shadow: var(--nexus-shadow-neon);
+  }
+}
+
+/* ── Float: subtle floating motion ── */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* ── Shimmer: loading shimmer sweep ── */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ── Ripple: expanding ripple effect ── */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ── Shake: error shake ── */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+/* ── Fade in ── */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── Fade out ── */
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* ── Slide up ── */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Slide down ── */
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Scale in ── */
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Rotate glow ── */
+@keyframes rotate-glow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ── Plasma pulse ── */
+@keyframes plasma-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+
+/* ==========================================================================
+   §3  GLASS PANEL SYSTEM
+   ========================================================================== */
+
+/* ── Core glass panel ── */
+.glass-panel {
+  position: relative;
+  background: var(--nexus-glass-bg);
+  backdrop-filter: blur(var(--nexus-blur)) saturate(1.4);
+  -webkit-backdrop-filter: blur(var(--nexus-blur)) saturate(1.4);
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  border-radius: var(--nexus-radius);
+  box-shadow:
+    var(--nexus-shadow-depth),
+    var(--nexus-shadow-neon-subtle),
+    var(--nexus-shadow-inset);
+  overflow: hidden;
+  transition:
+    background var(--nexus-transition),
+    border-color var(--nexus-transition),
+    box-shadow var(--nexus-transition),
+    transform var(--nexus-transition);
+}
+
+/* Glass panel inner glow overlay */
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 40%,
+    transparent 60%,
+    rgba(255, 0, 60, 0.02) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Glass panel noise texture */
+.glass-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image: var(--nexus-noise);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Elevated glass panel — higher z-index, stronger glow ── */
+.glass-panel--elevated {
+  z-index: var(--nexus-z-sticky);
+  backdrop-filter: blur(calc(var(--nexus-blur) * 1.5)) saturate(1.6);
+  -webkit-backdrop-filter: blur(calc(var(--nexus-blur) * 1.5)) saturate(1.6);
+  border-color: var(--nexus-glass-border-hover);
+  box-shadow:
+    var(--nexus-shadow-depth),
+    var(--nexus-shadow-neon),
+    var(--nexus-shadow-inset);
+}
+
+.glass-panel--elevated::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    transparent 35%,
+    transparent 65%,
+    rgba(255, 0, 60, 0.04) 100%
+  );
+}
+
+/* ── Inset glass panel — recessed for input areas ── */
+.glass-panel--inset {
+  background: rgba(10, 0, 5, 0.8);
+  backdrop-filter: blur(var(--nexus-blur-light)) saturate(1.2);
+  -webkit-backdrop-filter: blur(var(--nexus-blur-light)) saturate(1.2);
+  border-color: rgba(255, 20, 80, 0.15);
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(0, 0, 0, 0.3),
+    var(--nexus-shadow-neon-subtle);
+}
+
+.glass-panel--inset::before {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.15) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(255, 0, 60, 0.01) 100%
+  );
+}
+
+/* ── Flat glass panel — no depth, minimal border ── */
+.glass-panel--flat {
+  backdrop-filter: blur(var(--nexus-blur-light));
+  -webkit-backdrop-filter: blur(var(--nexus-blur-light));
+  border-color: rgba(255, 20, 80, 0.12);
+  box-shadow: none;
+}
+
+/* ── Interactive glass panel — hover states ── */
+.glass-panel--interactive {
+  cursor: pointer;
+}
+
+.glass-panel--interactive:hover {
+  background: var(--nexus-glass-bg-hover);
+  border-color: var(--nexus-glass-border-hover);
+  box-shadow:
+    var(--nexus-shadow-depth),
+    var(--nexus-shadow-neon),
+    var(--nexus-shadow-inset);
+  transform: translateY(-1px);
+}
+
+.glass-panel--interactive:active {
+  transform: translateY(0);
+  box-shadow:
+    0 4px 16px rgba(0,0,0,0.5),
+    var(--nexus-shadow-neon-subtle),
+    inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* ── Nested glass — reduced blur for children ── */
+.glass-panel .glass-panel {
+  backdrop-filter: blur(calc(var(--nexus-blur) * 0.6)) saturate(1.2);
+  -webkit-backdrop-filter: blur(calc(var(--nexus-blur) * 0.6)) saturate(1.2);
+  border-color: rgba(255, 20, 80, 0.2);
+}
+
+/* ── Focus-within state ── */
+.glass-panel:focus-within {
+  border-color: var(--nexus-glass-border-hover);
+  box-shadow:
+    var(--nexus-shadow-depth),
+    var(--nexus-shadow-neon),
+    0 0 0 2px rgba(255, 0, 60, 0.15),
+    var(--nexus-shadow-inset);
+}
+
+/* ── Disabled state ── */
+.glass-panel:has([disabled]:only-child),
+.glass-panel--disabled {
+  opacity: 0.4;
+  filter: saturate(0.3) brightness(0.7);
+  backdrop-filter: blur(calc(var(--nexus-blur) * 0.5));
+  -webkit-backdrop-filter: blur(calc(var(--nexus-blur) * 0.5));
+  pointer-events: none;
+}
+
+
+/* ==========================================================================
+   §4  NEON TEXT EFFECTS
+   ========================================================================== */
+
+/* ── Base neon text ── */
+.neon-text {
+  color: var(--nexus-neon-primary);
+  text-shadow:
+    0 0 7px var(--nexus-neon-primary),
+    0 0 10px var(--nexus-neon-primary),
+    0 0 21px var(--nexus-neon-primary),
+    0 0 42px var(--nexus-neon-accent),
+    0 0 82px var(--nexus-neon-accent),
+    0 0 92px var(--nexus-neon-accent);
+}
+
+/* ── Color variants ── */
+.neon-text--primary {
+  color: var(--nexus-neon-primary);
+  text-shadow:
+    0 0 7px var(--nexus-neon-primary),
+    0 0 10px var(--nexus-neon-primary),
+    0 0 21px var(--nexus-neon-primary),
+    0 0 42px var(--nexus-neon-accent);
+}
+
+.neon-text--secondary {
+  color: var(--nexus-neon-secondary);
+  text-shadow:
+    0 0 7px var(--nexus-neon-secondary),
+    0 0 10px var(--nexus-neon-secondary),
+    0 0 21px var(--nexus-neon-secondary),
+    0 0 42px var(--nexus-neon-accent);
+}
+
+.neon-text--accent {
+  color: var(--nexus-neon-accent);
+  text-shadow:
+    0 0 7px var(--nexus-neon-accent),
+    0 0 10px var(--nexus-neon-accent),
+    0 0 21px var(--nexus-neon-accent),
+    0 0 42px var(--nexus-neon-primary);
+}
+
+.neon-text--highlight {
+  color: var(--nexus-neon-highlight);
+  text-shadow:
+    0 0 7px var(--nexus-neon-highlight),
+    0 0 10px var(--nexus-neon-highlight),
+    0 0 21px var(--nexus-neon-highlight),
+    0 0 42px var(--nexus-neon-secondary);
+}
+
+/* ── Animated variants ── */
+.neon-text--pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+.neon-text--flicker {
+  animation: neon-flicker 3s linear infinite;
+}
+
+/* ── Large display text with stronger glow ── */
+.neon-text--large {
+  font-family: var(--nexus-font-display);
+  font-size: var(--nexus-font-size-4xl);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 10px var(--nexus-neon-primary),
+    0 0 20px var(--nexus-neon-primary),
+    0 0 40px var(--nexus-neon-primary),
+    0 0 80px var(--nexus-neon-accent),
+    0 0 120px var(--nexus-neon-accent),
+    0 0 160px var(--nexus-neon-accent),
+    0 0 200px var(--nexus-neon-deep);
+}
+
+
+/* ==========================================================================
+   §5  SPECIAL EFFECTS
+   ========================================================================== */
+
+/* ── Liquid light effect ── */
+.liquid-light {
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-light::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(255, 0, 64, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(255, 0, 102, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(255, 32, 96, 0.2) 0%, transparent 50%);
+  background-size: 200% 200%;
+  animation: liquid-flow 8s ease-in-out infinite;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.liquid-light::after {
+  content: '';
+  position: absolute;
+  inset: -30%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 64, 128, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(255, 0, 64, 0.1) 0%, transparent 40%);
+  background-size: 150% 150%;
+  animation: liquid-flow 12s ease-in-out infinite reverse;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Liquid light direction variants ── */
+.liquid-light--horizontal::before {
+  background:
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 0, 64, 0.2) 25%,
+      rgba(255, 0, 102, 0.3) 50%,
+      rgba(255, 32, 96, 0.2) 75%,
+      transparent 100%
+    );
+  background-size: 300% 100%;
+  animation: liquid-flow 6s linear infinite;
+}
+
+.liquid-light--vertical::before {
+  background:
+    linear-gradient(180deg,
+      transparent 0%,
+      rgba(255, 0, 64, 0.2) 25%,
+      rgba(255, 0, 102, 0.3) 50%,
+      rgba(255, 32, 96, 0.2) 75%,
+      transparent 100%
+    );
+  background-size: 100% 300%;
+  animation: liquid-flow 6s linear infinite;
+}
+
+.liquid-light--radial::before {
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 0, 64, 0.3) 0%,
+    rgba(255, 0, 102, 0.15) 30%,
+    transparent 70%
+  );
+  background-size: 150% 150%;
+  animation: plasma-pulse 4s ease-in-out infinite;
+}
+
+/* ── Plasma background ── */
+.plasma-bg {
+  position: relative;
+  overflow: hidden;
+  background: var(--nexus-bg);
+}
+
+.plasma-bg::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(255, 0, 64, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(255, 0, 102, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 32, 96, 0.15) 0%, transparent 60%);
+  background-size: 200% 200%, 200% 200%, 150% 150%;
+  animation: plasma-drift 15s ease-in-out infinite;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.plasma-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 60% 40%, rgba(255, 0, 64, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 80%, rgba(204, 0, 51, 0.08) 0%, transparent 40%);
+  animation: plasma-pulse 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── Plasma speed variants ── */
+.plasma-bg--slow::before {
+  animation-duration: 30s;
+}
+
+.plasma-bg--fast::before {
+  animation-duration: 8s;
+}
+
+/* ── Glitch text effect ── */
+.glitch-text {
+  position: relative;
+  color: var(--nexus-text-primary);
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.glitch-text::before {
+  color: var(--nexus-neon-primary);
+  animation: glitch-1 2s infinite linear alternate-reverse;
+  text-shadow: -2px 0 var(--nexus-neon-primary);
+  z-index: -1;
+}
+
+.glitch-text::after {
+  color: var(--nexus-neon-accent);
+  animation: glitch-2 3s infinite linear alternate-reverse;
+  text-shadow: 2px 0 var(--nexus-neon-accent);
+  z-index: -1;
+}
+
+/* ── CRT effect: scanlines and chromatic aberration ── */
+.crt-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scanlines overlay */
+.crt-effect::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 10;
+  animation: none;
+}
+
+/* Chromatic aberration + vignette */
+.crt-effect::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+  z-index: 11;
+}
+
+/* CRT text effect for children */
+.crt-effect > * {
+  animation: chromatic-aberration 4s infinite;
+}
+
+/* ── CRT subtle variant ── */
+.crt-effect--subtle::before {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.06) 0px,
+    rgba(0, 0, 0, 0.06) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+.crt-effect--subtle::after {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 75%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+}
+
+/* ── Holographic effect ── */
+.holo-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.holo-effect::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 0, 64, 0.1) 0%,
+    rgba(255, 100, 0, 0.1) 15%,
+    rgba(255, 255, 0, 0.08) 30%,
+    rgba(0, 255, 100, 0.08) 45%,
+    rgba(0, 150, 255, 0.1) 60%,
+    rgba(100, 0, 255, 0.1) 75%,
+    rgba(255, 0, 200, 0.1) 90%,
+    rgba(255, 0, 64, 0.1) 100%
+  );
+  background-size: 400% 400%;
+  opacity: 0;
+  transition: opacity var(--nexus-transition);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.holo-effect:hover::before {
+  opacity: 1;
+  animation: holo-shimmer 3s ease-in-out infinite;
+}
+
+/* ── Cyber grid ── */
+.cyber-grid {
+  position: relative;
+  overflow: hidden;
+  perspective: 600px;
+  min-height: 300px;
+}
+
+.cyber-grid::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -50%;
+  right: -50%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(255, 0, 64, 0.15) 1px, transparent 1px) 0 0 / 60px 60px,
+    linear-gradient(0deg, transparent 0%, rgba(255, 0, 64, 0.1) 1px, transparent 1px) 0 0 / 60px 60px;
+  transform: rotateX(60deg) translateY(0);
+  transform-origin: center bottom;
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 80%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 80%);
+  pointer-events: none;
+}
+
+/* Horizon glow */
+.cyber-grid::after {
+  content: '';
+  position: absolute;
+  bottom: 30%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--nexus-neon-primary),
+    var(--nexus-neon-accent),
+    var(--nexus-neon-primary),
+    transparent
+  );
+  box-shadow: 0 0 20px var(--nexus-neon-glow), 0 0 60px var(--nexus-neon-glow-soft);
+  pointer-events: none;
+}
+
+/* ── Cyber grid animated variant ── */
+.cyber-grid--animated::before {
+  animation: cyber-grid-scroll 4s linear infinite;
+}
+
+@keyframes cyber-grid-scroll {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 0 60px, 0 60px;
+  }
+}
+
+
+/* ==========================================================================
+   §6  NEON BORDERS
+   ========================================================================== */
+
+/* ── Base neon border ── */
+.neon-border {
+  position: relative;
+  border: var(--nexus-border-width-thick) solid var(--nexus-neon-primary);
+  box-shadow:
+    0 0 10px var(--nexus-neon-glow),
+    0 0 20px var(--nexus-neon-glow-soft),
+    inset 0 0 10px var(--nexus-neon-glow-soft);
+  border-radius: var(--nexus-radius);
+}
+
+/* ── Color variants ── */
+.neon-border--primary {
+  border-color: var(--nexus-neon-primary);
+  box-shadow:
+    0 0 10px rgba(255, 0, 64, 0.4),
+    0 0 20px rgba(255, 0, 64, 0.2),
+    inset 0 0 10px rgba(255, 0, 64, 0.1);
+}
+
+.neon-border--secondary {
+  border-color: var(--nexus-neon-secondary);
+  box-shadow:
+    0 0 10px rgba(255, 32, 96, 0.4),
+    0 0 20px rgba(255, 32, 96, 0.2),
+    inset 0 0 10px rgba(255, 32, 96, 0.1);
+}
+
+.neon-border--accent {
+  border-color: var(--nexus-neon-accent);
+  box-shadow:
+    0 0 10px rgba(255, 0, 102, 0.4),
+    0 0 20px rgba(255, 0, 102, 0.2),
+    inset 0 0 10px rgba(255, 0, 102, 0.1);
+}
+
+/* ── Pulse animation ── */
+.neon-border--pulse {
+  animation: border-glow-pulse 2s ease-in-out infinite;
+}
+
+/* ── Gradient animated border ── */
+.neon-border--gradient {
+  border: none;
+  position: relative;
+}
+
+.neon-border--gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from 0deg,
+    var(--nexus-neon-primary),
+    var(--nexus-neon-accent),
+    var(--nexus-neon-secondary),
+    var(--nexus-neon-highlight),
+    var(--nexus-neon-primary)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rotate-glow 4s linear infinite;
+  pointer-events: none;
+}
+
+
+/* ==========================================================================
+   §7  BUTTONS
+   ========================================================================== */
+
+/* ── Primary button ── */
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nexus-space-sm);
+  padding: 10px 24px;
+  font-family: var(--nexus-font-sans);
+  font-size: var(--nexus-font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--nexus-text-primary);
+  background: var(--nexus-glass-bg);
+  backdrop-filter: blur(var(--nexus-blur-light));
+  -webkit-backdrop-filter: blur(var(--nexus-blur-light));
+  border: var(--nexus-border-width) solid var(--nexus-neon-primary);
+  border-radius: var(--nexus-radius-sm);
+  box-shadow:
+    0 0 10px rgba(255, 0, 64, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all var(--nexus-transition);
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: rgba(255, 0, 64, 0.15);
+  border-color: var(--nexus-neon-highlight);
+  box-shadow:
+    0 0 20px rgba(255, 0, 64, 0.4),
+    0 0 40px rgba(255, 0, 64, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 0 10px rgba(255, 0, 64, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 0, 64, 0.2);
+}
+
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 20px rgba(255, 0, 64, 0.4),
+    0 0 0 3px rgba(255, 0, 64, 0.3);
+}
+
+/* Ripple pseudo-element for buttons */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--ripple-x, 50%) var(--ripple-y, 50%), rgba(255,255,255,0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-primary:active::after {
+  opacity: 1;
+}
+
+/* ── Secondary button ── */
+.btn-secondary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nexus-space-sm);
+  padding: 10px 24px;
+  font-family: var(--nexus-font-sans);
+  font-size: var(--nexus-font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--nexus-neon-secondary);
+  background: transparent;
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  border-radius: var(--nexus-radius-sm);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all var(--nexus-transition);
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background: var(--nexus-glass-bg);
+  border-color: var(--nexus-neon-secondary);
+  color: var(--nexus-neon-highlight);
+  box-shadow: 0 0 15px rgba(255, 32, 96, 0.2);
+}
+
+.btn-secondary:active {
+  background: rgba(255, 32, 96, 0.1);
+  transform: translateY(1px);
+}
+
+.btn-secondary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 32, 96, 0.25);
+}
+
+/* ── Danger button ── */
+.btn-danger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nexus-space-sm);
+  padding: 10px 24px;
+  font-family: var(--nexus-font-sans);
+  font-size: var(--nexus-font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #fff;
+  background: rgba(255, 0, 40, 0.2);
+  backdrop-filter: blur(var(--nexus-blur-light));
+  -webkit-backdrop-filter: blur(var(--nexus-blur-light));
+  border: var(--nexus-border-width) solid var(--nexus-danger);
+  border-radius: var(--nexus-radius-sm);
+  box-shadow: 0 0 15px var(--nexus-danger-glow);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all var(--nexus-transition);
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.btn-danger:hover {
+  background: rgba(255, 0, 40, 0.35);
+  box-shadow:
+    0 0 25px var(--nexus-danger-glow),
+    0 0 50px rgba(255, 0, 64, 0.15);
+  transform: translateY(-1px);
+}
+
+.btn-danger:active {
+  background: rgba(255, 0, 40, 0.45);
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.btn-danger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 0, 64, 0.35);
+}
+
+/* ── Ghost button ── */
+.btn-ghost {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nexus-space-sm);
+  padding: 10px 24px;
+  font-family: var(--nexus-font-sans);
+  font-size: var(--nexus-font-size-sm);
+  font-weight: 500;
+  color: var(--nexus-text-secondary);
+  background: transparent;
+  border: var(--nexus-border-width) solid transparent;
+  border-radius: var(--nexus-radius-sm);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all var(--nexus-transition);
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.btn-ghost:hover {
+  color: var(--nexus-text-primary);
+  background: var(--nexus-glass-bg);
+  border-color: var(--nexus-glass-border);
+}
+
+.btn-ghost:active {
+  background: rgba(20, 0, 10, 0.5);
+}
+
+.btn-ghost:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 0, 60, 0.2);
+}
+
+/* ── Icon button ── */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: 18px;
+  color: var(--nexus-text-secondary);
+  background: var(--nexus-glass-bg);
+  backdrop-filter: blur(var(--nexus-blur-light));
+  -webkit-backdrop-filter: blur(var(--nexus-blur-light));
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  border-radius: var(--nexus-radius-sm);
+  cursor: pointer;
+  transition: all var(--nexus-transition);
+}
+
+.btn-icon:hover {
+  color: var(--nexus-neon-primary);
+  border-color: var(--nexus-neon-primary);
+  box-shadow: 0 0 15px var(--nexus-neon-glow-soft);
+}
+
+.btn-icon:active {
+  transform: scale(0.95);
+}
+
+/* ── Button sizes ── */
+.btn-sm {
+  padding: 6px 14px;
+  font-size: var(--nexus-font-size-xs);
+  border-radius: var(--nexus-radius-sm);
+}
+
+.btn-md {
+  padding: 10px 24px;
+  font-size: var(--nexus-font-size-sm);
+}
+
+.btn-lg {
+  padding: 14px 32px;
+  font-size: var(--nexus-font-size-base);
+  border-radius: var(--nexus-radius);
+}
+
+/* ── Full width button ── */
+.btn-block {
+  display: flex;
+  width: 100%;
+}
+
+/* ── Loading button ── */
+.btn-loading {
+  position: relative;
+  pointer-events: none;
+  color: transparent !important;
+}
+
+.btn-loading::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--nexus-neon-primary);
+  border-radius: 50%;
+  animation: nexus-spin 0.7s linear infinite;
+}
+
+@keyframes nexus-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Button group ── */
+.btn-group {
+  display: inline-flex;
+}
+
+.btn-group > .btn-primary,
+.btn-group > .btn-secondary,
+.btn-group > .btn-ghost {
+  border-radius: 0;
+}
+
+.btn-group > :first-child {
+  border-radius: var(--nexus-radius-sm) 0 0 var(--nexus-radius-sm);
+}
+
+.btn-group > :last-child {
+  border-radius: 0 var(--nexus-radius-sm) var(--nexus-radius-sm) 0;
+}
+
+.btn-group > :not(:first-child) {
+  margin-left: -1px;
+}
+
+/* ── Disabled state (all buttons) ── */
+.btn-primary:disabled,
+.btn-secondary:disabled,
+.btn-danger:disabled,
+.btn-ghost:disabled,
+.btn-icon:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+  filter: saturate(0.3);
+}
+
+
+/* ==========================================================================
+   §8  FORM INPUTS
+   ========================================================================== */
+
+/* ── Glass input ── */
+.input-glass {
+  width: 100%;
+  padding: 10px 16px;
+  font-family: var(--nexus-font-sans);
+  font-size: var(--nexus-font-size-sm);
+  color: var(--nexus-text-primary);
+  background: rgba(10, 0, 5, 0.7);
+  backdrop-filter: blur(var(--nexus-blur-light));
+  -webkit-backdrop-filter: blur(var(--nexus-blur-light));
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  border-radius: var(--nexus-radius-sm);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.4);
+  outline: none;
+  transition: all var(--nexus-transition);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.input-glass::placeholder {
+  color: var(--nexus-text-dim);
+  font-style: italic;
+}
+
+.input-glass:hover {
+  border-color: var(--nexus-glass-border-hover);
+  background: rgba(15, 0, 8, 0.75);
+}
+
+.input-glass:focus {
+  border-color: var(--nexus-neon-primary);
+  box-shadow:
+    inset 0 1px 4px rgba(0, 0, 0, 0.4),
+    0 0 0 3px rgba(255, 0, 64, 0.15),
+    0 0 15px rgba(255, 0, 64, 0.1);
+  background: rgba(20, 0, 10, 0.8);
+}
+
+/* ── Error state ── */
+.input-glass--error,
+.input-glass[aria-invalid="true"] {
+  border-color: var(--nexus-danger);
+  box-shadow:
+    inset 0 1px 4px rgba(0, 0, 0, 0.4),
+    0 0 0 3px rgba(255, 0, 64, 0.12),
+    0 0 10px rgba(255, 0, 64, 0.15);
+  animation: shake 0.4s ease-in-out;
+}
+
+/* ── Success state ── */
+.input-glass--success {
+  border-color: var(--nexus-success);
+  box-shadow:
+    inset 0 1px 4px rgba(0, 0, 0, 0.4),
+    0 0 0 3px var(--nexus-success-glow),
+    0 0 10px var(--nexus-success-glow);
+}
+
+/* ── Textarea ── */
+.textarea-glass {
+  width: 100%;
+  min-height: 120px;
+  padding: 12px 16px;
+  font-family: var(--nexus-font-sans);
+  font-size: var(--nexus-font-size-sm);
+  color: var(--nexus-text-primary);
+  background: rgba(10, 0, 5, 0.7);
+  backdrop-filter: blur(var(--nexus-blur-light));
+  -webkit-backdrop-filter: blur(var(--nexus-blur-light));
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  border-radius: var(--nexus-radius-sm);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.4);
+  outline: none;
+  resize: vertical;
+  transition: all var(--nexus-transition);
+  line-height: 1.6;
+}
+
+.textarea-glass::placeholder {
+  color: var(--nexus-text-dim);
+}
+
+.textarea-glass:focus {
+  border-color: var(--nexus-neon-primary);
+  box-shadow:
+    inset 0 1px 4px rgba(0, 0, 0, 0.4),
+    0 0 0 3px rgba(255, 0, 64, 0.15),
+    0 0 15px rgba(255, 0, 64, 0.1);
+}
+
+/* ── Select ── */
+.select-glass {
+  width: 100%;
+  padding: 10px 40px 10px 16px;
+  font-family: var(--nexus-font-sans);
+  font-size: var(--nexus-font-size-sm);
+  color: var(--nexus-text-primary);
+  background-color: rgba(10, 0, 5, 0.7);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23ff0040' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  backdrop-filter: blur(var(--nexus-blur-light));
+  -webkit-backdrop-filter: blur(var(--nexus-blur-light));
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  border-radius: var(--nexus-radius-sm);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.4);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  transition: all var(--nexus-transition);
+}
+
+.select-glass:focus {
+  border-color: var(--nexus-neon-primary);
+  box-shadow:
+    inset 0 1px 4px rgba(0, 0, 0, 0.4),
+    0 0 0 3px rgba(255, 0, 64, 0.15);
+}
+
+.select-glass option {
+  background: #120010;
+  color: var(--nexus-text-primary);
+  padding: 8px;
+}
+
+/* ── Toggle switch ── */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-switch__track {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 0, 5, 0.8);
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  border-radius: var(--nexus-radius-round);
+  cursor: pointer;
+  transition: all var(--nexus-transition);
+}
+
+.toggle-switch__track::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  background: var(--nexus-text-dim);
+  border-radius: 50%;
+  transition: all var(--nexus-transition-spring);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.toggle-switch input:checked + .toggle-switch__track {
+  background: rgba(255, 0, 64, 0.2);
+  border-color: var(--nexus-neon-primary);
+  box-shadow: 0 0 12px var(--nexus-neon-glow-soft);
+}
+
+.toggle-switch input:checked + .toggle-switch__track::before {
+  transform: translateX(22px);
+  background: var(--nexus-neon-primary);
+  box-shadow: 0 0 10px var(--nexus-neon-glow);
+}
+
+.toggle-switch input:focus-visible + .toggle-switch__track {
+  box-shadow: 0 0 0 3px rgba(255, 0, 64, 0.25);
+}
+
+.toggle-switch input:disabled + .toggle-switch__track {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ── Neon checkbox ── */
+.checkbox-neon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nexus-space-sm);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-neon input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-neon__box {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background: rgba(10, 0, 5, 0.7);
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  border-radius: 4px;
+  transition: all var(--nexus-transition);
+  flex-shrink: 0;
+}
+
+.checkbox-neon__box::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 5px;
+  height: 10px;
+  border: 2px solid var(--nexus-neon-primary);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) scale(0);
+  transition: transform var(--nexus-transition-spring);
+  opacity: 0;
+}
+
+.checkbox-neon input:checked ~ .checkbox-neon__box {
+  border-color: var(--nexus-neon-primary);
+  background: rgba(255, 0, 64, 0.15);
+  box-shadow: 0 0 8px var(--nexus-neon-glow-soft);
+}
+
+.checkbox-neon input:checked ~ .checkbox-neon__box::after {
+  transform: rotate(45deg) scale(1);
+  opacity: 1;
+}
+
+.checkbox-neon input:focus-visible ~ .checkbox-neon__box {
+  box-shadow: 0 0 0 3px rgba(255, 0, 64, 0.2);
+}
+
+.checkbox-neon__label {
+  font-size: var(--nexus-font-size-sm);
+  color: var(--nexus-text-secondary);
+  transition: color var(--nexus-transition);
+}
+
+.checkbox-neon:hover .checkbox-neon__label {
+  color: var(--nexus-text-primary);
+}
+
+/* ── Neon radio ── */
+.radio-neon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nexus-space-sm);
+  cursor: pointer;
+  user-select: none;
+}
+
+.radio-neon input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-neon__circle {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background: rgba(10, 0, 5, 0.7);
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  border-radius: 50%;
+  transition: all var(--nexus-transition);
+  flex-shrink: 0;
+}
+
+.radio-neon__circle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--nexus-neon-primary);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--nexus-transition-spring);
+  box-shadow: 0 0 6px var(--nexus-neon-glow);
+}
+
+.radio-neon input:checked ~ .radio-neon__circle {
+  border-color: var(--nexus-neon-primary);
+  box-shadow: 0 0 8px var(--nexus-neon-glow-soft);
+}
+
+.radio-neon input:checked ~ .radio-neon__circle::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-neon input:focus-visible ~ .radio-neon__circle {
+  box-shadow: 0 0 0 3px rgba(255, 0, 64, 0.2);
+}
+
+.radio-neon__label {
+  font-size: var(--nexus-font-size-sm);
+  color: var(--nexus-text-secondary);
+}
+
+/* ── Range slider ── */
+.range-neon {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: rgba(10, 0, 5, 0.8);
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  border-radius: var(--nexus-radius-round);
+  outline: none;
+  cursor: pointer;
+  transition: all var(--nexus-transition);
+}
+
+.range-neon::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--nexus-neon-primary);
+  border: 2px solid var(--nexus-neon-highlight);
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 0 0 12px var(--nexus-neon-glow), 0 2px 6px rgba(0,0,0,0.4);
+  transition: all var(--nexus-transition);
+}
+
+.range-neon::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 20px var(--nexus-neon-glow-strong), 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.range-neon::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+}
+
+.range-neon::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--nexus-neon-primary);
+  border: 2px solid var(--nexus-neon-highlight);
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 0 0 12px var(--nexus-neon-glow), 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.range-neon:focus-visible {
+  box-shadow: 0 0 0 3px rgba(255, 0, 64, 0.2);
+}
+
+/* ── File input glass ── */
+.file-input-glass {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nexus-space-sm);
+  padding: var(--nexus-space-xl);
+  background: rgba(10, 0, 5, 0.5);
+  border: 2px dashed var(--nexus-glass-border);
+  border-radius: var(--nexus-radius);
+  cursor: pointer;
+  transition: all var(--nexus-transition);
+  text-align: center;
+}
+
+.file-input-glass:hover {
+  border-color: var(--nexus-neon-primary);
+  background: rgba(255, 0, 64, 0.05);
+}
+
+.file-input-glass--active {
+  border-color: var(--nexus-neon-primary);
+  background: rgba(255, 0, 64, 0.1);
+  box-shadow: 0 0 20px var(--nexus-neon-glow-soft);
+  transform: scale(1.01);
+}
+
+
+/* ==========================================================================
+   §9  PROGRESS & METERS
+   ========================================================================== */
+
+/* ── Neon progress bar ── */
+.progress-neon {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background: rgba(10, 0, 5, 0.8);
+  border: var(--nexus-border-width) solid rgba(255, 20, 80, 0.15);
+  border-radius: var(--nexus-radius-round);
+  overflow: hidden;
+}
+
+.progress-neon .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg,
+    var(--nexus-neon-deep),
+    var(--nexus-neon-primary),
+    var(--nexus-neon-accent),
+    var(--nexus-neon-highlight)
+  );
+  background-size: 200% 100%;
+  border-radius: var(--nexus-radius-round);
+  box-shadow: 0 0 10px var(--nexus-neon-glow), 0 0 20px var(--nexus-neon-glow-soft);
+  transition: width var(--nexus-transition-slow);
+  animation: liquid-flow 3s linear infinite;
+  position: relative;
+}
+
+/* Shimmer overlay on fill */
+.progress-neon .progress-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* ── Striped variant ── */
+.progress-neon--striped .progress-fill {
+  background-image:
+    linear-gradient(
+      45deg,
+      rgba(255,255,255,0.1) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255,255,255,0.1) 50%,
+      rgba(255,255,255,0.1) 75%,
+      transparent 75%
+    );
+  background-size: 20px 20px;
+  animation: progress-stripes 0.8s linear infinite;
+}
+
+@keyframes progress-stripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 20px 0; }
+}
+
+/* ── Indeterminate variant ── */
+.progress-neon--indeterminate .progress-fill {
+  width: 30% !important;
+  animation: indeterminate-slide 1.5s ease-in-out infinite;
+}
+
+@keyframes indeterminate-slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(433%); }
+}
+
+/* ── Meter gauge ── */
+.meter-neon {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  background: rgba(10, 0, 5, 0.8);
+  border: var(--nexus-border-width) solid rgba(255, 20, 80, 0.15);
+  border-radius: var(--nexus-radius-round);
+  overflow: hidden;
+}
+
+.meter-neon .meter-fill {
+  height: 100%;
+  background: var(--nexus-gradient-neon);
+  border-radius: var(--nexus-radius-round);
+  box-shadow: 0 0 8px var(--nexus-neon-glow);
+  transition: width var(--nexus-transition);
+}
+
+.meter-neon--low .meter-fill { background: var(--nexus-danger); box-shadow: 0 0 8px var(--nexus-danger-glow); }
+.meter-neon--medium .meter-fill { background: var(--nexus-warning); box-shadow: 0 0 8px var(--nexus-warning-glow); }
+.meter-neon--high .meter-fill { background: var(--nexus-success); box-shadow: 0 0 8px var(--nexus-success-glow); }
+
+
+/* ==========================================================================
+   §10  TABS
+   ========================================================================== */
+
+/* ── Tab container ── */
+.tabs-neon {
+  display: flex;
+  background: var(--nexus-glass-bg);
+  backdrop-filter: blur(var(--nexus-blur-light));
+  -webkit-backdrop-filter: blur(var(--nexus-blur-light));
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  border-radius: var(--nexus-radius);
+  padding: 4px;
+  gap: 2px;
+  overflow-x: auto;
+}
+
+/* ── Individual tab ── */
+.tabs-neon .tab {
+  position: relative;
+  padding: 8px 20px;
+  font-family: var(--nexus-font-sans);
+  font-size: var(--nexus-font-size-sm);
+  font-weight: 500;
+  color: var(--nexus-text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: var(--nexus-radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--nexus-transition);
+  user-select: none;
+}
+
+.tabs-neon .tab:hover {
+  color: var(--nexus-text-primary);
+  background: rgba(255, 0, 64, 0.08);
+}
+
+/* ── Active tab ── */
+.tabs-neon .tab--active {
+  color: var(--nexus-neon-primary);
+  background: rgba(255, 0, 64, 0.12);
+  box-shadow: 0 0 10px var(--nexus-neon-glow-soft);
+}
+
+.tabs-neon .tab--active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: var(--nexus-neon-primary);
+  border-radius: 2px;
+  box-shadow: 0 0 8px var(--nexus-neon-glow);
+}
+
+/* ── Vertical tabs ── */
+.tabs-neon--vertical {
+  flex-direction: column;
+  width: fit-content;
+}
+
+.tabs-neon--vertical .tab--active::after {
+  top: 20%;
+  bottom: 20%;
+  left: 0;
+  right: auto;
+  width: 2px;
+  height: auto;
+}
+
+/* ── Pill tabs ── */
+.tabs-neon--pills .tab {
+  border-radius: var(--nexus-radius-round);
+}
+
+.tabs-neon--pills .tab--active {
+  background: var(--nexus-neon-primary);
+  color: #fff;
+  box-shadow: 0 0 15px var(--nexus-neon-glow);
+}
+
+.tabs-neon--pills .tab--active::after {
+  display: none;
+}
+
+
+/* ==========================================================================
+   §11  CARDS
+   ========================================================================== */
+
+/* ── Base card ── */
+.card-neon {
+  position: relative;
+  background: var(--nexus-glass-bg);
+  backdrop-filter: blur(var(--nexus-blur));
+  -webkit-backdrop-filter: blur(var(--nexus-blur));
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  border-radius: var(--nexus-radius);
+  box-shadow: var(--nexus-shadow-depth);
+  overflow: hidden;
+  transition: all var(--nexus-transition);
+}
+
+/* Neon top border accent */
+.card-neon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--nexus-gradient-neon);
+  box-shadow: 0 2px 10px var(--nexus-neon-glow-soft);
+}
+
+/* ── Card header ── */
+.card-neon .card-header {
+  padding: var(--nexus-space-md) var(--nexus-space-lg);
+  border-bottom: var(--nexus-border-width) solid rgba(255, 20, 80, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── Card body ── */
+.card-neon .card-body {
+  padding: var(--nexus-space-lg);
+}
+
+/* ── Card footer ── */
+.card-neon .card-footer {
+  padding: var(--nexus-space-md) var(--nexus-space-lg);
+  border-top: var(--nexus-border-width) solid rgba(255, 20, 80, 0.12);
+  background: rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--nexus-space-sm);
+}
+
+/* ── Interactive card ── */
+.card-neon--interactive {
+  cursor: pointer;
+}
+
+.card-neon--interactive:hover {
+  border-color: var(--nexus-glass-border-hover);
+  box-shadow:
+    var(--nexus-shadow-depth),
+    var(--nexus-shadow-neon-subtle);
+  transform: translateY(-2px);
+}
+
+.card-neon--interactive:hover::before {
+  box-shadow: 0 2px 15px var(--nexus-neon-glow);
+}
+
+/* ── Featured card ── */
+.card-neon--featured {
+  border-color: var(--nexus-glass-border-hover);
+  box-shadow:
+    var(--nexus-shadow-depth),
+    var(--nexus-shadow-neon);
+}
+
+.card-neon--featured::before {
+  height: 3px;
+  box-shadow: 0 2px 20px var(--nexus-neon-glow);
+}
+
+/* ── Compact card ── */
+.card-neon--compact .card-header { padding: var(--nexus-space-sm) var(--nexus-space-md); }
+.card-neon--compact .card-body { padding: var(--nexus-space-md); }
+.card-neon--compact .card-footer { padding: var(--nexus-space-sm) var(--nexus-space-md); }
+
+
+/* ==========================================================================
+   §12  LISTS
+   ========================================================================== */
+
+/* ── Neon list ── */
+.list-neon {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-neon li {
+  position: relative;
+  padding: var(--nexus-space-sm) var(--nexus-space-md) var(--nexus-space-sm) var(--nexus-space-xl);
+  font-size: var(--nexus-font-size-sm);
+  color: var(--nexus-text-secondary);
+  transition: all var(--nexus-transition);
+}
+
+/* Neon bullet */
+.list-neon li::before {
+  content: '';
+  position: absolute;
+  left: var(--nexus-space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--nexus-neon-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--nexus-neon-glow);
+}
+
+/* ── Divided list ── */
+.list-neon--divided li {
+  border-bottom: var(--nexus-border-width) solid rgba(255, 20, 80, 0.08);
+}
+
+.list-neon--divided li:last-child {
+  border-bottom: none;
+}
+
+/* ── Interactive list ── */
+.list-neon--interactive li {
+  cursor: pointer;
+  border-radius: var(--nexus-radius-sm);
+}
+
+.list-neon--interactive li:hover {
+  color: var(--nexus-text-primary);
+  background: rgba(255, 0, 64, 0.06);
+}
+
+.list-neon--interactive li:hover::before {
+  box-shadow: 0 0 10px var(--nexus-neon-glow);
+  transform: translateY(-50%) scale(1.3);
+}
+
+
+/* ==========================================================================
+   §13  TABLES
+   ========================================================================== */
+
+/* ── Neon table ── */
+.table-neon {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--nexus-glass-bg);
+  backdrop-filter: blur(var(--nexus-blur-light));
+  -webkit-backdrop-filter: blur(var(--nexus-blur-light));
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  border-radius: var(--nexus-radius);
+  overflow: hidden;
+}
+
+/* ── Table header ── */
+.table-neon th {
+  padding: var(--nexus-space-md) var(--nexus-space-lg);
+  text-align: left;
+  font-size: var(--nexus-font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--nexus-text-dim);
+  background: rgba(255, 0, 64, 0.05);
+  border-bottom: var(--nexus-border-width-thick) solid var(--nexus-glass-border);
+  white-space: nowrap;
+}
+
+/* ── Table cells ── */
+.table-neon td {
+  padding: var(--nexus-space-md) var(--nexus-space-lg);
+  font-size: var(--nexus-font-size-sm);
+  color: var(--nexus-text-secondary);
+  border-bottom: var(--nexus-border-width) solid rgba(255, 20, 80, 0.06);
+  transition: all var(--nexus-transition);
+}
+
+.table-neon tr:last-child td {
+  border-bottom: none;
+}
+
+/* ── Row hover ── */
+.table-neon tbody tr {
+  transition: all var(--nexus-transition);
+}
+
+.table-neon tbody tr:hover {
+  background: rgba(255, 0, 64, 0.06);
+}
+
+.table-neon tbody tr:hover td {
+  color: var(--nexus-text-primary);
+}
+
+/* ── Striped variant ── */
+.table-neon--striped tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ── Compact variant ── */
+.table-neon--compact th,
+.table-neon--compact td {
+  padding: var(--nexus-space-sm) var(--nexus-space-md);
+}
+
+/* ── Sortable headers ── */
+.table-neon--sortable th {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  padding-right: var(--nexus-space-xl);
+}
+
+.table-neon--sortable th:hover {
+  color: var(--nexus-neon-primary);
+}
+
+.table-neon--sortable th::after {
+  content: '↕';
+  position: absolute;
+  right: var(--nexus-space-md);
+  opacity: 0.3;
+  font-size: 0.8em;
+}
+
+.table-neon--sortable th.sort-asc::after {
+  content: '↑';
+  opacity: 1;
+  color: var(--nexus-neon-primary);
+}
+
+.table-neon--sortable th.sort-desc::after {
+  content: '↓';
+  opacity: 1;
+  color: var(--nexus-neon-primary);
+}
+
+
+/* ==========================================================================
+   §14  DROPDOWNS & MENUS
+   ========================================================================== */
+
+/* ── Dropdown panel ── */
+.dropdown-neon {
+  position: absolute;
+  min-width: 200px;
+  background: var(--nexus-glass-bg-hover);
+  backdrop-filter: blur(var(--nexus-blur-heavy)) saturate(1.5);
+  -webkit-backdrop-filter: blur(var(--nexus-blur-heavy)) saturate(1.5);
+  border: var(--nexus-border-width) solid var(--nexus-glass-border-hover);
+  border-radius: var(--nexus-radius);
+  box-shadow:
+    var(--nexus-shadow-depth),
+    var(--nexus-shadow-neon-subtle);
+  padding: var(--nexus-space-xs);
+  z-index: var(--nexus-z-dropdown);
+  animation: scale-in 0.15s ease-out;
+}
+
+/* ── Dropdown item ── */
+.dropdown-neon .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--nexus-space-sm);
+  padding: 8px 14px;
+  font-size: var(--nexus-font-size-sm);
+  color: var(--nexus-text-secondary);
+  border-radius: var(--nexus-radius-sm);
+  cursor: pointer;
+  transition: all var(--nexus-transition-fast);
+  white-space: nowrap;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-neon .dropdown-item:hover {
+  background: rgba(255, 0, 64, 0.1);
+  color: var(--nexus-text-primary);
+}
+
+.dropdown-neon .dropdown-item--active {
+  background: rgba(255, 0, 64, 0.12);
+  color: var(--nexus-neon-primary);
+  border-left: 2px solid var(--nexus-neon-primary);
+}
+
+.dropdown-neon .dropdown-item--danger {
+  color: var(--nexus-danger);
+}
+
+.dropdown-neon .dropdown-item--danger:hover {
+  background: rgba(255, 0, 40, 0.15);
+}
+
+/* ── Dropdown divider ── */
+.dropdown-neon .dropdown-divider {
+  height: 1px;
+  margin: var(--nexus-space-xs) var(--nexus-space-sm);
+  background: linear-gradient(90deg, transparent, var(--nexus-glass-border), transparent);
+}
+
+/* ── Dropdown header ── */
+.dropdown-neon .dropdown-header {
+  padding: 6px 14px;
+  font-size: var(--nexus-font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--nexus-text-dim);
+}
+
+/* ── Dropdown disabled item ── */
+.dropdown-neon .dropdown-item--disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+/* ==========================================================================
+   §15  MODALS & OVERLAYS
+   ========================================================================== */
+
+/* ── Modal overlay ── */
+.modal-overlay-neon {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 0, 3, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--nexus-z-modal);
+  animation: fade-in 0.2s ease-out;
+}
+
+/* Subtle radial neon glow behind modal */
+.modal-overlay-neon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(ellipse at center, rgba(255, 0, 60, 0.08), transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Modal body ── */
+.modal-neon {
+  position: relative;
+  width: 90%;
+  max-width: 560px;
+  max-height: 85vh;
+  background: var(--nexus-glass-bg-hover);
+  backdrop-filter: blur(var(--nexus-blur-heavy)) saturate(1.5);
+  -webkit-backdrop-filter: blur(var(--nexus-blur-heavy)) saturate(1.5);
+  border: var(--nexus-border-width-thick) solid var(--nexus-glass-border-hover);
+  border-radius: var(--nexus-radius-lg);
+  box-shadow:
+    var(--nexus-shadow-depth),
+    var(--nexus-shadow-neon-strong),
+    var(--nexus-shadow-inset);
+  display: flex;
+  flex-direction: column;
+  animation: scale-in 0.25s var(--nexus-transition-spring);
+  overflow: hidden;
+}
+
+/* Neon frame glow */
+.modal-neon::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,0,64,0.2), transparent, rgba(255,0,102,0.1));
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ── Modal header ── */
+.modal-neon .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--nexus-space-lg);
+  border-bottom: var(--nexus-border-width) solid rgba(255, 20, 80, 0.15);
+}
+
+.modal-neon .modal-header h2 {
+  font-family: var(--nexus-font-display);
+  font-size: var(--nexus-font-size-lg);
+  font-weight: 700;
+  color: var(--nexus-text-primary);
+  margin: 0;
+}
+
+.modal-neon .modal-close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: var(--nexus-border-width) solid transparent;
+  border-radius: var(--nexus-radius-sm);
+  color: var(--nexus-text-dim);
+  cursor: pointer;
+  font-size: 18px;
+  transition: all var(--nexus-transition);
+}
+
+.modal-neon .modal-close:hover {
+  color: var(--nexus-neon-primary);
+  border-color: var(--nexus-glass-border);
+  background: rgba(255, 0, 64, 0.08);
+}
+
+/* ── Modal body ── */
+.modal-neon .modal-body {
+  padding: var(--nexus-space-lg);
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ── Modal footer ── */
+.modal-neon .modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--nexus-space-sm);
+  padding: var(--nexus-space-md) var(--nexus-space-lg);
+  border-top: var(--nexus-border-width) solid rgba(255, 20, 80, 0.1);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* ── Fullscreen modal ── */
+.modal-neon--fullscreen {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  border-radius: 0;
+}
+
+/* ── Size variants ── */
+.modal-neon--small { max-width: 400px; }
+.modal-neon--large { max-width: 800px; }
+
+
+/* ==========================================================================
+   §16  TOOLTIPS
+   ========================================================================== */
+
+/* ── Base tooltip ── */
+.tooltip-neon {
+  position: absolute;
+  padding: 6px 12px;
+  font-size: var(--nexus-font-size-xs);
+  color: var(--nexus-text-primary);
+  background: rgba(20, 0, 10, 0.9);
+  backdrop-filter: blur(var(--nexus-blur));
+  -webkit-backdrop-filter: blur(var(--nexus-blur));
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  border-radius: var(--nexus-radius-sm);
+  box-shadow: var(--nexus-shadow-neon-subtle);
+  white-space: nowrap;
+  z-index: var(--nexus-z-tooltip);
+  pointer-events: none;
+  animation: fade-in 0.15s ease-out;
+}
+
+/* ── Arrow variants ── */
+.tooltip-neon::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(20, 0, 10, 0.9);
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  transform: rotate(45deg);
+}
+
+.tooltip-neon--top::after {
+  bottom: -5px;
+  left: 50%;
+  margin-left: -4px;
+  border-top: none;
+  border-left: none;
+}
+
+.tooltip-neon--bottom::after {
+  top: -5px;
+  left: 50%;
+  margin-left: -4px;
+  border-bottom: none;
+  border-right: none;
+}
+
+.tooltip-neon--left::after {
+  right: -5px;
+  top: 50%;
+  margin-top: -4px;
+  border-bottom: none;
+  border-left: none;
+}
+
+.tooltip-neon--right::after {
+  left: -5px;
+  top: 50%;
+  margin-top: -4px;
+  border-top: none;
+  border-right: none;
+}
+
+
+/* ==========================================================================
+   §17  BADGES & TAGS
+   ========================================================================== */
+
+/* ── Badge ── */
+.badge-neon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  font-size: var(--nexus-font-size-xs);
+  font-weight: 600;
+  line-height: 1.4;
+  color: #fff;
+  background: var(--nexus-neon-primary);
+  border-radius: var(--nexus-radius-round);
+  box-shadow: 0 0 8px var(--nexus-neon-glow-soft);
+  white-space: nowrap;
+}
+
+.badge-neon--primary { background: var(--nexus-neon-primary); box-shadow: 0 0 8px rgba(255,0,64,0.3); }
+.badge-neon--secondary { background: var(--nexus-neon-secondary); box-shadow: 0 0 8px rgba(255,32,96,0.3); }
+.badge-neon--success { background: var(--nexus-success); color: #000; box-shadow: 0 0 8px var(--nexus-success-glow); }
+.badge-neon--warning { background: var(--nexus-warning); color: #000; box-shadow: 0 0 8px var(--nexus-warning-glow); }
+.badge-neon--danger { background: var(--nexus-danger); box-shadow: 0 0 8px var(--nexus-danger-glow); }
+
+/* ── Dot badge (no text) ── */
+.badge-neon--dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* ── Pulse badge ── */
+.badge-neon--pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+/* ── Tag ── */
+.tag-neon {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nexus-space-xs);
+  padding: 4px 12px;
+  font-size: var(--nexus-font-size-xs);
+  font-weight: 500;
+  color: var(--nexus-neon-primary);
+  background: rgba(255, 0, 64, 0.08);
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+  border-radius: var(--nexus-radius-round);
+  white-space: nowrap;
+  transition: all var(--nexus-transition);
+}
+
+.tag-neon:hover {
+  background: rgba(255, 0, 64, 0.15);
+  border-color: var(--nexus-glass-border-hover);
+}
+
+.tag-neon__dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background: none;
+  border: none;
+  color: var(--nexus-text-dim);
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 50%;
+  transition: all var(--nexus-transition-fast);
+}
+
+.tag-neon__dismiss:hover {
+  background: rgba(255, 0, 64, 0.2);
+  color: var(--nexus-neon-primary);
+}
+
+/* ── Tag sizes ── */
+.tag-neon--sm { padding: 2px 8px; font-size: 0.65rem; }
+.tag-neon--md { padding: 6px 16px; font-size: var(--nexus-font-size-sm); }
+
+
+/* ==========================================================================
+   §18  AVATARS
+   ========================================================================== */
+
+/* ── Base avatar ── */
+.avatar-neon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--nexus-glass-border);
+  box-shadow: 0 0 8px var(--nexus-neon-glow-soft);
+  background: rgba(20, 0, 10, 0.5);
+  flex-shrink: 0;
+  transition: all var(--nexus-transition);
+}
+
+.avatar-neon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-neon:hover {
+  border-color: var(--nexus-neon-primary);
+  box-shadow: 0 0 15px var(--nexus-neon-glow);
+}
+
+/* ── Size variants ── */
+.avatar-neon--sm { width: 28px; height: 28px; border-width: 1.5px; }
+.avatar-neon--md { width: 40px; height: 40px; }
+.avatar-neon--lg { width: 56px; height: 56px; border-width: 2.5px; }
+.avatar-neon--xl { width: 80px; height: 80px; border-width: 3px; }
+
+/* ── Status indicator ── */
+.avatar-neon--status::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--nexus-bg);
+  background: var(--nexus-text-dim);
+}
+
+.avatar-neon--status.online::after { background: var(--nexus-success); box-shadow: 0 0 6px var(--nexus-success-glow); }
+.avatar-neon--status.offline::after { background: var(--nexus-text-dim); }
+.avatar-neon--status.busy::after { background: var(--nexus-danger); box-shadow: 0 0 6px var(--nexus-danger-glow); }
+.avatar-neon--status.away::after { background: var(--nexus-warning); box-shadow: 0 0 6px var(--nexus-warning-glow); }
+
+/* ── Avatar group ── */
+.avatar-neon--group {
+  display: flex;
+}
+
+.avatar-neon--group .avatar-neon {
+  margin-left: -10px;
+  border-color: var(--nexus-bg);
+}
+
+.avatar-neon--group .avatar-neon:first-child {
+  margin-left: 0;
+}
+
+.avatar-neon--group .avatar-neon:hover {
+  z-index: 1;
+  transform: translateY(-2px);
+}
+
+
+/* ==========================================================================
+   §19  DIVIDERS
+   ========================================================================== */
+
+/* ── Neon divider ── */
+.divider-neon {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--nexus-glass-border) 20%,
+    var(--nexus-neon-primary) 50%,
+    var(--nexus-glass-border) 80%,
+    transparent 100%
+  );
+  border: none;
+  margin: var(--nexus-space-md) 0;
+  opacity: 0.6;
+}
+
+/* ── Vertical variant ── */
+.divider-neon--vertical {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--nexus-glass-border) 20%,
+    var(--nexus-neon-primary) 50%,
+    var(--nexus-glass-border) 80%,
+    transparent 100%
+  );
+  margin: 0 var(--nexus-space-md);
+}
+
+/* ── Glow variant ── */
+.divider-neon--glow {
+  height: 2px;
+  box-shadow: 0 0 8px var(--nexus-neon-glow-soft), 0 0 20px var(--nexus-neon-glow-soft);
+  opacity: 0.8;
+}
+
+
+/* ==========================================================================
+   §20  SCROLLBAR STYLING
+   ========================================================================== */
+
+/* ── Webkit scrollbar ── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 0, 5, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 0, 64, 0.3);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 0, 64, 0.15);
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 0, 64, 0.5);
+  box-shadow: 0 0 6px var(--nexus-neon-glow-soft);
+}
+
+::-webkit-scrollbar-corner {
+  background: rgba(10, 0, 5, 0.5);
+}
+
+/* ── Firefox scrollbar ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 0, 64, 0.3) rgba(10, 0, 5, 0.5);
+}
+
+/* ── Thin scrollbar variant ── */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+
+/* ==========================================================================
+   §21  SELECTION & FOCUS
+   ========================================================================== */
+
+/* ── Text selection ── */
+::selection {
+  background: rgba(255, 0, 64, 0.35);
+  color: #fff;
+  text-shadow: 0 0 8px var(--nexus-neon-glow);
+}
+
+::-moz-selection {
+  background: rgba(255, 0, 64, 0.35);
+  color: #fff;
+}
+
+/* ── Global focus visible ring ── */
+:focus-visible {
+  outline: 2px solid var(--nexus-neon-primary);
+  outline-offset: 2px;
+}
+
+/* Remove default focus outline */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+/* ==========================================================================
+   §22  UTILITY CLASSES
+   ========================================================================== */
+
+/* ── Text glow utilities ── */
+.text-glow {
+  text-shadow: 0 0 10px var(--nexus-neon-glow), 0 0 20px var(--nexus-neon-glow-soft);
+}
+
+.text-glow-sm {
+  text-shadow: 0 0 5px var(--nexus-neon-glow-soft);
+}
+
+.text-glow-lg {
+  text-shadow:
+    0 0 10px var(--nexus-neon-glow),
+    0 0 30px var(--nexus-neon-glow),
+    0 0 60px var(--nexus-neon-glow-soft);
+}
+
+/* ── Background utilities ── */
+.bg-glass {
+  background: var(--nexus-glass-bg);
+  backdrop-filter: blur(var(--nexus-blur));
+  -webkit-backdrop-filter: blur(var(--nexus-blur));
+}
+
+.bg-glass-dark {
+  background: rgba(5, 0, 3, 0.8);
+  backdrop-filter: blur(var(--nexus-blur));
+  -webkit-backdrop-filter: blur(var(--nexus-blur));
+}
+
+.bg-glass-light {
+  background: rgba(30, 0, 15, 0.5);
+  backdrop-filter: blur(var(--nexus-blur-light));
+  -webkit-backdrop-filter: blur(var(--nexus-blur-light));
+}
+
+/* ── Shadow utilities ── */
+.neon-shadow {
+  box-shadow: var(--nexus-shadow-neon);
+}
+
+.neon-shadow-sm {
+  box-shadow: var(--nexus-shadow-neon-subtle);
+}
+
+.neon-shadow-lg {
+  box-shadow: var(--nexus-shadow-neon-strong);
+}
+
+/* ── Animation utilities ── */
+.animate-pulse-neon {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+.animate-flicker {
+  animation: neon-flicker 3s linear infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+/* ── Border utilities ── */
+.glass-border {
+  border: var(--nexus-border-width) solid var(--nexus-glass-border);
+}
+
+.glass-border-thick {
+  border: var(--nexus-border-width-thick) solid var(--nexus-glass-border);
+}
+
+.glass-border-neon {
+  border: var(--nexus-border-width) solid var(--nexus-neon-primary);
+}
+
+/* ── Visibility utilities ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ── Spacing utilities ── */
+.gap-neon { gap: var(--nexus-space-md); }
+.gap-neon-sm { gap: var(--nexus-space-sm); }
+.gap-neon-lg { gap: var(--nexus-space-lg); }
+
+
+/* ==========================================================================
+   §23  CONTAINER QUERIES
+   ========================================================================== */
+
+/* ── Responsive glass based on container size ── */
+.glass-container {
+  container-type: inline-size;
+}
+
+@container (max-width: 400px) {
+  .glass-panel {
+    backdrop-filter: blur(calc(var(--nexus-blur) * 0.6));
+    -webkit-backdrop-filter: blur(calc(var(--nexus-blur) * 0.6));
+  }
+
+  .glass-panel::after {
+    display: none; /* Remove noise texture in small containers */
+  }
+
+  .card-neon .card-body {
+    padding: var(--nexus-space-md);
+  }
+
+  .btn-lg {
+    padding: 10px 20px;
+    font-size: var(--nexus-font-size-sm);
+  }
+}
+
+@container (max-width: 250px) {
+  .glass-panel {
+    backdrop-filter: blur(calc(var(--nexus-blur) * 0.4));
+    -webkit-backdrop-filter: blur(calc(var(--nexus-blur) * 0.4));
+    border-radius: var(--nexus-radius-sm);
+  }
+
+  .glass-panel::before {
+    display: none; /* Remove reflection in very small containers */
+  }
+}
+
+
+/* ==========================================================================
+   §24  @MEDIA QUERIES
+   ========================================================================== */
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .liquid-light::before,
+  .liquid-light::after,
+  .plasma-bg::before,
+  .plasma-bg::after {
+    animation: none !important;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    display: none;
+  }
+}
+
+/* ── High contrast mode ── */
+@media (prefers-contrast: more) {
+  :root {
+    --nexus-glass-border: rgba(255, 20, 80, 0.6);
+    --nexus-text-secondary: #e8b0c0;
+    --nexus-text-dim: #997788;
+  }
+
+  .glass-panel {
+    border-width: 2px;
+  }
+
+  .glass-panel::before {
+    opacity: 0;
+  }
+}
+
+/* ── Responsive breakpoints ── */
+@media (max-width: 768px) {
+  :root {
+    --nexus-blur: 14px;
+    --nexus-blur-heavy: 24px;
+  }
+
+  .glass-panel::after {
+    opacity: 0.015;
+  }
+
+  .modal-neon {
+    width: 95%;
+    max-height: 90vh;
+    border-radius: var(--nexus-radius);
+  }
+
+  .table-neon {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --nexus-blur: 10px;
+    --nexus-blur-heavy: 18px;
+    --nexus-radius: 8px;
+    --nexus-radius-lg: 12px;
+  }
+
+  .glass-panel::before {
+    display: none;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger,
+  .btn-ghost {
+    padding: 8px 16px;
+    font-size: var(--nexus-font-size-xs);
+  }
+
+  .neon-text--large {
+    font-size: var(--nexus-font-size-2xl);
+  }
+}
+
+/* ── Dark mode preference (already dark, but explicit) ── */
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Force dark theme even if system is light */
+    color-scheme: dark;
+  }
+}
+
+
+/* ==========================================================================
+   §25  PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    border-color: #ccc !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .glass-panel,
+  .glass-panel--elevated,
+  .glass-panel--inset {
+    border: 1px solid #ccc;
+    background: #fff;
+  }
+
+  .glass-panel::before,
+  .glass-panel::after {
+    display: none !important;
+  }
+
+  .liquid-light::before,
+  .liquid-light::after,
+  .plasma-bg::before,
+  .plasma-bg::after,
+  .glitch-text::before,
+  .glitch-text::after,
+  .crt-effect::before,
+  .crt-effect::after {
+    display: none !important;
+  }
+
+  .neon-text {
+    color: #000 !important;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger {
+    border: 1px solid #333 !important;
+    background: #eee !important;
+    color: #000 !important;
+  }
+
+  .modal-overlay-neon {
+    position: static;
+    background: none;
+  }
+}
+
+} /* end @layer theme-neon-red */

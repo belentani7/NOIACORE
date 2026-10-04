@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+*{box-sizing:border-box}
+.slide-container{width:1280px;min-height:720px;background:#EBF4FF;color:#0A2540;font-family:Arial,Helvetica,sans-serif;padding:58px 76px 0}
+.tag{font-size:19px;letter-spacing:4px;color:#DD6B20;font-weight:800}
+.title{font-size:68px;line-height:.96;letter-spacing:-3px;font-weight:800;margin-top:18px}
+.subtitle{font-size:20px;color:#1E3A8A;margin-top:12px}
+.layout{display:grid;grid-template-columns:57% 43%;gap:46px;margin-top:28px}
+.metric-head{display:flex;align-items:baseline;gap:18px;border-bottom:3px solid #0A2540;padding-bottom:10px}
+.metric-number{font-size:64px;font-weight:800;color:#DD6B20}
+.metric-label{font-size:24px;font-weight:800}
+.skill{display:grid;grid-template-columns:170px 1fr 48px;gap:14px;align-items:center;margin-top:18px}
+.skill-name{font-size:22px;font-weight:800}
+.bar{height:22px;background:#D3E2F5;border:2px solid #0A2540}
+.fill{height:100%;background:#1E3A8A}
+.skill-value{font-size:21px;font-weight:800;text-align:right}
+.signals{border-top:3px solid #0A2540}
+.signal{padding:18px 0;border-bottom:2px solid #0A2540}
+.signal-kicker{font-size:17px;letter-spacing:2px;color:#DD6B20;font-weight:800}
+.signal h3{font-size:29px;line-height:1.05;margin:8px 0}
+.signal p{font-size:20px;line-height:1.28;color:#1E3A8A;margin:0}
+.source{font-size:14px;color:#1E3A8A;margin-top:25px}
+</style>
+</head>
+<body>
+<div class="slide-container">
+  <div class="tag">06 / EVIDENCIA DEL MVP</div>
+  <div class="title">Los datos ya cuentan una historia.</div>
+  <div class="subtitle">Ejecución real del 19/08/2026 · Remotive + Arbeitnow + Jobicy</div>
+  <div class="layout">
+    <section>
+      <div class="metric-head"><div class="metric-number">292</div><div class="metric-label">vacantes válidas consolidadas</div></div>
+      <div class="skill"><div class="skill-name">Python</div><div class="bar"><div class="fill" style="width:100%"></div></div><div class="skill-value">63</div></div>
+      <div class="skill"><div class="skill-name">Machine learning</div><div class="bar"><div class="fill" style="width:67%"></div></div><div class="skill-value">42</div></div>
+      <div class="skill"><div class="skill-name">AWS</div><div class="bar"><div class="fill" style="width:60%"></div></div><div class="skill-value">38</div></div>
+      <div class="skill"><div class="skill-name">Kubernetes</div><div class="bar"><div class="fill" style="width:51%"></div></div><div class="skill-value">32</div></div>
+    </section>
+    <section class="signals">
+      <div class="signal"><div class="signal-kicker">SEÑAL DE CALIDAD / 01</div><h3>Solo 5% contiene salario.</h3><p>La ausencia de salario es un dato de cobertura, no evidencia de que los roles no paguen.</p></div>
+      <div class="signal"><div class="signal-kicker">SEÑAL DE MERCADO / 02</div><h3>159 anuncios son “intern”.</h3><p>La distribución de seniority cambia la lectura de la demanda y evita conclusiones superficiales.</p></div>
+      <div class="signal"><div class="signal-kicker">DECISIÓN</div><h3>Separar hechos de inferencias.</h3><p>NEXUS muestra fuente, cobertura, duplicados y contexto antes de recomendar una acción.</p></div>
+    </section>
+  </div>
+  <div class="source">Fuente: ejecución reproducible del prototipo; 17 Remotive, 175 Arbeitnow y 100 Jobicy. Las cifras son una instantánea temporal.</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+/* NEXUS OS — Meme Generator — Neon Glassmorphism */
+.nmg-root{display:flex;height:100%;background:#0a0a0f;font-family:'Segoe UI',system-ui,sans-serif;color:#e0e0e0;overflow:hidden}
+.nmg-canvas-area{flex:1;display:flex;flex-direction:column;min-width:0;position:relative}
+.nmg-canvas-wrap{flex:1;display:flex;align-items:center;justify-content:center;background:repeating-conic-gradient(#0d0d15 0% 25%,#0a0a12 0% 50%) 0 0/20px 20px;overflow:hidden;position:relative}
+.nmg-canvas-wrap canvas{max-width:95%;max-height:95%;border:1px solid rgba(255,0,60,.1)}
+.nmg-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:#555}
+.nmg-empty-icon{font-size:64px;opacity:.3}
+.nmg-open-btn{padding:10px 24px;background:rgba(255,0,60,.15);border:1px solid rgba(255,0,60,.4);border-radius:8px;color:#ff003c;cursor:pointer;font-size:14px;transition:all .2s}
+.nmg-open-btn:hover{background:rgba(255,0,60,.25);box-shadow:0 0 15px rgba(255,0,60,.2)}
+.nmg-drop-overlay{position:absolute;inset:0;background:rgba(255,0,60,.15);border:3px dashed #ff003c;display:none;align-items:center;justify-content:center;z-index:20;font-size:22px;color:#ff003c;backdrop-filter:blur(8px)}
+.nmg-drop-overlay.active{display:flex}
+.nmg-bottom-bar{display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(15,15,25,.95);border-top:1px solid rgba(255,0,60,.1)}
+.nmg-bar-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,0,60,.15);color:#ccc;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;transition:all .2s}
+.nmg-bar-btn:hover{background:rgba(255,0,60,.1);color:#ff003c}
+.nmg-bar-btn.primary{background:rgba(255,0,60,.2);color:#ff003c;border-color:rgba(255,0,60,.5)}
+.nmg-bar-spacer{flex:1}
+.nmg-sidebar{width:300px;background:rgba(15,15,25,.95);border-left:1px solid rgba(255,0,60,.15);display:flex;flex-direction:column;overflow:hidden}
+.nmg-sidebar-header{padding:12px;border-bottom:1px solid rgba(255,0,60,.1);font-size:14px;font-weight:600;color:#ff2d6b}
+.nmg-sidebar-scroll{flex:1;overflow-y:auto;padding:12px}
+.nmg-sidebar-scroll::-webkit-scrollbar{width:4px}
+.nmg-sidebar-scroll::-webkit-scrollbar-thumb{background:#ff003c33;border-radius:2px}
+.nmg-section-title{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;margin:12px 0 8px}
+.nmg-text-input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,0,60,.2);color:#e0e0e0;padding:8px 10px;border-radius:6px;font-size:13px;outline:none;margin-bottom:8px;transition:border-color .2s}
+.nmg-text-input:focus{border-color:#ff003c}
+.nmg-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.nmg-row label{font-size:11px;color:#888;min-width:50px}
+.nmg-slider{flex:1;-webkit-appearance:none;height:3px;background:rgba(255,255,255,.1);border-radius:2px;outline:none}
+.nmg-slider::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;background:#ff003c;border-radius:50%;cursor:pointer;box-shadow:0 0 4px #ff003c}
+.nmg-color{width:30px;height:26px;border:1px solid rgba(255,0,60,.2);border-radius:4px;background:none;cursor:pointer;padding:0}
+.nmg-template-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.nmg-template-btn{padding:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,0,60,.1);border-radius:6px;color:#888;font-size:11px;cursor:pointer;text-align:center;transition:all .2s}
+.nmg-template-btn:hover{background:rgba(255,0,60,.1);color:#ff003c;border-color:rgba(255,0,60,.3)}
+.nmg-select{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,0,60,.15);color:#ccc;padding:6px 8px;border-radius:6px;font-size:12px;outline:none;cursor:pointer;margin-bottom:8px}
+.nmg-select option{background:#1a1a2e}

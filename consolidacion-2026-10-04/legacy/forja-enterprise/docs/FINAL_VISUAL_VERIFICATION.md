@@ -1,0 +1,3 @@
+# Final visual verification
+
+Desktop verification at 1280×720 confirmed the dark enterprise control-plane shell, persistent navigation, telemetry cards, execution chart region, Agent FSM visualization, and clear primary actions render without visible clipping. Mobile verification at 390×844 confirmed the navigation collapses to a menu control, the page title wraps legibly, the primary actions remain side by side within the viewport, and telemetry cards stack vertically without horizontal overflow. The dashboard rendered with authenticated enterprise context and emitted a successful `enterprise.snapshot` completion log during the check.

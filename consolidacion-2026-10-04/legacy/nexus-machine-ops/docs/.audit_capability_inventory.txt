@@ -1,0 +1,237 @@
+== IA / LLM ==
+server/_core/llm.ts:342:export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
+server/_core/llm.ts:435:export async function listLLMModels(): Promise<ModelsResponse> {
+client/src/components/AIChatBox.tsx:20:   * Should match the format used by invokeLLM on the server.
+== Relatórios / exportação ==
+server/_core/context.ts:5:export type TrpcContext = {
+server/_core/context.ts:11:export async function createContext(
+server/_core/cookies.ts:24:export function getSessionCookieOptions(
+server/_core/dataApi.ts:9:export type DataApiCallOptions = {
+server/_core/dataApi.ts:16:export async function callDataApi(
+server/_core/env.ts:1:export const ENV = {
+server/_core/heartbeat.ts:4:export type HeartbeatJob = {
+server/_core/heartbeat.ts:24:export type HeartbeatJobUpdate = Partial<Omit<HeartbeatJob, "name">> & {
+server/_core/heartbeat.ts:28:export type HeartbeatJobInfo = {
+server/_core/heartbeat.ts:140:export async function createHeartbeatJob(
+server/_core/heartbeat.ts:163:export async function updateHeartbeatJob(
+server/_core/heartbeat.ts:186:export async function deleteHeartbeatJob(
+server/_core/heartbeat.ts:201:export async function listHeartbeatJobs(
+server/_core/imageGeneration.ts:26:export type GenerateImageOptions = {
+server/_core/imageGeneration.ts:39:export type GenerateImageResponse = {
+server/_core/imageGeneration.ts:43:export async function generateImage(
+server/_core/imageGeneration.ts:109:export type ImageModelInfo = {
+server/_core/imageGeneration.ts:116:export type ListImageModelsResponse = {
+server/_core/imageGeneration.ts:124:export async function listImageModels(): Promise<ListImageModelsResponse> {
+server/_core/llm.ts:3:export type Role = "system" | "user" | "assistant" | "tool" | "function";
+server/_core/llm.ts:5:export type TextContent = {
+server/_core/llm.ts:10:export type ImageContent = {
+server/_core/llm.ts:18:export type FileContent = {
+server/_core/llm.ts:22:    mime_type?: "audio/mpeg" | "audio/wav" | "application/pdf" | "audio/mp4" | "video/mp4" ;
+server/_core/llm.ts:26:export type MessageContent = string | TextContent | ImageContent | FileContent;
+server/_core/llm.ts:28:export type Message = {
+server/_core/llm.ts:35:export type Tool = {
+server/_core/llm.ts:44:export type ToolChoicePrimitive = "none" | "auto" | "required";
+server/_core/llm.ts:45:export type ToolChoiceByName = { name: string };
+server/_core/llm.ts:46:export type ToolChoiceExplicit = {
+server/_core/llm.ts:53:export type ToolChoice =
+server/_core/llm.ts:58:export type InvokeParams = {
+server/_core/llm.ts:74:export type ToolCall = {
+server/_core/llm.ts:83:export type InvokeResult = {
+server/_core/llm.ts:103:export type JsonSchema = {
+server/_core/llm.ts:109:export type OutputSchema = JsonSchema;
+server/_core/llm.ts:111:export type ResponseFormat =
+server/_core/llm.ts:342:export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
+server/_core/llm.ts:423:export type ModelInfo = {
+server/_core/llm.ts:430:export type ModelsResponse = {
+server/_core/llm.ts:435:export async function listLLMModels(): Promise<ModelsResponse> {
+server/_core/map.ts:54:export async function makeRequest<T = unknown>(
+server/_core/map.ts:96:export type TravelMode = "driving" | "walking" | "bicycling" | "transit";
+server/_core/map.ts:97:export type MapType = "roadmap" | "satellite" | "terrain" | "hybrid";
+server/_core/map.ts:98:export type SpeedUnit = "KPH" | "MPH";
+server/_core/map.ts:100:export type LatLng = {
+server/_core/map.ts:105:export type DirectionsResult = {
+server/_core/map.ts:131:export type DistanceMatrixResult = {
+server/_core/map.ts:144:export type GeocodingResult = {
+server/_core/map.ts:166:export type PlacesSearchResult = {
+server/_core/map.ts:182:export type PlaceDetailsResult = {
+server/_core/map.ts:209:export type ElevationResult = {
+server/_core/map.ts:218:export type TimeZoneResult = {
+server/_core/map.ts:226:export type RoadsResult = {
+server/_core/map.ts:310: * STATIC MAPS - Generate map images as URLs (for emails, reports, <img> tags)
+server/_core/notification.ts:4:export type NotificationPayload = {
+server/_core/notification.ts:66:export async function notifyOwner(
+server/_core/oauth.ts:13:export function registerOAuthRoutes(app: Express) {
+server/_core/sdk.ts:21:export type SessionPayload = {
+server/_core/sdk.ts:326:export type AuthenticatedUser = User & {
+server/_core/sdk.ts:350:export const sdk = new SDKServer();
+server/_core/storageProxy.ts:4:export function registerStorageProxy(app: Express) {
+server/_core/systemRouter.ts:5:export const systemRouter = router({
+server/_core/trpc.ts:10:export const router = t.router;
+server/_core/trpc.ts:11:export const publicProcedure = t.procedure;
+server/_core/trpc.ts:28:export const protectedProcedure = t.procedure.use(requireUser);
+server/_core/trpc.ts:30:export const adminProcedure = t.procedure.use(
+server/_core/types/cookie.d.ts:2:  export function parse(
+server/_core/types/manusTypes.ts:5:export interface AuthorizeRequest {
+server/_core/types/manusTypes.ts:13:export interface AuthorizeResponse {
+server/_core/types/manusTypes.ts:17:export interface ExchangeTokenRequest {
+server/_core/types/manusTypes.ts:26:export interface ExchangeTokenResponse {
+server/_core/types/manusTypes.ts:35:export interface GetUserInfoRequest {
+server/_core/types/manusTypes.ts:39:export interface GetUserInfoResponse {
+server/_core/types/manusTypes.ts:48:export interface CanAccessRequest {
+server/_core/types/manusTypes.ts:53:export interface CanAccessResponse {
+server/_core/types/manusTypes.ts:57:export interface GetUserInfoWithJwtRequest {
+server/_core/types/manusTypes.ts:62:export interface GetUserInfoWithJwtResponse {
+server/_core/vite.ts:9:export async function setupVite(app: Express, server: Server) {
+server/_core/vite.ts:50:export function serveStatic(app: Express) {
+server/_core/voiceTranscription.ts:30:export type TranscribeOptions = {
+server/_core/voiceTranscription.ts:37:export type WhisperSegment = {
+server/_core/voiceTranscription.ts:51:export type WhisperResponse = {
+server/_core/voiceTranscription.ts:59:export type TranscriptionResponse = WhisperResponse; // Return native Whisper API response directly
+server/_core/voiceTranscription.ts:61:export type TranscriptionError = {
+server/_core/voiceTranscription.ts:73:export async function transcribeAudio(
+server/_core/voiceTranscription.ts:251: * export const voiceRouter = router({
+server/auth.logout.test.ts:45:  it("clears the session cookie and reports success", async () => {
+server/db.ts:9:export async function getDb() {
+server/db.ts:21:export async function upsertUser(user: InsertUser): Promise<void> {
+server/db.ts:80:export async function getUserByOpenId(openId: string) {
+server/routers.ts:7:export const appRouter = router({
+server/routers.ts:30:export type AppRouter = typeof appRouter;
+server/storage.ts:31:export async function storagePut(
+server/storage.ts:74:export async function storageGet(relKey: string): Promise<{ key: string; url: string }> {
+server/storage.ts:79:export async function storageGetSignedUrl(relKey: string): Promise<string> {
+server/machine/service.ts:93:export async function ensureSimulator() {
+server/machine/service.ts:227:export async function requestCommand(actor: Actor, input: CommandInput) {
+server/machine/service.ts:278:export async function approveCommand(actor: Actor, commandId: string) {
+server/machine/service.ts:332:export async function rejectCommand(actor: Actor, commandId: string, reason: string) {
+server/machine/service.ts:380:export async function getOperationsSnapshot() {
+server/machine/service.ts:399:export async function getOperationalUser(userId: number) {
+server/machine/router.ts:23:export const machineRouter = router({
+server/machine/simulator.ts:15:export function canTransition(state: MachineState, command: CommandType) {
+server/machine/simulator.ts:19:export function nextState(state: MachineState, command: CommandType): MachineState {
+server/machine/simulator.ts:43:export function generateTelemetry(
+server/machine/simulator.ts:75:export function commandRiskSummary(state: MachineState, command: CommandType, temperature: number) {
+server/machine/gateway.ts:4:export type GatewayHealth = {
+server/machine/gateway.ts:11:export type AdapterMachineSnapshot = {
+server/machine/gateway.ts:17:export interface MachineAdapter {
+server/machine/gateway.ts:28:export class SimulationMachineAdapter implements MachineAdapter {
+server/machine/gateway.ts:62:export class SimulationGateway {
+server/machine/audit.ts:3:export function calculateAuditHash(previousHash: string | null, content: Record<string, unknown>) {
+server/machine/protocol.ts:3:export type ProtocolActor = { id: number; role: "user" | "admin"; operationRole: OperationalRole };
+server/machine/protocol.ts:5:export function effectiveRole(actor: ProtocolActor): OperationalRole {
+server/machine/protocol.ts:9:export function evaluatePolicy(actor: ProtocolActor, type: CommandType, mode: "simulation", testMode: boolean) {
+server/machine/protocol.ts:22:export function evaluateHumanApproval(input: { requesterId: number; approver: ProtocolActor; expiresAt: Date; now?: Date }) {
+server/machine/protocol.ts:31:export function tripleConfirmationComplete(input: { policy: boolean; risk: boolean; human: boolean }) {
+server/machine/alarms.ts:3:export type SimulatedAlarm = { code: string; severity: "critical"; message: string };
+server/machine/alarms.ts:5:export function expectedSimulatedAlarm(state: MachineState, temperature: number): SimulatedAlarm | null {
+server/machine/stream.ts:6:export function publishOperationsUpdate(reason: string) {
+server/machine/stream.ts:10:export function subscribeOperationsUpdates(listener: (event: { reason: string; at: string }) => void) {
+client/src/App.tsx:42:export default App;
+client/src/_core/hooks/useAuth.ts:11:export function useAuth(options?: UseAuthOptions) {
+client/src/components/AIChatBox.tsx:12:export type Message = {
+client/src/components/AIChatBox.tsx:17:export type AIChatBoxProps = {
+client/src/components/AIChatBox.tsx:113:export function AIChatBox({
+client/src/components/DashboardLayout.tsx:39:export default function DashboardLayout({
+client/src/components/DashboardLayoutSkeleton.tsx:3:export function DashboardLayoutSkeleton() {
+client/src/components/ErrorBoundary.tsx:62:export default ErrorBoundary;
+client/src/components/ManusDialog.tsx:21:export function ManusDialog({
+client/src/components/Map.tsx:119:export function MapView({
+client/src/components/ui/accordion.tsx:64:export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
+client/src/components/ui/alert-dialog.tsx:143:export {
+client/src/components/ui/alert.tsx:66:export { Alert, AlertTitle, AlertDescription };
+client/src/components/ui/aspect-ratio.tsx:9:export { AspectRatio };
+client/src/components/ui/avatar.tsx:51:export { Avatar, AvatarImage, AvatarFallback };
+client/src/components/ui/badge.tsx:46:export { Badge, badgeVariants };
+client/src/components/ui/breadcrumb.tsx:101:export {
+client/src/components/ui/button-group.tsx:78:export {
+client/src/components/ui/button.tsx:60:export { Button, buttonVariants };
+client/src/components/ui/calendar.tsx:211:export { Calendar, CalendarDayButton };
+client/src/components/ui/card.tsx:84:export {
+client/src/components/ui/carousel.tsx:232:export {
+client/src/components/ui/chart.tsx:9:export type ChartConfig = {
+client/src/components/ui/chart.tsx:348:export {
+client/src/components/ui/checkbox.tsx:30:export { Checkbox };
+client/src/components/ui/collapsible.tsx:31:export { Collapsible, CollapsibleTrigger, CollapsibleContent };
+client/src/components/ui/command.tsx:174:export {
+client/src/components/ui/context-menu.tsx:234:export {
+client/src/components/ui/dialog.tsx:19:export const useDialogComposition = () =>
+client/src/components/ui/dialog.tsx:197:export {
+client/src/components/ui/drawer.tsx:122:export {
+client/src/components/ui/dropdown-menu.tsx:239:export {
+client/src/components/ui/empty.tsx:97:export {
+client/src/components/ui/field.tsx:231:export {
+client/src/components/ui/form.tsx:159:export {
+client/src/components/ui/hover-card.tsx:42:export { HoverCard, HoverCardTrigger, HoverCardContent };
+client/src/components/ui/input-group.tsx:161:export {
+client/src/components/ui/input-otp.tsx:75:export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator };
+client/src/components/ui/input.tsx:70:export { Input };
+client/src/components/ui/item.tsx:182:export {
+client/src/components/ui/kbd.tsx:28:export { Kbd, KbdGroup };
+client/src/components/ui/label.tsx:22:export { Label };
+client/src/components/ui/menubar.tsx:257:export {
+client/src/components/ui/navigation-menu.tsx:158:export {
+client/src/components/ui/pagination.tsx:119:export {
+client/src/components/ui/popover.tsx:46:export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor };
+client/src/components/ui/progress.tsx:29:export { Progress };
+client/src/components/ui/radio-group.tsx:43:export { RadioGroup, RadioGroupItem };
+client/src/components/ui/resizable.tsx:54:export { ResizablePanelGroup, ResizablePanel, ResizableHandle };
+client/src/components/ui/scroll-area.tsx:56:export { ScrollArea, ScrollBar };
+client/src/components/ui/select.tsx:174:export {
+client/src/components/ui/separator.tsx:26:export { Separator };
+client/src/components/ui/sheet.tsx:130:export {
+client/src/components/ui/sidebar.tsx:708:export {
+client/src/components/ui/skeleton.tsx:13:export { Skeleton };
+client/src/components/ui/slider.tsx:61:export { Slider };
+client/src/components/ui/sonner.tsx:23:export { Toaster };
+client/src/components/ui/spinner.tsx:16:export { Spinner };
+client/src/components/ui/switch.tsx:29:export { Switch };
+client/src/components/ui/table.tsx:105:export {
+client/src/components/ui/tabs.tsx:64:export { Tabs, TabsList, TabsTrigger, TabsContent };
+client/src/components/ui/textarea.tsx:67:export { Textarea };
+client/src/components/ui/toggle-group.tsx:73:export { ToggleGroup, ToggleGroupItem };
+client/src/components/ui/toggle.tsx:45:export { Toggle, toggleVariants };
+client/src/components/ui/tooltip.tsx:59:export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };
+client/src/const.ts:3:export { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
+client/src/const.ts:15:export const startLogin = () => {
+client/src/contexts/ThemeContext.tsx:19:export function ThemeProvider({
+client/src/contexts/ThemeContext.tsx:58:export function useTheme() {
+client/src/hooks/useComposition.ts:4:export interface UseCompositionReturn<
+client/src/hooks/useComposition.ts:13:export interface UseCompositionOptions<
+client/src/hooks/useComposition.ts:23:export function useComposition<
+client/src/hooks/useMobile.tsx:5:export function useIsMobile() {
+client/src/hooks/usePersistFn.ts:8:export function usePersistFn<T extends noop>(fn: T) {
+client/src/lib/trpc.ts:4:export const trpc = createTRPCReact<AppRouter>();
+client/src/lib/utils.ts:4:export function cn(...inputs: ClassValue[]) {
+client/src/pages/ComponentShowcase.tsx:176:export default function ComponentsShowcase() {
+client/src/pages/Home.tsx:81:export default function Home() {
+client/src/pages/NotFound.tsx:6:export default function NotFound() {
+shared/_core/errors.ts:5:export class HttpError extends Error {
+shared/_core/errors.ts:16:export const BadRequestError = (msg: string) => new HttpError(400, msg);
+shared/_core/errors.ts:17:export const UnauthorizedError = (msg: string) => new HttpError(401, msg);
+shared/_core/errors.ts:18:export const ForbiddenError = (msg: string) => new HttpError(403, msg);
+shared/_core/errors.ts:19:export const NotFoundError = (msg: string) => new HttpError(404, msg);
+shared/const.ts:1:export const COOKIE_NAME = "app_session_id";
+shared/const.ts:2:export const ONE_YEAR_MS = 1000 * 60 * 60 * 24 * 365;
+shared/const.ts:3:export const AXIOS_TIMEOUT_MS = 30_000;
+shared/const.ts:4:export const UNAUTHED_ERR_MSG = 'Please login (10001)';
+shared/const.ts:5:export const NOT_ADMIN_ERR_MSG = 'You do not have required permission (10002)';
+shared/const.ts:11:export const OAUTH_STATE_COOKIE = "__Host-oauth_state";
+shared/const.ts:15:export type OAuthState = { redirectUri: string; nonce?: string };
+shared/const.ts:17:export const encodeOAuthState = (state: OAuthState): string =>
+shared/const.ts:20:export const decodeOAuthState = (state: string): OAuthState => {
+shared/types.ts:2: * Unified type exports
+shared/types.ts:6:export type * from "../drizzle/schema";
+shared/types.ts:7:export * from "./_core/errors";
+shared/machine.ts:1:export const machineStates = ["stopped", "calibrating", "operating", "paused", "maintenance", "emergency"] as const;
+shared/machine.ts:2:export type MachineState = (typeof machineStates)[number];
+shared/machine.ts:4:export const commandTypes = [
+shared/machine.ts:15:export type CommandType = (typeof commandTypes)[number];
+shared/machine.ts:17:export const commandStatuses = [
+shared/machine.ts:29:export type CommandStatus = (typeof commandStatuses)[number];
+shared/machine.ts:31:export const operationalRoles = ["observer", "operator", "approver", "policy_admin"] as const;
+shared/machine.ts:32:export type OperationalRole = (typeof operationalRoles)[number];
+shared/machine.ts:34:export const validationNodes = ["policy", "risk", "human"] as const;
+shared/machine.ts:35:export type ValidationNode = (typeof validationNodes)[number];
+shared/machine.ts:37:export type SimulationTelemetry = {
+shared/machine.ts:49:export type CommandInput = {
+== Integrações físicas / protocolos ==
+client/src/pages/Home.tsx:153:                  <div><p className="text-xs uppercase tracking-[.18em] text-slate-400">Máquina / {data.machine.machineKey}</p><h2 className="mt-2 text-2xl font-semibold text-white">{data.machine.name}</h2><p className="mt-2 max-w-xl text-sm leading-6 text-slate-400">Representación digital conectada a un gateway de simulación. No hay adaptador ni ruta disponible hacia hardware físico.</p></div>

@@ -1,0 +1,31 @@
+# Resultado redactado del escaneo de seguridad
+
+## Alcance
+
+Se inspeccionaron referencias a secretos, autenticación, cabeceras, registros de depuración, protección de procedimientos, gateway y dependencias de producción. Este archivo sustituye un artefacto histórico que incluía credenciales de sesión en texto claro; **no conserva ni reproduce esas credenciales**.
+
+## Hallazgo corregido: exposición de autorización en registros locales
+
+El colector de depuración del frontend registraba anteriormente la cabecera `Authorization` sin redacción en `.manus-logs/networkRequests.log`. La causa era que el objeto `requestHeaders` se almacenaba directamente en vez de pasar por el sanitizador existente.
+
+La corrección aplicada en `client/public/__manus__/debug-collector.js` registra ahora `headers: sanitizeValue(requestHeaders)`. Se eliminaron los registros históricos y se comprobó que no permanecen otras copias de texto de autorización fuera de este informe redactado. Dado que una sesión histórica pudo haber quedado expuesta localmente, se recomienda revocar o renovar esa sesión desde el proveedor de identidad como medida defensiva.
+
+## Controles observados
+
+| Área | Resultado observado | Estado |
+|---|---|---|
+| Autenticación | Sesión OAuth y procedimientos protegidos de tRPC; endpoints de gateway requieren identificador y token. | Implementado; probado en flujos de gateway y SSE. |
+| Autorización | Roles y procedimientos de control/admin en servidor, con pruebas de denegación para roles sin permiso. | Implementado; cobertura no exhaustiva de toda combinación UI/rol. |
+| Auditoría | Registros persistentes de usuario, rol, acción, origen y metadatos de procedimientos protegidos. | Implementado y probado. |
+| Rate limiting | Límite en memoria para gateway y procedimientos tRPC. | Implementado, pero no distribuido/persistente entre instancias. |
+| Secretos | Los secretos de plataforma se leen del entorno; no se hallaron valores de aplicación embebidos en el código fuente revisado. | Implementado. |
+| CORS | El entorno observado respondía con cabeceras permisivas de desarrollo. | Requiere una política restrictiva y verificación propia antes de producción pública. |
+| Registros | Cabeceras sensibles ahora se redaccionan; se eliminaron artefactos locales históricos. | Corregido; recomendable una prueba automatizada dedicada del colector. |
+
+## Dependencias
+
+La auditoría de dependencias final se guardó en `docs/audit-dependencies-final.json`. Se actualizaron `@trpc/*`, `axios`, `drizzle-orm`, `@aws-sdk/*` y `nanoid`, eliminando los hallazgos críticos detectados inicialmente. El resultado final aún informa hallazgos transitivos de severidad alta y moderada asociados, entre otros, a Express 4 / `path-to-regexp`, Recharts 2 / `lodash` y Streamdown 1 / Mermaid / `lodash-es`. Esos paquetes requieren un ciclo de migración mayor y pruebas de regresión específicas; no deben interpretarse como resueltos.
+
+## Conclusión operativa
+
+La plataforma cuenta con controles de autenticación, autorización, auditoría, tokens de gateway hasheados y limitación de tasa local. No obstante, por los riesgos transitivos pendientes, CORS observado permisivo, rate limiting no distribuido y ausencia de una validación externa de producción, el estado de preparación de seguridad es **implementado pero incompleto**.

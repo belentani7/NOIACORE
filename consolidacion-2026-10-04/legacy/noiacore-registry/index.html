@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOIACORE LAB — Registry de Componentes UI generados por IA</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://cdn.jsdelivr.net/fontsource/css/space-grotesk@latest/latin-500.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/fontsource/css/space-grotesk@latest/latin-700.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/fontsource/css/instrument-sans@latest/latin-400.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/fontsource/css/instrument-sans@latest/latin-500.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/fontsource/css/instrument-sans@latest/latin-600.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/fontsource/css/jetbrains-mono@latest/latin-400.css" rel="stylesheet">
+<style>
+:root{
+  --bg:#08080b; --panel:#0e0e13; --panel2:#13131a; --border:#222229; --border2:#31313c;
+  --text:#f4f4f6; --muted:#9a9aa5; --dim:#6d6d78;
+  --red:#ff2d55; --red-dim:rgba(255,45,85,.13);
+  --cyan:#22d3ee; --cyan-dim:rgba(34,211,238,.10);
+  --amber:#fbbf24; --green:#4ade80;
+  --fd:'Space Grotesk',sans-serif; --fb:'Instrument Sans',sans-serif; --fm:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden}
+::selection{background:var(--red);color:#fff}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:4px}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#26262e;border-radius:6px;border:2px solid var(--bg)}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+img{max-width:100%}
+section{scroll-margin-top:90px}
+
+.bg-grid{position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(ellipse 95% 75% at 50% 0%,#000 35%,transparent 100%);
+  mask-image:radial-gradient(ellipse 95% 75% at 50% 0%,#000 35%,transparent 100%);}
+.glow{position:fixed;border-radius:50%;filter:blur(110px);z-index:-3;pointer-events:none}
+.g1{width:580px;height:580px;background:rgba(255,45,85,.16);top:-200px;left:-140px;animation:drift1 26s ease-in-out infinite alternate}
+.g2{width:660px;height:660px;background:rgba(34,211,238,.07);bottom:-280px;right:-180px;animation:drift2 32s ease-in-out infinite alternate}
+.g3{width:420px;height:420px;background:rgba(251,191,36,.06);top:40%;left:55%;animation:drift1 38s ease-in-out infinite alternate-reverse}
+@keyframes drift1{to{transform:translate(70px,50px) scale(1.12)}}
+@keyframes drift2{to{transform:translate(-60px,-70px) scale(1.08)}}
+.bg-noise{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2"/></filter><rect width="160" height="160" filter="url(%23n)" opacity="0.7"/></svg>')}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+header{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .25s,border-color .25s}
+header.scrolled{background:rgba(8,8,11,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.topbar{height:36px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--fm);font-size:.72rem;color:var(--muted);border-bottom:1px solid var(--border);overflow:hidden;transition:height .3s,opacity .3s;background:rgba(14,14,19,.6)}
+header.scrolled .topbar{height:0;opacity:0;border-color:transparent}
+.topbar b{color:var(--amber);font-weight:500}
+.topbar a{color:var(--red)}
+nav{display:flex;align-items:center;gap:28px;height:64px;padding:0 24px;max-width:1180px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-weight:700;font-size:1.05rem;letter-spacing:.02em;white-space:nowrap}
+.brand .mark{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;color:#fff;font-weight:700;
+  background:radial-gradient(circle at 35% 35%,#ff5f7d,#ff2d55 55%,#7a0f22);box-shadow:0 0 18px rgba(255,45,85,.5);position:relative}
+.brand .mark::after{content:"";position:absolute;inset:4px;border-radius:50%;border:1px solid rgba(255,255,255,.35)}
+nav .links{display:flex;gap:24px;margin-left:auto}
+nav .links a{font-size:.9rem;color:var(--muted);transition:color .2s}
+nav .links a:hover{color:var(--text)}
+nav .cta{font-family:var(--fd);font-size:.86rem;font-weight:500;padding:9px 18px;border-radius:9px;border:1px solid var(--border2);
+  background:rgba(255,255,255,.02);transition:all .2s;color:var(--text)}
+nav .cta:hover{border-color:var(--red);color:var(--red);box-shadow:0 0 0 3px var(--red-dim)}
+
+.hero{max-width:1180px;margin:0 auto;padding:150px 24px 70px;position:relative}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--red);border:1px solid var(--red-dim);background:var(--red-dim);padding:6px 12px;border-radius:99px}
+.hero .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:0 0 8px var(--red);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.4}}
+.hero h1{font-family:var(--fd);font-weight:700;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.05;margin:22px 0 18px;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero .sub{max-width:640px;color:var(--muted);font-size:1.08rem}
+.hero .sub b{color:var(--text);font-weight:600}
+.hero .stats{display:flex;gap:44px;margin-top:44px;flex-wrap:wrap}
+.hero .stat .n{font-family:var(--fd);font-weight:700;font-size:1.9rem}
+.hero .stat .l{font-family:var(--fm);font-size:.72rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+
+.searchbar{display:flex;align-items:center;gap:10px;max-width:640px;margin:44px 0 0;padding:6px 8px 6px 16px;border:1px solid var(--border);border-radius:12px;background:var(--panel);transition:border-color .2s}
+.searchbar:focus-within{border-color:var(--red)}
+.searchbar input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:var(--fb);font-size:.95rem;padding:6px 0}
+.searchbar input::placeholder{color:var(--dim)}
+.searchbar .kbd{font-family:var(--fm);font-size:.7rem;color:var(--dim);border:1px solid var(--border2);border-radius:6px;padding:3px 7px}
+
+.main{max-width:1180px;margin:0 auto;padding:20px 24px 90px}
+.grid-head{display:flex;align-items:baseline;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.grid-head h2{font-family:var(--fd);font-weight:700;font-size:1.25rem}
+.grid-head .count{font-family:var(--fm);font-size:.78rem;color:var(--dim)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{font-family:var(--fm);font-size:.76rem;padding:6px 13px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all .18s}
+.filters button:hover{color:var(--text);border-color:var(--border2)}
+.filters button.active{background:var(--red);border-color:var(--red);color:#fff}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);border-color:var(--border2);box-shadow:0 18px 40px -18px rgba(0,0,0,.6)}
+.card .prev{position:relative;aspect-ratio:16/10;background:var(--panel2);border-bottom:1px solid var(--border);overflow:hidden}
+.card .prev iframe{width:100%;height:100%;border:0;pointer-events:none;transform:scale(1.02);transform-origin:top left}
+.card .badge{position:absolute;top:10px;left:10px;font-family:var(--fm);font-size:.68rem;padding:3px 9px;border-radius:6px;background:rgba(8,8,11,.75);border:1px solid var(--border2);color:var(--text);backdrop-filter:blur(6px)}
+.card .new{position:absolute;top:10px;right:10px;font-family:var(--fm);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:6px;background:var(--red);color:#fff;box-shadow:0 0 14px rgba(255,45,85,.6)}
+.card .body{padding:18px 18px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card .body h3{font-family:var(--fd);font-weight:500;font-size:1.02rem}
+.card .body h3 .cat{color:var(--red);font-weight:700}
+.card .desc{color:var(--muted);font-size:.86rem;line-height:1.5}
+.card .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:10px}
+.card .tags span{font-family:var(--fm);font-size:.68rem;color:var(--cyan);border:1px solid var(--cyan-dim);background:var(--cyan-dim);padding:3px 8px;border-radius:6px}
+.card .foot{display:flex;gap:8px;padding:0 18px 18px}
+.card .foot button{flex:1;font-family:var(--fd);font-size:.82rem;padding:9px 0;border-radius:9px;border:1px solid var(--border2);background:var(--panel2);color:var(--text);transition:all .18s}
+.card .foot button:hover{border-color:var(--red);color:var(--red)}
+.card .foot button.dl{border-color:var(--red);background:var(--red);color:#fff}
+.card .foot button.dl:hover{background:#ff4568;box-shadow:0 0 0 3px var(--red-dim)}
+
+.concept{max-width:1180px;margin:56px auto 0;padding:0 24px}
+.concept h2{font-family:var(--fd);font-weight:700;font-size:1.5rem;margin-bottom:18px}
+.concept h2 em{font-style:normal;color:var(--red)}
+.concept .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.concept figure{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--panel)}
+.concept img{width:100%;display:block;aspect-ratio:1/1;object-fit:cover;filter:grayscale(.2) contrast(1.05)}
+.concept figcaption{padding:10px 14px;font-family:var(--fm);font-size:.72rem;color:var(--dim)}
+
+.modal{position:fixed;inset:0;z-index:100;background:rgba(5,5,8,.92);backdrop-filter:blur(8px);display:none;flex-direction:column}
+.modal.open{display:flex}
+.modal .bar{display:flex;align-items:center;gap:14px;padding:12px 18px;border-bottom:1px solid var(--border);background:rgba(14,14,19,.9)}
+.modal .bar .ttl{font-family:var(--fd);font-weight:500;font-size:1rem;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.modal .bar button{font-family:var(--fm);font-size:.74rem;padding:7px 14px;border-radius:8px;border:1px solid var(--border2);background:var(--panel2);color:var(--text)}
+.modal .bar button:hover{border-color:var(--red);color:var(--red)}
+.modal .frame{flex:1;position:relative}
+.modal .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+
+footer{border-top:1px solid var(--border);padding:34px 0;max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;color:var(--dim);font-size:.8rem}
+footer .brand{font-size:.9rem;color:var(--text)}
+footer a{color:var(--red)}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);z-index:120;background:#111;border:1px solid var(--green);color:var(--green);font-family:var(--fm);font-size:.8rem;padding:11px 20px;border-radius:10px;opacity:0;transition:all .3s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+<div class="glow g3"></div>
+<div class="bg-noise"></div>
+
+<header>
+  <div class="topbar">EL OJO QUE NO DUERME · <b>NOIACORE LAB</b> · componente Evil Eye por Belentani &nbsp;·&nbsp; <a href="#concepto">ver concepto</a></div>
+  <nav>
+    <a class="brand" href="#"><span class="mark">●</span> NOIACORE <span style="color:var(--red)">LAB</span></a>
+    <div class="links">
+      <a href="#registry">Registry</a>
+      <a href="#concepto">Concepto</a>
+      <a href="#">Github</a>
+    </div>
+    <a class="cta" href="#registry">Explorar</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <span class="eyebrow"><span class="dot"></span> CORE IS INVISIBLE · IMPACT IS INEVITABLE</span>
+  <h1>El registry de componentes <em>NOIACORE</em>, generados por IA</h1>
+  <p class="sub">Cada pieza fue generada por modelos de IA y refinada a mano. Descárgalas, inspecciónalas, fúndelas en tus proyectos. <b>Inteligencia silenciosa, tecnología esencial.</b></p>
+  <div class="searchbar">
+    <input type="text" id="search" placeholder="Buscar componente (evil eye, universe, estética...)" aria-label="Buscar">
+    <span class="kbd">/</span>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="n" id="statN">7</div><div class="l">componentes</div></div>
+    <div class="stat"><div class="n">1</div><div class="l">empresa 100% IA</div></div>
+    <div class="stat"><div class="n">39</div><div class="l">idiomas</div></div>
+    <div class="stat"><div class="n">●</div><div class="l">core invisible</div></div>
+  </div>
+</section>
+
+<main class="main" id="registry">
+  <div class="grid-head">
+    <h2>Registry de componentes</h2>
+    <span class="count" id="countLabel">7 componentes</span>
+    <div class="filters" id="filters">
+      <button data-f="todos" class="active">Todos</button>
+      <button data-f="experiencia">Experiencias</button>
+      <button data-f="web">Webs</button>
+      <button data-f="producto">Productos</button>
+      <button data-f="simbolo">Símbolo</button>
+    </div>
+  </div>
+  <div class="grid" id="grid"></div>
+
+  <section class="concept" id="concepto">
+    <h2>El concepto <em>NOIACORE</em> — el ojo</h2>
+    <div class="gallery">
+      <figure><img src="assets/concepto-1.png" alt="Concepto NOIACORE 1"><figcaption>NOIACORE LAB · córnea orbital</figcaption></figure>
+      <figure><img src="assets/concepto-2.png" alt="Concepto NOIACORE 2"><figcaption>INTELIGENCIA SILENCIOSA · pupila</figcaption></figure>
+      <figure><img src="assets/concepto-3.png" alt="Concepto NOIACORE 3"><figcaption>EL OJO · versión luz</figcaption></figure>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="brand"><span class="mark" style="width:20px;height:20px;font-size:.6rem">●</span> NOIACORE LAB</div>
+  <div>Obra de <a href="#">Belentani</a> · Pedro Belentani · Barcelona · 2026</div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Vista previa">
+  <div class="bar">
+    <span class="ttl" id="modalTitle"></span>
+    <button id="dlBtn">Descargar</button>
+    <button id="closeBtn">Cerrar ✕</button>
+  </div>
+  <div class="frame"><iframe id="modalFrame" title="Preview"></iframe></div>
+</div>
+
+<div class="toast" id="toast">Descargado ✓</div>
+
+<script>
+const COMPONENTS = [
+  {
+    id:"evil-eye", file:"components/evil-eye-srcdoc.html",
+    cat:"experiencia", tag:"NUEVO",
+    title:"Evil Eye", section:"EL OJO QUE NO DUERME",
+    desc:"Ojo de fuego animado en canvas con torre gótica y lema orbital. El símbolo vivo de NOIACORE.",
+    tags:["canvas","animación","símbolo"], new:true
+  },
+  {
+    id:"universe-neon-red", file:"components/universe-neon-red.html",
+    cat:"experiencia", tag:"EXPERIENCIA",
+    title:"UNIVERSE // NEON RED", section:"UNIVERSO CÓSMICO",
+    desc:"Universo espacial de partículas en rojo neón sobre negro absoluto. Portal inmenso de marca.",
+    tags:["partículas","neón","inmersivo"]
+  },
+  {
+    id:"singularity", file:"components/life-of-a-singularity.html",
+    cat:"experiencia", tag:"EXPERIENCIA",
+    title:"The Life of a Singularity", section:"NARRATIVA COSMOS",
+    desc:"Narrativa inmersiva del nacimiento de una singularidad. Storytelling cósmico con datos de escala.",
+    tags:["narrativa","scroll","cosmos"]
+  },
+  {
+    id:"art-lab", file:"components/noiacore-art-lab.html",
+    cat:"producto", tag:"PRODUCTO",
+    title:"NOIACORE Art Lab", section:"SOLUCIONES DE OTRO PLANO",
+    desc:"Landing corporativa completa de NOIACORE — soluciones digitales de otro plano. Producto con secciones.",
+    tags:["landing","producto","corporativo"]
+  },
+  {
+    id:"biblioteca", file:"components/noiacore-biblioteca-abierta.html", live:"http://127.0.0.1:3310/",
+    cat:"web", tag:"PRODUCTO",
+    title:"Biblioteca Abierta", section:"NO GUARDAMOS, ENCONTRAMOS",
+    desc:"Índice audiovisual libre en 39 idiomas con backend Express en vivo (82 recursos). No almacena contenido: enruta al conocimiento libre.",
+    tags:["full-stack","39 idiomas","educación"]
+  },
+  {
+    id:"estetica", file:"components/noiacore-estetica-corporativa.html",
+    cat:"web", tag:"BRANDING",
+    title:"NO.IA:CORE — Estética Corporativa", section:"PEDRO BELENTANI",
+    desc:"Sistema de identidad corporativa premium: paleta, tipografía, token y principio visual.",
+    tags:["branding","design system","premium"]
+  },
+  {
+    id:"daos", file:"components/noia-core-v3.html",
+    cat:"web", tag:"OS",
+    title:"NOIA Core v3 — DAOS", section:"SISTEMA OPERATIVO IA",
+    desc:"Sistema operativo descentralizado de IA. Visión de producto para un core invisible.",
+    tags:["OS","descentralizado","visión"]
+  }
+];
+
+const grid = document.getElementById("grid");
+const search = document.getElementById("search");
+const filters = document.getElementById("filters");
+let activeFilter = "todos";
+
+function escapeHtml(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+
+function render(){
+  const q = search.value.trim().toLowerCase();
+  const list = COMPONENTS.filter(c => {
+    const okF = activeFilter==="todos" || c.cat===activeFilter;
+    const okQ = !q || (c.title+" "+c.section+" "+c.desc+" "+c.tags.join(" ")).toLowerCase().includes(q);
+    return okF && okQ;
+  });
+  document.getElementById("countLabel").textContent = list.length + (list.length===1?" componente":" componentes");
+  document.getElementById("statN").textContent = COMPONENTS.length;
+  grid.innerHTML = list.map(c => {
+    const src = c.live || c.file;
+    return `
+    <article class="card">
+      <div class="prev">
+        <iframe src="${src}" title="${escapeHtml(c.title)}" loading="lazy" tabindex="-1"></iframe>
+        <span class="badge">${c.tag}</span>
+        ${c.new?'<span class="new">nuevo</span>':''}
+      </div>
+      <div class="body">
+        <h3><span class="cat">${escapeHtml(c.section)}</span> · ${escapeHtml(c.title)}</h3>
+        <p class="desc">${escapeHtml(c.desc)}</p>
+        <div class="tags">${c.tags.map(t=>`<span>${t}</span>`).join("")}</div>
+      </div>
+      <div class="foot">
+        <button data-open="${c.id}">Ver</button>
+        <button class="dl" data-dl="${c.file}">Descargar</button>
+      </div>
+    </article>`;
+  }).join("");
+}
+
+document.addEventListener("click", e => {
+  const open = e.target.closest("[data-open]");
+  if (open){
+    const c = COMPONENTS.find(x=>x.id===open.dataset.open);
+    document.getElementById("modalTitle").textContent = c.title+" — "+c.section;
+    document.getElementById("modalFrame").src = c.live || c.file;
+    document.getElementById("dlBtn").dataset.dl = c.file;
+    document.getElementById("modal").classList.add("open");
+  }
+  const dl = e.target.closest("[data-dl]");
+  if (dl){
+    const a = document.createElement("a");
+    a.href = dl.dataset.dl; a.download = dl.dataset.dl.split("/").pop();
+    document.body.appendChild(a); a.click(); a.remove();
+    const t = document.getElementById("toast");
+    t.classList.add("show"); setTimeout(()=>t.classList.remove("show"), 1800);
+  }
+});
+
+document.getElementById("closeBtn").addEventListener("click", ()=>{
+  document.getElementById("modal").classList.remove("open");
+  document.getElementById("modalFrame").src = "";
+});
+document.getElementById("dlBtn").addEventListener("click", function(){
+  const a = document.createElement("a");
+  a.href = this.dataset.dl; a.download = this.dataset.dl.split("/").pop();
+  document.body.appendChild(a); a.click(); a.remove();
+});
+document.getElementById("modal").addEventListener("click", e=>{
+  if (e.target.id==="modal"){ document.getElementById("modal").classList.remove("open"); }
+});
+document.addEventListener("keydown", e=>{
+  if (e.key==="Escape"){ document.getElementById("modal").classList.remove("open"); document.getElementById("modalFrame").src=""; }
+});
+filters.addEventListener("click", e=>{
+  const b = e.target.closest("button[data-f]");
+  if (!b) return;
+  document.querySelectorAll("#filters button").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  activeFilter = b.dataset.f;
+  render();
+});
+search.addEventListener("input", render);
+document.addEventListener("keydown", e=>{
+  if (e.key==="/" && document.activeElement!==search){ e.preventDefault(); search.focus(); }
+});
+window.addEventListener("scroll", ()=>{
+  document.querySelector("header").classList.toggle("scrolled", window.scrollY>10);
+});
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+/* ═══════════════════════════════════════════════════════════════
+   NEXUS OS — Network Monitor
+   Neon glassmorphism network monitoring interface
+   ═══════════════════════════════════════════════════════════════ */
+
+.nexus-network-monitor {
+  width: 100%; height: 100%;
+  background: rgba(10, 5, 20, 0.96);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 8px;
+  display: flex; flex-direction: column;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  color: #e0e0e0;
+  overflow: hidden;
+  position: relative;
+}
+
+.nexus-network-monitor::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.5), transparent);
+}
+
+.nm-header {
+  padding: 14px 16px;
+  background: rgba(0, 255, 136, 0.06);
+  border-bottom: 1px solid rgba(0, 255, 136, 0.15);
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nm-header h3 {
+  margin: 0; font-size: 13px; font-weight: 600;
+  color: #00ff88;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  letter-spacing: 1px;
+}
+
+.nm-status {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 10px;
+}
+
+.nm-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #00ff88;
+  box-shadow: 0 0 6px rgba(0, 255, 136, 0.6);
+  animation: nm-pulse 2s infinite;
+}
+
+@keyframes nm-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.nm-body {
+  flex: 1; overflow-y: auto;
+  display: flex; flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 255, 136, 0.3) transparent;
+}
+
+.nm-body::-webkit-scrollbar { width: 6px; }
+.nm-body::-webkit-scrollbar-track { background: transparent; }
+.nm-body::-webkit-scrollbar-thumb { background: rgba(0, 255, 136, 0.3); border-radius: 3px; }
+
+.nm-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+}
+
+.nm-stat {
+  background: rgba(0, 255, 136, 0.04);
+  border: 1px solid rgba(0, 255, 136, 0.1);
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+}
+
+.nm-stat-value {
+  font-size: 18px; font-weight: 700;
+  color: #00ff88;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+}
+
+.nm-stat-label {
+  font-size: 9px; color: #666;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.nm-chart {
+  height: 120px;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+  position: relative;
+}
+
+.nm-chart canvas { width: 100%; height: 100%; }
+
+.nm-chart-legend {
+  position: absolute; top: 10px; right: 16px;
+  display: flex; gap: 12px; font-size: 9px;
+}
+
+.nm-legend-item { display: flex; align-items: center; gap: 4px; }
+.nm-legend-dot { width: 8px; height: 3px; border-radius: 1px; }
+
+.nm-connections {
+  padding: 10px 16px;
+  flex: 1;
+}
+
+.nm-connections h4 {
+  margin: 0 0 8px 0; font-size: 11px; font-weight: 600;
+  color: #00ff88; text-transform: uppercase; letter-spacing: 0.5px;
+}
+
+.nm-conn-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 10px;
+}
+
+.nm-conn-table th {
+  padding: 6px 8px; text-align: left;
+  color: #00ff88; font-weight: 600;
+  font-size: 9px; text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.15);
+}
+
+.nm-conn-table td {
+  padding: 5px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.nm-conn-table tr:hover { background: rgba(0, 255, 136, 0.04); }
+
+.nm-state-active { color: #00ff88; }
+.nm-state-idle { color: #888; }
+.nm-state-error { color: #ff4444; }
+.nm-state-timeout { color: #ffaa00; }
+
+.nm-api-section {
+  padding: 10px 16px;
+  border-top: 1px solid rgba(0, 255, 136, 0.1);
+}
+
+.nm-api-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 5px 0;
+  font-size: 11px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.nm-api-name { flex: 1; }
+.nm-api-calls { color: #00ff88; font-weight: 600; }
+.nm-api-err { color: #ff4444; }
+
+.nm-api-bar {
+  width: 80px; height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px; overflow: hidden;
+}
+
+.nm-api-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff88, #44ffaa);
+  border-radius: 2px;
+}
+
+.nm-footer {
+  padding: 8px 16px;
+  background: rgba(0, 255, 136, 0.04);
+  border-top: 1px solid rgba(0, 255, 136, 0.1);
+  font-size: 10px;
+  color: #555;
+  display: flex; justify-content: space-between;
+}

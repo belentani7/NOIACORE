@@ -1,0 +1,46 @@
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+> uaol-machine-realm@1.0.0 test /home/ubuntu/uaol-machine-realm
+> vitest run
+
+
+ RUN  v2.1.9 /home/ubuntu/uaol-machine-realm
+
+ ✓ server/simulationRules.test.ts (6 tests) 8ms
+ ✓ server/auth.logout.test.ts (1 test) 16ms
+ ✓ server/controlRole.test.ts (3 tests) 553ms
+   ✓ roles operativos > bloquea un ciclo de gateway para un cliente 445ms
+ ✓ server/accessAudit.integration.test.ts (1 test) 412ms
+   ✓ auditoría de accesos > persiste usuario, rol, acción, origen y metadatos de una solicitud protegida 411ms
+ ✓ server/consoleInterface.contract.test.ts (1 test) 4ms
+stderr | client/src/pages/OperationsCenter.interaction.test.tsx > centro operativo > solicita un comando confirmado y permite ejecutar el ciclo del gateway
+The tag <stop> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter.
+<linearGradient /> is using incorrect casing. Use PascalCase for React components, or lowercase for HTML elements.
+The tag <linearGradient> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter.
+The tag <defs> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter.
+
+stderr | client/src/pages/OperationsCenter.interaction.test.tsx > centro operativo > expone los diagnósticos seguros del gemelo digital
+<linearGradient /> is using incorrect casing. Use PascalCase for React components, or lowercase for HTML elements.
+
+ ✓ client/src/pages/OperationsCenter.interaction.test.tsx (3 tests) 480ms
+   ✓ centro operativo > solicita un comando confirmado y permite ejecutar el ciclo del gateway 351ms
+ ✓ server/simulation.integration.test.ts (1 test) 2932ms
+   ✓ integración persistente de UAOL–Máquina Realm > persiste tareas, políticas, evidencias, protocolos, señales y ledger sin abandonar la simulación 1986ms
+ ✓ gateway-local/src/index.integration.test.ts (2 tests) 3384ms
+   ✓ gateway-local executable > hace heartbeat, toma un comando, simula su ejecución y devuelve el resultado por HTTP 1157ms
+   ✓ gateway-local executable > persiste un resultado en el outbox cuando falla y lo vacía en el siguiente ciclo recuperado 2226ms
+ ✓ client/src/pages/Home.interaction.test.tsx (3 tests) 778ms
+   ✓ flujos de interfaz de UAOL–Máquina Realm > crea una tarea y permite avanzar el ciclo visible 613ms
+ ✓ server/operations.integration.test.ts (6 tests) 10013ms
+   ✓ flujo operacional persistente > mueve un comando confirmado por la cola, el gateway y el gemelo digital sin tocar hardware 3964ms
+   ✓ flujo operacional persistente > emite credenciales rotables y acepta únicamente heartbeats autenticados del gateway local 674ms
+   ✓ flujo operacional persistente > entrega un comando autorizado al gateway y persiste el resultado devuelto por el simulador 1460ms
+   ✓ flujo operacional persistente > registra latencia, desconexión, fallo y recuperación del gemelo digital 1911ms
+   ✓ flujo operacional persistente > genera un informe operacional persistente con frontera de simulación 451ms
+   ✓ flujo operacional persistente > persiste configuraciones operacionales validadas 562ms
+
+ Test Files  10 passed (10)
+      Tests  27 passed (27)
+   Start at  05:42:49
+   Duration  10.67s (transform 632ms, setup 0ms, collect 3.27s, tests 18.58s, environment 1.84s, prepare 655ms)
+

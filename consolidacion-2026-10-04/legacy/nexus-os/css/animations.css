@@ -1,0 +1,1487 @@
+/* ================================================================
+   NEXUS OS — Keyframe Animations Library
+   All @keyframes and utility classes for the OS shell
+   ================================================================ */
+
+/* ================================================================
+   TABLE OF CONTENTS
+   ----------------------------------------------------------------
+   1.  bootFlicker — CRT text flicker
+   2.  scanlines — Horizontal scan lines moving
+   3.  glitch — Text/image glitch with skew and clip-path
+   4.  plasmaGlow — Pulsing neon glow cycle
+   5.  liquidLight — Flowing liquid neon effect
+   6.  glassShine — Light sweep across glass surface
+   7.  float — Gentle floating motion
+   8.  pulse — Neon pulse breathing
+   9.  slideIn/Out — Panel animations
+   10. fadeIn/Out — Opacity transitions
+   11. scaleIn — Window open animation
+   12. neonFlicker — Intermittent neon buzzing
+   13. dataStream — Matrix-like data flow
+   14. particleFloat — Particle system animation
+   15. borderGlow — Animated border gradient
+   16. typewriter — Text reveal effect
+   17. shake — Error/warning shake
+   18. spin — Loading spinner
+   19. ripple — Click ripple effect
+   20. morphBlob — Organic shape morphing
+   21. hologram — Holographic projection effect
+   22. staticNoise — TV static effect
+   23. warp — Space warp transition
+   24. Utility Classes
+   ================================================================ */
+
+
+/* ================================================================
+   1. BOOT FLICKER — CRT text flicker
+   Subtle flickering to simulate old CRT monitors
+   ================================================================ */
+@keyframes bootFlicker {
+  0%   { opacity: 1; }
+  3%   { opacity: 0.85; }
+  6%   { opacity: 1; }
+  7%   { opacity: 0.9; }
+  8%   { opacity: 1; }
+  42%  { opacity: 1; }
+  43%  { opacity: 0.88; }
+  44%  { opacity: 1; }
+  78%  { opacity: 1; }
+  79%  { opacity: 0.92; }
+  80%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+/* Intense version for boot sequence startup */
+@keyframes bootFlickerIntense {
+  0%   { opacity: 0; filter: brightness(2); }
+  5%   { opacity: 0.6; filter: brightness(1.5); }
+  10%  { opacity: 0.2; filter: brightness(2.2); }
+  15%  { opacity: 0.8; filter: brightness(1); }
+  20%  { opacity: 0.4; filter: brightness(1.8); }
+  25%  { opacity: 0.9; filter: brightness(1.1); }
+  30%  { opacity: 1; filter: brightness(1); }
+  100% { opacity: 1; filter: brightness(1); }
+}
+
+
+/* ================================================================
+   2. SCANLINES — Horizontal scan lines moving
+   Simulates CRT monitor scan line effect
+   ================================================================ */
+@keyframes scanlines {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 100vh; }
+}
+
+/* Subtle scanlines for non-boot screens */
+@keyframes scanlinesSubtle {
+  0%   { background-position: 0 0; opacity: 0.03; }
+  50%  { opacity: 0.05; }
+  100% { background-position: 0 200px; opacity: 0.03; }
+}
+
+/* Horizontal scan line sweep (single line) */
+@keyframes scanlineSweep {
+  0%   { top: -4px; opacity: 0; }
+  5%   { opacity: 0.6; }
+  95%  { opacity: 0.6; }
+  100% { top: 100%; opacity: 0; }
+}
+
+
+/* ================================================================
+   3. GLITCH — Text/image glitch with skew and clip-path
+   Used for error states, hover effects, lock screen clock
+   ================================================================ */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  10% {
+    transform: translate(-3px, 1px) skewX(-2deg);
+    clip-path: polygon(0 15%, 100% 15%, 100% 35%, 0 35%);
+  }
+  20% {
+    transform: translate(3px, -1px) skewX(1deg);
+    clip-path: polygon(0 50%, 100% 50%, 100% 70%, 0 70%);
+  }
+  30% {
+    transform: translate(-2px, 2px);
+    clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
+  }
+  40% {
+    transform: translate(2px, -2px) skewX(-1deg);
+    clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%);
+  }
+  50% {
+    transform: translate(-1px, 1px);
+    clip-path: polygon(0 65%, 100% 65%, 100% 85%, 0 85%);
+  }
+  60% {
+    transform: translate(1px, 0) skewX(2deg);
+    clip-path: polygon(0 10%, 100% 10%, 100% 30%, 0 30%);
+  }
+  70% {
+    transform: translate(-3px, -1px);
+    clip-path: polygon(0 75%, 100% 75%, 100% 95%, 0 95%);
+  }
+  80% {
+    transform: translate(2px, 1px) skewX(-1deg);
+    clip-path: polygon(0 25%, 100% 25%, 100% 45%, 0 45%);
+  }
+  90% {
+    transform: translate(-1px, -1px);
+    clip-path: polygon(0 55%, 100% 55%, 100% 75%, 0 75%);
+  }
+  100% {
+    transform: translate(0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+/* Mild glitch — occasional subtle shifts */
+@keyframes glitchMild {
+  0%, 90%, 100% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+  92% {
+    transform: translate(-2px, 0);
+    text-shadow: 2px 0 var(--nx-red), -2px 0 cyan;
+  }
+  94% {
+    transform: translate(2px, 0);
+    text-shadow: -2px 0 var(--nx-red), 2px 0 cyan;
+  }
+  96% {
+    transform: translate(0, 1px);
+    text-shadow: 1px 0 var(--nx-red), -1px 0 cyan;
+  }
+  98% {
+    transform: translate(-1px, -1px);
+    text-shadow: none;
+  }
+}
+
+/* Severe glitch — heavy distortion */
+@keyframes glitchSevere {
+  0%   { transform: translate(0) skewX(0); filter: hue-rotate(0deg); }
+  5%   { transform: translate(-8px, 3px) skewX(-8deg); filter: hue-rotate(90deg); }
+  10%  { transform: translate(8px, -3px) skewX(5deg); filter: hue-rotate(180deg); }
+  15%  { transform: translate(-5px, 5px) skewX(-3deg); filter: hue-rotate(270deg); }
+  20%  { transform: translate(0) skewX(0); filter: hue-rotate(0deg); }
+  100% { transform: translate(0) skewX(0); filter: hue-rotate(0deg); }
+}
+
+
+/* ================================================================
+   4. PLASMA GLOW — Pulsing neon glow cycle
+   Continuous pulsing glow for logos, icons, accents
+   ================================================================ */
+@keyframes plasmaGlow {
+  0% {
+    filter: drop-shadow(0 0 15px rgba(255, 0, 60, 0.5))
+            drop-shadow(0 0 30px rgba(255, 0, 60, 0.25));
+  }
+  25% {
+    filter: drop-shadow(0 0 20px rgba(255, 0, 60, 0.7))
+            drop-shadow(0 0 45px rgba(255, 0, 60, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(255, 45, 107, 0.6))
+            drop-shadow(0 0 50px rgba(255, 45, 107, 0.3))
+            drop-shadow(0 0 80px rgba(255, 0, 60, 0.15));
+  }
+  75% {
+    filter: drop-shadow(0 0 18px rgba(255, 0, 60, 0.65))
+            drop-shadow(0 0 40px rgba(255, 0, 60, 0.3));
+  }
+  100% {
+    filter: drop-shadow(0 0 15px rgba(255, 0, 60, 0.5))
+            drop-shadow(0 0 30px rgba(255, 0, 60, 0.25));
+  }
+}
+
+/* Box-shadow variant for containers */
+@keyframes plasmaGlowBox {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 0, 60, 0.3),
+                0 0 30px rgba(255, 0, 60, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 0, 60, 0.5),
+                0 0 50px rgba(255, 0, 60, 0.25),
+                0 0 80px rgba(255, 0, 60, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(255, 0, 60, 0.3),
+                0 0 30px rgba(255, 0, 60, 0.15);
+  }
+}
+
+/* Text glow variant */
+@keyframes plasmaGlowText {
+  0% {
+    text-shadow: 0 0 6px rgba(255, 0, 60, 0.4),
+                 0 0 12px rgba(255, 0, 60, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(255, 0, 60, 0.6),
+                 0 0 20px rgba(255, 0, 60, 0.3),
+                 0 0 40px rgba(255, 0, 60, 0.15);
+  }
+  100% {
+    text-shadow: 0 0 6px rgba(255, 0, 60, 0.4),
+                 0 0 12px rgba(255, 0, 60, 0.2);
+  }
+}
+
+
+/* ================================================================
+   5. LIQUID LIGHT — Flowing liquid neon effect
+   Animated gradient movement for progress bars, borders
+   ================================================================ */
+@keyframes liquidLight {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Vertical liquid light */
+@keyframes liquidLightVertical {
+  0%   { background-position: 50% 0%; }
+  50%  { background-position: 50% 100%; }
+  100% { background-position: 50% 0%; }
+}
+
+/* Slow liquid flow for ambient effects */
+@keyframes liquidFlow {
+  0% {
+    background-position: 0% 0%;
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+    filter: hue-rotate(15deg);
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+    filter: hue-rotate(0deg);
+  }
+}
+
+
+/* ================================================================
+   6. GLASS SHINE — Light sweep across glass surface
+   Simulates light reflecting off glass panels
+   ================================================================ */
+@keyframes glassShine {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Diagonal shine */
+@keyframes glassShineDiag {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(200%) translateY(200%) rotate(45deg);
+  }
+}
+
+/* Subtle shimmer for focused elements */
+@keyframes glassShimmer {
+  0%, 100% {
+    background-position: -100% 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.1;
+  }
+  80% {
+    background-position: 200% 0;
+    opacity: 0;
+  }
+}
+
+
+/* ================================================================
+   7. FLOAT — Gentle floating motion
+   Subtle up/down movement for background elements
+   ================================================================ */
+@keyframes float {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(0, -8px); }
+  50%  { transform: translate(0, 0); }
+  75%  { transform: translate(0, 8px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Float with slight rotation */
+@keyframes floatRotate {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(5px, -10px) rotate(1deg); }
+  50%  { transform: translate(0, -5px) rotate(0deg); }
+  75%  { transform: translate(-5px, -10px) rotate(-1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Horizontal float */
+@keyframes floatHorizontal {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(10px); }
+  50%  { transform: translateX(0); }
+  75%  { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+/* Large slow float for backgrounds */
+@keyframes floatSlow {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(15px, -20px) scale(1.01); }
+  66%  { transform: translate(-10px, 10px) scale(0.99); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+
+/* ================================================================
+   8. PULSE — Neon pulse breathing
+   Smooth breathing effect for active elements
+   ================================================================ */
+@keyframes pulse {
+  0%   { opacity: 0.7; transform: scale(1); }
+  50%  { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0.7; transform: scale(1); }
+}
+
+/* Pulse with glow */
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.8;
+    box-shadow: 0 0 8px rgba(255, 0, 60, 0.2);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(255, 0, 60, 0.5),
+                0 0 40px rgba(255, 0, 60, 0.2);
+  }
+  100% {
+    opacity: 0.8;
+    box-shadow: 0 0 8px rgba(255, 0, 60, 0.2);
+  }
+}
+
+/* Scale pulse for notification badges */
+@keyframes pulseScale {
+  0%   { transform: scale(1); }
+  15%  { transform: scale(1.15); }
+  30%  { transform: scale(1); }
+  45%  { transform: scale(1.1); }
+  60%  { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+/* Ring pulse — expanding ring that fades */
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+    border-color: var(--nx-red);
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+    border-color: transparent;
+  }
+}
+
+
+/* ================================================================
+   9. SLIDE IN/OUT — Panel animations
+   Directional slide animations for panels and drawers
+   ================================================================ */
+
+/* From bottom */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* From top */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* From right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+}
+
+/* From left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+}
+
+/* Full-width slide variants (for mobile panels) */
+@keyframes slideInFullRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes slideOutFullRight {
+  from { transform: translateX(0); }
+  to   { transform: translateX(100%); }
+}
+
+@keyframes slideInFullLeft {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes slideOutFullLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+
+/* ================================================================
+   10. FADE IN/OUT — Opacity transitions
+   ================================================================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Fade in with slight upward motion */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in with slight downward motion */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Crossfade for transitions */
+@keyframes crossfade {
+  0%   { opacity: 0; }
+  50%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+
+/* ================================================================
+   11. SCALE IN — Window open animation
+   Scale + fade entrance for windows and dialogs
+   ================================================================ */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scale in from center */
+@keyframes scaleInCenter {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scale out */
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+
+/* Pop in — bounce overshoot */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  70% {
+    transform: scale(0.96);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Pop out */
+@keyframes popOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
+
+
+/* ================================================================
+   12. NEON FLICKER — Intermittent neon buzzing
+   Simulates faulty neon light behavior
+   ================================================================ */
+@keyframes neonFlicker {
+  0%   { opacity: 1; }
+  5%   { opacity: 0.8; }
+  10%  { opacity: 1; }
+  15%  { opacity: 0.6; }
+  16%  { opacity: 1; }
+  40%  { opacity: 1; }
+  42%  { opacity: 0.7; }
+  43%  { opacity: 1; }
+  45%  { opacity: 0.5; }
+  46%  { opacity: 1; }
+  72%  { opacity: 1; }
+  73%  { opacity: 0.85; }
+  74%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+/* Subtle neon flicker — rare occurrences */
+@keyframes neonFlickerSubtle {
+  0%, 96%, 100% { opacity: 1; }
+  97%           { opacity: 0.7; }
+  98%           { opacity: 1; }
+  99%           { opacity: 0.85; }
+}
+
+/* Neon buzz — glow intensity variation */
+@keyframes neonBuzz {
+  0%   { text-shadow: 0 0 4px currentColor, 0 0 8px currentColor; }
+  25%  { text-shadow: 0 0 6px currentColor, 0 0 14px currentColor, 0 0 20px currentColor; }
+  50%  { text-shadow: 0 0 4px currentColor, 0 0 10px currentColor; }
+  75%  { text-shadow: 0 0 8px currentColor, 0 0 16px currentColor, 0 0 24px currentColor; }
+  100% { text-shadow: 0 0 4px currentColor, 0 0 8px currentColor; }
+}
+
+
+/* ================================================================
+   13. DATA STREAM — Matrix-like data flow
+   Vertical scrolling characters for terminal/hacker aesthetic
+   ================================================================ */
+@keyframes dataStream {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Horizontal data stream */
+@keyframes dataStreamHorizontal {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+}
+
+/* Data pulse — brief flash of data */
+@keyframes dataPulse {
+  0%   { opacity: 0; transform: scaleY(0); }
+  20%  { opacity: 1; transform: scaleY(1); }
+  80%  { opacity: 1; transform: scaleY(1); }
+  100% { opacity: 0; transform: scaleY(0); }
+}
+
+
+/* ================================================================
+   14. PARTICLE FLOAT — Particle system animation
+   Individual particles floating upward with drift
+   ================================================================ */
+@keyframes particleFloat {
+  0% {
+    transform: translate(0, 100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--particle-opacity, 0.4);
+    transform: translate(0, 80vh) scale(1);
+  }
+  50% {
+    transform: translate(var(--particle-drift, 30px), 40vh) scale(0.8);
+  }
+  90% {
+    opacity: var(--particle-opacity, 0.4);
+    transform: translate(var(--particle-drift2, -20px), 5vh) scale(0.6);
+  }
+  100% {
+    transform: translate(0, -10vh) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Orbiting particle */
+@keyframes particleOrbit {
+  0%   { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+}
+
+/* Particle fade up — simple upward fade */
+@keyframes particleFadeUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Particle drift sideways */
+@keyframes particleDrift {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  20% { opacity: 0.5; }
+  80% { opacity: 0.5; }
+  100% {
+    transform: translate(var(--drift-x, 40px), var(--drift-y, -60px));
+    opacity: 0;
+  }
+}
+
+
+/* ================================================================
+   15. BORDER GLOW — Animated border gradient
+   Rotating gradient border effect
+   ================================================================ */
+@keyframes borderGlow {
+  0% {
+    border-image-source: linear-gradient(
+      0deg,
+      var(--nx-red) 0%,
+      transparent 40%,
+      var(--nx-pink) 60%,
+      transparent 100%
+    );
+  }
+  25% {
+    border-image-source: linear-gradient(
+      90deg,
+      var(--nx-red) 0%,
+      transparent 40%,
+      var(--nx-pink) 60%,
+      transparent 100%
+    );
+  }
+  50% {
+    border-image-source: linear-gradient(
+      180deg,
+      var(--nx-red) 0%,
+      transparent 40%,
+      var(--nx-pink) 60%,
+      transparent 100%
+    );
+  }
+  75% {
+    border-image-source: linear-gradient(
+      270deg,
+      var(--nx-red) 0%,
+      transparent 40%,
+      var(--nx-pink) 60%,
+      transparent 100%
+    );
+  }
+  100% {
+    border-image-source: linear-gradient(
+      360deg,
+      var(--nx-red) 0%,
+      transparent 40%,
+      var(--nx-pink) 60%,
+      transparent 100%
+    );
+  }
+}
+
+/* Conic border rotation — more modern approach */
+@keyframes borderGlowConic {
+  0%   { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+/* Pulsing border */
+@keyframes borderPulse {
+  0%   { border-color: rgba(255, 0, 60, 0.15); }
+  50%  { border-color: rgba(255, 0, 60, 0.5); }
+  100% { border-color: rgba(255, 0, 60, 0.15); }
+}
+
+/* Border color cycle */
+@keyframes borderCycle {
+  0%   { border-color: var(--nx-red); }
+  33%  { border-color: var(--nx-pink); }
+  66%  { border-color: var(--nx-magenta); }
+  100% { border-color: var(--nx-red); }
+}
+
+
+/* ================================================================
+   16. TYPEWRITER — Text reveal effect
+   Character-by-character text appearance
+   ================================================================ */
+@keyframes typewriter {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* Typing cursor blink */
+@keyframes cursorBlink {
+  0%, 100% { border-right-color: var(--nx-red); }
+  50%      { border-right-color: transparent; }
+}
+
+/* Text reveal with clip-path */
+@keyframes textReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Text reveal from center */
+@keyframes textRevealCenter {
+  from {
+    clip-path: inset(0 50% 0 50%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Erase text */
+@keyframes textErase {
+  from { width: 100%; }
+  to   { width: 0; }
+}
+
+
+/* ================================================================
+   17. SHAKE — Error/warning shake
+   Horizontal shaking for errors and alerts
+   ================================================================ */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%      { transform: translateX(-6px); }
+  20%      { transform: translateX(6px); }
+  30%      { transform: translateX(-5px); }
+  40%      { transform: translateX(5px); }
+  50%      { transform: translateX(-3px); }
+  60%      { transform: translateX(3px); }
+  70%      { transform: translateX(-2px); }
+  80%      { transform: translateX(2px); }
+  90%      { transform: translateX(-1px); }
+}
+
+/* Mild shake */
+@keyframes shakeMild {
+  0%, 100% { transform: translateX(0); }
+  25%      { transform: translateX(-3px); }
+  75%      { transform: translateX(3px); }
+}
+
+/* Vertical shake */
+@keyframes shakeVertical {
+  0%, 100% { transform: translateY(0); }
+  10%      { transform: translateY(-4px); }
+  20%      { transform: translateY(4px); }
+  30%      { transform: translateY(-3px); }
+  40%      { transform: translateY(3px); }
+  50%      { transform: translateY(-2px); }
+  60%      { transform: translateY(2px); }
+}
+
+/* Wobble — more organic shake */
+@keyframes wobble {
+  0%   { transform: translateX(0) rotate(0); }
+  15%  { transform: translateX(-5px) rotate(-2deg); }
+  30%  { transform: translateX(4px) rotate(1.5deg); }
+  45%  { transform: translateX(-3px) rotate(-1deg); }
+  60%  { transform: translateX(2px) rotate(0.5deg); }
+  75%  { transform: translateX(-1px) rotate(-0.3deg); }
+  100% { transform: translateX(0) rotate(0); }
+}
+
+/* Head shake — no */
+@keyframes headShake {
+  0%   { transform: translateX(0); }
+  6.5% { transform: translateX(-6px) rotateY(-6deg); }
+  18.5% { transform: translateX(5px) rotateY(4deg); }
+  31.5% { transform: translateX(-3px) rotateY(-2deg); }
+  43.5% { transform: translateX(2px) rotateY(1deg); }
+  50%  { transform: translateX(0); }
+}
+
+
+/* ================================================================
+   18. SPIN — Loading spinner
+   Continuous rotation for loading indicators
+   ================================================================ */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Reverse spin */
+@keyframes spinReverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+/* Pulse spin — rotation with scale pulse */
+@keyframes spinPulse {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Orbit spin — element orbits around a center point */
+@keyframes orbitSpin {
+  from { transform: rotate(0deg) translateX(20px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(20px) rotate(-360deg); }
+}
+
+
+/* ================================================================
+   19. RIPPLE — Click ripple effect
+   Expanding circle from click point
+   ================================================================ */
+@keyframes ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Ripple from center */
+@keyframes rippleCenter {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Ripple ring — expanding ring outline */
+@keyframes rippleRing {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+    border-width: 3px;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+    border-width: 0px;
+  }
+}
+
+
+/* ================================================================
+   20. MORPH BLOB — Organic shape morphing
+   Smooth shape transitions using border-radius
+   ================================================================ */
+@keyframes morphBlob {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  50% {
+    border-radius: 50% 60% 30% 60% / 30% 40% 70% 60%;
+  }
+  75% {
+    border-radius: 40% 60% 50% 40% / 60% 30% 60% 40%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+/* Morph with scale */
+@keyframes morphBlobScale {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: scale(1) rotate(0deg);
+  }
+  33% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    transform: scale(1.05) rotate(120deg);
+  }
+  66% {
+    border-radius: 50% 60% 30% 60% / 30% 40% 70% 60%;
+    transform: scale(0.95) rotate(240deg);
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+
+/* ================================================================
+   21. HOLOGRAM — Holographic projection effect
+   Scanlines + flicker + color shift
+   ================================================================ */
+@keyframes hologram {
+  0% {
+    opacity: 0.95;
+    transform: translateY(0);
+    text-shadow:
+      0 0 4px rgba(0, 255, 200, 0.5),
+      2px 0 0 rgba(255, 0, 60, 0.3),
+      -2px 0 0 rgba(0, 100, 255, 0.3);
+  }
+  5% {
+    opacity: 0.85;
+    transform: translateY(-1px);
+  }
+  10% {
+    opacity: 0.95;
+    transform: translateY(0);
+    text-shadow:
+      0 0 4px rgba(0, 255, 200, 0.5),
+      -1px 0 0 rgba(255, 0, 60, 0.4),
+      1px 0 0 rgba(0, 100, 255, 0.4);
+  }
+  30% {
+    opacity: 0.95;
+  }
+  31% {
+    opacity: 0.7;
+    transform: translateY(2px) skewX(2deg);
+  }
+  32% {
+    opacity: 0.95;
+    transform: translateY(0) skewX(0);
+  }
+  60% {
+    opacity: 0.95;
+  }
+  61% {
+    opacity: 0.6;
+    transform: translateY(-2px);
+  }
+  62% {
+    opacity: 0.95;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0.95;
+    transform: translateY(0);
+    text-shadow:
+      0 0 4px rgba(0, 255, 200, 0.5),
+      2px 0 0 rgba(255, 0, 60, 0.3),
+      -2px 0 0 rgba(0, 100, 255, 0.3);
+  }
+}
+
+/* Hologram with color bands */
+@keyframes hologramBands {
+  0% {
+    background-position: 0 0;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 0 10px;
+    filter: hue-rotate(10deg);
+  }
+  100% {
+    background-position: 0 0;
+    filter: hue-rotate(0deg);
+  }
+}
+
+
+/* ================================================================
+   22. STATIC NOISE — TV static effect
+   Random noise overlay for retro/CRT aesthetic
+   ================================================================ */
+@keyframes staticNoise {
+  0%   { background-position: 0 0; }
+  10%  { background-position: -5% -10%; }
+  20%  { background-position: -15% 5%; }
+  30%  { background-position: 7% -25%; }
+  40%  { background-position: -5% 25%; }
+  50%  { background-position: -15% 10%; }
+  60%  { background-position: 15% 0%; }
+  70%  { background-position: 0% 15%; }
+  80%  { background-position: 3% 25%; }
+  90%  { background-position: -10% 10%; }
+  100% { background-position: 0 0; }
+}
+
+/* Intense static — full screen noise */
+@keyframes staticIntense {
+  0%   { opacity: 0.05; transform: translate(0, 0); }
+  20%  { opacity: 0.08; transform: translate(-2px, 2px); }
+  40%  { opacity: 0.04; transform: translate(2px, -1px); }
+  60%  { opacity: 0.09; transform: translate(-1px, -2px); }
+  80%  { opacity: 0.06; transform: translate(1px, 1px); }
+  100% { opacity: 0.05; transform: translate(0, 0); }
+}
+
+/* Static flicker — intermittent bursts */
+@keyframes staticFlicker {
+  0%, 95%, 100% { opacity: 0; }
+  96%           { opacity: 0.15; }
+  97%           { opacity: 0.03; }
+  98%           { opacity: 0.1; }
+  99%           { opacity: 0.02; }
+}
+
+
+/* ================================================================
+   23. WARP — Space warp transition
+   Zoom and distortion for scene transitions
+   ================================================================ */
+@keyframes warp {
+  0% {
+    transform: perspective(500px) translateZ(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+  50% {
+    transform: perspective(500px) translateZ(-200px) scale(0.8);
+    opacity: 0.5;
+    filter: blur(4px);
+  }
+  100% {
+    transform: perspective(500px) translateZ(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* Warp in — zoom from far */
+@keyframes warpIn {
+  0% {
+    transform: perspective(500px) translateZ(-500px) scale(0.5);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    transform: perspective(500px) translateZ(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* Warp out — zoom away */
+@keyframes warpOut {
+  0% {
+    transform: perspective(500px) translateZ(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    transform: perspective(500px) translateZ(-500px) scale(0.5);
+    opacity: 0;
+    filter: blur(10px);
+  }
+}
+
+/* Hyperspace — fast zoom with streak effect */
+@keyframes hyperspace {
+  0% {
+    transform: scale(1);
+    filter: blur(0);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(1.05);
+    filter: blur(0);
+  }
+  100% {
+    transform: scale(20);
+    filter: blur(20px);
+    opacity: 0;
+  }
+}
+
+
+/* ================================================================
+   24. ADDITIONAL KEYFRAMES
+   ================================================================ */
+
+/* Blur in */
+@keyframes blurIn {
+  from { filter: blur(10px); opacity: 0; }
+  to   { filter: blur(0); opacity: 1; }
+}
+
+/* Blur out */
+@keyframes blurOut {
+  from { filter: blur(0); opacity: 1; }
+  to   { filter: blur(10px); opacity: 0; }
+}
+
+/* Bounce */
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+  40%  { transform: translateY(-15px); }
+  43%  { transform: translateY(-15px); }
+  70%  { transform: translateY(-7px); }
+  90%  { transform: translateY(-3px); }
+}
+
+/* Jello — squish and stretch */
+@keyframes jello {
+  0%, 100% { transform: scale(1, 1); }
+  25%      { transform: scale(0.9, 1.1); }
+  50%      { transform: scale(1.1, 0.9); }
+  75%      { transform: scale(0.95, 1.05); }
+}
+
+/* Flip X */
+@keyframes flipX {
+  from { transform: perspective(400px) rotateX(90deg); opacity: 0; }
+  to   { transform: perspective(400px) rotateX(0deg); opacity: 1; }
+}
+
+/* Flip Y */
+@keyframes flipY {
+  from { transform: perspective(400px) rotateY(90deg); opacity: 0; }
+  to   { transform: perspective(400px) rotateY(0deg); opacity: 1; }
+}
+
+/* Rotate in */
+@keyframes rotateIn {
+  from { transform: rotate(-180deg) scale(0); opacity: 0; }
+  to   { transform: rotate(0deg) scale(1); opacity: 1; }
+}
+
+/* Color shift cycle */
+@keyframes colorShift {
+  0%   { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* Glow expand */
+@keyframes glowExpand {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 60, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(255, 0, 60, 0);
+  }
+}
+
+/* Underline reveal */
+@keyframes underlineReveal {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Gradient shift */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Breathing border */
+@keyframes breatheBorder {
+  0%   { border-color: rgba(255, 0, 60, 0.1); box-shadow: none; }
+  50%  { border-color: rgba(255, 0, 60, 0.4); box-shadow: 0 0 15px rgba(255, 0, 60, 0.15); }
+  100% { border-color: rgba(255, 0, 60, 0.1); box-shadow: none; }
+}
+
+
+/* ================================================================
+   25. UTILITY CLASSES — Animation application helpers
+   ================================================================ */
+
+/* ---- Float utilities ---- */
+.anim-float         { animation: float 6s ease-in-out infinite; }
+.anim-float-slow    { animation: floatSlow 20s ease-in-out infinite; }
+.anim-float-rotate  { animation: floatRotate 8s ease-in-out infinite; }
+
+/* ---- Pulse utilities ---- */
+.anim-pulse         { animation: pulse 3s ease-in-out infinite; }
+.anim-pulse-glow    { animation: pulseGlow 3s ease-in-out infinite; }
+.anim-pulse-fast    { animation: pulse 1.5s ease-in-out infinite; }
+.anim-pulse-scale   { animation: pulseScale 2s ease-in-out infinite; }
+
+/* ---- Glow utilities ---- */
+.anim-plasma-glow   { animation: plasmaGlow 3s ease-in-out infinite; }
+.anim-plasma-box    { animation: plasmaGlowBox 3s ease-in-out infinite; }
+.anim-plasma-text   { animation: plasmaGlowText 3s ease-in-out infinite; }
+.anim-neon-flicker  { animation: neonFlicker 4s ease-in-out infinite; }
+.anim-neon-subtle   { animation: neonFlickerSubtle 8s ease-in-out infinite; }
+
+/* ---- Liquid/Light utilities ---- */
+.anim-liquid        { animation: liquidLight 3s ease-in-out infinite; }
+.anim-liquid-slow   { animation: liquidLight 6s ease-in-out infinite; }
+.anim-liquid-flow   { animation: liquidFlow 15s ease-in-out infinite; }
+
+/* ---- Glass utilities ---- */
+.anim-glass-shine   { animation: glassShine 4s ease-in-out infinite; }
+
+/* ---- Slide utilities ---- */
+.anim-slide-up      { animation: slideInUp 0.3s var(--nx-ease) both; }
+.anim-slide-down    { animation: slideInDown 0.3s var(--nx-ease) both; }
+.anim-slide-left    { animation: slideInLeft 0.3s var(--nx-ease) both; }
+.anim-slide-right   { animation: slideInRight 0.3s var(--nx-ease) both; }
+
+/* ---- Fade utilities ---- */
+.anim-fade-in       { animation: fadeIn 0.3s var(--nx-ease) both; }
+.anim-fade-in-up    { animation: fadeInUp 0.4s var(--nx-ease) both; }
+.anim-fade-in-down  { animation: fadeInDown 0.4s var(--nx-ease) both; }
+
+/* ---- Scale utilities ---- */
+.anim-scale-in      { animation: scaleIn 0.25s var(--nx-ease-bounce) both; }
+.anim-pop-in        { animation: popIn 0.4s var(--nx-ease) both; }
+
+/* ---- Glitch utilities ---- */
+.anim-glitch        { animation: glitch 0.5s ease-in-out; }
+.anim-glitch-mild   { animation: glitchMild 5s ease-in-out infinite; }
+.anim-glitch-severe { animation: glitchSevere 2s ease-in-out infinite; }
+
+/* ---- Shake utilities ---- */
+.anim-shake         { animation: shake 0.6s ease-in-out; }
+.anim-shake-mild    { animation: shakeMild 0.4s ease-in-out; }
+.anim-wobble        { animation: wobble 0.8s ease-in-out; }
+
+/* ---- Spin utilities ---- */
+.anim-spin          { animation: spin 1s linear infinite; }
+.anim-spin-slow     { animation: spin 3s linear infinite; }
+.anim-spin-reverse  { animation: spinReverse 2s linear infinite; }
+
+/* ---- Boot/CRT utilities ---- */
+.anim-boot-flicker  { animation: bootFlicker 3s ease-in-out infinite; }
+.anim-boot-intense  { animation: bootFlickerIntense 1s ease-out forwards; }
+.anim-scanlines     { animation: scanlines 8s linear infinite; }
+
+/* ---- Hologram ---- */
+.anim-hologram      { animation: hologram 4s ease-in-out infinite; }
+
+/* ---- Morph ---- */
+.anim-morph-blob    { animation: morphBlob 8s ease-in-out infinite; }
+
+/* ---- Data ---- */
+.anim-data-stream   { animation: dataStream 5s linear infinite; }
+
+/* ---- Border ---- */
+.anim-border-pulse  { animation: borderPulse 3s ease-in-out infinite; }
+.anim-border-cycle  { animation: borderCycle 4s linear infinite; }
+
+/* ---- Blur ---- */
+.anim-blur-in       { animation: blurIn 0.4s var(--nx-ease) both; }
+
+/* ---- Misc ---- */
+.anim-bounce        { animation: bounce 1s ease-in-out; }
+.anim-jello         { animation: jello 0.8s ease-in-out; }
+.anim-color-shift   { animation: colorShift 10s linear infinite; }
+.anim-glow-expand   { animation: glowExpand 1s ease-out; }
+.anim-gradient      { animation: gradientShift 6s ease infinite; }
+.anim-breathe       { animation: breatheBorder 4s ease-in-out infinite; }
+
+
+/* ---- Delay utilities ---- */
+.delay-100  { animation-delay: 100ms; }
+.delay-200  { animation-delay: 200ms; }
+.delay-300  { animation-delay: 300ms; }
+.delay-400  { animation-delay: 400ms; }
+.delay-500  { animation-delay: 500ms; }
+.delay-750  { animation-delay: 750ms; }
+.delay-1000 { animation-delay: 1000ms; }
+.delay-1500 { animation-delay: 1500ms; }
+.delay-2000 { animation-delay: 2000ms; }
+.delay-3000 { animation-delay: 3000ms; }
+
+/* ---- Duration utilities ---- */
+.dur-fast    { animation-duration: 0.15s; }
+.dur-normal  { animation-duration: 0.3s; }
+.dur-slow    { animation-duration: 0.6s; }
+.dur-xslow   { animation-duration: 1s; }
+.dur-2s      { animation-duration: 2s; }
+.dur-3s      { animation-duration: 3s; }
+.dur-5s      { animation-duration: 5s; }
+.dur-10s     { animation-duration: 10s; }
+
+/* ---- Fill mode utilities ---- */
+.fill-forwards { animation-fill-mode: forwards; }
+.fill-backwards { animation-fill-mode: backwards; }
+.fill-both { animation-fill-mode: both; }
+
+/* ---- Iteration utilities ---- */
+.iter-1    { animation-iteration-count: 1; }
+.iter-2    { animation-iteration-count: 2; }
+.iter-3    { animation-iteration-count: 3; }
+.iter-inf  { animation-iteration-count: infinite; }
+
+/* ---- Direction utilities ---- */
+.dir-reverse { animation-direction: reverse; }
+.dir-alt     { animation-direction: alternate; }
+.dir-alt-rev { animation-direction: alternate-reverse; }
+
+/* ---- Timing utilities ---- */
+.ease-linear  { animation-timing-function: linear; }
+.ease-in      { animation-timing-function: ease-in; }
+.ease-out     { animation-timing-function: ease-out; }
+.ease-in-out  { animation-timing-function: ease-in-out; }
+
+/* ---- Pause/Play ---- */
+.anim-paused  { animation-play-state: paused; }
+.anim-running { animation-play-state: running; }

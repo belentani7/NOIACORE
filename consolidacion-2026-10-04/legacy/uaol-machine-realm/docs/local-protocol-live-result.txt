@@ -1,0 +1,121 @@
+--- HELLO ---
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+> uaol-machine-realm@1.0.0 local-protocol:client /home/ubuntu/uaol-machine-realm
+> tsx local-protocol/src/client.mts -- hello --port 45124
+
+{
+  "protocol": "ULSP/1",
+  "type": "response",
+  "requestId": "local-edf1855e-9248-44aa-a01f-fbfb2d8cb98a",
+  "ok": true,
+  "simulationOnly": true,
+  "timestamp": "2026-08-27T04:25:50.428Z",
+  "payload": {
+    "serverName": "UAOL Local Simulation Protocol",
+    "clientName": "uaol-local-cli",
+    "transport": "tcp-loopback",
+    "state": "idle"
+  }
+}
+--- SNAPSHOT INICIAL ---
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+> uaol-machine-realm@1.0.0 local-protocol:client /home/ubuntu/uaol-machine-realm
+> tsx local-protocol/src/client.mts -- snapshot --port 45124
+
+{
+  "protocol": "ULSP/1",
+  "type": "response",
+  "requestId": "local-c97d0264-0640-4498-91ac-3c17baab2ea4",
+  "ok": true,
+  "simulationOnly": true,
+  "timestamp": "2026-08-27T04:25:51.615Z",
+  "payload": {
+    "state": "idle",
+    "cycleCount": 0,
+    "telemetry": {
+      "temperatureC": 23,
+      "pressureKpa": 100,
+      "speedRpm": 0,
+      "powerPercent": 0
+    },
+    "recentEvents": []
+  }
+}
+--- START ---
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+> uaol-machine-realm@1.0.0 local-protocol:client /home/ubuntu/uaol-machine-realm
+> tsx local-protocol/src/client.mts -- start --port 45124
+
+{
+  "protocol": "ULSP/1",
+  "type": "response",
+  "requestId": "local-7535f11e-e12f-4ec3-801e-8826fac0e13c",
+  "ok": true,
+  "simulationOnly": true,
+  "timestamp": "2026-08-27T04:25:52.870Z",
+  "payload": {
+    "event": {
+      "id": "local-sim-1",
+      "at": "2026-08-27T04:25:52.870Z",
+      "type": "SIMULATION_COMMAND",
+      "command": "start",
+      "previousState": "idle",
+      "newState": "running"
+    },
+    "state": "running",
+    "cycleCount": 1,
+    "telemetry": {
+      "temperatureC": 27,
+      "pressureKpa": 411,
+      "speedRpm": 1200,
+      "powerPercent": 64
+    },
+    "recentEvents": [
+      {
+        "id": "local-sim-1",
+        "at": "2026-08-27T04:25:52.870Z",
+        "type": "SIMULATION_COMMAND",
+        "command": "start",
+        "previousState": "idle",
+        "newState": "running"
+      }
+    ]
+  }
+}
+--- SNAPSHOT FINAL ---
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+> uaol-machine-realm@1.0.0 local-protocol:client /home/ubuntu/uaol-machine-realm
+> tsx local-protocol/src/client.mts -- snapshot --port 45124
+
+{
+  "protocol": "ULSP/1",
+  "type": "response",
+  "requestId": "local-42a0b8b5-a5a2-4c2c-97d4-108d3df8fdbb",
+  "ok": true,
+  "simulationOnly": true,
+  "timestamp": "2026-08-27T04:25:54.099Z",
+  "payload": {
+    "state": "running",
+    "cycleCount": 1,
+    "telemetry": {
+      "temperatureC": 27,
+      "pressureKpa": 411,
+      "speedRpm": 1200,
+      "powerPercent": 64
+    },
+    "recentEvents": [
+      {
+        "id": "local-sim-1",
+        "at": "2026-08-27T04:25:52.870Z",
+        "type": "SIMULATION_COMMAND",
+        "command": "start",
+        "previousState": "idle",
+        "newState": "running"
+      }
+    ]
+  }
+}

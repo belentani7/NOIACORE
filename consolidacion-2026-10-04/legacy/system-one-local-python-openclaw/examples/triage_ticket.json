@@ -1,0 +1,26 @@
+{
+  "state": "El servidor de producción está caído. Incidencia crítica y urgente: los clientes no pueden entrar desde hace 10 minutos.",
+  "threshold": 0.6,
+  "questions": [
+    {
+      "id": "prioridad",
+      "type": "choice",
+      "prompt": "¿Qué prioridad tiene el ticket?",
+      "options": ["Baja", "Media", "Alta", "Crítica"]
+    },
+    {
+      "id": "urgente",
+      "type": "bool",
+      "prompt": "Urgencia del ticket",
+      "statement": "¿El ticket es urgente?"
+    },
+    {
+      "id": "severidad",
+      "type": "score",
+      "prompt": "Severidad del impacto (1-5)",
+      "min": 1,
+      "max": 5,
+      "step": 1
+    }
+  ]
+}

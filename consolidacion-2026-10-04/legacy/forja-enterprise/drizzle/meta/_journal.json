@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1786434737559,
+      "tag": "0000_old_colossus",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1786492621632,
+      "tag": "0001_worried_nebula",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1786493795525,
+      "tag": "0002_low_tarot",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1786494128488,
+      "tag": "0003_abandoned_korvac",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1786888933457,
+      "tag": "0004_easy_chamber",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1786889507038,
+      "tag": "0005_curious_kulan_gath",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1786890387959,
+      "tag": "0006_aberrant_killer_shrike",
+      "breakpoints": true
+    }
+  ]
+}

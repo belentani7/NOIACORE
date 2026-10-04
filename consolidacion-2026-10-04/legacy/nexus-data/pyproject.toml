@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexus-data"
+version = "0.4.0"
+description = "Compliant public-procurement intelligence prototype"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Proprietary"}
+dependencies = [
+  "httpx==0.28.1",
+  "PyYAML==6.0.3",
+  "pandas==3.0.5",
+  "streamlit==1.61.1",
+]
+
+[project.optional-dependencies]
+llm = ["openai>=1.0"]
+dev = ["pytest>=8.0", "ruff>=0.8", "bandit>=1.7", "pip-audit>=2.7"]
+
+[project.scripts]
+nexus-data = "nexus.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 120

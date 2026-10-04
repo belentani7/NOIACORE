@@ -1,0 +1,10 @@
+{
+  "metadata": {
+    "info": 0,
+    "low": 10,
+    "moderate": 49,
+    "high": 21,
+    "critical": 1
+  },
+  "advisory_count": 81
+}

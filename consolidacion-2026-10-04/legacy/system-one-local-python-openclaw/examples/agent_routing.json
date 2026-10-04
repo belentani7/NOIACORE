@@ -1,0 +1,18 @@
+{
+  "state": "Necesito corregir un bug en Python del backend y luego desplegarlo en producción.",
+  "threshold": 0.6,
+  "questions": [
+    {
+      "id": "agente",
+      "type": "choice",
+      "prompt": "¿A qué agente enrutamos la tarea?",
+      "options": ["Coder backend", "Diseñador visual", "Asesor legal", "Investigador"]
+    },
+    {
+      "id": "requiere_humano",
+      "type": "bool",
+      "prompt": "Aprobación requerida",
+      "statement": "¿Requiere aprobación humana antes de desplegar?"
+    }
+  ]
+}

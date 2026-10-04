@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#040406"/>
+<meta name="color-scheme" content="dark"/>
+<title>NOIACORE — Fábrica Contínua</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23040406'/%3E%3Cpath d='M8 24 L16 6 L24 24' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#040406;--ink:238,238,242;--mute:rgba(var(--ink),.56);--faint:rgba(var(--ink),.32);
+  --ghost:rgba(var(--ink),.16);--line:rgba(var(--ink),.10);--acc:125,155,255;--acc2:180,200,255;
+  --f-d:"Space Grotesk",system-ui,sans-serif;--f-b:"Inter",system-ui,sans-serif;--f-m:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:rgba(var(--ink),.88);font-family:var(--f-b);font-weight:300;line-height:1.6;min-height:100vh}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;
+  padding:18px clamp(16px,4vw,44px);border-bottom:1px solid var(--line);background:rgba(4,4,6,.85);backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--f-d);font-size:13px;letter-spacing:.26em;text-transform:uppercase}
+.brand i{font-style:normal;font-size:16px}
+.back{font-family:var(--f-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);
+  border:1px solid var(--line);padding:8px 14px;text-decoration:none;transition:.3s}
+.back:hover{color:#fff;border-color:rgba(var(--acc),.6)}
+main{max-width:1100px;margin:0 auto;padding:60px 24px 100px}
+.idx{font-family:var(--f-m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.blink{width:6px;height:6px;border-radius:50%;background:rgba(var(--acc),.9);box-shadow:0 0 10px rgba(var(--acc),.7);animation:blink 2.2s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+h1{font-family:var(--f-d);font-weight:300;font-size:clamp(30px,5vw,52px);margin:0 0 16px}
+.lead{max-width:640px;color:var(--mute);margin-bottom:40px}
+.disclaimer{border:1px solid rgba(var(--acc),.28);background:rgba(var(--acc),.05);padding:14px 18px;
+  font-family:var(--f-m);font-size:11px;letter-spacing:.03em;color:rgba(var(--acc2),.9);margin-bottom:40px}
+.factory-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.item{border:1px solid var(--line);background:rgba(255,255,255,.015);padding:16px;transition:border-color .4s,transform .4s}
+.item:hover{border-color:rgba(var(--acc),.5);transform:translateY(-2px)}
+.item .code{font-family:var(--f-m);font-size:10px;letter-spacing:.1em;color:rgba(var(--acc2),.85)}
+.item .name{font-family:var(--f-d);font-size:16px;margin-top:6px}
+.item .kind{font-family:var(--f-m);font-size:10px;color:var(--faint);margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--f-m);font-size:10px;
+  letter-spacing:.1em;color:var(--ghost);text-transform:uppercase;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer b{color:rgba(var(--acc2),.9);font-weight:400}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><i>Λ</i> NOIACORE</a>
+  <a class="back" href="/">← Voltar ao núcleo</a>
+</header>
+<main>
+  <div class="idx"><span class="blink"></span>LAB.16 — FÁBRICA CONTÍNUA</div>
+  <h1>Fábrica Contínua</h1>
+  <p class="lead">Uma simulação visual do que um sistema de geração poderia produzir se estivesse ligado: livros, shaders, skins, templates, ícones, fontes, jogos, padrões têxteis.</p>
+  <div class="disclaimer">⚠ Isto é uma simulação decorativa. Nenhum arquivo real é gerado, armazenado ou disponibilizado para download aqui — não há motor de produção conectado.</div>
+  <div class="factory-grid" id="factory-grid"></div>
+  <footer>
+    <span>NOIACORE · página independente (não é âncora da home)</span>
+    <span>Iterações reais do núcleo nesta máquina: <b id="real-iter">—</b></span>
+  </footer>
+</main>
+<script>
+(function(){
+  const kinds=['livro digital','shader procedural','skin de interface','template de landing','ícone de aplicativo',
+    'fonte tipográfica','protótipo de jogo','padrão têxtil','paleta cromática','componente UI','preset de áudio','wireframe'];
+  const codes=['NX','LV','SH','TK','QN','ZR','VX','MD'];
+  const grid=document.getElementById('factory-grid');
+  const items=[];
+  for(let i=0;i<40;i++){
+    const kind=kinds[Math.floor(Math.random()*kinds.length)];
+    const code=codes[Math.floor(Math.random()*codes.length)]+'-'+String(Math.floor(Math.random()*900+100));
+    items.push('<div class="item"><div class="code">'+code+'</div><div class="name">'+kind.charAt(0).toUpperCase()+kind.slice(1)+'</div><div class="kind">artefato simulado</div></div>');
+  }
+  grid.innerHTML=items.join('');
+
+  // dado REAL: lê o mesmo localStorage que a página principal usa (mesma origem)
+  try{
+    const lv=localStorage.getItem('noi_lv');
+    const total=localStorage.getItem('noi_total');
+    if(total)document.getElementById('real-iter').textContent=total+' reboots reais';
+    else document.getElementById('real-iter').textContent='sem dados ainda — visite a home primeiro';
+  }catch(e){document.getElementById('real-iter').textContent='indisponível';}
+})();
+</script>
+</body>
+</html>

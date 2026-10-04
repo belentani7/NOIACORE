@@ -1,0 +1,4 @@
+watchdog
+requests
+faster-whisper
+Pillow

@@ -1,0 +1,448 @@
+--- same files by sha256 ---
+.gitignore
+.prettierignore
+.prettierrc
+client/public/.gitkeep
+client/public/__manus__/debug-collector.js
+client/src/_core/hooks/useAuth.ts
+client/src/components/AIChatBox.tsx
+client/src/components/DashboardLayout.tsx
+client/src/components/DashboardLayoutSkeleton.tsx
+client/src/components/ErrorBoundary.tsx
+client/src/components/Map.tsx
+client/src/components/ui/accordion.tsx
+client/src/components/ui/alert-dialog.tsx
+client/src/components/ui/alert.tsx
+client/src/components/ui/aspect-ratio.tsx
+client/src/components/ui/avatar.tsx
+client/src/components/ui/badge.tsx
+client/src/components/ui/breadcrumb.tsx
+client/src/components/ui/button-group.tsx
+client/src/components/ui/button.tsx
+client/src/components/ui/calendar.tsx
+client/src/components/ui/card.tsx
+client/src/components/ui/carousel.tsx
+client/src/components/ui/chart.tsx
+client/src/components/ui/checkbox.tsx
+client/src/components/ui/collapsible.tsx
+client/src/components/ui/command.tsx
+client/src/components/ui/context-menu.tsx
+client/src/components/ui/dialog.tsx
+client/src/components/ui/drawer.tsx
+client/src/components/ui/dropdown-menu.tsx
+client/src/components/ui/empty.tsx
+client/src/components/ui/field.tsx
+client/src/components/ui/form.tsx
+client/src/components/ui/hover-card.tsx
+client/src/components/ui/input-group.tsx
+client/src/components/ui/input-otp.tsx
+client/src/components/ui/input.tsx
+client/src/components/ui/item.tsx
+client/src/components/ui/kbd.tsx
+client/src/components/ui/label.tsx
+client/src/components/ui/menubar.tsx
+client/src/components/ui/navigation-menu.tsx
+client/src/components/ui/pagination.tsx
+client/src/components/ui/popover.tsx
+client/src/components/ui/progress.tsx
+client/src/components/ui/radio-group.tsx
+client/src/components/ui/resizable.tsx
+client/src/components/ui/scroll-area.tsx
+client/src/components/ui/select.tsx
+client/src/components/ui/separator.tsx
+client/src/components/ui/sidebar.tsx
+client/src/components/ui/skeleton.tsx
+client/src/components/ui/sonner.tsx
+client/src/components/ui/spinner.tsx
+client/src/components/ui/switch.tsx
+client/src/components/ui/table.tsx
+client/src/components/ui/tabs.tsx
+client/src/components/ui/textarea.tsx
+client/src/components/ui/toggle-group.tsx
+client/src/components/ui/toggle.tsx
+client/src/components/ui/tooltip.tsx
+client/src/const.ts
+client/src/contexts/ThemeContext.tsx
+client/src/hooks/useComposition.ts
+client/src/hooks/useMobile.tsx
+client/src/hooks/usePersistFn.ts
+client/src/lib/trpc.ts
+client/src/lib/utils.ts
+client/src/pages/ComponentShowcase.tsx
+components.json
+drizzle/migrations/.gitkeep
+drizzle/relations.ts
+drizzle.config.ts
+patches/wouter@3.7.1.patch
+server/_core/context.ts
+server/_core/cookies.ts
+server/_core/dataApi.ts
+server/_core/env.ts
+server/_core/heartbeat.ts
+server/_core/imageGeneration.ts
+server/_core/map.ts
+server/_core/oauth.ts
+server/_core/sdk.ts
+server/_core/storageProxy.ts
+server/_core/systemRouter.ts
+server/_core/trpc.ts
+server/_core/types/cookie.d.ts
+server/_core/types/manusTypes.ts
+server/_core/voiceTranscription.ts
+server/storage.ts
+shared/_core/errors.ts
+shared/const.ts
+shared/types.ts
+tsconfig.json
+.git/description
+.git/hooks/applypatch-msg.sample
+.git/hooks/commit-msg.sample
+.git/hooks/fsmonitor-watchman.sample
+.git/hooks/post-update.sample
+.git/hooks/pre-applypatch.sample
+.git/hooks/pre-commit.sample
+.git/hooks/pre-merge-commit.sample
+.git/hooks/pre-push.sample
+.git/hooks/pre-rebase.sample
+.git/hooks/pre-receive.sample
+.git/hooks/prepare-commit-msg.sample
+.git/hooks/push-to-checkout.sample
+.git/hooks/sendemail-validate.sample
+.git/hooks/update.sample
+.git/info/exclude
+.git/HEAD
+.gitkeep
+--- files only in forja ---
+Only in /home/ubuntu/forja-enterprise: .manus
+Only in /home/ubuntu/forja-enterprise: .manus-logs
+Only in /home/ubuntu/forja-enterprise: .project-config.json
+Only in /home/ubuntu/forja-enterprise/client/public/__manus__: version.json
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/client/public: robots.txt
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/client/public: sitemap.xml
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/client/src/components: CompletionNotificationSettings.tsx
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/client/src/components: SeoHead.tsx
+Only in /home/ubuntu/forja-enterprise/client/src/components: enterprise
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/client/src: content
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/client/src/lib: analytics.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/client/src/lib: completionNotifications.test.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/client/src/lib: completionNotifications.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/client/src/pages: Admin.tsx
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/client/src/pages: Agent.tsx
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/client/src/pages: Catalog.tsx
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/client/src/pages: Changelog.tsx
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/client/src/pages: Resources.tsx
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/client/src/pages: Transparency.tsx
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: ECOSYSTEM.md
+Only in /home/ubuntu/forja-enterprise/docs: FINAL_VISUAL_VERIFICATION.md
+Only in /home/ubuntu/forja-enterprise/docs: PERFORMANCE_AND_OBSERVABILITY.md
+Only in /home/ubuntu/forja-enterprise/docs: TENANT_OWNERSHIP_AUDIT.md
+Only in /home/ubuntu/forja-enterprise/docs: TEST_COVERAGE.md
+Only in /home/ubuntu/forja-enterprise/docs: VISUAL_VERIFICATION.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: accessibility-audit.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: accessibility-manual-observations.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: analytics.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: architecture.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: completion-notifications.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: data-boundaries.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: decisions.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: design-system.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: frontend-reference-study.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: gmail-integration-evidence.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: motion-audit-exact.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: motion-audit-raw.txt
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: motion-manual-evidence.txt
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: noiacore-visual-master-prompt.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: notifications.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: observability.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: performance-audit.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: private-materials-inventory.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: profile-enrichment-review.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: repo-integration-decision.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: repo-research
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: resilience-audit.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: responsive-audit.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: secrets.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: security-evidence.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: security-hardening.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: source-research.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: strategy-report.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: strategy-research.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: strategy-traceability.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: theoretical-integration.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: validation-report.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: visual-integrity-check.md
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: visual-redesign-diff.txt
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/docs: visual-review-gray-stone.md
+Only in /home/ubuntu/forja-enterprise/drizzle: 0000_old_colossus.sql
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle: 0000_third_rocket_racer.sql
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle: 0001_unique_mystique.sql
+Only in /home/ubuntu/forja-enterprise/drizzle: 0001_worried_nebula.sql
+Only in /home/ubuntu/forja-enterprise/drizzle: 0002_low_tarot.sql
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle: 0002_small_speed.sql
+Only in /home/ubuntu/forja-enterprise/drizzle: 0003_abandoned_korvac.sql
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle: 0003_tough_retro_girl.sql
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle: 0004_boring_aaron_stack.sql
+Only in /home/ubuntu/forja-enterprise/drizzle: 0004_easy_chamber.sql
+Only in /home/ubuntu/forja-enterprise/drizzle: 0005_curious_kulan_gath.sql
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle: 0005_mighty_maverick.sql
+Only in /home/ubuntu/forja-enterprise/drizzle: 0006_aberrant_killer_shrike.sql
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle: 0006_wide_mimic.sql
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle: 0007_even_synch.sql
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle: 0008_serious_bullseye.sql
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle: 0009_curvy_warhawk.sql
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle: 0010_moaning_machine_man.sql
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle: 0011_complex_orphan.sql
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle: 0012_complex_baron_strucker.sql
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle/meta: 0007_snapshot.json
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle/meta: 0008_snapshot.json
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle/meta: 0009_snapshot.json
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle/meta: 0010_snapshot.json
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle/meta: 0011_snapshot.json
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/drizzle/meta: 0012_snapshot.json
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani: ecosystem.json
+Only in /home/ubuntu/forja-enterprise: research
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani: scripts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: accessibility.audit.test.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: accessibility.contrast.test.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: adminAudit.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: agent.test.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: agentPolicy.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: analytics.test.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: automation.test.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: automation.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: business-analytics.test.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: catalogIngestion.test.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: catalogIngestion.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: emailIngestion.integration.test.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: emailIngestion.test.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: emailIngestion.ts
+Only in /home/ubuntu/forja-enterprise/server: enterprise.contract.test.ts
+Only in /home/ubuntu/forja-enterprise/server: enterprise.crypto.test.ts
+Only in /home/ubuntu/forja-enterprise/server: enterprise.enforcement.test.ts
+Only in /home/ubuntu/forja-enterprise/server: enterprise.mutations.test.ts
+Only in /home/ubuntu/forja-enterprise/server: enterprise.router.test.ts
+Only in /home/ubuntu/forja-enterprise/server: enterprise.snapshot.test.ts
+Only in /home/ubuntu/forja-enterprise/server: enterprise.tenant-audit.test.ts
+Only in /home/ubuntu/forja-enterprise/server: enterpriseData.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: integration.test.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: llm.resilience.test.ts
+Only in /home/ubuntu/forja-enterprise/server: observability.test.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: operationalNotifications.test.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: operationalNotifications.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: platform.contract.test.ts
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: privateData.ts
+Only in /home/ubuntu/forja-enterprise/server: routers
+Only in /home/ubuntu/forja-enterprise/research/clones/Belentani/server: security-observability.test.ts
+--- package name and scripts ---
+{
+  "name": "forja-enterprise",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "NODE_ENV=development tsx watch server/_core/index.ts",
+    "build": "vite build && esbuild server/_core/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "start": "NODE_ENV=production node dist/index.js",
+    "check": "tsc --noEmit",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "db:push": "drizzle-kit generate && drizzle-kit migrate"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.693.0",
+    "@aws-sdk/s3-request-presigner": "^3.693.0",
+    "@hookform/resolvers": "^5.2.2",
+    "@radix-ui/react-accordion": "^1.2.12",
+    "@radix-ui/react-alert-dialog": "^1.1.15",
+    "@radix-ui/react-aspect-ratio": "^1.1.7",
+    "@radix-ui/react-avatar": "^1.1.10",
+    "@radix-ui/react-checkbox": "^1.3.3",
+    "@radix-ui/react-collapsible": "^1.1.12",
+    "@radix-ui/react-context-menu": "^2.2.16",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-hover-card": "^1.1.15",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-menubar": "^1.1.16",
+    "@radix-ui/react-navigation-menu": "^1.2.14",
+    "@radix-ui/react-popover": "^1.1.15",
+    "@radix-ui/react-progress": "^1.1.7",
+    "@radix-ui/react-radio-group": "^1.3.8",
+    "@radix-ui/react-scroll-area": "^1.2.10",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slider": "^1.3.6",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-switch": "^1.2.6",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@radix-ui/react-toggle": "^1.1.10",
+    "@radix-ui/react-toggle-group": "^1.1.11",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "@tanstack/react-query": "^5.90.2",
+    "@trpc/client": "^11.6.0",
+    "@trpc/react-query": "^11.6.0",
+    "@trpc/server": "^11.6.0",
+    "axios": "^1.12.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
+    "cookie": "^1.0.2",
+    "date-fns": "^4.1.0",
+    "dotenv": "^17.2.2",
+    "drizzle-orm": "^0.44.5",
+    "embla-carousel-react": "^8.6.0",
+    "express": "^4.21.2",
+    "framer-motion": "^12.23.22",
+    "input-otp": "^1.4.2",
+    "jose": "6.1.0",
+    "lucide-react": "^0.453.0",
+    "mysql2": "^3.15.0",
+    "nanoid": "^5.1.5",
+    "next-themes": "^0.4.6",
+    "react": "^19.2.1",
+    "react-day-picker": "^9.11.1",
+    "react-dom": "^19.2.1",
+    "react-hook-form": "^7.64.0",
+    "react-resizable-panels": "^3.0.6",
+    "recharts": "^2.15.2",
+    "sonner": "^2.0.7",
+    "streamdown": "^1.4.0",
+    "superjson": "^1.13.3",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7",
+    "vaul": "^1.1.2",
+    "wouter": "^3.3.5",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@builder.io/vite-plugin-jsx-loc": "^0.1.1",
+    "@tailwindcss/typography": "^0.5.15",
+    "@tailwindcss/vite": "^4.1.3",
+    "@types/express": "4.17.21",
+    "@types/google.maps": "^3.58.1",
+    "@types/node": "^24.7.0",
+    "@types/react": "^19.2.1",
+    "@types/react-dom": "^19.2.1",
+    "@vitejs/plugin-react": "^5.0.4",
+    "add": "^2.0.6",
+    "autoprefixer": "^10.4.20",
+    "drizzle-kit": "^0.31.4",
+    "esbuild": "^0.25.0",
+    "pnpm": "^10.15.1",
+    "postcss": "^8.4.47",
+    "prettier": "^3.6.2",
+    "tailwindcss": "^4.1.14",
+    "tsx": "^4.19.1",
+    "tw-animate-css": "^1.4.0",
+    "typescript": "5.9.3",
+    "vite": "^7.1.7",
+    "vite-plugin-manus-runtime": "0.0.59",
+    "vitest": "^2.1.4"
+  }
+}
+{
+  "name": "belentani-studio-platform",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "NODE_ENV=development tsx watch server/_core/index.ts",
+    "build": "vite build && esbuild server/_core/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "start": "NODE_ENV=production node dist/index.js",
+    "check": "tsc --noEmit",
+    "lint": "prettier --check package.json client/index.html client/src/App.tsx client/src/index.css client/src/components/ManusDialog.tsx client/src/components/ui/slider.tsx client/src/pages/NotFound.tsx server/seo.ts server/seo.test.ts server/accessibility.audit.test.ts server/accessibility.contrast.test.ts server/_core/vite.ts server/routers.ts drizzle/schema.ts docs/*.md --ignore-path .prettierignore",
+    "format": "prettier --write .",
+    "test": "vitest run --exclude server/integration.test.ts",
+    "test:integration": "node scripts/test-integration.mjs",
+    "db:push": "drizzle-kit generate && drizzle-kit migrate"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.693.0",
+    "@aws-sdk/s3-request-presigner": "^3.693.0",
+    "@hookform/resolvers": "^5.2.2",
+    "@radix-ui/react-accordion": "^1.2.12",
+    "@radix-ui/react-alert-dialog": "^1.1.15",
+    "@radix-ui/react-aspect-ratio": "^1.1.7",
+    "@radix-ui/react-avatar": "^1.1.10",
+    "@radix-ui/react-checkbox": "^1.3.3",
+    "@radix-ui/react-collapsible": "^1.1.12",
+    "@radix-ui/react-context-menu": "^2.2.16",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-hover-card": "^1.1.15",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-menubar": "^1.1.16",
+    "@radix-ui/react-navigation-menu": "^1.2.14",
+    "@radix-ui/react-popover": "^1.1.15",
+    "@radix-ui/react-progress": "^1.1.7",
+    "@radix-ui/react-radio-group": "^1.3.8",
+    "@radix-ui/react-scroll-area": "^1.2.10",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slider": "^1.3.6",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-switch": "^1.2.6",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@radix-ui/react-toggle": "^1.1.10",
+    "@radix-ui/react-toggle-group": "^1.1.11",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "@tanstack/react-query": "^5.90.2",
+    "@trpc/client": "^11.6.0",
+    "@trpc/react-query": "^11.6.0",
+    "@trpc/server": "^11.6.0",
+    "axios": "^1.12.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
+    "cookie": "^1.0.2",
+    "date-fns": "^4.1.0",
+    "dotenv": "^17.2.2",
+    "drizzle-orm": "^0.44.5",
+    "embla-carousel-react": "^8.6.0",
+    "express": "^4.21.2",
+    "framer-motion": "^12.23.22",
+    "input-otp": "^1.4.2",
+    "jose": "6.1.0",
+    "lucide-react": "^0.453.0",
+    "mysql2": "^3.15.0",
+    "nanoid": "^5.1.5",
+    "next-themes": "^0.4.6",
+    "react": "^19.2.1",
+    "react-day-picker": "^9.11.1",
+    "react-dom": "^19.2.1",
+    "react-hook-form": "^7.64.0",
+    "react-resizable-panels": "^3.0.6",
+    "recharts": "^2.15.2",
+    "sonner": "^2.0.7",
+    "streamdown": "^1.4.0",
+    "superjson": "^1.13.3",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7",
+    "vaul": "^1.1.2",
+    "wouter": "^3.3.5",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@builder.io/vite-plugin-jsx-loc": "^0.1.1",
+    "@tailwindcss/typography": "^0.5.15",
+    "@tailwindcss/vite": "^4.1.3",
+    "@types/express": "4.17.21",
+    "@types/google.maps": "^3.58.1",
+    "@types/node": "^24.7.0",
+    "@types/react": "^19.2.1",
+    "@types/react-dom": "^19.2.1",
+    "@vitejs/plugin-react": "^5.0.4",
+    "add": "^2.0.6",
+    "autoprefixer": "^10.4.20",
+    "axe-core": "^4.13.0",
+    "drizzle-kit": "^0.31.4",
+    "esbuild": "^0.25.0",
+    "happy-dom": "^20.11.2",
+    "pnpm": "^10.15.1",
+    "postcss": "^8.4.47",
+    "prettier": "^3.6.2",
+    "tailwindcss": "^4.1.14",
+    "tsx": "^4.19.1",
+    "tw-animate-css": "^1.4.0",
+    "typescript": "5.9.3",
+    "vite": "^7.1.7",
+    "vite-plugin-manus-runtime": "0.0.59",
+    "vitest": "^2.1.4"
+  }
+}

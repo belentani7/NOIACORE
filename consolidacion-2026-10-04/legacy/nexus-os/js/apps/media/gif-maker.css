@@ -1,0 +1,45 @@
+/* NEXUS OS — GIF Maker — Neon Glassmorphism */
+.ngm-root{display:flex;height:100%;background:#0a0a0f;font-family:'Segoe UI',system-ui,sans-serif;color:#e0e0e0;overflow:hidden}
+.ngm-left{flex:1;display:flex;flex-direction:column;min-width:0}
+.ngm-preview-area{flex:1;display:flex;align-items:center;justify-content:center;background:repeating-conic-gradient(#0d0d15 0% 25%,#0a0a12 0% 50%) 0 0/20px 20px;overflow:hidden;position:relative}
+.ngm-preview-area canvas{max-width:95%;max-height:95%;border:1px solid rgba(255,0,60,.1)}
+.ngm-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:#555}
+.ngm-empty-icon{font-size:64px;opacity:.3}
+.ngm-open-btn{padding:10px 24px;background:rgba(255,0,60,.15);border:1px solid rgba(255,0,60,.4);border-radius:8px;color:#ff003c;cursor:pointer;font-size:14px;transition:all .2s}
+.ngm-open-btn:hover{background:rgba(255,0,60,.25);box-shadow:0 0 15px rgba(255,0,60,.2)}
+.ngm-bottom-bar{display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(15,15,25,.95);border-top:1px solid rgba(255,0,60,.1)}
+.ngm-bar-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,0,60,.15);color:#ccc;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;transition:all .2s}
+.ngm-bar-btn:hover{background:rgba(255,0,60,.1);color:#ff003c}
+.ngm-bar-btn.active{background:rgba(255,0,60,.2);color:#ff003c;border-color:rgba(255,0,60,.4)}
+.ngm-bar-btn.primary{background:rgba(255,0,60,.2);color:#ff003c;border-color:rgba(255,0,60,.5)}
+.ngm-bar-spacer{flex:1}
+.ngm-right{width:280px;background:rgba(15,15,25,.95);border-left:1px solid rgba(255,0,60,.15);display:flex;flex-direction:column;overflow:hidden}
+.ngm-sidebar-header{padding:12px;border-bottom:1px solid rgba(255,0,60,.1);font-size:14px;font-weight:600;color:#ff2d6b}
+.ngm-sidebar-scroll{flex:1;overflow-y:auto;padding:12px}
+.ngm-sidebar-scroll::-webkit-scrollbar{width:4px}
+.ngm-sidebar-scroll::-webkit-scrollbar-thumb{background:#ff003c33;border-radius:2px}
+.ngm-section-title{font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1px;margin:8px 0 6px}
+.ngm-frame-strip{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.ngm-frame-item{display:flex;align-items:center;gap:8px;padding:6px;background:rgba(255,255,255,.03);border:1px solid rgba(255,0,60,.08);border-radius:6px;cursor:pointer;transition:all .15s}
+.ngm-frame-item:hover{border-color:rgba(255,0,60,.2)}
+.ngm-frame-item.active{background:rgba(255,0,60,.1);border-color:rgba(255,0,60,.3)}
+.ngm-frame-thumb{width:48px;height:36px;border-radius:4px;object-fit:cover;background:#111}
+.ngm-frame-info{flex:1;font-size:11px;color:#999}
+.ngm-frame-info span{color:#ff2d6b}
+.ngm-frame-del{background:none;border:none;color:#ff003c44;cursor:pointer;font-size:13px;padding:0 2px}
+.ngm-frame-del:hover{color:#ff003c}
+.ngm-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.ngm-row label{font-size:11px;color:#888;min-width:60px}
+.ngm-slider{flex:1;-webkit-appearance:none;height:3px;background:rgba(255,255,255,.1);border-radius:2px;outline:none}
+.ngm-slider::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;background:#ff003c;border-radius:50%;cursor:pointer;box-shadow:0 0 4px #ff003c}
+.ngm-val{font-size:11px;color:#ff2d6b;width:44px;text-align:right}
+.ngm-select{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,0,60,.15);color:#ccc;padding:6px 8px;border-radius:6px;font-size:12px;outline:none;cursor:pointer;margin-bottom:8px}
+.ngm-select option{background:#1a1a2e}
+.ngm-checkbox{display:flex;align-items:center;gap:8px;font-size:12px;color:#999;cursor:pointer;margin-bottom:6px}
+.ngm-checkbox input{accent-color:#ff003c}
+.ngm-progress{width:100%;height:4px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden;margin-top:8px;display:none}
+.ngm-progress.active{display:block}
+.ngm-progress-bar{height:100%;background:linear-gradient(90deg,#ff003c,#ff2d6b);width:0%;transition:width .3s}
+.ngm-status{font-size:11px;color:#666;margin-top:4px;text-align:center}
+.ngm-drop-overlay{position:absolute;inset:0;background:rgba(255,0,60,.15);border:3px dashed #ff003c;display:none;align-items:center;justify-content:center;z-index:20;font-size:18px;color:#ff003c;backdrop-filter:blur(8px)}
+.ngm-drop-overlay.active{display:flex}

@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+.operations-shell {
+  background: radial-gradient(circle at 80% 5%, rgba(34, 211, 238, .08), transparent 30%), radial-gradient(circle at 5% 80%, rgba(167, 139, 250, .08), transparent 28%), #050a14;
+}
+
+.glass-panel {
+  border: 1px solid rgba(255, 255, 255, .13);
+  background: linear-gradient(135deg, rgba(17, 29, 48, .72), rgba(4, 11, 23, .76));
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, .11), 0 18px 55px rgba(0, 0, 0, .2);
+  backdrop-filter: blur(22px) saturate(165%);
+}
+
+.glass-button {
+  border-color: rgba(255, 255, 255, .16) !important;
+  background: rgba(255, 255, 255, .055) !important;
+  color: rgb(226 232 240) !important;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass-panel { background: #0f172a; backdrop-filter: none; }
+}
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.13 0.025 260);
+  --foreground: oklch(0.93 0.015 210);
+  --card: oklch(0.17 0.025 257);
+  --card-foreground: oklch(0.93 0.015 210);
+  --popover: oklch(0.19 0.03 257);
+  --popover-foreground: oklch(0.93 0.015 210);
+  --primary: oklch(0.79 0.16 190);
+  --primary-foreground: oklch(0.16 0.03 260);
+  --secondary: oklch(0.23 0.03 255);
+  --secondary-foreground: oklch(0.9 0.02 210);
+  --muted: oklch(0.21 0.025 255);
+  --muted-foreground: oklch(0.68 0.025 230);
+  --accent: oklch(0.25 0.045 220);
+  --accent-foreground: oklch(0.95 0.01 210);
+  --destructive: oklch(0.66 0.19 27);
+  --border: oklch(0.3 0.03 245);
+  --input: oklch(0.22 0.025 255);
+  --ring: oklch(0.79 0.16 190);
+}
+
+* { border-color: var(--border); }
+
+html { background: var(--background); }
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 18% 0%, oklch(0.25 0.07 215 / 0.2), transparent 26rem),
+    radial-gradient(circle at 88% 15%, oklch(0.28 0.08 285 / 0.14), transparent 24rem),
+    var(--background);
+  color: var(--foreground);
+  font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+.control-grid {
+  background-image: linear-gradient(oklch(0.55 0.06 208 / 0.06) 1px, transparent 1px), linear-gradient(90deg, oklch(0.55 0.06 208 / 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, oklch(0.79 0.16 190 / 0.025) 50%, transparent 100%);
+  background-size: 100% 7px;
+  mix-blend-mode: screen;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .signal-pulse { animation: signal-pulse 2.4s ease-in-out infinite; }
+  @keyframes signal-pulse { 50% { opacity: 0.42; } }
+}

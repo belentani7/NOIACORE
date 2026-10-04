@@ -1,0 +1,217 @@
+# Terminal Full Output
+# Terminal: check_files
+# Command: ls -R /home/ubuntu/
+# PID: 1129
+# Timestamp: 2026-08-18_11-50-25.977244
+# Original Length: 8048 characters
+# ----------------------------------------
+
+[32mubuntu@sandbox:~$ [0mls -R /home/ubuntu/
+/home/ubuntu/:
+Downloads			diseno_arquitectura_LIOS_V5.md
+README.md			diseno_arquitectura_agente_local.md
+README_V2.md			diseno_arquitectura_avanzada.md
+README_V3.md			investigacion_agente_avanzado.md
+README_V4.md			investigacion_agente_local.md
+agente_local_audio.py		investigacion_notificaciones.md
+agente_local_core.py		knowledge_curator.py
+agente_local_core_v2.py		legacy_broker.py
+agente_local_llm.py		lios_v4_agent.zip
+agente_local_ui.py		main_agente.py
+agente_local_ui_v2.py		main_agente_v2.py
+agente_local_vision.py		main_agente_v3.py
+agente_local_voz.py		main_agente_v4.py
+agente_local_watcher.py		pattern_archivist.py
+agente_local_windows.zip	physics
+agente_local_windows_V2.zip	requirements.txt
+agente_local_windows_V3.zip	sandbox.txt
+cognition			skills
+deep_time			upload
+diseno_arquitectura_LIOS_V4.md
+/home/ubuntu/Downloads:
+/home/ubuntu/cognition:
+self_modifying_core.py	world_model.py
+/home/ubuntu/deep_time:
+dna_storage.py
+/home/ubuntu/physics:
+thermodynamic_optimizer.py
+/home/ubuntu/skills:
+automation-and-scheduling  webdev-custom-dockerfile
+builtin-llm-models	   webdev-data-api
+data-backup-restoration    webdev-file-storage
+finance-pro-playbooks	   webdev-image-generation
+game-dev		   webdev-llm-integration
+gws-best-practices	   webdev-manus-oauth
+imagegen		   webdev-maps-integration
+manus-api		   webdev-owner-notifications
+manus-config		   webdev-periodic-updates
+manus-pptx		   webdev-readme-fullstack
+music-prompter		   webdev-readme-mobile
+persistent-computing	   webdev-readme-mobile-backend
+read-special-images	   webdev-readme-static
+skill-creator		   webdev-ssr-conversion
+tts-prompter		   webdev-voice-transcription
+typst-pdf-maker
+/home/ubuntu/skills/automation-and-scheduling:
+SKILL.md  references
+/home/ubuntu/skills/automation-and-scheduling/references:
+implementation-patterns.md
+/home/ubuntu/skills/builtin-llm-models:
+SKILL.md  scripts  templates
+/home/ubuntu/skills/builtin-llm-models/scripts:
+__pycache__  llm_batch.py
+/home/ubuntu/skills/builtin-llm-models/scripts/__pycache__:
+llm_batch.cpython-312.pyc
+/home/ubuntu/skills/builtin-llm-models/templates:
+/home/ubuntu/skills/data-backup-restoration:
+SKILL.md  references
+/home/ubuntu/skills/data-backup-restoration/references:
+mobile-apps.md	websites.md
+/home/ubuntu/skills/finance-pro-playbooks:
+SKILL.md  formats  references
+/home/ubuntu/skills/finance-pro-playbooks/formats:
+document_standards.md  excel_standards.md  metric_disambiguation.md
+/home/ubuntu/skills/finance-pro-playbooks/references:
+company_analysis.md  financial_models.md  returns_analysis.md
+deal_materials.md    lbo_structuring.md   valuation.md
+due_diligence.md     market_research.md
+/home/ubuntu/skills/game-dev:
+LICENSE.txt  NOTICE.md	SKILL.md  references  scripts  templates
+/home/ubuntu/skills/game-dev/references:
+godogen-stages	manus-adaptations.md
+/home/ubuntu/skills/game-dev/references/godogen-stages:
+architecture.md   capture.md		     quirks.md	  scene-generation.md
+asset-gen.md	  decomposer.md		     rembg.md	  task-execution.md
+asset-planner.md  godogen-skill-overview.md  scaffold.md  visual-target.md
+/home/ubuntu/skills/game-dev/scripts:
+/home/ubuntu/skills/game-dev/templates:
+GameCanvas.tsx
+/home/ubuntu/skills/gws-best-practices:
+SKILL.md
+/home/ubuntu/skills/imagegen:
+LICENSE.txt  SKILL.md  references
+/home/ubuntu/skills/imagegen/references:
+prompt-recipes.md  quality-checklist.md  scene-decision-matrix.md
+/home/ubuntu/skills/manus-api:
+SKILL.md  docs
+/home/ubuntu/skills/manus-api/docs:
+v1  v2
+/home/ubuntu/skills/manus-api/docs/v1:
+api-overview.mdx    data-integrations	get-tasks.mdx	      overview.mdx
+connectors	    delete-file.mdx	integrations	      quickstart.mdx
+create-file.mdx     delete-task.mdx	list-files.mdx	      update-task.mdx
+create-project.mdx  delete-webhook.mdx	list-projects.mdx     webhooks
+create-task.mdx     get-file.mdx	openai-compatibility  webhooks.mdx
+create-webhook.mdx  get-task.mdx	openapi.json
+/home/ubuntu/skills/manus-api/docs/v1/connectors:
+gmail.mdx  google-calendar.mdx	notion.mdx  overview.mdx
+/home/ubuntu/skills/manus-api/docs/v1/data-integrations:
+overview.mdx  similarweb.mdx
+/home/ubuntu/skills/manus-api/docs/v1/integrations:
+overview.mdx  slack.mdx
+/home/ubuntu/skills/manus-api/docs/v1/openai-compatibility:
+overview.mdx
+/home/ubuntu/skills/manus-api/docs/v1/webhooks:
+overview.mdx  security.mdx
+/home/ubuntu/skills/manus-api/docs/v2:
+agent.detail.mdx		  task.confirmAction.mdx
+agent.list.mdx			  task.create.mdx
+agent.update.mdx		  task.delete.mdx
+agents-overview.mdx		  task.detail.mdx
+authentication.mdx		  task.list.mdx
+browser.onlineList.mdx		  task.listMessages.mdx
+connector.list.mdx		  task.sendMessage.mdx
+connectors.mdx			  task.stop.mdx
+data-integrations-overview.mdx	  task.update.mdx
+data-integrations-similarweb.mdx  usage.availableCredits.mdx
+file.delete.mdx			  usage.list.mdx
+file.detail.mdx			  usage.teamLog.mdx
+file.upload.mdx			  usage.teamStatistic.mdx
+integrations-overview.mdx	  webhook.create.mdx
+integrations-slack.mdx		  webhook.delete.mdx
+introduction.mdx		  webhook.list.mdx
+open-app.mdx			  webhook.publicKey.mdx
+openapi_v2.json			  webhooks-overview.mdx
+project.create.mdx		  webhooks-security.mdx
+project.list.mdx		  website.listCheckpoints.mdx
+rate-limits.mdx			  website.mdx
+skill.list.mdx			  website.publish.mdx
+structured-output.mdx		  website.status.mdx
+task-lifecycle.mdx		  website.update.mdx
+/home/ubuntu/skills/manus-config:
+SKILL.md
+/home/ubuntu/skills/manus-pptx:
+SKILL.md
+/home/ubuntu/skills/music-prompter:
+SKILL.md
+/home/ubuntu/skills/persistent-computing:
+SKILL.md  references
+/home/ubuntu/skills/persistent-computing/references:
+cloud-computer-reference.md	     reserved-hosting-reference.md
+migrate-webdev-to-cloud-computer.md  work-with-connectors.md
+/home/ubuntu/skills/read-special-images:
+SKILL.md  agents  scripts
+/home/ubuntu/skills/read-special-images/agents:
+openai.yaml
+/home/ubuntu/skills/read-special-images/scripts:
+slice_image.py
+/home/ubuntu/skills/skill-creator:
+LICENSE.txt  SKILL.md  references  scripts
+/home/ubuntu/skills/skill-creator/references:
+output-patterns.md  progressive-disclosure-patterns.md	workflows.md
+/home/ubuntu/skills/skill-creator/scripts:
+init_skill.py  quick_validate.py
+/home/ubuntu/skills/tts-prompter:
+SKILL.md
+/home/ubuntu/skills/typst-pdf-maker:
+SKILL.md  assets  references  scripts
+/home/ubuntu/skills/typst-pdf-maker/assets:
+markdown-entry.typ  report-entry.typ  report-theme.typ
+/home/ubuntu/skills/typst-pdf-maker/references:
+layout-rhythm.md	routing-catalog.json
+production-workflow.md	typst-patterns.md
+/home/ubuntu/skills/typst-pdf-maker/scripts:
+__pycache__	 plan_document.py     render_review.py
+generate_pdf.py  prepare_document.py  verify_pdf.py
+/home/ubuntu/skills/typst-pdf-maker/scripts/__pycache__:
+generate_pdf.cpython-312.pyc	  render_review.cpython-312.pyc
+plan_document.cpython-312.pyc	  verify_pdf.cpython-312.pyc
+prepare_document.cpython-312.pyc
+/home/ubuntu/skills/webdev-custom-dockerfile:
+SKILL.md
+/home/ubuntu/skills/webdev-data-api:
+SKILL.md
+/home/ubuntu/skills/webdev-file-storage:
+SKILL.md
+/home/ubuntu/skills/webdev-image-generation:
+SKILL.md
+/home/ubuntu/skills/webdev-llm-integration:
+SKILL.md
+/home/ubuntu/skills/webdev-manus-oauth:
+SKILL.md
+/home/ubuntu/skills/webdev-maps-integration:
+SKILL.md
+/home/ubuntu/skills/webdev-owner-notifications:
+SKILL.md
+/home/ubuntu/skills/webdev-periodic-updates:
+SKILL.md
+/home/ubuntu/skills/webdev-readme-fullstack:
+SKILL.md
+/home/ubuntu/skills/webdev-readme-mobile:
+SKILL.md
+/home/ubuntu/skills/webdev-readme-mobile-backend:
+SKILL.md
+/home/ubuntu/skills/webdev-readme-static:
+SKILL.md
+/home/ubuntu/skills/webdev-ssr-conversion:
+SKILL.md  references  scripts
+/home/ubuntu/skills/webdev-ssr-conversion/references:
+pitfalls.md  ssr-playbook.md
+/home/ubuntu/skills/webdev-ssr-conversion/scripts:
+verify-ssr.sh
+/home/ubuntu/skills/webdev-voice-transcription:
+SKILL.md
+/home/ubuntu/upload:
+pasted_content.txt    pasted_content_3.txt
+pasted_content_2.txt  pasted_content_4.txt
+[32mubuntu@sandbox:~$ [0m

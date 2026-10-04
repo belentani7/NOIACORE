@@ -1,0 +1,38 @@
+user_agent: "NexusDataPrototype/0.1 (+https://github.com/example/nexus-data; contact: data@example.com)"
+sources:
+  - name: Remotive
+    endpoint: "https://remotive.com/api/remote-jobs"
+    domain: "remotive.com"
+    params:
+      category: "software development"
+      limit: 100
+    rate_limit_seconds: 2
+    max_retries: 3
+    timeout_seconds: 30
+    attribution_required: true
+    attribution_text: "Fuente: Remotive. Enlace al anuncio original obligatorio. Datos con retraso de 24h. Uso interno del prototipo."
+    allowed: true
+  - name: Arbeitnow
+    endpoint: "https://www.arbeitnow.com/api/job-board-api"
+    domain: "arbeitnow.com"
+    params:
+      remote: "true"
+    rate_limit_seconds: 2
+    max_retries: 3
+    timeout_seconds: 30
+    attribution_required: false
+    attribution_text: "Fuente: Arbeitnow."
+    allowed: true
+  - name: Jobicy
+    endpoint: "https://jobicy.com/api/v2/remote-jobs"
+    domain: "jobicy.com"
+    params:
+      count: 100
+      industry: "engineering"
+      geo: "europe"
+    rate_limit_seconds: 3600
+    max_retries: 3
+    timeout_seconds: 30
+    attribution_required: true
+    attribution_text: "Fuente: Jobicy. No redistribuir como agregador competidor; sondeo máximo una vez por hora."
+    allowed: true

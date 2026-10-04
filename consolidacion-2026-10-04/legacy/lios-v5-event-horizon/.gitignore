@@ -1,0 +1,11 @@
+legacy/*.db
+legacy/*.enc
+legacy/*.json
+__pycache__/
+*.zip
+.DS_Store
+.cache/
+.local/
+.config/
+.npm/
+.pnpm-store/

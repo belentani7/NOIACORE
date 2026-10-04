@@ -1,0 +1,192 @@
+ESTRUCTURA COMPLETA DE ARCHIVOS - BarriServei AI v1.0
+
+Ubicación: Carpeta "of1p-production"
+
+=== RAÍZ ===
+
+.env.example
+  Variables de entorno. Copiar y llenar con claves reales.
+
+.gitignore
+  *.pyc, *.egg-info, node_modules, .env, .DS_Store, dist, build
+
+docker-compose.yml
+  Stack completo: PostgreSQL + Backend FastAPI + Frontend Next.js
+
+README.md
+  Guía rápida de inicio. Estructura, features, tests.
+
+DEPLOYMENT.md
+  Instrucciones para desplegar a Vercel (frontend) + Railway (backend) + Supabase (DB).
+
+seed_db.py
+  Script Python para cargar 20 servicios + 10 proveedores de demo.
+
+=== CARPETA: backend/ ===
+
+backend/Dockerfile
+  Build image FastAPI.
+
+backend/requirements.txt
+  Dependencias Python: FastAPI, SQLAlchemy, Stripe, OpenAI, Httpx, etc.
+
+backend/.env.example
+  Variables backend (ver raíz).
+
+backend/app/__init__.py
+  Vacío.
+
+backend/app/main.py
+  🔥 TODO ESTÁ AQUÍ:
+    - Modelos SQLAlchemy (User, Provider, Service, Lead, Order, Payment, Review, Dispute, AuditEvent)
+    - Schemas Pydantic (LeadCreate, OrderCreate, ReviewCreate, etc.)
+    - OpenAI Function Calling (ai_intake, TOOLS definition)
+    - Stripe Integration (create_payment_intent, verify_stripe_sig, handle payments)
+    - WhatsApp Cloud API (send_whatsapp_message, webhook)
+    - Endpoints REST:
+      POST /api/services (crear)
+      GET  /api/services (listar)
+      POST /api/leads (crear lead + IA)
+      POST /api/orders (crear orden + PaymentIntent)
+      GET  /api/orders/{id}
+      POST /api/orders/{id}/complete (admin)
+      POST /api/reviews (crear reseña)
+      POST /webhooks/stripe (escuchar pagos)
+      GET  /webhooks/whatsapp (verificación)
+      POST /webhooks/whatsapp (recibir mensajes)
+      GET  /api/admin/metrics (admin token)
+
+backend/docker-compose.yml
+  Stack dev local con PostgreSQL + Backend.
+
+=== CARPETA: frontend/ ===
+
+frontend/package.json
+  Dependencies: React 18, Next.js 14, Stripe JS, Axios, Tailwind, etc.
+
+frontend/next.config.js
+  Config Next.js. Env variables públicas (API_URL, STRIPE_KEY).
+
+frontend/tsconfig.json
+  TypeScript config.
+
+frontend/tailwind.config.js
+  Tailwind 3.4 config.
+
+frontend/.env.example
+  NEXT_PUBLIC_API_URL, NEXT_PUBLIC_STRIPE_KEY
+
+frontend/app/layout.tsx
+  Root layout. Metadata, Stripe provider, CSS global.
+
+frontend/app/page.tsx
+  🔥 LANDING + CHAT AI:
+    - Chat interactivo (usuario vs IA SAIPS)
+    - Intake de nombre + teléfono
+    - Envío de mensajes al backend /api/leads
+    - IA responde y sugiere servicio
+    - Botón "Ir al Pago" que crea orden y redirige a Stripe
+
+frontend/app/checkout/page.tsx
+  Stripe Checkout embebido. Recibe order_id, muestra formulario pago, redirige a dashboard.
+
+frontend/app/dashboard/page.tsx
+  Panel usuario: ordenes pasadas, estado, reseñas, soporte.
+
+frontend/app/admin/page.tsx
+  Panel admin: métricas en vivo, leads, órdenes, proveedores, disputes.
+  Requiere admin token.
+
+frontend/components/ChatIntake.tsx
+  Componente reutilizable de chat.
+
+frontend/components/CheckoutForm.tsx
+  Integración Stripe Elements.
+
+frontend/components/OrderCard.tsx
+  Card para mostrar orden (estado, monto, fecha).
+
+frontend/lib/api.ts
+  Cliente HTTP para llamar a backend API.
+
+frontend/lib/stripe.ts
+  Helpers de Stripe (initialize, confirm payment, etc).
+
+frontend/lib/types.ts
+  TypeScript interfaces (Lead, Order, Service, Provider, etc).
+
+frontend/public/
+  Assets (favicon, logos, etc).
+
+=== CARPETA: docs/ ===
+
+DEPLOYMENT.md
+  Guía detallada: Supabase, Railway, Vercel, Stripe webhooks, WhatsApp config.
+
+API.md (CREAR)
+  Documentación de endpoints. Ejemplos de requests/responses.
+
+ARCHITECTURE.md (CREAR)
+  Decisiones técnicas, trade-offs, flow diagrams.
+
+OPERATIONS.md (CREAR)
+  SOPs: Escalado humano, KYC, reembolsos, reporting.
+
+=== CÓMO USAR ESTE CÓDIGO ===
+
+1. DESCARGAR
+   git clone <repo>
+   cd of1p-production
+
+2. CONFIGURAR ENV
+   cp .env.example .env
+   Editar .env con OpenAI, Stripe, WhatsApp keys
+
+3. DOCKER LOCAL
+   docker compose up --build
+   Frontend: http://localhost:3000
+   Backend: http://localhost:8000
+   Docs: http://localhost:8000/docs
+
+4. SEED DB
+   docker compose exec backend python seed_db.py
+   Carga 20 servicios + 10 proveedores demo
+
+5. TESTS
+   curl http://localhost:8000/health
+   curl http://localhost:8000/api/services
+
+6. PRODUCCIÓN
+   Ver DEPLOYMENT.md
+   Frontend → Vercel
+   Backend → Railway
+   DB → Supabase
+
+=== VERIFICACIÓN DE ARCHIVOS ===
+
+✓ backend_main.py → Copy to backend/app/main.py
+✓ backend_requirements.txt → Copy to backend/requirements.txt
+✓ backend_Dockerfile → Copy to backend/Dockerfile
+✓ .env.example → Copy to raíz
+✓ docker-compose.yml → Copy to raíz
+✓ seed_db.py → Copy to raíz
+✓ frontend_package.json → Copy to frontend/package.json
+✓ frontend_next.config.js → Copy to frontend/next.config.js
+✓ frontend_page.tsx → Copy to frontend/app/page.tsx
+✓ README.md → Copy to raíz
+✓ DEPLOYMENT.md → Copy a docs/
+
+=== NEXT STEPS ===
+
+1. Copiar todos los archivos a tu máquina
+2. Crear .env real con claves
+3. docker compose up
+4. Verificar http://localhost:3000
+5. Crear primer lead de prueba
+6. Cuando funcione localmente, hacer seed_db.py
+7. Entonces: Vercel (frontend) + Railway (backend) + Supabase (DB)
+
+TOTAL: ~2500 líneas de código production-ready.
+Costo initial: $0 (usar free tiers).
+Tiempo setup: ~30 min.
+Tiempo piloto: ~7 días para validar demanda.

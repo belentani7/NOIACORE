@@ -1,0 +1,248 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: agency
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: agency-config
+  namespace: agency
+data:
+  NODE_ENV: "production"
+  LOG_LEVEL: "info"
+  ENVIRONMENT: "kubernetes"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: agency-secrets
+  namespace: agency
+type: Opaque
+stringData:
+  DATABASE_URL: "postgresql://user:pass@postgres:5432/agency"
+  REDIS_URL: "redis://redis:6379"
+  JWT_SECRET: "your-super-secret-key-min-32-chars"
+  ENCRYPTION_KEY: "your-encryption-key-min-32-chars"
+  GROQ_API_KEY: ""
+  ANTHROPIC_API_KEY: ""
+  DEEPSEEK_API_KEY: ""
+  SENTRY_DSN: ""
+  DATADOG_API_KEY: ""
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agency-api
+  namespace: agency
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: agency-api
+  template:
+    metadata:
+      labels:
+        app: agency-api
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9090"
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - agency-api
+              topologyKey: kubernetes.io/hostname
+      containers:
+      - name: api
+        image: agency:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+          name: http
+        - containerPort: 3001
+          name: ws
+        - containerPort: 9090
+          name: metrics
+        envFrom:
+        - configMapRef:
+            name: agency-config
+        - secretRef:
+            name: agency-secrets
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "512Mi"
+          limits:
+            cpu: "1000m"
+            memory: "1Gi"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 2
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/sh", "-c", "sleep 15"]
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: agency-api
+  namespace: agency
+  labels:
+    app: agency-api
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3000
+    targetPort: 3000
+    name: http
+  - port: 3001
+    targetPort: 3001
+    name: ws
+  selector:
+    app: agency-api
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agency-worker
+  namespace: agency
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: agency-worker
+  template:
+    metadata:
+      labels:
+        app: agency-worker
+    spec:
+      containers:
+      - name: worker
+        image: agency:latest
+        command: ["node", "worker.js"]
+        envFrom:
+        - configMapRef:
+            name: agency-config
+        - secretRef:
+            name: agency-secrets
+        resources:
+          requests:
+            cpu: "1000m"
+            memory: "1Gi"
+          limits:
+            cpu: "2000m"
+            memory: "2Gi"
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: agency-api-hpa
+  namespace: agency
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: agency-api
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+      - type: Percent
+        value: 50
+        periodSeconds: 60
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+      - type: Percent
+        value: 100
+        periodSeconds: 15
+      - type: Pods
+        value: 2
+        periodSeconds: 15
+      selectPolicy: Max
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: agency-network-policy
+  namespace: agency
+spec:
+  podSelector:
+    matchLabels:
+      app: agency-api
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: postgres
+  - to:
+    - podSelector:
+        matchLabels:
+          app: redis
+  - to:
+    - namespaceSelector: {}
+    ports:
+    - protocol: TCP
+      port: 53
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: agency-api-pdb
+  namespace: agency
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: agency-api

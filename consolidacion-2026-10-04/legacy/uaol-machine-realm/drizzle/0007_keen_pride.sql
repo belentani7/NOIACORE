@@ -1,0 +1,1 @@
+ALTER TABLE `realm_machines` ADD `simulatedLatencyMs` int DEFAULT 0 NOT NULL;

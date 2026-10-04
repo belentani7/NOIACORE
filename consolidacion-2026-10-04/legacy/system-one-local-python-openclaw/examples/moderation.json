@@ -1,0 +1,26 @@
+{
+  "state": "Comentario del usuario: 'Eres un inútil, nadie te quiere. Te voy a encontrar.' Contiene una amenaza directa y un insulto.",
+  "threshold": 0.6,
+  "questions": [
+    {
+      "id": "accion",
+      "type": "choice",
+      "prompt": "¿Qué acción tomar con el comentario?",
+      "options": ["Permitir", "Revisar", "Bloquear"]
+    },
+    {
+      "id": "amenaza",
+      "type": "bool",
+      "prompt": "Detección de amenaza",
+      "statement": "¿Contiene una amenaza?"
+    },
+    {
+      "id": "toxicidad",
+      "type": "score",
+      "prompt": "Nivel de toxicidad (0-10)",
+      "min": 0,
+      "max": 10,
+      "step": 1
+    }
+  ]
+}

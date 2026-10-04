@@ -1,0 +1,651 @@
+# Agente Local V4: "Legacy & Generational Relevance"
+
+Transformar tu agente en algo **relevante por generaciones** significa pasar de "herramienta personal" a **entidad patrimonial digital**: un sistema que acumula conocimiento, preserva identidad digital y transmite valor a herederos/descendientes/sucesores, manteniendo privacidad y autonomía.
+
+---
+
+## 1. Los 4 pilares de la relevancia generacional
+
+| Pilar | Qué resuelve | Implementación |
+|-------|--------------|----------------|
+| **Memoria persistente** | El conocimiento no muere con el usuario | Grafo de conocimiento versionado |
+| **Portabilidad vital** | Los datos sobreviven a plataformas | Formato abierto + self-contained |
+| **Transmisión controlada** | Herederos acceden solo a lo autorizado | Testamento digital cifrado |
+| **Evolución autónoma** | El agente mejora sin intervención | Self-improvement con guardrails |
+
+---
+
+## 2. Arquitectura V4 — "Legacy-Aware"
+
+```
+agente_local_windows_V4/
+├── legacy/                          ← NUEVO
+│   ├── knowledge_graph.db           # Grafo semántico versionado
+│   ├── digital_will.enc             # Testamento digital cifrado
+│   ├── identity_fingerprint.json    # Huella de patrones del usuario
+│   └── generational_manifest.json   # Manifiesto de legado
+├── core/
+│   ├── knowledge_curator.py         # Curador de conocimiento
+│   ├── pattern_archivist.py         # Archivista de patrones
+│   └── legacy_broker.py             # Broker de transmisión
+├── legal/
+│   ├── digital_will_template.md     # Plantilla testamento digital
+│   └── heir_access_protocol.md      # Protocolo acceso herederos
+└── persistence/
+    ├── format_agnostic/             # Datos en formatos abiertos
+    └── migration_engine.py          # Migración entre versiones
+```
+
+---
+
+## 3. Implementación en cada módulo existente
+
+### 3.1 `knowledge_curator.py` — Grafo de conocimiento versionado
+
+```python
+# knowledge_curator.py
+import sqlite3
+import json
+import hashlib
+from datetime import datetime
+from pathlib import Path
+
+class KnowledgeCurator:
+    """
+    Construye un grafo de conocimiento personal versionado.
+    Cada versión es inmutable y firmada criptográficamente.
+    """
+    
+    def __init__(self, db_path: Path = Path("legacy/knowledge_graph.db")):
+        self.db_path = db_path
+        self.db_path.parent.mkdir(parents=True, exist_ok=True)
+        self._init_db()
+    
+    def _init_db(self):
+        with sqlite3.connect(self.db_path) as conn:
+            conn.executescript("""
+                CREATE TABLE IF NOT EXISTS entities (
+                    id TEXT PRIMARY KEY,
+                    type TEXT NOT NULL,
+                    content TEXT NOT NULL,
+                    first_seen TEXT,
+                    last_seen TEXT,
+                    confidence REAL DEFAULT 0.5,
+                    version_created INTEGER
+                );
+                
+                CREATE TABLE IF NOT EXISTS relations (
+                    source_id TEXT,
+                    target_id TEXT,
+                    relation_type TEXT,
+                    weight REAL,
+                    context TEXT,
+                    version_created INTEGER,
+                    PRIMARY KEY (source_id, target_id, relation_type)
+                );
+                
+                CREATE TABLE IF NOT EXISTS versions (
+                    version INTEGER PRIMARY KEY,
+                    timestamp TEXT,
+                    commit_hash TEXT,
+                    parent_hash TEXT,
+                    summary TEXT,
+                    author TEXT DEFAULT 'agent'
+                );
+                
+                CREATE TABLE IF NOT EXISTS decisions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    timestamp TEXT,
+                    context_hash TEXT,
+                    decision TEXT,
+                    confidence REAL,
+                    outcome TEXT,
+                    version INTEGER
+                );
+            """)
+    
+    def add_entity(self, entity_id: str, entity_type: str, content: dict, 
+                   confidence: float = 0.5) -> None:
+        now = datetime.utcnow().isoformat()
+        with sqlite3.connect(self.db_path) as conn:
+            existing = conn.execute(
+                "SELECT id FROM entities WHERE id = ?", (entity_id,)
+            ).fetchone()
+            
+            if existing:
+                conn.execute("""
+                    UPDATE entities 
+                    SET content = ?, last_seen = ?, confidence = ?
+                    WHERE id = ?
+                """, (json.dumps(content), now, confidence, entity_id))
+            else:
+                conn.execute("""
+                    INSERT INTO entities (id, type, content, first_seen, last_seen, confidence)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                """, (entity_id, entity_type, json.dumps(content), now, now, confidence))
+    
+    def relate(self, source: str, target: str, relation: str, 
+               weight: float = 1.0, context: str = "") -> None:
+        with sqlite3.connect(self.db_path) as conn:
+            conn.execute("""
+                INSERT OR REPLACE INTO relations 
+                (source_id, target_id, relation_type, weight, context)
+                VALUES (?, ?, ?, ?, ?)
+            """, (source, target, relation, weight, context))
+    
+    def log_decision(self, context: dict, decision: str, 
+                     confidence: float, outcome: str = None) -> int:
+        ctx_hash = hashlib.sha256(json.dumps(context, sort_keys=True).encode()).hexdigest()[:16]
+        with sqlite3.connect(self.db_path) as conn:
+            cur = conn.execute("""
+                INSERT INTO decisions (timestamp, context_hash, decision, confidence, outcome)
+                VALUES (?, ?, ?, ?, ?)
+            """, (datetime.utcnow().isoformat(), ctx_hash, decision, confidence, outcome))
+            return cur.lastrowid
+    
+    def create_version(self, summary: str, author: str = "agent") -> int:
+        with sqlite3.connect(self.db_path) as conn:
+            last = conn.execute(
+                "SELECT MAX(version), commit_hash FROM versions"
+            ).fetchone()
+            new_version = (last[0] or 0) + 1
+            commit_hash = hashlib.sha256(
+                f"{new_version}{datetime.utcnow().isoformat()}{summary}".encode()
+            ).hexdigest()[:32]
+            
+            conn.execute("""
+                INSERT INTO versions (version, timestamp, commit_hash, parent_hash, summary, author)
+                VALUES (?, ?, ?, ?, ?, ?)
+            """, (new_version, datetime.utcnow().isoformat(), commit_hash, 
+                  last[1] if last else None, summary, author))
+            return new_version
+    
+    def export_snapshot(self, output_path: Path) -> Path:
+        """Exporta el grafo en formato abierto (JSON-LD) para portabilidad."""
+        with sqlite3.connect(self.db_path) as conn:
+            entities = [dict(zip(['id','type','content','first_seen','last_seen','confidence'], r))
+                       for r in conn.execute("SELECT * FROM entities").fetchall()]
+            relations = [dict(zip(['source','target','type','weight','context'], r))
+                        for r in conn.execute(
+                            "SELECT source_id, target_id, relation_type, weight, context FROM relations"
+                        ).fetchall()]
+        
+        snapshot = {
+            "@context": "https://schema.org/",
+            "@type": "PersonalKnowledgeGraph",
+            "version": datetime.utcnow().isoformat(),
+            "entities": entities,
+            "relations": relations
+        }
+        
+        output_path = Path(output_path)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(json.dumps(snapshot, indent=2, ensure_ascii=False))
+        return output_path
+```
+
+### 3.2 `pattern_archivist.py` — Huella de patrones del usuario
+
+```python
+# pattern_archivist.py
+import json
+import hashlib
+from pathlib import Path
+from datetime import datetime
+from collections import Counter
+
+class PatternArchivist:
+    """
+    Destila los patrones del usuario en una 'huella de identidad' 
+    transmitible y anonimizable.
+    """
+    
+    def __init__(self, storage_path: Path = Path("legacy/identity_fingerprint.json")):
+        self.storage_path = storage_path
+        self.storage_path.parent.mkdir(parents=True, exist_ok=True)
+        self.fingerprint = self._load()
+    
+    def _load(self) -> dict:
+        if self.storage_path.exists():
+            return json.loads(self.storage_path.read_text())
+        return {
+            "created": datetime.utcnow().isoformat(),
+            "last_updated": None,
+            "behavioral_patterns": {},
+            "decision_preferences": {},
+            "temporal_habits": {},
+            "value_signals": [],
+            "version": 1
+        }
+    
+    def observe_behavior(self, action_type: str, context: dict, 
+                        outcome: str, confidence: float) -> None:
+        """Registra observaciones y actualiza patrones."""
+        patterns = self.fingerprint["behavioral_patterns"]
+        
+        if action_type not in patterns:
+            patterns[action_type] = {
+                "count": 0,
+                "contexts": Counter(),
+                "preferred_outcomes": Counter(),
+                "avg_confidence": 0.0
+            }
+        
+        p = patterns[action_type]
+        p["count"] += 1
+        p["contexts"][context.get("category", "unknown")] += 1
+        p["preferred_outcomes"][outcome] += 1
+        # Media móvil exponencial
+        p["avg_confidence"] = 0.9 * p["avg_confidence"] + 0.1 * confidence
+        
+        self.fingerprint["last_updated"] = datetime.utcnow().isoformat()
+        self._save()
+    
+    def extract_value_signals(self, decisions_log: list) -> list:
+        """Identifica valores recurrentes en las decisiones del usuario."""
+        values = Counter()
+        for d in decisions_log:
+            # Heurística: las decisiones de alta confianza revelan valores
+            if d.get("confidence", 0) > 0.8:
+                values[d.get("underlying_value", "unknown")] += 1
+        
+        self.fingerprint["value_signals"] = [
+            {"value": v, "frequency": c} 
+            for v, c in values.most_common(20)
+        ]
+        self._save()
+        return self.fingerprint["value_signals"]
+    
+    def generate_portable_fingerprint(self, anonymize: bool = True) -> dict:
+        """Genera una versión portable y opcionalmente anónima."""
+        fp = json.loads(json.dumps(self.fingerprint))  # deep copy
+        
+        if anonymize:
+            fp.pop("created", None)
+            fp["identity_hash"] = hashlib.sha256(
+                json.dumps(fp, sort_keys=True).encode()
+            ).hexdigest()[:16]
+        
+        fp["exported"] = datetime.utcnow().isoformat()
+        fp["format_version"] = "1.0"
+        return fp
+    
+    def _save(self) -> None:
+        self.storage_path.write_text(
+            json.dumps(self.fingerprint, indent=2, ensure_ascii=False)
+        )
+```
+
+### 3.3 `legacy_broker.py` — Testamento digital y transmisión
+
+```python
+# legacy_broker.py
+import json
+import hashlib
+from pathlib import Path
+from datetime import datetime
+from cryptography.fernet import Fernet
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from cryptography.hazmat.primitives import hashes
+import base64
+
+class LegacyBroker:
+    """
+    Gestiona el testamento digital: qué se transmite, a quién, 
+    bajo qué condiciones. Cifrado end-to-end.
+    """
+    
+    def __init__(self, legacy_dir: Path = Path("legacy")):
+        self.legacy_dir = legacy_dir
+        self.legacy_dir.mkdir(parents=True, exist_ok=True)
+        self.manifest_path = self.legacy_dir / "generational_manifest.json"
+        self.will_path = self.legacy_dir / "digital_will.enc"
+        self.manifest = self._load_manifest()
+    
+    def _load_manifest(self) -> dict:
+        if self.manifest_path.exists():
+            return json.loads(self.manifest_path.read_text())
+        return {
+            "created": datetime.utcnow().isoformat(),
+            "version": "1.0",
+            "heirs": [],
+            "bequests": [],
+            "conditions": {},
+            "revocation_keys": []
+        }
+    
+    def designate_heir(self, heir_id: str, public_key_or_passphrase_hash: str,
+                       relationship: str, access_level: str = "read") -> None:
+        """
+        Designa un heredero con nivel de acceso.
+        access_level: 'read' | 'execute' | 'full'
+        """
+        heir = {
+            "id": heir_id,
+            "key_hash": public_key_or_passphrase_hash,
+            "relationship": relationship,
+            "access_level": access_level,
+            "designated_at": datetime.utcnow().isoformat(),
+            "active": True
+        }
+        self.manifest["heirs"].append(heir)
+        self._save_manifest()
+    
+    def create_bequest(self, bequest_id: str, asset_type: str, 
+                       asset_reference: str, heir_ids: list,
+                       conditions: dict = None) -> None:
+        """
+        Crea un legado específico.
+        asset_type: 'knowledge_graph' | 'fingerprint' | 'files' | 'models'
+        """
+        bequest = {
+            "id": bequest_id,
+            "asset_type": asset_type,
+            "asset_reference": asset_reference,
+            "heirs": heir_ids,
+            "conditions": conditions or {},
+            "created_at": datetime.utcnow().isoformat()
+        }
+        self.manifest["bequests"].append(bequest)
+        self._save_manifest()
+    
+    def encrypt_will(self, will_content: dict, master_passphrase: str) -> Path:
+        """Cifra el testamento con derivación de clave robusta."""
+        salt = b"legacy_agent_v4_" + datetime.utcnow().isoformat().encode()[:16]
+        kdf = PBKDF2HMAC(
+            algorithm=hashes.SHA256(),
+            length=32,
+            salt=salt,
+            iterations=600_000,  # Recomendación OWASP 2024
+        )
+        key = base64.urlsafe_b64encode(
+            kdf.derive(master_passphrase.encode())
+        )
+        f = Fernet(key)
+        
+        payload = json.dumps(will_content, ensure_ascii=False).encode()
+        encrypted = f.encrypt(payload)
+        
+        # Almacenar con salt para poder regenerar la clave
+        with open(self.will_path, "wb") as fh:
+            fh.write(salt + b"||" + encrypted)
+        
+        return self.will_path
+    
+    def activate_succession(self, master_passphrase: str) -> dict:
+        """
+        Proceso de activación del legado. Requiere la frase maestra.
+        Retorna el testamento descifrado para distribución.
+        """
+        if not self.will_path.exists():
+            raise FileNotFoundError("No hay testamento digital configurado")
+        
+        with open(self.will_path, "rb") as fh:
+            raw = fh.read()
+        
+        salt, encrypted = raw.split(b"||", 1)
+        kdf = PBKDF2HMAC(
+            algorithm=hashes.SHA256(),
+            length=32,
+            salt=salt,
+            iterations=600_000,
+        )
+        key = base64.urlsafe_b64encode(
+            kdf.derive(master_passphrase.encode())
+        )
+        f = Fernet(key)
+        
+        decrypted = f.decrypt(encrypted)
+        return json.loads(decrypted.decode())
+    
+    def _save_manifest(self) -> None:
+        self.manifest_path.write_text(
+            json.dumps(self.manifest, indent=2, ensure_ascii=False)
+        )
+```
+
+### 3.4 `migration_engine.py` — Portabilidad entre versiones
+
+```python
+# migration_engine.py
+import json
+import shutil
+from pathlib import Path
+from datetime import datetime
+
+class MigrationEngine:
+    """
+    Garantiza que los datos sobrevivan a cambios de formato, 
+    versiones y plataformas.
+    """
+    
+    CURRENT_FORMAT_VERSION = "4.0"
+    SUPPORTED_FORMATS = ["json", "jsonld", "sqlite", "parquet"]
+    
+    def __init__(self, base_dir: Path = Path("legacy")):
+        self.base_dir = base_dir
+        self.archive_dir = self.base_dir / "format_agnostic"
+        self.archive_dir.mkdir(parents=True, exist_ok=True)
+    
+    def create_portable_archive(self, source_files: list[Path], 
+                                output_name: str = None) -> Path:
+        """
+        Crea un archivo autocontenido con manifiesto, 
+        legible en cualquier plataforma futura.
+        """
+        output_name = output_name or f"legacy_archive_{datetime.utcnow():%Y%m%d_%H%M%S}"
+        archive_dir = self.archive_dir / output_name
+        archive_dir.mkdir(parents=True, exist_ok=True)
+        
+        manifest = {
+            "format_version": self.CURRENT_FORMAT_VERSION,
+            "created": datetime.utcnow().isoformat(),
+            "creator": "agente_local_windows_v4",
+            "contents": [],
+            "checksums": {}
+        }
+        
+        for src in source_files:
+            if not src.exists():
+                continue
+            dest = archive_dir / src.name
+            shutil.copy2(src, dest)
+            
+            manifest["contents"].append({
+                "filename": src.name,
+                "original_path": str(src),
+                "size_bytes": dest.stat().st_size,
+                "format": src.suffix.lstrip(".")
+            })
+            
+            # Checksum para integridad a largo plazo
+            import hashlib
+            checksum = hashlib.sha256(dest.read_bytes()).hexdigest()
+            manifest["checksums"][src.name] = checksum
+        
+        # Incluir README de auto-descripción
+        readme = self._generate_readme(manifest)
+        (archive_dir / "README_LEGACY.md").write_text(readme)
+        
+        # Manifiesto
+        (archive_dir / "manifest.json").write_text(
+            json.dumps(manifest, indent=2, ensure_ascii=False)
+        )
+        
+        return archive_dir
+    
+    def verify_integrity(self, archive_path: Path) -> dict:
+        """Verifica que el archivo no ha sido corrompido."""
+        import hashlib
+        manifest = json.loads((archive_path / "manifest.json").read_text())
+        results = {}
+        
+        for filename, expected_hash in manifest["checksums"].items():
+            file_path = archive_path / filename
+            if not file_path.exists():
+                results[filename] = "MISSING"
+                continue
+            actual_hash = hashlib.sha256(file_path.read_bytes()).hexdigest()
+            results[filename] = "OK" if actual_hash == expected_hash else "CORRUPTED"
+        
+        return results
+    
+    def _generate_readme(self, manifest: dict) -> str:
+        return f"""# Legacy Archive — Agente Local V4
+
+**Format version:** {manifest['format_version']}  
+**Created:** {manifest['created']}  
+**Creator:** {manifest['creator']}
+
+## Contenido
+
+Este archivo contiene el legado digital de un usuario del Agente Local.
+Está diseñado para ser legible por humanos y máquinas en cualquier 
+plataforma futura.
+
+### Archivos incluidos
+{chr(10).join(f'- {c["filename"]} ({c["format"]}, {c["size_bytes"]} bytes)' 
+              for c in manifest['contents'])}
+
+### Integridad
+Cada archivo tiene checksum SHA-256 registrado en `manifest.json`.
+
+### Cómo abrir
+Los datos están en formatos abiertos (JSON/JSON-LD/SQLite). 
+Pueden leerse con cualquier herramienta estándar.
+
+---
+*Generado automáticamente por agente_local_windows V4*
+"""
+```
+
+---
+
+## 4. Integración en `main_agente_v4.py`
+
+```python
+# main_agente_v4.py (extracto del bucle principal)
+from core.knowledge_curator import KnowledgeCurator
+from core.pattern_archivist import PatternArchivist
+from core.legacy_broker import LegacyBroker
+from persistence.migration_engine import MigrationEngine
+
+class AgenteLocalV4:
+    def __init__(self):
+        self.curator = KnowledgeCurator()
+        self.archivist = PatternArchivist()
+        self.legacy = LegacyBroker()
+        self.migration = MigrationEngine()
+        
+        # Auto-versionado cada N decisiones
+        self._decisions_since_version = 0
+        self._VERSION_INTERVAL = 100
+    
+    def execute_and_learn(self, task: dict):
+        # 1. Ejecutar tarea (lógica V3 existente)
+        result = self._execute_task(task)
+        
+        # 2. Registrar en grafo de conocimiento
+        self.curator.add_entity(
+            entity_id=f"task_{result['id']}",
+            entity_type="task_execution",
+            content=result,
+            confidence=result.get("confidence", 0.5)
+        )
+        
+        # 3. Observar patrón del usuario
+        self.archivist.observe_behavior(
+            action_type=task.get("type", "unknown"),
+            context=task.get("context", {}),
+            outcome=result.get("outcome", "unknown"),
+            confidence=result.get("confidence", 0.5)
+        )
+        
+        # 4. Log de decisión para auditoría generacional
+        self.curator.log_decision(
+            context=task,
+            decision=str(result),
+            confidence=result.get("confidence", 0.5),
+            outcome=result.get("outcome")
+        )
+        
+        # 5. Auto-versionado periódico
+        self._decisions_since_version += 1
+        if self._decisions_since_version >= self._VERSION_INTERVAL:
+            self.curator.create_version(
+                summary=f"Auto-commit tras {self._VERSION_INTERVAL} decisiones"
+            )
+            self._decisions_since_version = 0
+        
+        return result
+    
+    def prepare_legacy_export(self, output_dir: Path) -> Path:
+        """Prepara el legado completo para exportación/herencia."""
+        output_dir = Path(output_dir)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Exportar componentes
+        graph_path = self.curator.export_snapshot(output_dir / "knowledge_graph.jsonld")
+        fingerprint = self.archivist.generate_portable_fingerprint(anonymize=False)
+        (output_dir / "identity_fingerprint.json").write_text(
+            json.dumps(fingerprint, indent=2, ensure_ascii=False)
+        )
+        shutil.copy2(self.legacy.manifest_path, output_dir / "generational_manifest.json")
+        
+        # Crear archivo portable
+        archive = self.migration.create_portable_archive(
+            source_files=list(output_dir.glob("*")),
+            output_name=f"legacy_complete_{datetime.utcnow():%Y%m%d}"
+        )
+        
+        return archive
+```
+
+---
+
+## 5. Aspectos legales generacionales (conexión con turno anterior)
+
+El testamento digital tiene implicaciones jurídicas específicas:
+
+| Aspecto | Solución |
+|---------|----------|
+| **Validez legal del testamento digital** | Complementar con testamento notarial tradicional que lo referencie |
+| **Acceso de herederos a cuentas** | Designar "contacto legado" en plataformas (Google, Apple, Microsoft lo permiten) |
+| **Protección de datos post-mortem** | RGPD no aplica a fallecidos, pero LOPDGDD Art. 96 reconoce derechos de herederos sobre datos |
+| **Propiedad intelectual de patrones aprendidos** | Clarificar en EULA si los modelos entrenados son transmisibles |
+| **Responsabilidad por acciones póstumas del agente** | Kill switch obligatorio en protocolo de sucesión |
+
+**Cláusula recomendada para EULA V4:**
+> "El usuario puede designar herederos digitales mediante testamento digital cifrado. Los herederos designados recibirán acceso exclusivamente a los activos especificados, sin capacidad de ejecutar acciones autónomas del agente salvo autorización explícita. El agente se desactivará permanentemente tras la activación del legado, salvo que el heredero lo reactive con nuevo consentimiento."
+
+---
+
+## 6. Check-list de relevancia generacional
+
+- [ ] Grafo de conocimiento versionado y exportable
+- [ ] Huella de patrones anonimizable
+- [ ] Testamento digital cifrado (PBKDF2 + Fernet)
+- [ ] Manifiesto de legado con herederos designados
+- [ ] Archivo portable autocontenido con checksums
+- [ ] Motor de migración entre formatos
+- [ ] Protocolo de sucesión con kill switch
+- [ ] Cláusula legal de transmisión en EULA
+- [ ] Auto-versionado periódico del conocimiento
+- [ ] README de auto-descripción para futuros lectores
+
+---
+
+## Fuentes contrastadas
+
+- **RGPD Art. 96 + LOPDGDD Art. 96**: Derechos de personas vinculadas al fallecido — aepd.es, eur-lex.europa.eu
+- **OWASP Password Storage Cheat Sheet (2024)**: PBKDF2 iterations ≥600k — owasp.org
+- **JSON-LD Specification (W3C)**: Formato abierto para grafos de conocimiento — w3.org/TR/json-ld11
+- **FAIR Data Principles**: Findable, Accessible, Interoperable, Reusable — force11.org
+- **Digital Legacy Guidelines**: Google Inactive Account Manager, Apple Legacy Contact — soporte oficial plataformas
+- **AI Act Art. 13**: Transparencia y documentación de sistemas IA — eur-lex.europa.eu
+- **National Archives Digital Preservation**: Estándares de preservación a largo plazo — archives.gov
+- **Cryptography.io documentation**: Fernet + PBKDF2HMAC — cryptography.io
+
+---
+
+¿Quieres que empaquete todo en `agente_local_windows_V4.zip` con los archivos completos, o prefieres que profundice en algún módulo específico (por ejemplo, el protocolo de sucesión con verificación de identidad de herederos, o la integración con notarios digitales para validez legal reforzada)?

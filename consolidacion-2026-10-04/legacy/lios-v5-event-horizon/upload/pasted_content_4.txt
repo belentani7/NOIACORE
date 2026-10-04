@@ -1,0 +1,41 @@
+
+Manus 1.6 es gratis por tiempo limitado
+
+Actualizar
+
+Compartir
+Consigues crearme una gente que acuerda en mi Windows ¿Eh? Sin acceso a Internet De mom ¿Eh? ¿Le vamos a otorgar un modelo de Mínimo Yo he visto de Qwen Y algo De Samsung Y básicamente Este a gente va a ser Unas tareas a nivel Local Sencillas ¿Eh? A organizar archivos porque vamos voy trabajando Y se van generando archivos él va Tener una base de datos que se que puede ser un documento de texto En el ordenador mismo Eh que tenga una EH base de organización Coherente no sus proyectos sus proyectos y ser estaría bien que pudiera haber o ir En el sentido ver entender fotos locales entender audios Y pudiera ser ahm ¿Notas Diarias por ejemplo se me ocurre ahora Y claro luego yo le podría otorgar Ese ehm Es tareas como seguramente esto me va a pedir una llave de tenía en certificial lo que te pido es que construyas 1 Que sea compatible y que sea fácil de ajustarlo ya YY si es que no se adapta solo al estar en contacto con Internet y preguntándomelo Con Iba a tener Tareas fijas y digamos ¿Puedo ponerlo a arrancar? las principales gratis Eh que las tenga todas guardadas ¿Por qué las voy a conseguir y él lo tendrá en su Banco de datos? Si así va a ir tirando de una y de otra en bucle ¿Eh? Preguntándome si necesito que me borre algo Sí este duplicado se ha generado por algún motivo va aumentando su capacidad según lo que yo gestione
+20 jul
+Lite
+¡Entendido! Es un proyecto ambicioso y muy útil. Voy a diseñar y construir la estructura de este agente local para tu Windows, enfocado en la organización de archivos, gestión de notas y procesamiento de medios (fotos/audio) sin necesidad de internet. Empezaré investigando las mejores herramientas ligeras y compatibles para que puedas ejecutarlo fácilmente.
+Lite
+¡He completado el desarrollo de tu Agente Local para Windows!
+He diseñado y construido una estructura modular que cumple con todos tus requisitos: funciona 100% offline, utiliza modelos locales potentes como Qwen (vía Ollama) y Whisper, y está preparado para organizar tus archivos, gestionar tus notas y entender fotos y audios.
+Componentes Clave del Agente:
+Núcleo Inteligente (SQLite): Una base de datos local que actúa como la "memoria" del agente, guardando tus proyectos, metadatos de archivos y notas diarias.
+Visión y Audio Local: Módulos integrados para que el agente pueda "ver" tus fotos y "escuchar" tus audios, convirtiéndolos en texto para poder organizarlos.
+Bucle de Organización: Un sistema que monitorea tus carpetas y, mediante el LLM local, decide dónde clasificar cada nuevo archivo basándose en el contexto que ha aprendido.
+Privacidad Total: Al no requerir internet, todos tus datos permanecen seguros en tu propio ordenador.
+En el archivo adjunto agente_local_windows.zip encontrarás todo el código fuente, la documentación detallada de instalación y los requisitos necesarios para ponerlo en marcha. He incluido un archivo README.md que te guiará paso a paso en la configuración de Ollama y las dependencias de Python.
+¡Espero que este agente se convierta en tu compañero ideal para mantener tu flujo de trabajo organizado y eficiente!
+agente_local_windows.zip
+Archivo · 13.25 KB
+Agente Local para Windows (Offline)
+Markdown · 5.55 KB
+Diseño de Arquitectura del Agente Local para Windows
+Markdown · 6.20 KB
+Ver todos los archivos en esta tarea
+¿Cómo fue este resultado?
+store_data_for_millennia(original_text, "mensaje_secreto_futuro")
+# print(f"Información almacenada: {stored_info}")
+# decoded_text = dna_store.decode_from_dna(dna_store.encode_to_dna(original_text))
+# print(f"Decodificado: {decoded_text}")
+
+
+
+
+Manus Desktop
+
+Manus is an AI Agent and can make mistakes. Please double-check before use.
+
+Crear PDF Estructurado en Portugués para Marcia - Manus

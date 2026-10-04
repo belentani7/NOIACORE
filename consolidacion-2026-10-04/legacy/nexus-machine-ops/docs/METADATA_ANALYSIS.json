@@ -1,0 +1,938 @@
+{
+  "observedAt": "2026-08-28T00:00:00Z",
+  "github": {
+    "count": 75,
+    "private": 12,
+    "public": 63,
+    "activityBuckets": {
+      "0–1 days": 28,
+      "2–7 days": 46,
+      "8–30 days": 1
+    },
+    "updatedBuckets": {
+      "0–1 days": 22,
+      "2–7 days": 52,
+      "8–30 days": 1
+    },
+    "languages": {
+      "TypeScript": 30,
+      "HTML": 20,
+      "Python": 15,
+      "Unknown": 5,
+      "JavaScript": 3,
+      "Shell": 1,
+      "PowerShell": 1
+    },
+    "themes": {
+      "IA/agentes": 21,
+      "DUCK/música/audio": 21,
+      "creative tech/media": 20,
+      "outros": 12,
+      "documentos/educación/inclusión": 12,
+      "negocio/ventas/operaciones": 11,
+      "evidencia/auditoría": 9
+    },
+    "recent7dCount": 74,
+    "recent7d": [
+      {
+        "name": "noiacore-revenue-pipeline",
+        "pushedAt": "2026-08-28T09:51:52Z",
+        "language": "Python"
+      },
+      {
+        "name": "noir-informatica-privada-barcelona",
+        "pushedAt": "2026-08-28T09:33:18Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "circuit-ai-support",
+        "pushedAt": "2026-08-28T08:56:59Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "Cruzando-el-charco",
+        "pushedAt": "2026-08-28T01:29:29Z",
+        "language": "JavaScript"
+      },
+      {
+        "name": "belentani7",
+        "pushedAt": "2026-08-28T01:07:55Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "ivy-la-vie",
+        "pushedAt": "2026-08-28T01:02:17Z",
+        "language": "HTML"
+      },
+      {
+        "name": "duck-belentani-os-audited-2026-08-23",
+        "pushedAt": "2026-08-28T00:56:46Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "duck-studio-suite",
+        "pushedAt": "2026-08-28T00:46:10Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "ManosAbiertas",
+        "pushedAt": "2026-08-28T00:40:30Z",
+        "language": "HTML"
+      },
+      {
+        "name": "linguaforge",
+        "pushedAt": "2026-08-28T00:29:53Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "duck-music-lab",
+        "pushedAt": "2026-08-28T00:23:30Z",
+        "language": "Shell"
+      },
+      {
+        "name": "duck-unified-master",
+        "pushedAt": "2026-08-28T00:16:01Z",
+        "language": "HTML"
+      },
+      {
+        "name": "belentani-local",
+        "pushedAt": "2026-08-28T00:06:49Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "belentani-ecosystem-control",
+        "pushedAt": "2026-08-28T00:04:25Z",
+        "language": "Python"
+      },
+      {
+        "name": "uaol-machine-realm",
+        "pushedAt": "2026-08-28T00:02:39Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "manus-ai-skill-pack",
+        "pushedAt": "2026-08-27T16:05:54Z",
+        "language": "Python"
+      },
+      {
+        "name": "belentani-omega-template",
+        "pushedAt": "2026-08-27T16:05:40Z",
+        "language": "HTML"
+      },
+      {
+        "name": "judas-experience",
+        "pushedAt": "2026-08-27T16:05:30Z",
+        "language": "HTML"
+      },
+      {
+        "name": "latam-europa",
+        "pushedAt": "2026-08-27T11:12:31Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "cuidar-conecta-marcia",
+        "pushedAt": "2026-08-27T11:03:37Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "ux-academy-professional-program",
+        "pushedAt": "2026-08-27T11:01:51Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "fashion-stylist-ai",
+        "pushedAt": "2026-08-27T10:57:05Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "maos-abertas-linguaforge",
+        "pushedAt": "2026-08-27T06:48:12Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "qwen-input-cache-max-context",
+        "pushedAt": "2026-08-27T06:01:36Z",
+        "language": "Python"
+      },
+      {
+        "name": "Maod-abertas",
+        "pushedAt": "2026-08-27T04:45:55Z",
+        "language": "Unknown"
+      },
+      {
+        "name": "aion",
+        "pushedAt": "2026-08-27T04:10:26Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "jvictorbarbosa",
+        "pushedAt": "2026-08-26T06:46:45Z",
+        "language": "Unknown"
+      },
+      {
+        "name": "belentani7-gestaltAI",
+        "pushedAt": "2026-08-26T02:17:06Z",
+        "language": "Unknown"
+      },
+      {
+        "name": "ManosAbiertas-backup-v1",
+        "pushedAt": "2026-08-25T04:35:11Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "belentani_Omega",
+        "pushedAt": "2026-08-25T01:18:06Z",
+        "language": "JavaScript"
+      },
+      {
+        "name": "duck-ecosystem",
+        "pushedAt": "2026-08-24T20:21:10Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "duck-2026",
+        "pushedAt": "2026-08-24T13:05:32Z",
+        "language": "HTML"
+      },
+      {
+        "name": "duck-full-studio-pro",
+        "pushedAt": "2026-08-24T13:05:23Z",
+        "language": "HTML"
+      },
+      {
+        "name": "Steven-renovation",
+        "pushedAt": "2026-08-24T12:08:56Z",
+        "language": "HTML"
+      },
+      {
+        "name": "mimo-companion",
+        "pushedAt": "2026-08-24T11:56:00Z",
+        "language": "HTML"
+      },
+      {
+        "name": "meta-skill",
+        "pushedAt": "2026-08-24T11:55:56Z",
+        "language": "HTML"
+      },
+      {
+        "name": "claude-skills-pack",
+        "pushedAt": "2026-08-24T11:55:53Z",
+        "language": "HTML"
+      },
+      {
+        "name": "arte-que-veste",
+        "pushedAt": "2026-08-24T11:55:46Z",
+        "language": "HTML"
+      },
+      {
+        "name": "judas-omega-static",
+        "pushedAt": "2026-08-24T11:55:14Z",
+        "language": "HTML"
+      },
+      {
+        "name": "heyduck",
+        "pushedAt": "2026-08-23T16:12:37Z",
+        "language": "HTML"
+      },
+      {
+        "name": "Belentani",
+        "pushedAt": "2026-08-23T14:46:30Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "oss-compass",
+        "pushedAt": "2026-08-23T14:21:42Z",
+        "language": "Python"
+      },
+      {
+        "name": "omniagent",
+        "pushedAt": "2026-08-23T14:21:36Z",
+        "language": "Python"
+      },
+      {
+        "name": "temporal-artifact-detector",
+        "pushedAt": "2026-08-23T14:21:29Z",
+        "language": "Python"
+      },
+      {
+        "name": "latent-consistency-bench",
+        "pushedAt": "2026-08-23T14:21:21Z",
+        "language": "Python"
+      },
+      {
+        "name": "comfyui-json-compiler",
+        "pushedAt": "2026-08-23T14:20:54Z",
+        "language": "Python"
+      },
+      {
+        "name": "qbp-core",
+        "pushedAt": "2026-08-23T14:20:48Z",
+        "language": "Python"
+      },
+      {
+        "name": "pbr-validator",
+        "pushedAt": "2026-08-23T14:20:40Z",
+        "language": "Python"
+      },
+      {
+        "name": "gpu-cost-optimizer",
+        "pushedAt": "2026-08-23T14:20:33Z",
+        "language": "Python"
+      },
+      {
+        "name": "llm-vfx-orchestrator",
+        "pushedAt": "2026-08-23T14:20:26Z",
+        "language": "Python"
+      },
+      {
+        "name": "cinematic-prompt-formatter",
+        "pushedAt": "2026-08-23T14:20:19Z",
+        "language": "Python"
+      },
+      {
+        "name": "duck-lab",
+        "pushedAt": "2026-08-23T14:18:33Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "ai-command-center-level10",
+        "pushedAt": "2026-08-23T14:16:41Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "evidence-ledger",
+        "pushedAt": "2026-08-23T14:16:24Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "nataliamarinho",
+        "pushedAt": "2026-08-23T14:16:07Z",
+        "language": "HTML"
+      },
+      {
+        "name": "Netlify",
+        "pushedAt": "2026-08-23T14:15:58Z",
+        "language": "JavaScript"
+      },
+      {
+        "name": "duck-apps",
+        "pushedAt": "2026-08-23T14:15:50Z",
+        "language": "HTML"
+      },
+      {
+        "name": "entrenador-jorge-bcn",
+        "pushedAt": "2026-08-23T14:15:43Z",
+        "language": "HTML"
+      },
+      {
+        "name": "Belentani.cv-ai",
+        "pushedAt": "2026-08-23T14:15:25Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "Duck-Omega",
+        "pushedAt": "2026-08-23T14:15:16Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "harmonia-hub",
+        "pushedAt": "2026-08-23T14:14:58Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "belentaniexperience",
+        "pushedAt": "2026-08-23T14:14:50Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "DUCK-ZION-PREMIUM",
+        "pushedAt": "2026-08-23T11:01:28Z",
+        "language": "HTML"
+      },
+      {
+        "name": "CARQUIDEC",
+        "pushedAt": "2026-08-23T05:13:20Z",
+        "language": "HTML"
+      },
+      {
+        "name": "registro-proyectos-2026",
+        "pushedAt": "2026-08-23T04:14:30Z",
+        "language": "Unknown"
+      },
+      {
+        "name": "DuckHTML",
+        "pushedAt": "2026-08-23T04:14:24Z",
+        "language": "HTML"
+      },
+      {
+        "name": "duck-zion-apex-public",
+        "pushedAt": "2026-08-23T04:13:07Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "Oculus-Tv",
+        "pushedAt": "2026-08-23T04:13:00Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "tender-words-connect",
+        "pushedAt": "2026-08-23T04:12:57Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "abrazo-tender-words",
+        "pushedAt": "2026-08-23T04:12:53Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "rh-fiscal-ultra-elite",
+        "pushedAt": "2026-08-23T04:10:30Z",
+        "language": "Python"
+      },
+      {
+        "name": "Duck-Deck",
+        "pushedAt": "2026-08-23T04:10:25Z",
+        "language": "Unknown"
+      },
+      {
+        "name": "proofmesh",
+        "pushedAt": "2026-08-22T09:16:28Z",
+        "language": "TypeScript"
+      },
+      {
+        "name": "omega-max-duck",
+        "pushedAt": "2026-08-22T07:25:43Z",
+        "language": "TypeScript"
+      }
+    ]
+  },
+  "drive": {
+    "count": 100,
+    "modifiedBuckets": {
+      "0–1 days": 36,
+      "2–7 days": 64
+    },
+    "mimeTypes": {
+      "application/vnd.google-apps.folder": 62,
+      "application/zip": 19,
+      "text/plain": 7,
+      "application/vnd.google-apps.document": 5,
+      "text/markdown": 2,
+      "application/vnd.google-apps.vid": 2,
+      "video/mp4": 1,
+      "audio/x-wav": 1,
+      "image/png": 1
+    },
+    "themes": {
+      "outros": 73,
+      "documentos/educación/inclusión": 10,
+      "evidencia/auditoría": 10,
+      "negocio/ventas/operaciones": 6,
+      "IA/agentes": 5,
+      "DUCK/música/audio": 3
+    },
+    "recent7dCount": 100,
+    "recent7d": [
+      {
+        "name": "noiacore-revenue-pipeline.zip",
+        "modifiedTime": "2026-08-28T10:11:04.078Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "DeudaFix_Revision_Manus_informe.md",
+        "modifiedTime": "2026-08-28T10:10:40.533Z",
+        "mimeType": "text/markdown"
+      },
+      {
+        "name": "DeudaFix_Revision_Manus_expediente_reorganizado.zip",
+        "modifiedTime": "2026-08-28T10:10:39.145Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "DeudaFix Revision Manus",
+        "modifiedTime": "2026-08-28T10:10:30.559Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "LATAM-Europa-final-3e473ba.zip",
+        "modifiedTime": "2026-08-27T11:12:50.205Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "LATAM-Europa-final-bae4d05.zip",
+        "modifiedTime": "2026-08-27T07:26:00.197Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "LATAM-Europa-final-df74b9c.zip",
+        "modifiedTime": "2026-08-27T07:25:11.756Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "LATAM-Europa-audited-dfac099.zip",
+        "modifiedTime": "2026-08-27T06:56:29.952Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "LATAM-Europa-source-9a61ed4b.zip",
+        "modifiedTime": "2026-08-27T05:52:33.218Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "qwen-input-cache-max-context-repo-2026-08-27.zip",
+        "modifiedTime": "2026-08-27T05:45:32.429Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "SHA256SUMS-a392a3c.txt",
+        "modifiedTime": "2026-08-27T05:39:31.785Z",
+        "mimeType": "text/plain"
+      },
+      {
+        "name": "uaol-machine-realm-a392a3c-audit-evidence.zip",
+        "modifiedTime": "2026-08-27T05:39:30.344Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "uaol-machine-realm-a392a3c-sanitized-source.zip",
+        "modifiedTime": "2026-08-27T05:39:29.067Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "SHA256SUMS-e122ea3.txt",
+        "modifiedTime": "2026-08-27T05:37:56.285Z",
+        "mimeType": "text/plain"
+      },
+      {
+        "name": "uaol-machine-realm-e122ea3-audit-evidence.zip",
+        "modifiedTime": "2026-08-27T05:37:54.956Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "uaol-machine-realm-e122ea3-sanitized-source.zip",
+        "modifiedTime": "2026-08-27T05:37:53.628Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "belentani-ecosystem-control-ronda-2-2026-08-27.zip.sha256",
+        "modifiedTime": "2026-08-27T05:16:42.179Z",
+        "mimeType": "text/plain"
+      },
+      {
+        "name": "belentani-ecosystem-control-ronda-2-2026-08-27.zip",
+        "modifiedTime": "2026-08-27T05:16:40.844Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "SHA256SUMS-2f2c018.txt",
+        "modifiedTime": "2026-08-27T05:16:34.839Z",
+        "mimeType": "text/plain"
+      },
+      {
+        "name": "uaol-machine-realm-2f2c018-audit-evidence.zip",
+        "modifiedTime": "2026-08-27T05:16:33.538Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "Ronda 2 incremental — 2026-08-27",
+        "modifiedTime": "2026-08-27T05:16:32.624Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "uaol-machine-realm-2f2c018-sanitized-source.zip",
+        "modifiedTime": "2026-08-27T05:16:32.093Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "SHA256SUMS-f3c2a25.txt",
+        "modifiedTime": "2026-08-27T05:15:22.363Z",
+        "mimeType": "text/plain"
+      },
+      {
+        "name": "uaol-machine-realm-f3c2a25-audit-evidence.zip",
+        "modifiedTime": "2026-08-27T05:15:20.979Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "uaol-machine-realm-f3c2a25-sanitized-source.zip",
+        "modifiedTime": "2026-08-27T05:15:19.527Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "modifiedTime": "2026-08-27T05:13:29.197Z",
+        "mimeType": "text/plain"
+      },
+      {
+        "name": "uaol-machine-realm-23593376-sanitized-source.zip",
+        "modifiedTime": "2026-08-27T05:13:27.861Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "UAOL–Máquina Realm — Respaldo privado",
+        "modifiedTime": "2026-08-27T05:13:19.991Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "belentani-ecosystem-control-2026-08-27.zip.sha256",
+        "modifiedTime": "2026-08-27T05:09:27.821Z",
+        "mimeType": "text/plain"
+      },
+      {
+        "name": "belentani-ecosystem-control-2026-08-27.zip",
+        "modifiedTime": "2026-08-27T05:09:26.307Z",
+        "mimeType": "application/zip"
+      },
+      {
+        "name": "Belentani Ecosystem Control — Auditoría 2026-08-27",
+        "modifiedTime": "2026-08-27T05:09:13.346Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "Saved from Chrome",
+        "modifiedTime": "2026-08-27T02:53:42.594Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "pedro_belentani_cv.md",
+        "modifiedTime": "2026-08-26T08:19:22.862Z",
+        "mimeType": "application/vnd.google-apps.document"
+      },
+      {
+        "name": "pedro_executive_summary.md",
+        "modifiedTime": "2026-08-26T08:19:22.061Z",
+        "mimeType": "application/vnd.google-apps.document"
+      },
+      {
+        "name": "pedro_belentani_cv.md",
+        "modifiedTime": "2026-08-26T04:47:18.576Z",
+        "mimeType": "application/vnd.google-apps.document"
+      },
+      {
+        "name": "pedro_manus_prompt_5000.md",
+        "modifiedTime": "2026-08-26T03:48:14.811Z",
+        "mimeType": "application/vnd.google-apps.document"
+      },
+      {
+        "name": "Documento sin título",
+        "modifiedTime": "2026-08-25T09:36:11.884Z",
+        "mimeType": "application/vnd.google-apps.document"
+      },
+      {
+        "name": "O Narcisista Vulnerável - Análise Psicológica Médica Social 1000 Páginas",
+        "modifiedTime": "2026-08-23T23:06:03.566Z",
+        "mimeType": "text/markdown"
+      },
+      {
+        "name": "YouCut_20260619_001153892-23/8/2026, 9:41.mp4",
+        "modifiedTime": "2026-08-23T07:41:37.480Z",
+        "mimeType": "video/mp4"
+      },
+      {
+        "name": "YouCut_20260619_001153892",
+        "modifiedTime": "2026-08-23T07:40:17.442Z",
+        "mimeType": "application/vnd.google-apps.vid"
+      },
+      {
+        "name": "YouCut_20260619_001153892",
+        "modifiedTime": "2026-08-23T07:37:40.075Z",
+        "mimeType": "application/vnd.google-apps.vid"
+      },
+      {
+        "name": "Judas_VOCAL_SEPARADA.wav",
+        "modifiedTime": "2026-08-23T05:54:06.377Z",
+        "mimeType": "audio/x-wav"
+      },
+      {
+        "name": "duck logo.png",
+        "modifiedTime": "2026-08-23T05:53:59.567Z",
+        "mimeType": "image/png"
+      },
+      {
+        "name": "django_oauth1",
+        "modifiedTime": "2026-08-23T05:24:58.033Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "rfc5849",
+        "modifiedTime": "2026-08-23T05:24:53.515Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "be",
+        "modifiedTime": "2026-08-23T05:24:49.237Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "setimmediate",
+        "modifiedTime": "2026-08-23T05:24:46.408Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "heads",
+        "modifiedTime": "2026-08-23T05:24:42.209Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "refs",
+        "modifiedTime": "2026-08-23T05:24:41.149Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "skill-audit",
+        "modifiedTime": "2026-08-23T05:23:59.536Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "oauth2",
+        "modifiedTime": "2026-08-23T05:23:58.293Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "providers",
+        "modifiedTime": "2026-08-23T05:23:51.048Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "workflows",
+        "modifiedTime": "2026-08-23T05:23:43.702Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "smoke",
+        "modifiedTime": "2026-08-23T05:23:36.261Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "browser",
+        "modifiedTime": "2026-08-23T05:23:31.687Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "obscura-browser",
+        "modifiedTime": "2026-08-23T05:23:02.659Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "crates",
+        "modifiedTime": "2026-08-23T05:23:01.291Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "logs",
+        "modifiedTime": "2026-08-23T05:22:58.330Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "auto-documenter",
+        "modifiedTime": "2026-08-23T05:22:41.237Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "docs",
+        "modifiedTime": "2026-08-23T05:21:58.739Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "assets",
+        "modifiedTime": "2026-08-23T05:21:54.546Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "dbm",
+        "modifiedTime": "2026-08-23T05:20:34.452Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "dist",
+        "modifiedTime": "2026-08-23T05:19:54.123Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "leveldb",
+        "modifiedTime": "2026-08-23T05:19:51.451Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "Local Storage",
+        "modifiedTime": "2026-08-23T05:19:50.480Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "Jetson.GPIO",
+        "modifiedTime": "2026-08-23T05:19:22.688Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "Network",
+        "modifiedTime": "2026-08-23T05:18:56.574Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "07-53-ses_02f8836a",
+        "modifiedTime": "2026-08-23T05:18:54.000Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "Assets.xcassets",
+        "modifiedTime": "2026-08-23T05:18:44.331Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "clipboard_viewer",
+        "modifiedTime": "2026-08-23T05:18:06.243Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "origin",
+        "modifiedTime": "2026-08-23T05:17:59.273Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "remotes",
+        "modifiedTime": "2026-08-23T05:17:58.401Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "origin",
+        "modifiedTime": "2026-08-23T05:17:54.285Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "remotes",
+        "modifiedTime": "2026-08-23T05:17:53.360Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "client",
+        "modifiedTime": "2026-08-23T05:17:42.098Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "apps",
+        "modifiedTime": "2026-08-23T05:17:41.115Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "queries",
+        "modifiedTime": "2026-08-23T05:17:38.751Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "Chat de limpo con Fabi",
+        "modifiedTime": "2026-08-23T05:17:36.117Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "origin",
+        "modifiedTime": "2026-08-23T05:17:31.632Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "remotes",
+        "modifiedTime": "2026-08-23T05:17:30.566Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "mp_models",
+        "modifiedTime": "2026-08-23T05:17:02.848Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "configs",
+        "modifiedTime": "2026-08-23T05:16:50.836Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "services",
+        "modifiedTime": "2026-08-23T05:15:56.349Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "INTELIGENCIA",
+        "modifiedTime": "2026-08-23T05:14:09.744Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "origin",
+        "modifiedTime": "2026-08-23T05:13:55.104Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "remotes",
+        "modifiedTime": "2026-08-23T05:13:54.110Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "test_pose_demo_pose",
+        "modifiedTime": "2026-08-23T05:13:51.609Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "heads",
+        "modifiedTime": "2026-08-23T05:13:48.781Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "refs",
+        "modifiedTime": "2026-08-23T05:13:47.867Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "studio",
+        "modifiedTime": "2026-08-23T05:13:36.889Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "info",
+        "modifiedTime": "2026-08-23T05:13:32.810Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": ".git",
+        "modifiedTime": "2026-08-23T05:13:31.476Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "pytorch_msssim",
+        "modifiedTime": "2026-08-23T05:13:01.977Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "content",
+        "modifiedTime": "2026-08-23T05:12:49.529Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "input",
+        "modifiedTime": "2026-08-23T05:12:45.823Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "logs",
+        "modifiedTime": "2026-08-23T05:12:38.681Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "models",
+        "modifiedTime": "2026-08-23T05:11:53.961Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "config",
+        "modifiedTime": "2026-08-23T05:11:42.157Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "belenplay",
+        "modifiedTime": "2026-08-23T05:08:59.088Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      },
+      {
+        "name": "hooks",
+        "modifiedTime": "2026-08-23T05:08:48.784Z",
+        "mimeType": "application/vnd.google-apps.folder"
+      }
+    ]
+  }
+}

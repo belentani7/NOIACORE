@@ -1,0 +1,76 @@
+# Project TODO
+
+- [x] Definir un alcance estrictamente simulado que impida cualquier control del equipo, herramientas personales o hardware real.
+- [x] Crear el modelo de persistencia para tareas de agentes, evidencias, eventos, alertas, configuraciones, permisos y auditoría.
+- [x] Crear una tabla persistente para la matriz de permisos simulados por acción, riesgo, ámbito y confirmación requerida, y enlazarla con el Validation Ledger.
+- [x] Vincular cada decisión del Validation Ledger con la política persistente aplicada y cubrir esa trazabilidad con pruebas unitarias.
+- [x] Implementar el ciclo visible de tarea: intención, planificación, ejecución simulada, observación, verificación y cierre.
+- [x] Implementar un simulador seguro de uso de ordenador y navegador con acciones predefinidas y evidencia sintética.
+- [x] Implementar Máquina Realm simulada con estados de operación, mantenimiento, parada y emergencia, además de sensores, actuadores y alarmas.
+- [x] Implementar emulación trazable de MQTT, OPC UA y Modbus sin conexión a dispositivos ni redes industriales reales.
+- [x] Implementar la matriz de permisos y Validation Ledger para bloquear o requerir confirmación en acciones sensibles.
+- [x] Crear una consola HMI/SCADA elegante con telemetría simulada, tendencias, alarmas, estado de máquinas y conmutación manual/autónoma simulada.
+- [x] Añadir experiencia de auditoría para revisar decisiones, evidencias, resultados y marcas de tiempo.
+- [x] Renderizar una línea de tiempo completa por tarea con sus seis fases, eventos y evidencia sintética asociada.
+- [x] Mostrar sensores y actuadores simulados por máquina dentro de la consola HMI/SCADA.
+- [x] Añadir estados de error y vacío para la carga principal y reforzar la identidad visual de la consola.
+- [x] Añadir un estado vacío global para la consola cuando no existan máquinas, configuración ni datos iniciales.
+- [x] Redactar documentación de alcance, arquitectura, límites de seguridad y evolución hacia integraciones reales autorizadas.
+- [x] Añadir pruebas unitarias y verificar persistencia, permisos, simulación y flujos de interfaz.
+- [x] Agregar pruebas de integración para persistencia de tareas, eventos, mensajes de protocolo, políticas y Validation Ledger.
+- [x] Agregar pruebas reproducibles de interfaz para creación de tarea, ciclo, modos de máquina, protocolos y estados de error/vacío.
+- [x] Documentar a cobertura automática e a revisão manual da validação final.
+- [x] Confirmar que no hay máquina física en el alcance actual y mantener deshabilitada cualquier integración física; el circuito virtual local satisface el objetivo solicitado.
+- [x] Definir a fronteira de segurança entre a plataforma e a máquina real, incluindo modo somente leitura, confirmação humana, parada independente e operação segura em falha.
+- [x] Implementar o portal de clientes com perfis, isolamento de dados, sessões auditáveis e gestão de acesso por função.
+- [x] Ampliar o back-end para execução persistente, filas de trabalho auditáveis, configurações operacionais e relatórios de produção.
+- [x] Evoluir o visual para glassomorfismo de alta fidelidade, com transparência acessível, reflexos sutis e desempenho responsivo.
+- [x] Preparar adaptadores industriais em modo de simulação e diagnóstico, sem ativação física até a aprovação explícita do ambiente real.
+- [x] Crear el plan de prontitud para producción con criterios de seguridad, estabilidad, recuperación, observabilidad y aceptación operacional.
+- [x] Modelar persistencia para gateways, comandos, ejecuciones de comando, estados de máquina, mantenimiento, notificaciones y comprobaciones de salud.
+- [x] Definir la interfaz MachineAdapter y sus contratos para conexión, telemetría, comandos, confirmaciones, restablecimiento y comprobación de salud sin inventar un protocolo físico.
+- [x] Implementar un servicio de gateway local abstracto con identidad, heartbeat, reconexión, modo offline, validación de comandos y auditoría.
+- [x] Convertir el simulador en un gemelo digital determinista con ciclos, arranque, parada, pausa, mantenimiento, latencia, desconexiones, alarmas, fallos y recuperación.
+- [x] Implementar operaciones encoladas, idempotentes y auditables con confirmación humana para cambios críticos.
+- [x] Ejecutar y validar comandos en el proceso gateway-local, con recuperación de resultado y auditoría de la devolución al backend.
+- [x] Añadir una cola local verificable con reintentos y recuperación de conexión para el gateway-local en modo simulación.
+- [x] Exponer y probar desconexión, reconexión, fallo, recuperación, latencia simulada y alarmas asociadas dentro del gemelo digital.
+- [x] Exponer actualizaciones de estado y telemetría en tiempo real sin perder persistencia ni trazabilidad.
+- [x] Construir centro de mando, diagnóstico, historial, salud del sistema y vista de gemelo digital conectados a datos de backend.
+- [x] Añadir controles de seguridad para RBAC, expiración de sesión, validación de entradas, rate limiting, protección contra repetición y registros de auditoría.
+- [x] Persistir auditoría de sesiones y accesos con usuario, rol, acción, origen y marca de tiempo, y exponerla para revisión administrativa.
+- [x] Implementar gestión administrada de perfiles y roles, con gating explícito del portal y del centro según el rol.
+- [x] Exponer configuraciones operacionales persistentes mediante procedimientos validados e interfaz de administración.
+- [x] Ampliar el rate limiting a las superficies sensibles de la aplicación y documentar los límites aplicados.
+- [x] Restringir los datos y rutas del centro de control a operador, supervisor y administrador, manteniendo el portal de cliente en solo lectura.
+- [x] Añadir guardas de ruta con redirección para que cliente y auditor no puedan abrir consolas de control por URL directa.
+- [x] Cubrir el bloqueo del centro de control para cliente y auditor con pruebas de rol reproducibles.
+- [x] Inventariar el repositorio, sus migraciones, rutas, contratos, pruebas y límites reales antes de cambiar funcionalidades.
+- [x] Ejecutar aplicación, base de datos, gateway local y gemelo digital, registrando la evidencia de comunicación entre servicios.
+- [x] Verificar de extremo a extremo el flujo de telemetría, comando seguro, autorización, idempotencia, cola, gateway, cambio de estado, eventos, auditoría y actualización de interfaz.
+- [x] Verificar persistencia de datos después de reiniciar backend y gateway local.
+- [x] Auditar seguridad de autenticación, RBAC, sesiones, secretos, endpoints, CORS, rate limiting, validación y trazabilidad.
+- [x] Revisar funcionalmente los controles visibles del frontend, roles, portal de cliente, informes y rutas protegidas.
+- [x] Documentar un informe de auditoría con estados, evidencias, hallazgos, correcciones, deuda técnica y bloqueo exclusivo por hardware físico.
+- [x] Redactar cabeceras sensibles en el colector de depuración antes de que entren en los registros de red.
+- [x] Actualizar dependencias directas con vulnerabilidades altas detectadas por la auditoría y volver a validar la plataforma.
+- [x] Ejecutar gateway-local en una prueba reproducible de pull, ejecución, resultado y auditoría a través de su contrato HTTP.
+- [x] Verificar el outbox local ante fallo de resultado, recuperación de conexión, reintento exitoso y vaciado persistente.
+- [x] Documentar formalmente el alcance de resiliencia del gateway-local para heartbeats, comandos en vuelo y resultados pendientes.
+- [x] Verificar explícitamente en servidor las rutas operacionales permitidas para admin y operator, además de los bloqueos para client y auditor.
+- [x] Ejecutar una prueba determinista del colector de depuración que demuestre la redacción de Authorization en un registro nuevo.
+- [x] Verificar persistencia de gateway-local con una captura explícita de base de datos antes y después de reiniciar el proceso.
+- [x] Revisar explícitamente el portal de cliente y la UI de informes/rutas asociadas con evidencia reproducible.
+- [x] Definir un contrato de protocolo local portable con mensajes versionados, validación estricta y frontera SIMULATION_ONLY.
+- [x] Implementar servidor y cliente CLI del protocolo local que funcionen en cualquier PC con Node.js, sin acceso a red industrial ni hardware físico.
+- [x] Probar de extremo a extremo el protocolo local y documentar su instalación, uso y límites de seguridad.
+- [x] Preparar un paquete de respaldo sin secretos, artefactos temporales ni registros sensibles.
+- [x] Crear un repositorio privado en GitHub y sincronizar la versión validada del proyecto.
+- [x] Subir el respaldo seguro y las evidencias de auditoría a una carpeta privada de Google Drive y verificar ambas copias.
+- [x] Confirmar un commit final sin cambios pendientes y verificar que su SHA está sincronizado con GitHub privado.
+- [x] Generar desde el commit final un paquete saneado y subirlo a Drive junto con un paquete dedicado de evidencias de auditoría.
+- [x] Verificar las sumas e IDs de los nuevos respaldos de Drive frente al commit de GitHub final.
+- [x] Definir el circuito virtual local con entradas, salidas, enclavamientos, transiciones y telemetría determinista.
+- [x] Implementar el motor del circuito virtual y conectarlo a los comandos y snapshots ULSP/1.
+- [x] Añadir la vista del circuito virtual a la consola, junto con pruebas de comportamiento y documentación de uso seguro.
+- [x] Sincronizar el checkpoint de circuito virtual con GitHub privado y Drive desde un mismo commit limpio.

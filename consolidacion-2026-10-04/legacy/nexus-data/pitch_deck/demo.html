@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>El producto en acción</title>
+  <style>
+    * { box-sizing: border-box; }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: #EBF4FF;
+      color: #0A2540;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      flex-direction: column;
+      padding-top: 48px;
+      padding-left: 68px;
+      padding-right: 68px;
+    }
+    .eyebrow {
+      color: #DD6B20;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      line-height: 1;
+    }
+    h1 {
+      margin: 16px 0 0 0;
+      font-size: 62px;
+      line-height: .96;
+      letter-spacing: -3px;
+      font-weight: 800;
+    }
+    .subhead {
+      margin-top: 12px;
+      color: #1E3A8A;
+      font-size: 22px;
+      line-height: 1.2;
+      font-weight: 500;
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .step {
+      min-height: 86px;
+      background: #0A2540;
+      color: #EBF4FF;
+      border: 2px solid #0A2540;
+      padding: 14px 16px 0 16px;
+    }
+    .step:nth-child(3) { background: #DD6B20; border-color: #DD6B20; }
+    .step-number {
+      color: #DD6B20;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+    .step:nth-child(3) .step-number { color: #0A2540; }
+    .step-label {
+      margin-top: 8px;
+      font-size: 20px;
+      line-height: 1.05;
+      font-weight: 800;
+    }
+    .lower {
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 28px;
+      margin-top: 26px;
+      align-items: start;
+    }
+    .diagram-wrap {
+      border-top: 2px solid #0A2540;
+      padding-top: 12px;
+    }
+    .diagram-label {
+      color: #1E3A8A;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .diagram {
+      display: block;
+      width: 690px;
+      height: 230px;
+      object-fit: contain;
+      object-position: left center;
+    }
+    .proof {
+      border-top: 2px solid #0A2540;
+      padding-top: 12px;
+    }
+    .proof-label {
+      color: #1E3A8A;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .metric {
+      margin-top: 10px;
+      color: #DD6B20;
+      font-size: 92px;
+      line-height: .9;
+      font-weight: 800;
+      letter-spacing: -5px;
+    }
+    .metric-caption {
+      margin-top: 8px;
+      color: #0A2540;
+      font-size: 25px;
+      line-height: 1.05;
+      font-weight: 800;
+    }
+    .sources {
+      margin-top: 22px;
+      border-top: 2px solid #0A2540;
+      padding-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .source-number {
+      color: #0A2540;
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .source-name {
+      margin-top: 5px;
+      color: #1E3A8A;
+      font-size: 15px;
+      font-weight: 500;
+    }
+    .outputs {
+      margin-top: 18px;
+      color: #DD6B20;
+      font-size: 19px;
+      line-height: 1.15;
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="eyebrow">05 / EL PRODUCTO EN ACCIÓN</div>
+    <h1>De la fuente al insight en un solo flujo.</h1>
+    <div class="subhead">Seleccionar · extraer · validar · entender · exportar</div>
+
+    <div class="flow">
+      <div class="step"><div class="step-number">01</div><div class="step-label">Seleccionar<br>fuentes</div></div>
+      <div class="step"><div class="step-number">02</div><div class="step-label">Extraer con<br>límites</div></div>
+      <div class="step"><div class="step-number">03</div><div class="step-label">Limpiar y<br>deduplicar</div></div>
+      <div class="step"><div class="step-number">04</div><div class="step-label">Calcular<br>señales</div></div>
+      <div class="step"><div class="step-number">05</div><div class="step-label">Informe +<br>CSV / JSON</div></div>
+    </div>
+
+    <div class="lower">
+      <div class="diagram-wrap">
+        <div class="diagram-label">ARQUITECTURA DEL PIPELINE</div>
+        <img class="diagram" src="/home/ubuntu/nexus_data/arquitectura.png" alt="Arquitectura de NEXUS DATA: fuentes públicas, ingesta, calidad, SQLite, inteligencia y Streamlit">
+      </div>
+      <div class="proof">
+        <div class="proof-label">VALIDACIÓN REAL DEL MVP</div>
+        <div class="metric">292</div>
+        <div class="metric-caption">vacantes válidas<br>en una ejecución</div>
+        <div class="sources">
+          <div><div class="source-number">17</div><div class="source-name">Remotive</div></div>
+          <div><div class="source-number">175</div><div class="source-name">Arbeitnow</div></div>
+          <div><div class="source-number">100</div><div class="source-name">Jobicy</div></div>
+        </div>
+        <div class="outputs">KPIs · insights · CSV · JSON</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

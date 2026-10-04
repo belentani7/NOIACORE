@@ -1,0 +1,71 @@
+.bj-wrapper {
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, rgba(10,10,15,0.95), rgba(20,10,30,0.95));
+  font-family: 'Courier New', monospace; overflow: auto; padding: 20px;
+}
+.bj-container {
+  background: rgba(30,20,40,0.6); backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,0,60,0.3); border-radius: 20px; padding: 25px;
+  box-shadow: 0 8px 32px rgba(255,0,60,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  max-width: 700px; width: 100%;
+}
+.bj-title {
+  text-align: center; color: #ff003c; font-size: 28px; margin: 0 0 12px;
+  text-shadow: 0 0 20px rgba(255,0,60,0.8), 0 0 40px rgba(255,0,60,0.4); letter-spacing: 6px;
+}
+.bj-hud { display: flex; justify-content: space-around; margin-bottom: 15px; font-size: 13px; }
+.bj-stat { color: #ff4488; text-shadow: 0 0 10px rgba(255,68,136,0.6); }
+.bj-table {
+  background: rgba(0,100,0,0.2); border: 2px solid rgba(0,255,136,0.3);
+  border-radius: 15px; padding: 20px; margin-bottom: 15px;
+}
+.bj-hand-section { margin-bottom: 20px; }
+.bj-hand-label {
+  color: #00ff88; font-size: 12px; margin-bottom: 10px; letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(0,255,136,0.6);
+}
+.bj-hand { display: flex; gap: 10px; flex-wrap: wrap; min-height: 80px; }
+.bj-card {
+  width: 60px; height: 85px; background: rgba(255,255,255,0.95); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5); border: 2px solid rgba(255,255,255,0.8);
+}
+.bj-card.red { color: #ff003c; }
+.bj-card.black { color: #1a1a2e; }
+.bj-card-hidden {
+  background: linear-gradient(135deg, #ff003c, #aa0028); color: #fff;
+  border-color: #ff003c;
+}
+.bj-message {
+  text-align: center; color: #ffff00; font-size: 18px; font-weight: bold;
+  text-shadow: 0 0 15px rgba(255,255,0,0.8); min-height: 25px; margin-bottom: 15px;
+}
+.bj-controls { display: flex; gap: 10px; justify-content: center; margin-bottom: 10px; flex-wrap: wrap; }
+.bj-btn {
+  padding: 10px 20px; background: rgba(255,0,60,0.2); border: 2px solid #ff003c;
+  border-radius: 8px; color: #ff003c; font-family: 'Courier New', monospace; font-size: 13px;
+  font-weight: bold; cursor: pointer; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255,0,60,0.8);
+  box-shadow: 0 4px 15px rgba(255,0,60,0.3); transition: all 0.3s;
+}
+.bj-btn:hover:not(:disabled) {
+  background: rgba(255,0,60,0.4); box-shadow: 0 6px 25px rgba(255,0,60,0.5);
+  transform: translateY(-2px);
+}
+.bj-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.bj-btn-secondary {
+  background: rgba(0,255,136,0.2); border-color: #00ff88; color: #00ff88;
+  text-shadow: 0 0 10px rgba(0,255,136,0.8);
+}
+.bj-btn-secondary:hover:not(:disabled) {
+  background: rgba(0,255,136,0.4); box-shadow: 0 6px 25px rgba(0,255,136,0.5);
+}
+.bj-bet-controls { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.bj-bet-btn {
+  padding: 8px 15px; background: rgba(255,255,0,0.2); border: 2px solid #ffff00;
+  border-radius: 6px; color: #ffff00; font-family: 'Courier New', monospace; font-size: 12px;
+  font-weight: bold; cursor: pointer; text-shadow: 0 0 8px rgba(255,255,0,0.8);
+  transition: all 0.2s;
+}
+.bj-bet-btn:hover {
+  background: rgba(255,255,0,0.4); box-shadow: 0 4px 15px rgba(255,255,0,0.5);
+}

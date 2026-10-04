@@ -1,0 +1,23 @@
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+ RUN  v2.1.9 /home/ubuntu/uaol-machine-realm
+
+stderr | client/src/pages/OperationsCenter.interaction.test.tsx > centro operativo > solicita un comando confirmado y permite ejecutar el ciclo del gateway
+The tag <stop> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter.
+<linearGradient /> is using incorrect casing. Use PascalCase for React components, or lowercase for HTML elements.
+The tag <linearGradient> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter.
+The tag <defs> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter.
+
+stderr | client/src/pages/OperationsCenter.interaction.test.tsx > centro operativo > expone los diagnósticos seguros del gemelo digital
+<linearGradient /> is using incorrect casing. Use PascalCase for React components, or lowercase for HTML elements.
+
+ ✓ client/src/pages/OperationsCenter.interaction.test.tsx (3 tests) 478ms
+   ✓ centro operativo > solicita un comando confirmado y permite ejecutar el ciclo del gateway 366ms
+ ✓ client/src/pages/Home.interaction.test.tsx (3 tests) 724ms
+   ✓ flujos de interfaz de UAOL–Máquina Realm > crea una tarea y permite avanzar el ciclo visible 570ms
+
+ Test Files  2 passed (2)
+      Tests  6 passed (6)
+   Start at  04:19:50
+   Duration  3.19s (transform 269ms, setup 0ms, collect 1.39s, tests 1.20s, environment 2.55s, prepare 123ms)
+

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://railway.json.io/railway.json",
+  "build": {
+    "builder": "nixpacks"
+  },
+  "deploy": {
+    "startCommand": "bun run start",
+    "restartPolicyType": "on_failure",
+    "restartPolicyMaxRetries": 3
+  },
+  "plugins": {
+    "postgres": {
+      "version": "16"
+    }
+  },
+  "variables": {
+    "NODE_ENV": "production",
+    "JWT_SECRET": "${{ secrets.JWT_SECRET }}",
+    "ENCRYPTION_KEY": "${{ secrets.ENCRYPTION_KEY }}",
+    "GROQ_API_KEY": "${{ secrets.GROQ_API_KEY }}",
+    "ANTHROPIC_API_KEY": "${{ secrets.ANTHROPIC_API_KEY }}",
+    "NEXT_PUBLIC_API_URL": "${{ services.agency.url }}"
+  }
+}
