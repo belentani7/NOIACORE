@@ -10,6 +10,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.header.writers.XXssProtectionHeaderWriter;
@@ -38,10 +41,16 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-            .csrf(csrf -> csrf.disable()) // API REST stateless
+            .csrf(csrf -> csrf.disable()) // Stateless API: admin routes require explicit Authorization header
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .httpBasic(org.springframework.security.config.Customizer.withDefaults())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/**").permitAll() // APIs públicas (pueden protegerse después)
+                .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/contactos", "/api/contactos/**").hasRole("ADMIN")
+                .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/proyectos").hasRole("ADMIN")
+                .requestMatchers(org.springframework.http.HttpMethod.DELETE, "/api/proyectos/**").hasRole("ADMIN")
+                .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/contactos").permitAll()
+                .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/proyectos", "/api/proyectos/**").permitAll()
+                .requestMatchers("/api/**").denyAll() // Fail-closed for unspecified API endpoints
                 .requestMatchers("/", "/index.html", "/*.html", "/assets/**", "/*.css", "/*.js", "/webjars/**").permitAll()
                 .anyRequest().authenticated()
             )
@@ -59,7 +68,6 @@ public class SecurityConfig {
                 ))
                 .xssProtection(xss -> xss.headerValue(XXssProtectionHeaderWriter.HeaderValue.ENABLED_MODE_BLOCK))
                 .frameOptions(frame -> frame.deny())
-                .contentTypeOptions(ct -> ct.disable())
                 .httpStrictTransportSecurity(hsts -> hsts
                     .maxAgeInSeconds(31536000)
                     .includeSubDomains(true)
@@ -86,6 +94,25 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
+    }
+
+    /**
+     * No default credentials. Admin routes return 401 until the operator sets
+     * NOIACORE_ADMIN_PASSWORD to a high-entropy value of at least 24 characters.
+     * Use HTTPS. Never embed this password in public web JavaScript.
+     */
+    @Bean
+    public UserDetailsService adminAccounts(PasswordEncoder encoder) {
+        String secret = System.getenv("NOIACORE_ADMIN_PASSWORD");
+        if (secret == null || secret.length() < 24) {
+            return new InMemoryUserDetailsManager();
+        }
+        return new InMemoryUserDetailsManager(
+            User.withUsername("noiacore-admin")
+                .password(encoder.encode(secret))
+                .roles("ADMIN")
+                .build()
+        );
     }
 
     @Bean
