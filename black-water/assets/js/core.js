@@ -48,6 +48,11 @@
     listeners.forEach((callback) => callback(moving));
     global.dispatchEvent(new CustomEvent('noia:motion', { detail: { enabled: moving } }));
   }
+  function resetMotionPreference() {
+    try { localStorage.removeItem(storageKey); }
+    catch { /* preserve non-persistent access */ }
+    updateMotion(!preferReduced.matches, false);
+  }
   function normalize(value) {
     return String(value || '')
       .normalize('NFKD')
@@ -180,8 +185,12 @@
   }
   function observeReveals() {
     const targets = doc.querySelectorAll('[data-reveal]');
-    if (!('IntersectionObserver' in global)) return;
-    const observer = new IntersectionObserver((entries) => {
+    const Observer = global.IntersectionObserver;
+    if (typeof Observer !== 'function') {
+      targets.forEach((element) => element.classList.add('revealed'));
+      return;
+    }
+    const observer = new Observer((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('revealed');
@@ -289,7 +298,7 @@
   }
   NOIA.core = {
     normalize, clamp, compact, create, toast, navigate,
-    subscribeMotion, setMotion: updateMotion,
+    subscribeMotion, setMotion: updateMotion, resetMotionPreference,
     get motion() { return moving; },
     get page() { return dom.page; },
     downloadText(text, name = 'NOIACORE-export.txt') {
