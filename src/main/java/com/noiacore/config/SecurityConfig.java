@@ -6,6 +6,7 @@ package com.noiacore.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -102,8 +103,8 @@ public class SecurityConfig {
      * Use HTTPS. Never embed this password in public web JavaScript.
      */
     @Bean
-    public UserDetailsService adminAccounts(PasswordEncoder encoder) {
-        String secret = System.getenv("NOIACORE_ADMIN_PASSWORD");
+    public UserDetailsService adminAccounts(PasswordEncoder encoder, Environment environment) {
+        String secret = environment.getProperty("NOIACORE_ADMIN_PASSWORD");
         if (secret == null || secret.length() < 24) {
             return new InMemoryUserDetailsManager();
         }
