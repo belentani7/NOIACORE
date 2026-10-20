@@ -8,7 +8,7 @@ const { server } = require('../server.cjs');
 
 const root = path.resolve(__dirname, '..');
 const pages = ['index', 'universos', 'portal', 'laboratorio', 'sistemas', 'manifiesto', 'contacto'];
-const scripts = ['content', 'i18n', 'core', 'water', 'eye', 'nave', 'atlas', 'lab'];
+const scripts = ['content', 'i18n', 'core', 'water', 'eye', 'nave', 'atlas', 'lab', 'regex-worker'];
 const read = (name) => fs.readFileSync(path.join(root, name), 'utf8');
 let origin;
 
@@ -127,6 +127,9 @@ test('server root, assets and HEAD are handled correctly', async () => {
   const asset = await get('/assets/css/base.css');
   assert.equal(asset.status, 200);
   assert.match(asset.body, /--milky/);
+  const worker = await get('/assets/js/regex-worker.js');
+  assert.equal(worker.status, 200);
+  assert.match(worker.headers['content-type'], /javascript/);
   const head = await get('/index.html', 'HEAD');
   assert.equal(head.status, 200);
   assert.equal(head.body, '');
