@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#030405">
-  <meta name="description" content="NOIA OS. A living interface by NOIACORE LAB. An offline-first spatial operating experience.">
+  <meta name="description" content="NOIA OS 1.2. A living interface by NOIACORE LAB. An offline-first spatial operating experience.">
   <title>NOIA — Living Machine</title>
   <style>
 /* NOIA OS — Black silica / luminous white. No dependencies, no remote fonts. */
@@ -179,6 +179,8 @@ body.no-glow .orb,body.no-glow .lit-pin,body.no-glow .task-indicator i{box-shado
   const $ = (id) => document.getElementById(id);
   const $$ = (selector) => [...document.querySelectorAll(selector)];
   const KEY = 'noia-os.workspace.v1';
+  const RECOVERY_KEY = KEY + '.recovery.raw';
+  let unsafeStorageLock = false, loadWarning = ''; 
   const SAFE_SKILL_COMMANDS=new Set(['echo','touch','write','append','cat','ls','files','status','find','grep','reindex','snapshot','date','whoami','uptime','events','json','verify','diff']);
   const APPS = {
     code: {name:'NoiaCode', code:'01 / 06', caption:'ENGINEERING SURFACE'},
@@ -214,8 +216,28 @@ body.no-glow .orb,body.no-glow .lit-pin,body.no-glow .task-indicator i{box-shado
     const total=JSON.stringify(obj.files).length;if(total>2000000)throw Error('Workspace exceeds 2 MB');
     return {version:1,files:Object.fromEntries(entries),selected:validPath(obj.selected)&&Object.hasOwn(obj.files,obj.selected)?obj.selected:(entries[0]?.[0]||''),events:Array.isArray(obj.events)?obj.events.filter(e=>isRecord(e)&&typeof e.type==='string'&&typeof e.text==='string').slice(0,120):[],history:Array.isArray(obj.history)?obj.history.filter(x=>typeof x==='string').slice(-80):[],snapshots:Array.isArray(obj.snapshots)?obj.snapshots.filter(x=>isRecord(x)&&isRecord(x.files)&&Object.keys(x.files).length<=250&&JSON.stringify(x.files).length<2000000&&Object.entries(x.files).every(([p,v])=>validPath(p)&&typeof v==='string'&&v.length<=300000)).slice(0,5):[],skills:isRecord(obj.skills)?Object.fromEntries(Object.entries(obj.skills).filter(([name,data])=>/^[a-z0-9_-]{2,32}$/.test(name)&&isRecord(data)&&Array.isArray(data.commands)&&data.commands.length<=12&&data.commands.every(cmd=>typeof cmd==='string'&&cmd.length<=200&&SAFE_SKILL_COMMANDS.has(getWords(cmd)[0]?.toLowerCase()))).slice(0,40)): {},settings:{glow:obj.settings?.glow!==false,reducedMotion:!!obj.settings?.reducedMotion},repo:typeof obj.repo==='string'?obj.repo.slice(0,120):'belentani7/NOIACORE'};
   }
-  function load(){try{const raw=localStorage.getItem(KEY);if(raw){state=validateImported(JSON.parse(raw));stored=true}else{state=newState();persist(true)}}catch(e){state=newState();console.warn('NOIA storage unavailable:',e.message);stored=false}}
-  function persist(immediate=false){clearTimeout(storageTimer);const commit=()=>{try{localStorage.setItem(KEY,JSON.stringify(state));stored=true}catch(e){stored=false;if(Date.now()-lastStorageErrorAt>25000){lastStorageErrorAt=Date.now();notify('Storage full/unavailable. Export your workspace JSON.')}setPathStatus('STORAGE ERROR')}};immediate?commit():storageTimer=setTimeout(commit,120)}
+  function load(){
+    let raw = null;
+    try {
+      raw = localStorage.getItem(KEY);
+      if (raw) { state=validateImported(JSON.parse(raw)); stored=true; }
+      else { state=newState(); persist(true); }
+    } catch(e) {
+      state=newState(); stored=false;
+      if(raw !== null){
+        try {
+          // Preserve the original bytes before any reset may overwrite local data.
+          if (localStorage.getItem(RECOVERY_KEY)===null) localStorage.setItem(RECOVERY_KEY,raw);
+          loadWarning='Corrupt workspace quarantined. Type recovery to download the original data.';
+        } catch (_) {
+          unsafeStorageLock=true;
+          loadWarning='Workspace corrupt. Original data kept in storage; saving is disabled. Export recovery before reloading.';
+        }
+      } else { loadWarning='Local storage is inaccessible; export your work before closing.'; }
+      console.warn('NOIA workspace restore warning:',e.message);
+    }
+  }
+  function persist(immediate=false){if(unsafeStorageLock)return;clearTimeout(storageTimer);const commit=()=>{try{localStorage.setItem(KEY,JSON.stringify(state));stored=true}catch(e){stored=false;if(Date.now()-lastStorageErrorAt>25000){lastStorageErrorAt=Date.now();notify('Storage full/unavailable. Export your workspace JSON.')}setPathStatus('STORAGE ERROR')}};immediate?commit():storageTimer=setTimeout(commit,120)}
   function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
   function fmtTime(ts){return new Date(ts).toLocaleTimeString('en-GB',{hour12:false})}
   function notify(text){const n=document.createElement('div');n.className='toast';n.textContent=text;$('toast-stack').append(n);setTimeout(()=>n.remove(),3600)}
@@ -271,11 +293,22 @@ body.no-glow .orb,body.no-glow .lit-pin,body.no-glow .task-indicator i{box-shado
     for(const [path,content] of matches){const b=document.createElement('button');b.className='dex-result';const ext=path.split('.').pop().toUpperCase();const badge=document.createElement('span');badge.className='dex-badge';badge.textContent=ext;const body=document.createElement('span');body.className='dex-body';const name=document.createElement('b');name.textContent=path;const sub=document.createElement('small');const first=content.toLowerCase().indexOf(q);const excerpt=q&&first>=0?content.slice(Math.max(0,first-24),first+80):content.slice(0,80);sub.textContent=excerpt.replace(/\s+/g,' ').trim()||'EMPTY OBJECT';body.append(name,sub);const arrow=document.createElement('span');arrow.className='dex-arrow';arrow.textContent='↗';b.append(badge,body,arrow);b.addEventListener('click',()=>editFile(path));list.append(b)}
   }
   function renderPreviewChoices(){const select=$('preview-select');const previous=select.value;select.replaceChildren();const pages=Object.keys(state.files).filter(p=>/\.html?$/i.test(p)).sort();for(const p of pages){const opt=document.createElement('option');opt.value=p;opt.textContent=p;select.append(opt)}if(pages.includes(previous))select.value=previous;if(!pages.length){const opt=document.createElement('option');opt.textContent='No HTML files';opt.value='';select.append(opt)} }
-  function renderPreview(){saveActiveIfDirty();const path=$('preview-select').value;if(!Object.hasOwn(state.files,path)||!/\.html?$/i.test(path)){notify('Select an HTML file');return}const frame=$('preview-frame');frame.srcdoc=state.files[path];$('browser-url').textContent='noia://local'+path;record('PREVIEW RENDERED',path);notify('Isolated preview updated')}
+  function renderPreview(){
+    saveActiveIfDirty();
+    const path=$('preview-select').value;
+    if(!Object.hasOwn(state.files,path)||!/\.html?$/i.test(path)){notify('Select an HTML file');return}
+    const frame=$('preview-frame');
+    // No ambient network access, navigation, forms, cookies, storage or same-origin access.
+    // HTML/CSS and embedded JavaScript work inside the opaque sandbox origin.
+    const policy="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; form-action 'none'; base-uri 'none';";
+    frame.srcdoc='<!doctype html><meta http-equiv="Content-Security-Policy" content="'+policy+'">'+state.files[path];
+    $('browser-url').textContent='noia://local'+path;
+    record('PREVIEW RENDERED',path);notify('Isolated preview updated');
+  }
   function renderEvents(){const list=$('event-stream');list.replaceChildren();$('flow-num').textContent=String(state.events.length);if(!state.events.length){const el=document.createElement('div');el.className='event';el.textContent='No operations yet.';list.append(el)}for(const e of state.events){const row=document.createElement('div');row.className='event';const time=document.createElement('time');time.textContent=fmtTime(e.time);const text=document.createElement('span');text.textContent=e.text;const kind=document.createElement('small');kind.textContent=e.type;row.append(time,text,kind);list.append(row)}}
   function termPrint(text='',kind='output'){const out=$('terminal-output');const row=document.createElement('div');row.className='term-row '+kind;row.textContent=text;out.append(row);while(out.children.length>220)out.firstChild.remove();out.scrollTop=out.scrollHeight}
-  function terminalWelcome(){termPrint('NOIA / CURNOIA 1.0  —  LOCAL COMMAND SURFACE','info');termPrint('Authentic operations only. No fictional deployments or commits.','info');termPrint('Type help to inspect available capabilities.','info');termPrint('');}
-  const commandNames=['help','status','whoami','date','uptime','clear','history','ls','cat','touch','write','append','rm','mv','edit','open','find','grep','reindex','preview','snapshot','snapshots','restore','export','import','json','files','events','github info','github get','github open','git status','git clone','git commit','verify','diff','vercel open','vercel deploy','echo','pulse','skill create','skill list','skill run','skill delete'];
+  function terminalWelcome(){termPrint('NOIA / CURNOIA 1.2  —  LOCAL COMMAND SURFACE','info');termPrint('Authentic operations only. No fictional deployments or commits.','info');termPrint('Type help to inspect available capabilities.','info');termPrint('');}
+  const commandNames=['help','status','whoami','date','uptime','clear','history','ls','cat','touch','write','append','rm','mv','edit','open','find','grep','reindex','preview','snapshot','snapshots','restore','export','import','json','files','events','github info','github get','github open','git status','git clone','git commit','verify','diff','recovery','vercel open','vercel deploy','echo','pulse','skill create','skill list','skill run','skill delete'];
   const usage=[
     ['help','List real commands'],['skill create name :: cmd | cmd','Compose your own safe local skill'],['skill list / run name / delete name','Manage reusable skill sequences'],['ls [path]','List local workspace files'],['cat <path>','Read a file'],['touch <path>','Create empty local file'],['write <path> <text>','Overwrite text in a local file'],['append <path> <text>','Append text to a local file'],['rm <path>','Delete local file (asks confirmation)'],['mv <source> <destination>','Move/rename local file'],['edit <path>','Open a file in NoiaCode'],['grep <text>','Search file contents'],['find <text>','Search file paths'],['open <code|dex|terminal|studio|flow|settings>','Open a module'],['preview [path]','Render HTML in isolated Studio iframe'],['json','Format selected JSON file'],['snapshot / snapshots / restore <n>','Manage local workspace checkpoints'],['diff <file> [snapshot]','Compare a file with its snapshot version'],['verify','Check workspace data integrity, JSON and browser storage'],['export / import','Download or upload workspace JSON'],['github info [owner/repo]','Fetch real public repository metadata'],['github get <owner/repo> <path>','Import real public repository text file'],['github open [owner/repo]','Open official repository page'],['vercel open','Open official deployment dashboard'],['status / files / events / history','Inspect actual local state']
   ];
@@ -345,8 +378,15 @@ body.no-glow .orb,body.no-glow .lit-pin,body.no-glow .task-indicator i{box-shado
         case 'preview':{if(path){const p=requireFile(path);if(!p.endsWith('.html'))throw Error('HTML file expected');openApp('studio');$('preview-select').value=p}else openApp('studio');renderPreview();termPrint('Rendered isolated preview.');break}
         case 'json':termPrint(runJson());break;
         case 'snapshot':termPrint(snapshot());break;
-        case 'verify':verifyWorkspace();break;
+        case 'verify':if(!verifyWorkspace())throw Error('Integrity verification did not pass');break;
         case 'diff':diffFile(parts[1],parts[2]);break;
+        case 'recovery':{
+          const raw=localStorage.getItem(RECOVERY_KEY) || (unsafeStorageLock?localStorage.getItem(KEY):null);
+          if(!raw)throw Error('No quarantined workspace available');
+          download('NOIA-OS-recovery-raw.json',raw,'application/json');
+          termPrint('Recovery bytes downloaded; inspect JSON before attempting an import.');
+          break;
+        }
         case 'snapshots':state.snapshots.forEach((x,i)=>termPrint(`${i+1}. ${new Date(x.time).toLocaleString()} | ${Object.keys(x.files).length} objects`));if(!state.snapshots.length)termPrint('No snapshots');break;
         case 'restore':{const i=Number(path)-1;if(!Number.isInteger(i)||!state.snapshots[i])throw Error('Use restore <snapshot number>');if(confirm('Replace your current local files with snapshot '+(i+1)+'? Export first if necessary.')){state.files=structuredClone(state.snapshots[i].files);state.selected=Object.keys(state.files)[0]||'';dirty=false;persist(true);if(state.selected)selectFile(state.selected);updateCounts();renderDex();renderPreviewChoices();record('SNAPSHOT RESTORED','Checkpoint '+(i+1));termPrint('Workspace restored')}else termPrint('Cancelled');break}
         case 'export':exportWorkspace();termPrint('Workspace JSON download requested.');break;
@@ -411,7 +451,7 @@ body.no-glow .orb,body.no-glow .lit-pin,body.no-glow .task-indicator i{box-shado
   function setupKeys(){document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();$('palette-backdrop').hidden?openPalette():closePalette()}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();saveFile()}if(e.key==='Escape'){if(!$('palette-backdrop').hidden)closePalette();else if(activeApp!=='home')showHome()}});$$('[data-app]').forEach(b=>b.addEventListener('click',()=>openApp(b.dataset.app)));$$('[data-open-app]').forEach(b=>b.addEventListener('click',()=>openApp(b.dataset.openApp)));$('task-home').addEventListener('click',showHome);$('brand-home').addEventListener('click',showHome);$('brand-home').addEventListener('keydown',e=>{if(e.key==='Enter')showHome()});$('close-workspace').addEventListener('click',showHome);document.addEventListener('pointermove',e=>{const c=$('cursor-light');if(c){c.style.left=e.clientX+'px';c.style.top=e.clientY+'px'}},{passive:true})}
   function clock(){const text=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});$('clock').textContent=text;$('task-clock').textContent=text}
   function boot(){const bar=$('boot-progress'),msg=$('boot-message');let i=0;const steps=['loading local workspace_','building object index_','binding command interpreter_','system ready_'];const period=state.settings.reducedMotion?50:205;const timer=setInterval(()=>{i++;bar.style.width=Math.round(100*i/steps.length)+'%';msg.textContent=steps[Math.min(i-1,steps.length-1)];if(i>=steps.length){clearInterval(timer);setTimeout(()=>$('boot').classList.add('finished'),state.settings.reducedMotion?20:260)}},period)}
-  function init(){load();setupWindowBehavior();setupKeys();setupPalette();setupEditor();setupDex();setupStudio();setupFlow();setupSkills();setupSettings();setupTerminal();clock();setInterval(clock,10000);updateCounts();showHome();record('SESSION STARTED','Local workspace initialized');boot()}
+  function init(){load();setupWindowBehavior();setupKeys();setupPalette();setupEditor();setupDex();setupStudio();setupFlow();setupSkills();setupSettings();setupTerminal();clock();setInterval(clock,10000);updateCounts();showHome();record('SESSION STARTED','Local workspace initialized');if(loadWarning){notify(loadWarning);termPrint('WARNING / '+loadWarning,'error')}boot()}
   init();
 })();
 
