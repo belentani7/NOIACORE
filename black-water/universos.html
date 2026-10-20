@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#030507" />
+<meta name="color-scheme" content="dark" />
+<meta name="description" content="NOIACORE — Exploración del ecosistema. Inteligência Silenciosa. Tecnologia Essencial." />
+<meta name="referrer" content="no-referrer" />
+<title>NOIACORE — Universos · Black Water</title>
+<link rel="icon" href="assets/icons/mark.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="assets/css/base.css" />
+<link rel="stylesheet" href="assets/css/experiences.css" />
+</head>
+<body data-page="universos">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<canvas id="water-canvas" class="water-canvas" aria-hidden="true"></canvas>
+<div class="atmospheric-grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<header class="site-header" id="site-header">
+  <a class="brand" href="index.html" aria-label="NOIACORE, inicio">
+    <img src="assets/icons/mark.svg" alt="" width="39" height="39" />
+    <span class="brand-word">NOIA<span>CORE</span></span>
+    <span class="brand-detail">INTELLIGENCE / LAB</span>
+  </a>
+  <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="primary-nav"><i></i><i></i><i></i></button>
+  <nav class="site-nav" id="primary-nav" aria-label="Navegación principal">
+    <ul><li><a href="index.html" data-nav="index">INICIO</a></li><li><a href="universos.html" data-nav="universos">UNIVERSOS</a></li><li><a href="portal.html" data-nav="portal">NAVE</a></li><li><a href="laboratorio.html" data-nav="laboratorio">LAB</a></li><li><a href="sistemas.html" data-nav="sistemas">SISTEMAS</a></li><li><a href="manifiesto.html" data-nav="manifiesto">MANIFIESTO</a></li><li><a href="contacto.html" data-nav="contacto">CONTACTO</a></li></ul>
+  </nav>
+  <div class="header-side"><span class="presence-dot" aria-hidden="true"></span><span class="header-mode">SILENT MODE</span><button id="lang-button" class="lang-button" aria-label="Cambiar idioma" title="Cambiar idioma" type="button">ES</button></div>
+</header>
+<main id="main">
+
+<section class="page-hero shell page-hero-atlas"><div><p class="section-index">NOIACORE / CARTOGRAFÍA</p><h1 class="page-title">Universos<br /><em>en movimiento.</em></h1><p class="page-lead">Seis regiones. Una inteligencia silenciosa. Explora por interés, no por jerarquía de archivos.</p><div class="hero-actions"><a href="#atlas" class="pill-action pill-action-primary">EXPLORAR EL MAPA ↘</a><a href="portal.html" class="pill-action pill-action-ghost">PREGUNTAR A NAVE ↗</a></div></div><div class="atlas-hero-eye"><div class="living-eye living-eye--small" data-eye aria-hidden="true"><span class="eye-halo eye-halo-outer"></span><span class="eye-halo eye-halo-mid"></span><span class="eye-shape"><span class="eye-sheen"></span><span class="eye-iris"><span class="eye-depth"></span><span class="eye-pupil"></span><span class="eye-pinlight"></span></span></span><span class="eye-reflection"></span><span class="eye-orbit eye-orbit-a"></span><span class="eye-orbit eye-orbit-b"></span></div></div></section>
+<section class="atlas-section shell" id="atlas" data-reveal><div class="atlas-topline"><span>MAP / SIX REGIONS</span><span>INTERACTIVE CARTOGRAPHY · NO TRACKING</span></div><div class="atlas-canvas-shell"><canvas id="atlas-canvas" aria-label="Constelación interactiva de seis universos"></canvas><div class="atlas-overlay"><span class="atlas-cross">+</span><span>NOIACORE / LIVING ATLAS</span><span>DRAG · DISCOVER · ENTER</span></div><div class="atlas-tooltip" id="atlas-tooltip" hidden></div></div><p class="atlas-a11y">También puedes acceder a todas las regiones mediante las tarjetas y los enlaces siguientes.</p><div class="atlas-actions"><button class="atlas-control" type="button" id="atlas-reset">CENTRAR EL MAPA</button><span>SELECCIONA UNA CONSTELACIÓN PARA ACCEDER</span></div></section>
+<section class="section shell constellation-list" aria-labelledby="regions-title"><div class="section-header"><div><p class="section-index">REGIONES / 01—06</p><h2 class="section-title" id="regions-title">No son carpetas.<br /><em>Son caminos.</em></h2></div></div><div class="constellation-grid" id="constellation-grid"></div></section>
+<section class="section atlas-outro shell"><div><span class="micro-label">INTENCIÓN ANTES DE INTERFAZ</span><h2>¿No sabes por dónde empezar?</h2><p>NAVE puede reconocer palabras, ideas y necesidades, y mostrarte los sistemas que guardan relación.</p></div><a class="pill-action pill-action-primary" href="portal.html">ENCONTRAR MI RUTA ↗</a></section>
+</main>
+<footer class="site-footer">
+  <div class="footer-line"><span class="footer-mark">Λ / NOIACORE</span><span>INTELIGÊNCIA SILENCIOSA. TECNOLOGIA ESSENCIAL.</span><span class="footer-year">2026 — OPEN HORIZON</span></div>
+  <div class="footer-lower"><p>Core is invisible. Impact is inevitable.</p><div><a href="manifiesto.html">Filosofía</a><a href="sistemas.html">Sistemas</a><a href="contacto.html">Contacto</a></div><button type="button" id="motion-toggle" class="text-button" aria-pressed="false">Reducir movimiento</button></div>
+  <p class="footer-note">Experiencia autónoma · sin rastreadores · sin dependencias CDN · procesamiento local de consultas</p>
+</footer>
+<div class="toast-stack" id="toast-stack" aria-live="polite" aria-atomic="false"></div>
+<div class="command-surface" id="command-surface" hidden><div class="command-shade" data-close-command></div><section role="dialog" aria-modal="true" aria-label="NAVE acceso rápido" class="command-dialog"><div class="command-top"><span>NOIACORE / NAVE</span><button type="button" data-close-command aria-label="Cerrar">×</button></div><label class="sr-only" for="command-input">¿Qué estás buscando?</label><input id="command-input" autocomplete="off" placeholder="Describe lo que buscas…" /><div id="command-suggestions" class="command-suggestions"></div><small>ESC para cerrar · Enter para explorar</small></section></div>
+<button class="global-command" id="global-command" type="button" aria-label="Abrir NAVE" title="Abrir NAVE · tecla /"><span class="command-glyph">✧</span><span>ASK NAVE</span><kbd>/</kbd></button>
+<div class="page-progress" id="page-progress" aria-hidden="true"></div>
+<script src="assets/data/content.js" defer></script>
+<script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/core.js" defer></script>
+<script src="assets/js/water.js" defer></script>
+<script src="assets/js/eye.js" defer></script>
+<script src="assets/js/nave.js" defer></script>
+<script src="assets/js/atlas.js" defer></script>
+<script src="assets/js/lab.js" defer></script>
+</body>
+</html>
