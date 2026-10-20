@@ -19,6 +19,8 @@
   const toolCategory = $('tool-category-label');
   const toolCode = $('tool-stage-code');
   const status = $('tool-status');
+  const runButton = $('tool-run');
+  let executionId = 0;
   function words(text) {
     return text.trim().match(/\S+/gu) || [];
   }
@@ -68,6 +70,11 @@
     if (!rows.length) return '[]';
     const headers = rows.shift().map((x)=>x.trim());
     if (new Set(headers).size !== headers.length) throw new Error('Cabeceras CSV duplicadas.');
+    rows.forEach((row,index)=>{
+      if (row.length>headers.length) {
+        throw new Error('CSV inválido: la fila '+(index+2)+' contiene más columnas que la cabecera.');
+      }
+    });
     return JSON.stringify(rows.map((row)=>Object.fromEntries(headers.map((header,i)=>[header,row[i]??'']))),null,2);
   }
   function jsonToCsv(text) {
@@ -76,6 +83,9 @@
     if (!data.length) return '';
     if (!data.every((row)=>row && typeof row==='object' && !Array.isArray(row))) {
       throw new Error('Todos los elementos deben ser objetos.');
+    }
+    if (data.some((row)=>Object.values(row).some((value)=>value!==null&&typeof value==='object'))) {
+      throw new Error('JSON → CSV solo admite valores escalares; aplana primero los valores anidados.');
     }
     const headers=[...new Set(data.flatMap((row)=>Object.keys(row)))];
     return [headers.map(protectCsv).join(','),...data.map((row)=>headers.map((key)=>protectCsv(row[key])).join(','))].join('\r\n');
@@ -130,16 +140,40 @@
     const field = options.querySelector(`[name="${id}"]`);
     return field ? field.value : fallback;
   }
-  function regexMatches(text) {
-    const pattern=getOption('pattern');
+  function regexMatches(text, pattern, flags, WorkerCtor = global.Worker, timeoutMs = 500) {
     if (!pattern) throw new Error('Introduce una expresión regular.');
     if (pattern.length>250) throw new Error('Patrón demasiado largo.');
-    const flags=getOption('flags','giu');
     if (!/^[gimsuy]*$/.test(flags)||new Set(flags).size!==flags.length) throw new Error('Flags inválidos.');
     if (text.length>20000) throw new Error('Entrada demasiado larga para una prueba de regex.');
-    const expression=new RegExp(pattern,flags.includes('g')?flags:flags+'g');
-    const matches=[...text.matchAll(expression)].slice(0,100);
-    return matches.length ? matches.map((m,i)=>(i+1)+'. '+JSON.stringify(m[0])+' [index '+m.index+']').join('\n') : 'Sin coincidencias.';
+    if (typeof WorkerCtor!=='function') {
+      throw new Error('El comprobador de regex necesita Web Worker; abre la web desde el servidor local.');
+    }
+    return new Promise((resolve,reject)=>{
+      let worker;
+      let timer;
+      let settled=false;
+      const finish=(error,result)=>{
+        if (settled) return;
+        settled=true;
+        if (timer!==undefined) global.clearTimeout(timer);
+        if (worker) { worker.terminate(); worker=null; }
+        if (error) reject(error);
+        else resolve(result);
+      };
+      try {
+        worker=new WorkerCtor('assets/js/regex-worker.js');
+        timer=global.setTimeout(()=>finish(new Error('Tiempo límite excedido para esta expresión regular.')),timeoutMs);
+        worker.onmessage=(event)=>{
+          const data=event.data||{};
+          if (data.error) finish(new Error(data.error));
+          else finish(null,data.result||'Sin coincidencias.');
+        };
+        worker.onerror=(event)=>finish(new Error(event.message||'No se pudo ejecutar la expresión regular.'));
+        worker.postMessage({text,pattern,flags:flags.includes('g')?flags:flags+'g'});
+      } catch (error) {
+        finish(error instanceof Error?error:new Error('No se pudo iniciar el comprobador de regex.'));
+      }
+    });
   }
   function contrast(text) {
     const colors=text.trim().split(/[\s,;]+/).filter(Boolean);
@@ -195,7 +229,7 @@
       const url=new URL(t.trim());
       return JSON.stringify({protocol:url.protocol,host:url.host,pathname:url.pathname,params:Object.fromEntries(url.searchParams.entries()),hash:url.hash},null,2);
     }),
-    tool('regex','Prueba Regex','Desarrollo','Busca coincidencias de una expresión regular local.',regexMatches,[{name:'pattern',label:'PATRÓN',placeholder:'\\b[A-Z]+\\b'},{name:'flags',label:'FLAGS',value:'giu'}]),
+    tool('regex','Prueba Regex','Desarrollo','Busca coincidencias de una expresión regular local en un worker con tiempo límite.',(t)=>regexMatches(t,getOption('pattern'),getOption('flags','giu')),[{name:'pattern',label:'PATRÓN',placeholder:'\\b[A-Z]+\\b'},{name:'flags',label:'FLAGS',value:'giu'}]),
     tool('replace','Buscar / reemplazar','Texto','Reemplaza texto literal sin expresiones regulares.',(t)=>{
       const find=getOption('find');
       if (!find) throw new Error('Escribe el texto que quieres buscar.');
@@ -253,6 +287,7 @@
     });
   }
   function select(item) {
+    executionId++;
     active=item;
     toolName.textContent=item.title;
     toolDescription.textContent=item.description;
@@ -263,21 +298,30 @@
     renderOptions(item);
     renderList();
   }
-  function execute() {
+  async function execute() {
+    const currentExecution=++executionId;
+    const selected=active;
+    const value=input.value;
     status.textContent='';
-    if (!input.value.trim()) {
+    if (!value.trim()) {
       status.textContent=NOIA.i18n.translate('lab.empty');
       input.focus();
       return;
     }
+    if (runButton) runButton.disabled=true;
+    status.textContent=NOIA.i18n.translate('lab.processing');
     try {
-      const result=active.run(input.value);
+      const result=await selected.run(value);
+      if (currentExecution!==executionId||selected!==active) return;
       output.value=String(result??'');
       status.textContent=NOIA.i18n.translate('lab.ready');
       NOIA.water?.pulse();
     } catch (error) {
+      if (currentExecution!==executionId||selected!==active) return;
       output.value='';
       status.textContent=(error instanceof Error?error.message:NOIA.i18n.translate('lab.failed')).slice(0,200);
+    } finally {
+      if (currentExecution===executionId&&runButton) runButton.disabled=false;
     }
   }
   async function copyResult() {
@@ -296,7 +340,7 @@
     renderCategories();
     select(active);
     search.addEventListener('input',renderList);
-    $('tool-run').addEventListener('click',execute);
+    runButton.addEventListener('click',execute);
     $('tool-clear').addEventListener('click',()=>{input.value='';output.value='';status.textContent='';input.focus();});
     $('tool-copy').addEventListener('click',copyResult);
     $('tool-download').addEventListener('click',()=>{
