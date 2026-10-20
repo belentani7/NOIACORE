@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#030507" />
+<meta name="color-scheme" content="dark" />
+<meta name="description" content="NOIACORE — Herramientas locales y verificables. Inteligência Silenciosa. Tecnologia Essencial." />
+<meta name="referrer" content="no-referrer" />
+<title>NOIACORE — Laboratorio · Black Water</title>
+<link rel="icon" href="assets/icons/mark.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="assets/css/base.css" />
+<link rel="stylesheet" href="assets/css/experiences.css" />
+</head>
+<body data-page="laboratorio">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<canvas id="water-canvas" class="water-canvas" aria-hidden="true"></canvas>
+<div class="atmospheric-grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<header class="site-header" id="site-header">
+  <a class="brand" href="index.html" aria-label="NOIACORE, inicio">
+    <img src="assets/icons/mark.svg" alt="" width="39" height="39" />
+    <span class="brand-word">NOIA<span>CORE</span></span>
+    <span class="brand-detail">INTELLIGENCE / LAB</span>
+  </a>
+  <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="primary-nav"><i></i><i></i><i></i></button>
+  <nav class="site-nav" id="primary-nav" aria-label="Navegación principal">
+    <ul><li><a href="index.html" data-nav="index">INICIO</a></li><li><a href="universos.html" data-nav="universos">UNIVERSOS</a></li><li><a href="portal.html" data-nav="portal">NAVE</a></li><li><a href="laboratorio.html" data-nav="laboratorio">LAB</a></li><li><a href="sistemas.html" data-nav="sistemas">SISTEMAS</a></li><li><a href="manifiesto.html" data-nav="manifiesto">MANIFIESTO</a></li><li><a href="contacto.html" data-nav="contacto">CONTACTO</a></li></ul>
+  </nav>
+  <div class="header-side"><span class="presence-dot" aria-hidden="true"></span><span class="header-mode">SILENT MODE</span><button id="lang-button" class="lang-button" aria-label="Cambiar idioma" title="Cambiar idioma" type="button">ES</button></div>
+</header>
+<main id="main">
+
+<section class="page-hero shell tools-heading"><div><p class="section-index">NOIACORE / AI LAB</p><h1 class="page-title">Herramientas.<br /><em>No promesas.</em></h1><p class="page-lead">Una mesa de trabajo local para transformar, inspeccionar y preparar información. Cada función del catálogo es ejecutable en tu navegador. No se envía el contenido a ningún servicio.</p></div><div class="tools-hero-aside"><span class="tools-count" id="tools-count">00</span><small>UTILIDADES DISPONIBLES</small><div class="signal-lines"><i></i><i></i><i></i><i></i></div></div></section>
+<section class="section shell workbench" id="workbench"><div class="workbench-intro"><div><p class="section-index">LAB.01 / WORKBENCH</p><h2 class="section-title">Selecciona un proceso.</h2></div><p>Tu entrada y tu resultado permanecen en esta pestaña. Puedes copiar el resultado o descargar un archivo de texto.</p></div>
+<div class="workbench-layout"><aside class="tools-sidebar"><label for="tool-search" class="sr-only">Buscar herramientas</label><input type="search" placeholder="Filtrar herramientas…" id="tool-search"/><div id="tool-categories" class="tool-categories"></div><div id="tools-list" class="tools-list" role="listbox" aria-label="Herramientas"></div></aside>
+<section class="tool-stage" aria-live="polite"><div class="tool-stage-top"><span>NOIACORE / LOCAL PROCESSOR</span><span id="tool-stage-code">LAB/001</span></div><div class="tool-stage-head"><span class="micro-label" id="tool-category-label">TEXT</span><h3 id="tool-title">Selecciona una herramienta</h3><p id="tool-description">Transformaciones verificables sobre datos locales.</p></div><label for="tool-input" class="field-label">ENTRADA</label><textarea id="tool-input" spellcheck="false" rows="7" placeholder="Escribe o pega aquí…"></textarea><div id="tool-options" class="tool-options"></div><div class="tool-actions"><button class="pill-action pill-action-primary" id="tool-run" type="button">EJECUTAR PROCESO <span>↗</span></button><button class="pill-action pill-action-ghost" id="tool-clear" type="button">LIMPIAR</button></div><div class="tool-output-head"><label for="tool-output" class="field-label">RESULTADO</label><span id="tool-status" role="status"></span></div><textarea id="tool-output" rows="7" spellcheck="false" readonly placeholder="El resultado aparecerá aquí…"></textarea><div class="output-actions"><button type="button" id="tool-copy">COPIAR RESULTADO</button><button type="button" id="tool-download">DESCARGAR .TXT</button></div></section></div></section>
+<section class="section shell lab-ethics"><div class="narrative-card"><span class="micro-label">PRINCIPIO / 01</span><h2>Una herramienta real debe responder,<br /><em>no fingir que piensa.</em></h2><p>Este laboratorio es una caja de utilidades JavaScript local. No afirmamos que el formateador de JSON o la normalización de texto sean modelos de IA. La arquitectura deja abierta la incorporación de modelos reales, con autorización y consentimiento explícitos.</p></div></section>
+</main>
+<footer class="site-footer">
+  <div class="footer-line"><span class="footer-mark">Λ / NOIACORE</span><span>INTELIGÊNCIA SILENCIOSA. TECNOLOGIA ESSENCIAL.</span><span class="footer-year">2026 — OPEN HORIZON</span></div>
+  <div class="footer-lower"><p>Core is invisible. Impact is inevitable.</p><div><a href="manifiesto.html">Filosofía</a><a href="sistemas.html">Sistemas</a><a href="contacto.html">Contacto</a></div><button type="button" id="motion-toggle" class="text-button" aria-pressed="false">Reducir movimiento</button></div>
+  <p class="footer-note">Experiencia autónoma · sin rastreadores · sin dependencias CDN · procesamiento local de consultas</p>
+</footer>
+<div class="toast-stack" id="toast-stack" aria-live="polite" aria-atomic="false"></div>
+<div class="command-surface" id="command-surface" hidden><div class="command-shade" data-close-command></div><section role="dialog" aria-modal="true" aria-label="NAVE acceso rápido" class="command-dialog"><div class="command-top"><span>NOIACORE / NAVE</span><button type="button" data-close-command aria-label="Cerrar">×</button></div><label class="sr-only" for="command-input">¿Qué estás buscando?</label><input id="command-input" autocomplete="off" placeholder="Describe lo que buscas…" /><div id="command-suggestions" class="command-suggestions"></div><small>ESC para cerrar · Enter para explorar</small></section></div>
+<button class="global-command" id="global-command" type="button" aria-label="Abrir NAVE" title="Abrir NAVE · tecla /"><span class="command-glyph">✧</span><span>ASK NAVE</span><kbd>/</kbd></button>
+<div class="page-progress" id="page-progress" aria-hidden="true"></div>
+<script src="assets/data/content.js" defer></script>
+<script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/core.js" defer></script>
+<script src="assets/js/water.js" defer></script>
+<script src="assets/js/eye.js" defer></script>
+<script src="assets/js/nave.js" defer></script>
+<script src="assets/js/atlas.js" defer></script>
+<script src="assets/js/lab.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+name: Black Water checks
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "black-water/**"
+      - ".github/workflows/black-water.yml"
+  push:
+    branches: [main]
+    paths:
+      - "black-water/**"
+      - ".github/workflows/black-water.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Syntax checks and smoke tests
+        working-directory: black-water
+        run: |
+          npm run check
+          npm test
+
