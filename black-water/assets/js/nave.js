@@ -232,9 +232,9 @@
     }
     if (verb === 'time') { line('system',new Date().toLocaleString()); return; }
     if (verb === 'reset') {
-      try { localStorage.removeItem('noiacore.last-region'); localStorage.removeItem('noiacore.motion'); }
+      try { localStorage.removeItem('noiacore.last-region'); }
       catch { /* optional */ }
-      NOIA.core.setMotion(true);
+      NOIA.core.resetMotionPreference();
       NOIA.water?.setActive(true);
       NOIA.eye?.setActive(true);
       line('system',NOIA.i18n.translate('nave.reset'));
