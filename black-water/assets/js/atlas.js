@@ -22,6 +22,7 @@
   let focus = { x: 0, y: 0 };
   let camera = { x: 0, y: 0 };
   let pointerDown = null;
+  let suppressClick = false;
   const stars = [];
   const tooltip = document.getElementById('atlas-tooltip');
   const palette = {
@@ -188,8 +189,13 @@
     if (!running || document.hidden) return;
     if (now-lastFrame<32) { frame=requestAnimationFrame(animate); return; }
     lastFrame=now;
-    camera.x+=(focus.x-camera.x)*.04;
-    camera.y+=(focus.y-camera.y)*.04;
+    if (motion) {
+      camera.x+=(focus.x-camera.x)*.04;
+      camera.y+=(focus.y-camera.y)*.04;
+    } else {
+      camera.x=focus.x;
+      camera.y=focus.y;
+    }
     paint((now-start)/1000);
     if (motion) frame=requestAnimationFrame(animate);
   }
@@ -229,12 +235,17 @@
       tooltip.hidden=false;
     } else if (tooltip) tooltip.hidden=true;
     if (pointerDown && event.buttons===1) {
+      if (Math.hypot(event.clientX-pointerDown.x,event.clientY-pointerDown.y)>6) pointerDown.moved=true;
       focus.x=Math.max(-90,Math.min(90,pointerDown.panX+event.clientX-pointerDown.x));
       focus.y=Math.max(-75,Math.min(75,pointerDown.panY+event.clientY-pointerDown.y));
     }
     schedule();
   }
   function onClick(event) {
+    if (suppressClick) {
+      suppressClick=false;
+      return;
+    }
     const position=pointFromEvent(event);
     const hit=hitTest(position);
     if (hit>=0) {
@@ -244,6 +255,7 @@
   }
   function reset() {
     focus={x:0,y:0};
+    camera={x:0,y:0};
     active=-1; hover=-1;
     schedule();
   }
@@ -260,10 +272,15 @@
     canvas.addEventListener('pointermove',onMove,{passive:true});
     canvas.addEventListener('pointerleave',()=>{hover=-1;if(tooltip)tooltip.hidden=true;});
     canvas.addEventListener('pointerdown',(event)=>{
-      pointerDown={x:event.clientX,y:event.clientY,panX:focus.x,panY:focus.y};
+      suppressClick=false;
+      pointerDown={x:event.clientX,y:event.clientY,panX:focus.x,panY:focus.y,moved:false};
       canvas.setPointerCapture?.(event.pointerId);
     });
-    canvas.addEventListener('pointerup',()=>{pointerDown=null;});
+    canvas.addEventListener('pointerup',()=>{
+      if (pointerDown?.moved) suppressClick=true;
+      pointerDown=null;
+    });
+    canvas.addEventListener('pointercancel',()=>{pointerDown=null;suppressClick=false;});
     canvas.addEventListener('click',onClick);
     document.getElementById('atlas-reset')?.addEventListener('click',reset);
     global.addEventListener('resize',resize,{passive:true});

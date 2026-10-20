@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server.cjs",
     "test": "node --test tests/*.test.cjs",
-    "check": "node --check server.cjs && node --check assets/js/core.js && node --check assets/js/water.js && node --check assets/js/eye.js && node --check assets/js/nave.js && node --check assets/js/atlas.js && node --check assets/js/lab.js && node --check assets/js/i18n.js && node --check assets/data/content.js"
+    "check": "node --check server.cjs && node --check assets/js/core.js && node --check assets/js/water.js && node --check assets/js/eye.js && node --check assets/js/nave.js && node --check assets/js/atlas.js && node --check assets/js/lab.js && node --check assets/js/regex-worker.js && node --check assets/js/i18n.js && node --check assets/data/content.js"
   },
   "engines": { "node": ">=18" },
   "license": "UNLICENSED"

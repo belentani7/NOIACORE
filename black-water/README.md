@@ -4,7 +4,7 @@ Web inmersiva **autónoma y multipágina**, construida con HTML5, CSS3, JavaScri
 
 ## Abrir y ejecutar
 
-**Sin instalación:** descomprime y abre `index.html` en un navegador moderno. No se necesita Internet para cargar las páginas y los efectos.
+**Sin instalación:** descomprime y abre `index.html` en un navegador moderno. No se necesita Internet para cargar las páginas y los efectos. La herramienta Regex necesita el servidor local para aislar su ejecución en un Web Worker.
 
 **Con servidor local (recomendado):** instala Node.js 18 o posterior; en la carpeta del proyecto ejecuta:
 
@@ -32,7 +32,7 @@ Abre `http://127.0.0.1:8099`. La carpeta se sirve solo en loopback (`127.0.0.1`)
 
 `assets/css/base.css` define diseño, navegación, controles y adaptación responsive. `assets/css/experiences.css` contiene las experiencias y componentes por página.
 
-`assets/js/water.js` implementa agua negra con fragment shader WebGL propio y fallback sin WebGL; `eye.js` mueve el ojo en respuesta al puntero **sin cámara ni identificación**; `atlas.js` renderiza galaxias Canvas 2D de manera procedimental; `nave.js` clasifica señales mediante un ranking heurístico explicable, sin enviar consultas fuera; `lab.js` ejecuta herramientas de datos y texto. `core.js` aporta navegación global, accesibilidad, atajos, movimiento reducido y flujos de briefing. `assets/data/content.js` es la fuente interna de universos, intenciones y rutas. `i18n.js` contiene textos fundamentales ES/EN/PT; la localización de todo el corpus editorial aún no está completa.
+`assets/js/water.js` implementa agua negra con fragment shader WebGL propio y fallback sin WebGL; `eye.js` mueve el ojo en respuesta al puntero **sin cámara ni identificación**; `atlas.js` renderiza galaxias Canvas 2D de manera procedimental, suprime la navegación tras un arrastre y centra el mapa de forma inmediata al reiniciar; `nave.js` clasifica señales mediante un ranking heurístico explicable, sin enviar consultas fuera; `lab.js` ejecuta herramientas de datos y texto. La importación CSV rechaza filas con más campos que cabeceras; la exportación JSON→CSV admite valores escalares; `regex-worker.js` procesa expresiones en un Web Worker del mismo origen con un límite de 500 ms. `core.js` aporta navegación global, accesibilidad, atajos, movimiento reducido (el reinicio vuelve a respetar la preferencia del sistema) y flujos de briefing. `assets/data/content.js` es la fuente interna de universos, intenciones y rutas. `i18n.js` contiene textos fundamentales ES/EN/PT; la localización de todo el corpus editorial aún no está completa.
 
 NAVE es un **enrutador de intenciones con reglas**, no un chatbot generativo: no se presenta como modelo de IA entrenado ni promete memoria, generación remota o integración inexistente. La terminal distingue las respuestas y explica qué términos han producido cada asociación. Solo puede guardar localmente el identificador de una categoría seleccionada; los prompts introducidos no se guardan como historial permanente. El formulario de contacto **no envía mensajes a ningún servidor**: exporta un briefing o delega compartirlo a la aplicación del visitante.
 
