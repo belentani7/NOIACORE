@@ -1,0 +1,22 @@
+services:
+  noiacore-black-water:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    init: true
+    environment:
+      NODE_ENV: production
+      PORT: "8099"
+      HOST: "0.0.0.0"
+    ports:
+      - "127.0.0.1:8099:8099"
+    read_only: true
+    tmpfs:
+      - /tmp:noexec,nosuid,size=16m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 100
+    mem_limit: 256m
