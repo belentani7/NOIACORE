@@ -69,7 +69,12 @@ test('navigation target HTMLs are present, no third-party scripts', () => {
   for (const page of pages) {
     const html = read(page + '.html');
     assert.doesNotMatch(html, /<script\b[^>]*\bsrc="https?:\/\//i);
-    assert.doesNotMatch(html, /<link\b[^>]*\bhref="https?:\/\//i);
+    for (const tag of html.matchAll(/<link\b[^>]*>/gi)) {
+      // Canonical and hreflang URLs are metadata, not third-party network dependencies.
+      if (/\brel="(?:stylesheet|preload|modulepreload|preconnect|dns-prefetch)"/i.test(tag[0])) {
+        assert.doesNotMatch(tag[0], /\bhref="https?:\/\//i, `${page}: remote asset dependency`);
+      }
+    }
     for (const match of html.matchAll(/\bhref="([a-z-]+\.html)(?:#[^"]+)?"/g)) {
       assert.ok(fs.existsSync(path.join(root, match[1])), `${page}: ${match[1]}`);
     }
