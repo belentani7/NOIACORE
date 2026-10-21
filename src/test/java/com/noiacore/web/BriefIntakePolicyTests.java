@@ -41,7 +41,7 @@ class BriefIntakePolicyTests {
         c.setNombre("Marina");
         c.setMensaje("x".repeat(4001));
         assertFalse(policy.isValid(c));
-        c.setMensaje("Hola\u0000<script>");
+        c.setMensaje("Hola" + (char) 0 + "<script>");
         assertFalse(policy.isValid(c));
         c.setMensaje(null);
         assertTrue(policy.isValid(c));
