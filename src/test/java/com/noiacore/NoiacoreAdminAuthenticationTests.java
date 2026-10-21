@@ -2,6 +2,8 @@ package com.noiacore;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import com.jayway.jsonpath.JsonPath;
+import org.springframework.test.web.servlet.MvcResult;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,15 +47,23 @@ class NoiacoreAdminAuthenticationTests {
 
     @Test
     void configuredAdminCanManageProjects() throws Exception {
-        mockMvc.perform(post("/api/proyectos")
+        MvcResult created = mockMvc.perform(post("/api/proyectos")
                 .header("Authorization", basicAuth(ADMIN_PASSWORD))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"nombre\":\"CI test\",\"descripcion\":\"API boundary\",\"estado\":\"Pendiente\"}"))
-            .andExpect(status().isOk());
+            .andExpect(status().isOk())
+            .andReturn();
+        Number createdId = JsonPath.read(created.getResponse().getContentAsString(), "$.id");
 
-        mockMvc.perform(delete("/api/proyectos/1")
+        mockMvc.perform(delete("/api/proyectos/" + createdId.longValue())
                 .header("Authorization", basicAuth(ADMIN_PASSWORD)))
             .andExpect(status().isNoContent());
+
+        mockMvc.perform(get("/api/proyectos/" + createdId.longValue()))
+            .andExpect(status().isNotFound());
+        // Deleting our own test record must never remove the pre-seeded catalog.
+        mockMvc.perform(get("/api/proyectos/1"))
+            .andExpect(status().isOk());
     }
 
     private static String basicAuth(String password) {
