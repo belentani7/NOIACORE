@@ -10,7 +10,7 @@ services:
       PORT: "8099"
       HOST: "0.0.0.0"
     ports:
-      - "8099:8099"
+      - "127.0.0.1:8099:8099"
     read_only: true
     tmpfs:
       - /tmp:noexec,nosuid,size=16m
