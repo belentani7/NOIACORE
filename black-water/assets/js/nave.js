@@ -146,6 +146,53 @@
       node.addEventListener('click',() => { input.value = node.dataset.intent; run(); });
     });
   }
+  const STATE_FORMAT = 'NOIACORE_NAVE_STATE';
+  function localSnapshot() {
+    let region = null;
+    try {
+      const saved = localStorage.getItem('noiacore.last-region');
+      if (regions.some((item) => item.id === saved)) region = saved;
+    } catch { /* storage is optional */ }
+    return {
+      format: STATE_FORMAT,
+      version: 1,
+      region,
+      language: NOIA.i18n.current,
+      motion: Boolean(NOIA.core.motion)
+    };
+  }
+  function validateSnapshot(value) {
+    if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+    if (value.format !== STATE_FORMAT || value.version !== 1) return null;
+    if (!Object.keys(value).every((key) => ['format','version','region','language','motion'].includes(key))) return null;
+    if (!(value.region === null || (typeof value.region === 'string' && regions.some((r) => r.id === value.region)))) return null;
+    if (!['es','en','pt'].includes(value.language) || typeof value.motion !== 'boolean') return null;
+    return { format: STATE_FORMAT, version: 1, region: value.region, language: value.language, motion: value.motion };
+  }
+  function downloadSnapshot() {
+    const snapshot = localSnapshot();
+    try {
+      const payload = JSON.stringify(snapshot,null,2) + '\n';
+      const blob = new Blob([payload],{type:'application/json;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'noiacore-nave-state.json';
+      document.body.append(a);
+      a.click();
+      a.remove();
+      global.setTimeout(() => URL.revokeObjectURL(url), 1200);
+      return true;
+    } catch { return false; }
+  }
+  function applySnapshot(snapshot) {
+    NOIA.i18n.setLanguage(snapshot.language);
+    NOIA.core.setMotion(snapshot.motion);
+    try {
+      if (snapshot.region) localStorage.setItem('noiacore.last-region', snapshot.region);
+      else localStorage.removeItem('noiacore.last-region');
+    } catch { /* optional storage */ }
+  }
   const node = document.getElementById('term-output');
   let history = [];
   let historyIndex = 0;
@@ -221,6 +268,22 @@
       return;
     }
     if (verb === 'status') { multi(commandStatus()); return; }
+    if (verb === 'history') {
+      multi(history.slice(-10).map((item, index) => String(index + 1).padStart(2,'0') + ' / ' + item));
+      return;
+    }
+    if (verb === 'save' || verb === 'export') {
+      line('system',downloadSnapshot()
+        ? 'Estado local guardado como JSON. No incluye prompts, historial ni credenciales.'
+        : 'No se pudo descargar. Comprueba los permisos de tu navegador.');
+      return;
+    }
+    if (verb === 'load' || verb === 'import') {
+      const chooser = document.getElementById('nave-import');
+      if (!chooser) { line('system','Importación no disponible en esta vista.'); return; }
+      chooser.click();
+      return;
+    }
     if (verb === 'explore' || verb === 'map') {
       multi(regions.map((r) => r.number + ' / ' + r.name + ' — ' + r.description));
       return;
@@ -284,6 +347,22 @@
       node?.replaceChildren();
       welcome();
     });
+    document.getElementById('nave-import')?.addEventListener('change',async (event) => {
+      const chooser = event.currentTarget;
+      const file = chooser.files?.[0];
+      chooser.value = '';
+      if (!file) return;
+      if (file.size > 2048) { line('system','Archivo JSON demasiado grande (máximo 2 KB).'); return; }
+      try {
+        const decoded = JSON.parse(await file.text());
+        const snapshot = validateSnapshot(decoded);
+        if (!snapshot) { line('system','Archivo rechazado: versión o valores no válidos.'); return; }
+        applySnapshot(snapshot);
+        line('system','Preferencias restauradas desde JSON local. Ningún archivo fue enviado.');
+      } catch {
+        line('system','No fue posible leer el JSON. Se conservaron las preferencias existentes.');
+      }
+    });
     form.addEventListener('submit',(event) => {
       event.preventDefault();
       const value = input.value;
@@ -327,7 +406,7 @@
     initHome();
     initPortal();
   }
-  NOIA.nave = { interpret, processCommand, tokens, renderAdaptive };
+  NOIA.nave = { interpret, processCommand, tokens, renderAdaptive, localSnapshot, validateSnapshot };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded',init);
   else init();
 })(window);
