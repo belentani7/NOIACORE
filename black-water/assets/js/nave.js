@@ -172,7 +172,7 @@
   function downloadSnapshot() {
     const snapshot = localSnapshot();
     try {
-      const payload = JSON.stringify(snapshot,null,2) + '\\n';
+      const payload = JSON.stringify(snapshot,null,2) + '\n';
       const blob = new Blob([payload],{type:'application/json;charset=utf-8'});
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
