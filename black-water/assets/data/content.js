@@ -98,6 +98,9 @@
       { word: 'MOTION [ON|OFF]', description: 'Controla el movimiento' },
       { word: 'LANG [ES|EN|PT]', description: 'Selecciona idioma de la interfaz' },
       { word: 'TIME', description: 'Hora local del navegador' },
+      { word: 'HISTORY', description: 'Últimos comandos de esta sesión; no persistidos' },
+      { word: 'SAVE', description: 'Descarga JSON de preferencias (sin consultas ni secretos)' },
+      { word: 'LOAD', description: 'Importa un JSON local de preferencias validado' },
       { word: 'CLEAR', description: 'Limpia la consola' },
       { word: 'RESET', description: 'Restablece preferencias locales' }
     ],

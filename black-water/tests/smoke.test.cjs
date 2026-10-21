@@ -4,6 +4,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const http = require('node:http');
 const path = require('node:path');
+const os = require('node:os');
 const { server } = require('../server.cjs');
 
 const root = path.resolve(__dirname, '..');
@@ -112,6 +113,25 @@ test('functional UI engines and local toolset are embedded', () => {
   assert.equal(count, 32);
   for (const engine of scripts) {
     assert.ok(fs.existsSync(path.join(root, engine === 'content' ? 'assets/data/content.js' : `assets/js/${engine}.js`)));
+  }
+});
+
+test('static server refuses symlinks outside its document root', async () => {
+  const outside = fs.mkdtempSync(path.join(os.tmpdir(), 'noiacore-serve-test-'));
+  const secret = path.join(outside, 'private.json');
+  const linkName = `outside-link-${process.pid}.json`;
+  const link = path.join(root, linkName);
+  fs.writeFileSync(secret, JSON.stringify({ canary: 'must-never-leak' }));
+  try {
+    fs.symlinkSync(secret, link);
+    const response = await get('/' + linkName);
+    assert.equal(response.status, 403);
+    assert.doesNotMatch(response.body, /must-never-leak/);
+    const head = await get('/' + linkName, 'HEAD');
+    assert.equal(head.status, 403);
+  } finally {
+    fs.rmSync(link, { force: true });
+    fs.rmSync(outside, { recursive: true, force: true });
   }
 });
 

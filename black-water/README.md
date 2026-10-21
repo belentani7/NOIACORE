@@ -54,3 +54,9 @@ Se consultaron el documento de consolidación NOIACORE de Drive (13-08-2026), un
 ## Entrega Linux autocontenida (opcional)
 
 La experiencia BLACK WATER puede servirse como contenedor Node sin instalar dependencias ni compartir claves. Desde `black-water/` ejecuta `docker compose up -d --build`; comprobar `http://127.0.0.1:8099` en la máquina anfitriona. Docker reinicia el servicio si cae, usa usuario no privilegiado, sistema de archivos de solo lectura y healthcheck. Para exposición pública configura HTTPS, DNS y proxy inverso externos; **arrancar un contenedor no constituye una publicación web**. El sitemap y canonical se han preparado para `noiacore.com` (CNAME del repositorio) y deben verificarse al asignar esa web al dominio.
+
+## Consolidated October 2026 release notes
+
+La terminal ofrece `SAVE` (descarga un JSON con región, idioma y preferencia de movimiento) y `LOAD` (restaura únicamente estos valores tras validar el archivo; máximo 2 KB). `HISTORY` lista los últimos diez comandos de la sesión actual. **No exporta consultas, CV, credenciales, cookies ni historial**; los archivos se procesan en el navegador, sin subirlos.
+
+- El servidor resuelve rutas del sistema de archivos antes de servirlas y rechaza enlaces simbólicos que apunten fuera del directorio estático; incluye regresiones GET y HEAD.
