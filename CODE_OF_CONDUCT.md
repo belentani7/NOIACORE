@@ -1,9 +1,29 @@
-# Código de conducta
+# Contributor Covenant Code of Conduct
 
-Este proyecto adopta el [Contributor Covenant 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
+## Our Pledge
 
-- Sé respetuoso/a y constructivo/a.
-- Nada de acoso, discriminación ni ataques personales.
-- Critica ideas, no personas.
+We pledge to make participation in our project a harassment-free experience for everyone.
 
-**Reportes**: usa un aviso privado en la pestaña *Security* del repositorio o escribe a la persona mantenedora del perfil.
+## Our Standards
+
+Positive behavior includes:
+- Using welcoming and inclusive language
+- Being respectful of differing viewpoints
+- Gracefully accepting constructive criticism
+- Focusing on what is best for the community
+
+Unacceptable behavior includes:
+- Harassment, trolling, or insulting comments
+- Publishing private information without consent
+- Sexual content or advances
+- Any conduct inappropriate in a professional setting
+
+## Enforcement
+
+Instances of abusive behavior may be reported to **conduct@belentani.com**.
+
+All complaints will be reviewed and investigated promptly and fairly.
+
+## Attribution
+
+This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/), version 2.1.
