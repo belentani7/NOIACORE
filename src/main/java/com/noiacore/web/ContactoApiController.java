@@ -1,10 +1,12 @@
 // BELENTANI OMEGA ULTRA
 // Autoría: Pedro Belentani
-// Fecha: 2026-08-14
+// Public brief intake with bounded input and in-process abuse guards.
 package com.noiacore.web;
 
 import com.noiacore.model.Contacto;
 import com.noiacore.repository.ContactoRepository;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,19 +14,20 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * API real para el formulario de contacto ("Project Brief") de la landing.
- * No hay envío de email desde el servidor (evita tener que configurar SMTP);
- * el frontend sigue ofreciendo el mailto como antes. Esto solo persiste
- * el brief en el backend para que quede constancia real, consultable via API.
+ * Public intake returns only receipt metadata, never the submitted personal
+ * information. Admin-only reads are enforced separately in SecurityConfig.
+ * This in-memory demo is NOT durable lead delivery.
  */
 @RestController
 @RequestMapping("/api/contactos")
 public class ContactoApiController {
 
     private final ContactoRepository repositorio;
+    private final BriefIntakePolicy policy;
 
-    public ContactoApiController(ContactoRepository repositorio) {
+    public ContactoApiController(ContactoRepository repositorio, BriefIntakePolicy policy) {
         this.repositorio = repositorio;
+        this.policy = policy;
     }
 
     @GetMapping
@@ -38,11 +41,20 @@ public class ContactoApiController {
     }
 
     @PostMapping
-    public ResponseEntity<Contacto> crear(@RequestBody Contacto contacto) {
-        if (contacto.getNombre() == null || contacto.getNombre().isBlank()
-                || contacto.getEmail() == null || contacto.getEmail().isBlank()) {
+    public ResponseEntity<Map<String, Object>> crear(@RequestBody Contacto contacto, HttpServletRequest request) {
+        // The transport peer, not a user-controlled X-Forwarded-For header.
+        if (!policy.allow(request.getRemoteAddr())) {
+            return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).build();
+        }
+        if (!policy.isValid(contacto)) {
             return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.ok(repositorio.guardar(contacto));
+        try {
+            Contacto saved = repositorio.guardar(contacto);
+            return ResponseEntity.ok(Map.of("id", saved.getId(), "received", true,
+                                             "persistent", false));
+        } catch (IllegalStateException capacityReached) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).build();
+        }
     }
 }
