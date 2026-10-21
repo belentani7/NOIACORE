@@ -1,2 +1,14 @@
 import { test, expect } from '@playwright/test'
-test('loads', async ({ page }) => { await page.goto('/'); await expect(page).toHaveTitle(/NOIACORE/); })
+
+test('homepage loads', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.locator('h1')).toContainText('NOIACORE')
+})
+
+test('counter increments', async ({ page }) => {
+  await page.goto('/')
+  const button = page.locator('button')
+  await expect(button).toContainText('Count: 0')
+  await button.click()
+  await expect(button).toContainText('Count: 1')
+})
