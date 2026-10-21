@@ -20,7 +20,7 @@ test('every Black Water page has a unique canonical, Open Graph URL and WebPage 
     assert.match(html, /<meta property="og:title" content="NOIACORE/);
     assert.match(html, /<meta name="twitter:card" content="summary"/);
 
-    const jsonLd = html.match(/<script type="application\\/ld\\+json">([\\s\\S]*?)<\\/script>/);
+    const jsonLd = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
     assert.ok(jsonLd, 'structured page metadata missing: ' + name);
     const schema = JSON.parse(jsonLd[1]);
     assert.equal(schema['@context'], 'https://schema.org');
@@ -36,7 +36,7 @@ test('every Black Water page has a unique canonical, Open Graph URL and WebPage 
 
 test('NAVE does not claim to be a generative chatbot', () => {
   const portal = fs.readFileSync(path.join(root, 'portal.html'), 'utf8');
-  const data = portal.match(/<script type="application\\/ld\\+json">([\\s\\S]*?)<\\/script>/);
+  const data = portal.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
   assert.ok(data);
   const schema = JSON.parse(data[1]);
   assert.match(schema.description, /sin chatbot generativo/);
