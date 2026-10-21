@@ -1,39 +1,6 @@
-```
-# Java/Maven specific
-target/
-*.class
-*.jar
-*.war
-*.ear
-
-# Dependencies
-.mvn/wrapper/
-
-# IDE
-.vscode/
-.idea/
-*.iml
-*.ipr
-*.iws
-
-# System
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-
-# Environment
-.env
-.env.local
-*.env.*
-```
-
-# remediacion 2026-09-14
 node_modules/
+dist/
 .env
-.env.*
-.mimosa/
-__pycache__/
-.vercel/
 *.log
+.DS_Store
+.cache/
