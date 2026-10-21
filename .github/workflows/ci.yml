@@ -32,3 +32,22 @@ jobs:
         run: test -f mvnw && test -f pom.xml
       - name: Compile and run actual tests
         run: bash ./mvnw --batch-mode --no-transfer-progress verify
+
+  black-water-verify:
+    name: Black Water syntax, server and page contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: black-water
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JavaScript syntax in original Black Water bundle
+        run: npm run check
+      - name: Run local-first NAVE, SEO and path-containment regression tests
+        run: npm test
