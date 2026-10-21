@@ -41,6 +41,7 @@ NAVE es un **enrutador de intenciones con reglas**, no un chatbot generativo: no
 - Sin cookies analíticas, Google Fonts, llamadas externas ni captura de webcam o micrófono.
 - No se proporcionan cifras inventadas de uso, uptime, tokens, rendimiento o número de clientes.
 - Configuración de contenido estático propio. La cabecera `Content-Security-Policy` se aplica cuando se usa el servidor local.
+- El servidor resuelve rutas del sistema de archivos antes de servirlas y rechaza enlaces simbólicos que apunten fuera del directorio estático; incluye regresiones GET y HEAD.
 - Soporta preferencia de movimiento reducido y ajuste manual; la experiencia visual es progresiva y tiene fallback sin WebGL.
 - Antes de **publicar como producto comercial**: conectar un sistema real de recepción de briefings, completar las traducciones, añadir política de privacidad legal definitiva, auditar navegadores y dispositivos reales, y definir el backend/LLM solo si va a existir.
 - El archivo ZIP no modifica Google Drive, GitHub, Vercel ni dominio alguno y no importa código privado de otros proyectos.
