@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://noiacore.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://noiacore.com/universos.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://noiacore.com/portal.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://noiacore.com/laboratorio.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://noiacore.com/sistemas.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://noiacore.com/manifiesto.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://noiacore.com/contacto.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>

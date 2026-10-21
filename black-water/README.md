@@ -50,3 +50,7 @@ NAVE es un **enrutador de intenciones con reglas**, no un chatbot generativo: no
 Se consultaron el documento de consolidación NOIACORE de Drive (13-08-2026), una implementación v7 procedente de Drive, una maqueta unificada y la estructura / README del repositorio existente `belentani7/NOIACORE`. Se conserva la dirección creativa (núcleo vivo, silencio, percepción, laboratorio, Λ, navegación adaptativa), pero el código de este paquete es una implementación propia y separada. Los respaldos, experimentos históricos y otros repositorios del ecosistema no se fusionan aquí.
 
 **Identidad:** Inteligência Silenciosa. Tecnologia Essencial. / Core is invisible. Impact is inevitable.
+
+## Entrega Linux autocontenida (opcional)
+
+La experiencia BLACK WATER puede servirse como contenedor Node sin instalar dependencias ni compartir claves. Desde `black-water/` ejecuta `docker compose up -d --build`; comprobar `http://127.0.0.1:8099` en la máquina anfitriona. Docker reinicia el servicio si cae, usa usuario no privilegiado, sistema de archivos de solo lectura y healthcheck. Para exposición pública configura HTTPS, DNS y proxy inverso externos; **arrancar un contenedor no constituye una publicación web**. El sitemap y canonical se han preparado para `noiacore.com` (CNAME del repositorio) y deben verificarse al asignar esa web al dominio.
