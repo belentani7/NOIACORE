@@ -1,11 +1,62 @@
-# Cómo contribuir
+# Contributing to NOIACORE
 
-¡Gracias por tu interés!
+Thank you for your interest in contributing! Please follow these guidelines.
 
-1. Abre un issue describiendo el bug o la mejora antes de trabajar en algo grande.
-2. Haz un fork y crea una rama: `git checkout -b feat/mi-cambio`.
-3. Usa mensajes de commit claros (estilo [Conventional Commits](https://www.conventionalcommits.org/es/v1.0.0/)).
-4. Comprueba que el proyecto compila y que los tests pasan.
-5. Abre un pull request explicando qué cambia y por qué.
+## 📋 Development Workflow
 
-Al participar aceptas el [código de conducta](CODE_OF_CONDUCT.md).
+1. **Fork** the repository
+2. **Create** a feature branch: `git checkout -b feat/amazing-feature`
+3. **Commit** using Conventional Commits: `git commit -m 'feat: add amazing feature'`
+4. **Push** to your fork: `git push origin feat/amazing-feature`
+5. **Open** a Pull Request
+
+## ✅ Commit Message Convention
+
+We use [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer]
+```
+
+### Types
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Code style (formatting, etc.)
+- `refactor`: Code refactoring
+- `perf`: Performance improvement
+- `test`: Adding tests
+- `chore`: Maintenance tasks
+- `build`: Build system changes
+- `ci`: CI/CD changes
+
+### Examples
+```
+feat(auth): add OAuth2 login
+fix(api): handle 404 errors gracefully
+docs(readme): update installation steps
+```
+
+## 🔍 Code Review Checklist
+
+- [ ] All CI checks pass
+- [ ] TypeScript compiles without errors (`pnpm typecheck`)
+- [ ] Linting passes (`pnpm lint`)
+- [ ] Formatting correct (`pnpm format:check`)
+- [ ] Tests pass (`pnpm test`)
+- [ ] Coverage ≥ 80% for new code
+- [ ] E2E tests pass for UI changes
+- [ ] Documentation updated if needed
+- [ ] No breaking changes without major version bump
+
+## 🏷️ Versioning
+
+We use [Semantic Versioning](https://semver.org/). Releases are automated via `semantic-release`.
+
+## 📝 Code of Conduct
+
+See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
