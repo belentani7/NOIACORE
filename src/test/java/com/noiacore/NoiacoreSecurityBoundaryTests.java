@@ -11,6 +11,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.not;
 
 @SpringBootTest(properties = "NOIACORE_ADMIN_PASSWORD=")
 @AutoConfigureMockMvc
@@ -47,6 +50,17 @@ class NoiacoreSecurityBoundaryTests {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"nombre\":\"QA\",\"email\":\"qa@example.invalid\"}"))
             .andExpect(status().isOk());
+    }
+
+    @Test
+    void publicHomepageDoesNotEnableDynamicEvaluationOrPluginObjects() throws Exception {
+        mockMvc.perform(get("/"))
+            .andExpect(status().isOk())
+            .andExpect(header().string("Content-Security-Policy",
+                not(containsString("'unsafe-eval'"))))
+            .andExpect(header().string("Content-Security-Policy",
+                containsString("object-src 'none'")))
+            .andExpect(header().string("X-Frame-Options", "DENY"));
     }
 
     @Test
