@@ -1,22 +1,17 @@
-# Multi-stage build for production
-FROM node:20-alpine AS base
-WORKDIR /app
-ENV PNPM_HOME="/pnpm"
-ENV PATH="${PNPM_HOME}:${PATH}"
-RUN corepack enable && corepack prepare pnpm@9.0.0 --activate
+# BELENTANI OMEGA ULTRA
+# Autoría: Pedro Belentani
+# Fecha: 2026-08-14
 
-FROM base AS builder
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+# --- Build stage ---
+FROM eclipse-temurin:25-jdk AS build
+WORKDIR /app
 COPY . .
-RUN pnpm build
+RUN ./mvnw -q -DskipTests package
 
-FROM base AS runner
+# --- Run stage ---
+FROM eclipse-temurin:25-jre
 WORKDIR /app
-ENV NODE_ENV=production
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/package.json ./
-COPY --from=builder /app/pnpm-lock.yaml ./
-RUN pnpm install --prod --frozen-lockfile
-EXPOSE 3000
-CMD ["node", "dist/index.js"]
+COPY --from=build /app/target/*.jar app.jar
+ENV PORT=8099
+EXPOSE 8099
+ENTRYPOINT ["sh", "-c", "java -jar app.jar --server.port=${PORT}"]
