@@ -22,6 +22,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Configuración de seguridad de nivel empresarial para NOIACORE.
@@ -39,9 +41,9 @@ import java.util.List;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, CorsConfigurationSource corsSource) throws Exception {
         http
-            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+            .cors(cors -> cors.configurationSource(corsSource))
             .csrf(csrf -> csrf.disable()) // Stateless API: admin routes require explicit Authorization header
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .httpBasic(org.springframework.security.config.Customizer.withDefaults())
@@ -80,13 +82,17 @@ public class SecurityConfig {
     }
 
     @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
+    public CorsConfigurationSource corsConfigurationSource(Environment environment) {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of(
-            "https://noiacore.com",
-            "http://localhost:8099",
-            "http://localhost:3000"
-        ));
+        List<String> origins = new ArrayList<>(List.of("https://noiacore.com"));
+        // Localhost must never be a credentialed CORS origin in production.
+        // The developer must explicitly opt into the dev/local profile.
+        List<String> profiles = Arrays.asList(environment.getActiveProfiles());
+        if (profiles.contains("dev") || profiles.contains("local")) {
+            origins.add("http://localhost:8099");
+            origins.add("http://localhost:3000");
+        }
+        configuration.setAllowedOrigins(origins);
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
