@@ -2344,9 +2344,9 @@ briefForm?.addEventListener('submit',async e=>{
   briefStatus.textContent='Guardando en el sistema…';
   const saved=await persistBrief(d);
   briefStatus.textContent=saved
-    ? ('Brief #'+saved.id+' guardado en el sistema · abriendo tu aplicación de correo…')
-    : 'No se pudo guardar en el sistema (¿backend caído?) · abriendo tu aplicación de correo…';
-  labEvent('lead','Project brief '+(saved?'guardado (#'+saved.id+')':'preparado sin backend'),{type:d.get('type')});
+    ? ('Brief #'+saved.id+' recibido temporalmente (sin archivo permanente). Confirma el envío en tu correo.')
+    : 'No se pudo registrar el brief en el servidor. Confirma el envío en tu correo.';
+  labEvent('lead','Project brief '+(saved?'recibido temporalmente (#'+saved.id+')':'preparado sin backend'),{type:d.get('type')});
   location.href=`mailto:belentani7studio@proton.me?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
 $('#copy-brief')?.addEventListener('click',async()=>{if(!briefForm.reportValidity())return;const text=briefText();try{await navigator.clipboard.writeText(text);briefStatus.textContent='Briefing copiado al portapapeles.';showToast('BRIEF COPIED','Ya puedes pegarlo en email, WhatsApp o un documento');}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();briefStatus.textContent='Briefing copiado.';}labEvent('lead','Project brief copied');});

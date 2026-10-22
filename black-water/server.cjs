@@ -3,6 +3,8 @@ const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname);
+// Resolve symlinked installation roots before validating served file boundaries.
+const canonicalRoot = fs.realpathSync(root);
 const port = Number.parseInt(process.env.PORT || '8099', 10);
 const host = process.env.HOST || '127.0.0.1';
 const types = {
@@ -42,25 +44,37 @@ const server = http.createServer((req, res) => {
   if (!filepath || /(^|[\\/])\.[^\\/]+/.test(path.relative(root, filepath))) {
     res.writeHead(403, headers); res.end('Forbidden'); return;
   }
-  fs.stat(filepath, (error, stat) => {
-    if (error || !stat.isFile()) {
+  // A lexical path check alone does not stop symlinks that point outside
+  // the static root. Resolve on disk before checking the final target.
+  fs.realpath(filepath, (realError, realPath) => {
+    if (realError) {
       res.writeHead(404, { ...headers, 'Content-Type': 'text/plain; charset=utf-8' });
       res.end('NOIACORE · 404');
       return;
     }
-    const extension = path.extname(filepath).toLowerCase();
-    const type = types[extension];
-    if (!type) { res.writeHead(403, headers); res.end(); return; }
-    res.writeHead(200, {
-      ...headers,
-      'Content-Type': type,
-      'Content-Length': stat.size,
-      'Cache-Control': 'no-cache'
+    if (realPath !== canonicalRoot && !realPath.startsWith(canonicalRoot + path.sep)) {
+      res.writeHead(403, headers); res.end('Forbidden'); return;
+    }
+    fs.stat(realPath, (error, stat) => {
+      if (error || !stat.isFile()) {
+        res.writeHead(404, { ...headers, 'Content-Type': 'text/plain; charset=utf-8' });
+        res.end('NOIACORE · 404');
+        return;
+      }
+      const extension = path.extname(realPath).toLowerCase();
+      const type = types[extension];
+      if (!type) { res.writeHead(403, headers); res.end(); return; }
+      res.writeHead(200, {
+        ...headers,
+        'Content-Type': type,
+        'Content-Length': stat.size,
+        'Cache-Control': 'no-cache'
+      });
+      if (req.method === 'HEAD') { res.end(); return; }
+      const stream = fs.createReadStream(realPath);
+      stream.on('error', () => res.destroy());
+      stream.pipe(res);
     });
-    if (req.method === 'HEAD') { res.end(); return; }
-    const stream = fs.createReadStream(filepath);
-    stream.on('error', () => res.destroy());
-    stream.pipe(res);
   });
 });
 if (require.main === module) {

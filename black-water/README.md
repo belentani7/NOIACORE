@@ -34,8 +34,6 @@ Abre `http://127.0.0.1:8099`. La carpeta se sirve solo en loopback (`127.0.0.1`)
 
 `assets/js/water.js` implementa agua negra con fragment shader WebGL propio y fallback sin WebGL; `eye.js` mueve el ojo en respuesta al puntero **sin cámara ni identificación**; `atlas.js` renderiza galaxias Canvas 2D de manera procedimental, suprime la navegación tras un arrastre y centra el mapa de forma inmediata al reiniciar; `nave.js` clasifica señales mediante un ranking heurístico explicable, sin enviar consultas fuera; `lab.js` ejecuta herramientas de datos y texto. La importación CSV rechaza filas con más campos que cabeceras; la exportación JSON→CSV admite valores escalares; `regex-worker.js` procesa expresiones en un Web Worker del mismo origen con un límite de 500 ms. `core.js` aporta navegación global, accesibilidad, atajos, movimiento reducido (el reinicio vuelve a respetar la preferencia del sistema) y flujos de briefing. `assets/data/content.js` es la fuente interna de universos, intenciones y rutas. `i18n.js` contiene textos fundamentales ES/EN/PT; la localización de todo el corpus editorial aún no está completa.
 
-La terminal ofrece `SAVE` (descarga un JSON con región, idioma y preferencia de movimiento) y `LOAD` (restaura únicamente estos valores tras validar el archivo; máximo 2 KB). `HISTORY` lista los últimos diez comandos de la sesión actual. **No exporta consultas, CV, credenciales, cookies ni historial**; los archivos se procesan en el navegador, sin subirlos.
-
 NAVE es un **enrutador de intenciones con reglas**, no un chatbot generativo: no se presenta como modelo de IA entrenado ni promete memoria, generación remota o integración inexistente. La terminal distingue las respuestas y explica qué términos han producido cada asociación. Solo puede guardar localmente el identificador de una categoría seleccionada; los prompts introducidos no se guardan como historial permanente. El formulario de contacto **no envía mensajes a ningún servidor**: exporta un briefing o delega compartirlo a la aplicación del visitante.
 
 ## Privacidad, límites y producción
@@ -56,3 +54,9 @@ Se consultaron el documento de consolidación NOIACORE de Drive (13-08-2026), un
 ## Entrega Linux autocontenida (opcional)
 
 La experiencia BLACK WATER puede servirse como contenedor Node sin instalar dependencias ni compartir claves. Desde `black-water/` ejecuta `docker compose up -d --build`; comprobar `http://127.0.0.1:8099` en la máquina anfitriona. Docker reinicia el servicio si cae, usa usuario no privilegiado, sistema de archivos de solo lectura y healthcheck. Para exposición pública configura HTTPS, DNS y proxy inverso externos; **arrancar un contenedor no constituye una publicación web**. El sitemap y canonical se han preparado para `noiacore.com` (CNAME del repositorio) y deben verificarse al asignar esa web al dominio.
+
+## Consolidated October 2026 release notes
+
+La terminal ofrece `SAVE` (descarga un JSON con región, idioma y preferencia de movimiento) y `LOAD` (restaura únicamente estos valores tras validar el archivo; máximo 2 KB). `HISTORY` lista los últimos diez comandos de la sesión actual. **No exporta consultas, CV, credenciales, cookies ni historial**; los archivos se procesan en el navegador, sin subirlos.
+
+- El servidor resuelve rutas del sistema de archivos antes de servirlas y rechaza enlaces simbólicos que apunten fuera del directorio estático; incluye regresiones GET y HEAD.
