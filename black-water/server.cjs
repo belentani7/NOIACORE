@@ -3,6 +3,9 @@ const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname);
+// Canonicalize paths before opening files: a symlink inside the public tree
+// must never expose a file from the host operating system.
+const canonicalRoot = fs.realpathSync(root);
 const port = Number.parseInt(process.env.PORT || '8099', 10);
 const host = process.env.HOST || '127.0.0.1';
 const types = {
@@ -42,13 +45,24 @@ const server = http.createServer((req, res) => {
   if (!filepath || /(^|[\\/])\.[^\\/]+/.test(path.relative(root, filepath))) {
     res.writeHead(403, headers); res.end('Forbidden'); return;
   }
-  fs.stat(filepath, (error, stat) => {
+  fs.realpath(filepath, (realpathError, canonicalFile) => {
+    if (realpathError) {
+      res.writeHead(404, { ...headers, 'Content-Type': 'text/plain; charset=utf-8' });
+      res.end('NOIACORE · 404');
+      return;
+    }
+    if (canonicalFile !== canonicalRoot && !canonicalFile.startsWith(canonicalRoot + path.sep)) {
+      res.writeHead(403, headers);
+      res.end('Forbidden');
+      return;
+    }
+    fs.stat(canonicalFile, (error, stat) => {
     if (error || !stat.isFile()) {
       res.writeHead(404, { ...headers, 'Content-Type': 'text/plain; charset=utf-8' });
       res.end('NOIACORE · 404');
       return;
     }
-    const extension = path.extname(filepath).toLowerCase();
+    const extension = path.extname(canonicalFile).toLowerCase();
     const type = types[extension];
     if (!type) { res.writeHead(403, headers); res.end(); return; }
     res.writeHead(200, {
@@ -58,9 +72,10 @@ const server = http.createServer((req, res) => {
       'Cache-Control': 'no-cache'
     });
     if (req.method === 'HEAD') { res.end(); return; }
-    const stream = fs.createReadStream(filepath);
+    const stream = fs.createReadStream(canonicalFile);
     stream.on('error', () => res.destroy());
     stream.pipe(res);
+    });
   });
 });
 if (require.main === module) {
