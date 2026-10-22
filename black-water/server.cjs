@@ -3,6 +3,8 @@ const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname);
+// Resolve symlinked installation roots before validating served file boundaries.
+const canonicalRoot = fs.realpathSync(root);
 const port = Number.parseInt(process.env.PORT || '8099', 10);
 const host = process.env.HOST || '127.0.0.1';
 const types = {
@@ -50,7 +52,7 @@ const server = http.createServer((req, res) => {
       res.end('NOIACORE · 404');
       return;
     }
-    if (realPath !== root && !realPath.startsWith(root + path.sep)) {
+    if (realPath !== canonicalRoot && !realPath.startsWith(canonicalRoot + path.sep)) {
       res.writeHead(403, headers); res.end('Forbidden'); return;
     }
     fs.stat(realPath, (error, stat) => {
