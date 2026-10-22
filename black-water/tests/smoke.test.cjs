@@ -149,6 +149,23 @@ test('server rejects unsafe methods, missing routes and private inputs', async (
   assert.equal((await get('/..%2f..%2fetc%2fpasswd')).status, 403);
 });
 
+test('static server refuses a symlink that escapes its public root', async () => {
+  const os = require('node:os');
+  const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'noia-isolation-'));
+  const target = path.join(scratch, 'private.html');
+  const link = path.join(root, 'test-symlink-outside.html');
+  try {
+    fs.writeFileSync(target, 'sensitive content - never public');
+    fs.symlinkSync(target, link);
+    const response = await get('/test-symlink-outside.html');
+    assert.equal(response.status, 403);
+    assert.doesNotMatch(response.body, /sensitive content/);
+  } finally {
+    fs.rmSync(link, { force: true });
+    fs.rmSync(scratch, { force: true, recursive: true });
+  }
+});
+
 test('server response has no analytics and blocks unnecessary capabilities', async () => {
   const response = await get('/');
   assert.match(response.headers['permissions-policy'], /camera=\(\)/);
