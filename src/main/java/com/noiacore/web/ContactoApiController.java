@@ -39,10 +39,26 @@ public class ContactoApiController {
 
     @PostMapping
     public ResponseEntity<Contacto> crear(@RequestBody Contacto contacto) {
-        if (contacto.getNombre() == null || contacto.getNombre().isBlank()
-                || contacto.getEmail() == null || contacto.getEmail().isBlank()) {
+        // Bound public inputs before storing any untrusted lead fields.
+        // Email checks are basic syntax guards, not verification of ownership.
+        if (contacto == null || !hasTextWithin(contacto.getNombre(), 150)
+                || !hasTextWithin(contacto.getEmail(), 254)
+                || !contacto.getEmail().matches("^[^\\s@\\r\\n]+@[^\\s@\\r\\n]+\\.[^\\s@\\r\\n]+$")
+                || !within(contacto.getEmpresa(), 150)
+                || !within(contacto.getTipo(), 100)
+                || !within(contacto.getEtapa(), 100)
+                || !within(contacto.getPresupuesto(), 100)
+                || !within(contacto.getMensaje(), 6000)) {
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok(repositorio.guardar(contacto));
+    }
+
+    private static boolean hasTextWithin(String value, int max) {
+        return value != null && !value.isBlank() && value.length() <= max;
+    }
+
+    private static boolean within(String value, int max) {
+        return value == null || value.length() <= max;
     }
 }
