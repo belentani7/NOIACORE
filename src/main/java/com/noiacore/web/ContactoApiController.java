@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map;
 
 /**
  * API real para el formulario de contacto ("Project Brief") de la landing.
@@ -38,7 +39,7 @@ public class ContactoApiController {
     }
 
     @PostMapping
-    public ResponseEntity<Contacto> crear(@RequestBody Contacto contacto) {
+    public ResponseEntity<Map<String, Object>> crear(@RequestBody Contacto contacto) {
         // Bound public inputs before storing any untrusted lead fields.
         // Email checks are basic syntax guards, not verification of ownership.
         if (contacto == null || !hasTextWithin(contacto.getNombre(), 150)
@@ -51,7 +52,13 @@ public class ContactoApiController {
                 || !within(contacto.getMensaje(), 6000)) {
             return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.ok(repositorio.guardar(contacto));
+        if (repositorio.total() >= 500) {
+            // In-memory demo storage must never grow without bounds.
+            return ResponseEntity.status(429).build();
+        }
+        Contacto saved = repositorio.guardar(contacto);
+        // Return a receipt only; never echo submitted personal information.
+        return ResponseEntity.ok(Map.of("id", saved.getId(), "status", "received"));
     }
 
     private static boolean hasTextWithin(String value, int max) {
