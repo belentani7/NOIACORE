@@ -6,6 +6,7 @@ package com.noiacore.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -41,7 +42,10 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable()) // API REST stateless
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/**").permitAll() // APIs públicas (pueden protegerse después)
+                // Contact submissions are public; stored names and emails are not.
+                // Deny list/count reads until authenticated admin access exists.
+                .requestMatchers(HttpMethod.GET, "/api/contactos", "/api/contactos/**").denyAll()
+                .requestMatchers("/api/**").permitAll() // Other public APIs
                 .requestMatchers("/", "/index.html", "/*.html", "/assets/**", "/*.css", "/*.js", "/webjars/**").permitAll()
                 .anyRequest().authenticated()
             )
