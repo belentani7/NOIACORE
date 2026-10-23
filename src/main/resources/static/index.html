@@ -2474,11 +2474,9 @@ const COMMANDS={
     if(sub==='add'){
       const nombre=args.slice(1).join(' ').trim();
       if(!nombre)return typeLine('use: proyectos add &lt;nombre&gt;','e');
-      typeLine('CONECTANDO /api/proyectos …','dim');
-      fetch('/api/proyectos',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre,estado:'Pendiente'})})
-        .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
-        .then(p=>typeLine('PROJETO CRIADO · #'+p.id+' '+p.nombre,'s'))
-        .catch(err=>typeLine('erro de conexão · '+err.message,'e'));
+      // Without operator authentication the public console must never write
+      // to the shared project API. Clearly distinguish a disabled action.
+      typeLine('EDIÇÃO PROTEGIDA · criação de projetos exige login de operador (não disponível nesta versão pública).','dim');
       return;
     }
     typeLine('CONECTANDO /api/proyectos …','dim');
