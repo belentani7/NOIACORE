@@ -2344,7 +2344,7 @@ briefForm?.addEventListener('submit',async e=>{
   briefStatus.textContent='Guardando en el sistema…';
   const saved=await persistBrief(d);
   briefStatus.textContent=saved
-    ? ('Brief #'+saved.id+' guardado en el sistema · abriendo tu aplicación de correo…')
+    ? ('Brief #'+saved.id+' recibido temporalmente · abre tu correo para enviarlo…')
     : 'No se pudo guardar en el sistema (¿backend caído?) · abriendo tu aplicación de correo…';
   labEvent('lead','Project brief '+(saved?'guardado (#'+saved.id+')':'preparado sin backend'),{type:d.get('type')});
   location.href=`mailto:belentani7studio@proton.me?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -2474,11 +2474,9 @@ const COMMANDS={
     if(sub==='add'){
       const nombre=args.slice(1).join(' ').trim();
       if(!nombre)return typeLine('use: proyectos add &lt;nombre&gt;','e');
-      typeLine('CONECTANDO /api/proyectos …','dim');
-      fetch('/api/proyectos',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre,estado:'Pendiente'})})
-        .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
-        .then(p=>typeLine('PROJETO CRIADO · #'+p.id+' '+p.nombre,'s'))
-        .catch(err=>typeLine('erro de conexão · '+err.message,'e'));
+      // Without operator authentication the public console must never write
+      // to the shared project API. Clearly distinguish a disabled action.
+      typeLine('EDIÇÃO PROTEGIDA · criação de projetos exige login de operador (não disponível nesta versão pública).','dim');
       return;
     }
     typeLine('CONECTANDO /api/proyectos …','dim');

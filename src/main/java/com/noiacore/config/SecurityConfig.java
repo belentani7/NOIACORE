@@ -6,6 +6,7 @@ package com.noiacore.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -24,9 +25,10 @@ import java.util.List;
  * 
  * CARACTERÍSTICAS IMPLEMENTADAS:
  * - CORS controlado para APIs
- * - Protección CSRF deshabilitada para API stateless (con tokens si fuera necesario)
+ * - CSRF deshabilitado solo para API stateless, sin cookies de autenticación
  * - Headers de seguridad: X-Content-Type-Options, X-Frame-Options, HSTS, XSS Protection
  * - Content Security Policy (CSP) estricto para prevenir inyecciones
+ * - Lectura de contactos y mutaciones de proyectos bloqueadas sin autenticación de operador
  * - Sin sesión HTTP (stateless para APIs REST)
  * - Password encoder BCrypt para futuras autenticaciones
  */
@@ -41,7 +43,12 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable()) // API REST stateless
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/**").permitAll() // APIs públicas (pueden protegerse después)
+                // Public lead submission is the only unauthenticated write route.
+                // Project mutations and private contact reads stay blocked until
+                // a real authenticated operator role is implemented.
+                .requestMatchers(HttpMethod.POST, "/api/contactos").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/proyectos", "/api/proyectos/*").permitAll()
+                .requestMatchers("/api/**").denyAll()
                 .requestMatchers("/", "/index.html", "/*.html", "/assets/**", "/*.css", "/*.js", "/webjars/**").permitAll()
                 .anyRequest().authenticated()
             )
@@ -59,7 +66,6 @@ public class SecurityConfig {
                 ))
                 .xssProtection(xss -> xss.headerValue(XXssProtectionHeaderWriter.HeaderValue.ENABLED_MODE_BLOCK))
                 .frameOptions(frame -> frame.deny())
-                .contentTypeOptions(ct -> ct.disable())
                 .httpStrictTransportSecurity(hsts -> hsts
                     .maxAgeInSeconds(31536000)
                     .includeSubDomains(true)
