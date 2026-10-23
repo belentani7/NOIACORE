@@ -2344,7 +2344,7 @@ briefForm?.addEventListener('submit',async e=>{
   briefStatus.textContent='Guardando en el sistema…';
   const saved=await persistBrief(d);
   briefStatus.textContent=saved
-    ? ('Brief #'+saved.id+' guardado en el sistema · abriendo tu aplicación de correo…')
+    ? ('Brief #'+saved.id+' recibido temporalmente · abre tu correo para enviarlo…')
     : 'No se pudo guardar en el sistema (¿backend caído?) · abriendo tu aplicación de correo…';
   labEvent('lead','Project brief '+(saved?'guardado (#'+saved.id+')':'preparado sin backend'),{type:d.get('type')});
   location.href=`mailto:belentani7studio@proton.me?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
