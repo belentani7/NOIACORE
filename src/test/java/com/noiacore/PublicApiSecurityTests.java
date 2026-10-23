@@ -14,6 +14,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 /**
  * Security boundary around public web/brief and internal APIs.
@@ -55,7 +56,7 @@ class PublicApiSecurityTests {
         mvc.perform(post("/api/contactos")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"nombre\":\"Demo\",\"email\":\"valid@example.test\",\"mensaje\":\"Hola\"}"))
-            .andExpect(status().isOk());
+            .andExpect(status().isOk()).andExpect(jsonPath("$.email").doesNotExist());
         mvc.perform(post("/api/contactos")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"nombre\":\"Demo\",\"email\":\"invalid-email\"}"))
