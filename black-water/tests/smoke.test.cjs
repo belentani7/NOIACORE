@@ -116,14 +116,22 @@ test('functional UI engines and local toolset are embedded', () => {
   }
 });
 
-test('static server refuses symlinks outside its document root', async () => {
+test('static server refuses symlinks outside its document root', async (t) => {
   const outside = fs.mkdtempSync(path.join(os.tmpdir(), 'noiacore-serve-test-'));
   const secret = path.join(outside, 'private.json');
   const linkName = `outside-link-${process.pid}.json`;
   const link = path.join(root, linkName);
   fs.writeFileSync(secret, JSON.stringify({ canary: 'must-never-leak' }));
   try {
-    fs.symlinkSync(secret, link);
+    try {
+      fs.symlinkSync(secret, link);
+    } catch (error) {
+      if (process.platform === 'win32' && ['EPERM', 'EACCES'].includes(error.code)) {
+        t.skip('Windows symlink privilege unavailable; security check remains mandatory on Linux CI');
+        return;
+      }
+      throw error;
+    }
     const response = await get('/' + linkName);
     assert.equal(response.status, 403);
     assert.doesNotMatch(response.body, /must-never-leak/);
@@ -175,4 +183,19 @@ test('server response has no analytics and blocks unnecessary capabilities', asy
   assert.match(response.headers['permissions-policy'], /microphone=\(\)/);
   assert.match(response.headers['referrer-policy'], /no-referrer/);
   assert.match(response.headers['x-content-type-options'], /nosniff/);
+});
+
+test('robots.txt and sitemap.xml are accessible with crawler MIME types and HEAD', async () => {
+  const robots = await get('/robots.txt');
+  assert.equal(robots.status, 200, 'robots.txt must be reachable by crawlers');
+  assert.match(robots.headers['content-type'], /^text\/plain/i);
+  assert.match(robots.body, /User-agent:/);
+  const sitemap = await get('/sitemap.xml');
+  assert.equal(sitemap.status, 200, 'sitemap.xml must be reachable by crawlers');
+  assert.match(sitemap.headers['content-type'], /^(?:application|text)\/xml/i);
+  assert.match(sitemap.body, /<urlset\b/);
+  const head = await get('/sitemap.xml', 'HEAD');
+  assert.equal(head.status, 200);
+  assert.equal(head.body, '');
+  assert.equal(head.headers['content-length'], String(Buffer.byteLength(sitemap.body)));
 });
