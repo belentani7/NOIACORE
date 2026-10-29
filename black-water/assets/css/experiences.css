@@ -482,7 +482,7 @@
 .tools-list { max-height: 575px; overflow: auto; display: grid; align-content: start; gap: 3px; scrollbar-width: thin; scrollbar-color: #2e4d61 transparent; }
 .tools-list button { width: 100%; padding: 11px 9px; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px; border: none; color: #90a6b5; background: transparent; font: 12px var(--font-code); }
 .tools-list button:hover,
-.tools-list button[aria-selected='true'] { background: rgba(137, 177, 204, .1); color: #f4fbff; }
+.tools-list button[aria-pressed='true'] { background: rgba(137, 177, 204, .1); color: #f4fbff; }
 .tools-list button span:last-child { color: #5e7d92; }
 .tool-stage { background: rgba(7, 15, 21, .89); border: 1px solid var(--line-bright); padding: 27px clamp(20px, 3vw, 44px) 36px; }
 .tool-stage-top { display: flex; justify-content: space-between; gap: 13px; color: #809aab; font: 10px var(--font-code); letter-spacing: .12em; }
@@ -666,3 +666,13 @@
   .eye-shape { animation: none; }
   .eye-halo, .eye-iris, .eye-pupil, .living-eye, .eye-orbit { animation: none; }
 }
+
+/* Black Water / workbench accessibility & local file workflow */
+.tool-import-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:0 0 18px}
+.tool-import-row button{min-height:44px;border:1px solid var(--line-bright);padding:10px 15px;background:rgba(133,177,204,.06);color:#e2eff7;font:11px var(--font-code);letter-spacing:.06em;text-align:left}
+.tool-import-row button:hover{background:rgba(133,177,204,.12);border-color:#adc9dc}
+.tool-import-row small{font:11px/1.6 var(--font-code);color:#9aafbf}
+.tools-list button{min-height:44px}
+.tools-list button:focus-visible,.tool-import-row button:focus-visible,.tool-categories button:focus-visible{outline:2px solid #deefff;outline-offset:2px}
+.tool-categories button{min-height:36px;padding:9px 11px}
+@media(max-width:700px){.tool-import-row{align-items:stretch;flex-direction:column}.tool-import-row button{width:100%}}

@@ -38,7 +38,7 @@
   }
   function protectCsv(value) {
     const raw = value == null ? '' : String(value);
-    const escaped = /^[=+@\-\t\r]/.test(raw) ? "'"+raw : raw;
+    const escaped = /^(?:[\uFEFF\s]*[=+\-@]|[\t\r])/.test(raw) ? "'"+raw : raw;
     return '"'+escaped.replaceAll('"','""')+'"';
   }
   function parseCsv(source) {
@@ -66,9 +66,10 @@
     return rows;
   }
   function csvToJson(text) {
-    const rows = parseCsv(text).filter((row)=>row.some((cell)=>cell.trim()));
+    const rows = parseCsv(text.replace(/^\uFEFF/, '')).filter((row)=>row.some((cell)=>cell.trim()));
     if (!rows.length) return '[]';
     const headers = rows.shift().map((x)=>x.trim());
+    if (headers.some((header)=>!header)) throw new Error('CSV inválido: la cabecera no puede estar vacía.');
     if (new Set(headers).size !== headers.length) throw new Error('Cabeceras CSV duplicadas.');
     rows.forEach((row,index)=>{
       if (row.length>headers.length) {
@@ -244,9 +245,14 @@
     const button=core.create('button','',text);
     button.type='button';
     button.className=text===category?'active':'';
+    button.setAttribute('aria-pressed',String(text===category));
     button.addEventListener('click',()=>{
       category=text;
-      renderCategories();
+      categories.querySelectorAll('button').forEach((node)=>{
+        const selected=node.textContent===category;
+        node.classList.toggle('active',selected);
+        node.setAttribute('aria-pressed',String(selected));
+      });
       renderList();
     });
     return button;
@@ -264,8 +270,8 @@
     filtered.forEach((item)=>{
       const node=core.create('button','');
       node.type='button';
-      node.setAttribute('role','option');
-      node.setAttribute('aria-selected',String(active.id===item.id));
+      node.dataset.toolId=item.id;
+      node.setAttribute('aria-pressed',String(active.id===item.id));
       node.append(core.create('span','',item.title),core.create('span','','↗'));
       node.addEventListener('click',()=>select(item));
       list.append(node);
@@ -296,7 +302,15 @@
     status.textContent='';
     output.value='';
     renderOptions(item);
-    renderList();
+    list.querySelectorAll('button[data-tool-id]').forEach((button)=>{
+      button.setAttribute('aria-pressed',String(button.dataset.toolId===active.id));
+    });
+  }
+  function invalidateResult() {
+    executionId++;
+    output.value='';
+    status.textContent='';
+    if (runButton) runButton.disabled=false;
   }
   async function execute() {
     const currentExecution=++executionId;
@@ -338,10 +352,41 @@
   function init() {
     $('tools-count').textContent=String(catalog.length).padStart(2,'0');
     renderCategories();
+    renderList();
     select(active);
     search.addEventListener('input',renderList);
+    list.addEventListener('keydown',(event)=>{
+      if (!['ArrowDown','ArrowUp','Home','End'].includes(event.key)) return;
+      const buttons=[...list.querySelectorAll('button[data-tool-id]')];
+      const current=buttons.indexOf(document.activeElement);
+      if (current===-1 || !buttons.length) return;
+      event.preventDefault();
+      const next=event.key==='Home'?0:event.key==='End'?buttons.length-1:
+        event.key==='ArrowDown'?Math.min(buttons.length-1,current+1):Math.max(0,current-1);
+      buttons[next].focus();
+    });
+    input.addEventListener('input',invalidateResult);
+    const fileInput=$('tool-file');
+    $('tool-import')?.addEventListener('click',()=>fileInput?.click());
+    fileInput?.addEventListener('change',async()=>{
+      const file=fileInput.files?.[0];
+      if (!file) return;
+      invalidateResult();
+      const requestId=executionId;
+      try {
+        if (file.size>262144) throw new Error('El archivo supera el límite local de 256 KiB.');
+        const bytes=await file.arrayBuffer();
+        const text=new TextDecoder('utf-8',{fatal:true}).decode(bytes).replace(/^\uFEFF/,'');
+        if (requestId!==executionId) return;
+        input.value=text;
+        status.textContent='Archivo leído localmente: '+file.name+'. Revisa la entrada antes de ejecutar.';
+        input.focus();
+      } catch (error) {
+        if (requestId===executionId) status.textContent=(error instanceof Error?error.message:'Error al leer archivo.').slice(0,200);
+      } finally {fileInput.value='';}
+    });
     runButton.addEventListener('click',execute);
-    $('tool-clear').addEventListener('click',()=>{input.value='';output.value='';status.textContent='';input.focus();});
+    $('tool-clear').addEventListener('click',()=>{input.value='';invalidateResult();input.focus();});
     $('tool-copy').addEventListener('click',copyResult);
     $('tool-download').addEventListener('click',()=>{
       if (!output.value) return;
