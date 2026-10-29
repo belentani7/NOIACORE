@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -42,22 +42,30 @@ footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);font-fa
   letter-spacing:.1em;color:var(--ghost);text-transform:uppercase;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 footer b{color:rgba(var(--acc2),.9);font-weight:400}
 </style>
+<meta name="description" content="Construção verificável — prática e visão NOIACORE."/><link rel="stylesheet" href="/noiacore-editorial.css"/>
 </head>
 <body>
 <header class="topbar">
   <a class="brand" href="/"><i>Λ</i> NOIACORE</a>
   <a class="back" href="/">← Voltar ao núcleo</a>
 </header>
-<main>
+<a class="env-skip" href="#conteudo">Pular para o conteúdo</a>
+<main id="conteudo">
   <div class="idx"><span class="blink"></span>LAB.16 — FÁBRICA CONTÍNUA</div>
   <h1>Fábrica Contínua</h1>
   <p class="lead">Uma simulação visual do que um sistema de geração poderia produzir se estivesse ligado: livros, shaders, skins, templates, ícones, fontes, jogos, padrões têxteis.</p>
-  <div class="disclaimer">⚠ Isto é uma simulação decorativa. Nenhum arquivo real é gerado, armazenado ou disponibilizado para download aqui — não há motor de produção conectado.</div>
+  <div class="disclaimer">Este ambiente apresenta contexto editorial. A experiência interativa principal está no <a href="/">núcleo NOIACORE</a>.</div>
   <div class="factory-grid" id="factory-grid"></div>
   <footer>
     <span>NOIACORE · página independente (não é âncora da home)</span>
     <span>Iterações reais do núcleo nesta máquina: <b id="real-iter">—</b></span>
   </footer>
+<section class="env-feature" data-env-module="fabrica" aria-labelledby="feature-fabrica">
+ <span class="env-feature-index">NOIACORE / FABRICA</span><h2 id="feature-fabrica">Construção verificável</h2>
+ <p class="env-feature-lead">Automatizar a criação não substitui validar o resultado.</p>
+ <div class="env-feature-grid"><article><span>01 / DEFINIR</span><p>Padronizar estruturas sem misturar projetos.</p></article><article><span>02 / CONSTRUIR</span><p>Executar testes e revisão de segurança.</p></article><article><span>03 / VALIDAR</span><p>Publicar apenas versões comprovadas.</p></article></div>
+ <div class="env-feature-foot"><a href="/">Voltar à experiência principal ↗</a><small>Ambiente editorial. Uma descrição conceitual não é prova de que um serviço esteja publicado.</small></div>
+</section>
 </main>
 <script>
 (function(){

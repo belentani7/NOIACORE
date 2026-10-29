@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -39,20 +39,28 @@ h1{font-family:var(--f-d);font-weight:300;font-size:clamp(30px,5vw,52px);margin:
 .note{border-top:1px solid var(--line);padding-top:16px;font-family:var(--f-m);font-size:12px;line-height:1.9;color:var(--mute)}
 .hint{margin-top:24px;font-family:var(--f-m);font-size:11px;color:var(--ghost)}
 </style>
+<meta name="description" content="Observar para agir — prática e visão NOIACORE."/><link rel="stylesheet" href="/noiacore-editorial.css"/>
 </head>
 <body>
 <header class="topbar">
   <a class="brand" href="/"><i>Λ</i> NOIACORE</a>
   <a class="back" href="/">← Voltar ao núcleo</a>
 </header>
-<main>
+<a class="env-skip" href="#conteudo">Pular para o conteúdo</a>
+<main id="conteudo">
   <div class="idx"><span class="blink"></span>LAB.17 — OBSERVATÓRIO DE SISTEMA</div>
   <h1>Observações Reais da Sessão</h1>
   <p class="lead">Estes números vêm do mesmo armazenamento local (localStorage) que o núcleo em <a href="/" style="color:rgba(var(--acc2),.9)">/</a> usa — não são inventados aqui, nem enviados a nenhum servidor.</p>
-  <div class="disclaimer">⚠ Dados 100% locais ao seu navegador. Sem conta, sem servidor, sem terceiros.</div>
+  <div class="disclaimer">Este ambiente apresenta contexto editorial. A experiência interativa principal está no <a href="/">núcleo NOIACORE</a>.</div>
   <div class="grid" id="grid"></div>
   <div class="note" id="note">A carregar observações…</div>
   <p class="hint">Dica: volte à home, use o terminal (comandos, temas, sinais) e recarregue esta página — os números mudam de verdade.</p>
+<section class="env-feature" data-env-module="observatorio" aria-labelledby="feature-observatorio">
+ <span class="env-feature-index">NOIACORE / OBSERVATORIO</span><h2 id="feature-observatorio">Observar para agir</h2>
+ <p class="env-feature-lead">Dados úteis mostram sua origem e evitam sugerir infraestrutura inexistente.</p>
+ <div class="env-feature-grid"><article><span>01 / DEFINIR</span><p>Identificar sinais acionáveis.</p></article><article><span>02 / CONSTRUIR</span><p>Representar estados sem métricas fabricadas.</p></article><article><span>03 / VALIDAR</span><p>Reduzir retenção e exposição desnecessárias.</p></article></div>
+ <div class="env-feature-foot"><a href="/">Voltar à experiência principal ↗</a><small>Ambiente editorial. Uma descrição conceitual não é prova de que um serviço esteja publicado.</small></div>
+</section>
 </main>
 <script>
 (function(){
