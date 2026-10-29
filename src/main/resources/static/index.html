@@ -736,6 +736,7 @@ body.core-sleeping #gl,body.core-sleeping .fb{filter:brightness(.42) saturate(.5
 @media(max-width:680px){.zion-clock{display:none}}
 
 </style>
+<link rel="stylesheet" href="/noiacore-editorial.css" />
 </head>
 <body class="locked" data-theme="default">
 <a class="skip-link" href="#main-content">Saltar al contenido</a>
@@ -1446,13 +1447,23 @@ body.core-sleeping #gl,body.core-sleeping .fb{filter:brightness(.42) saturate(.5
         <div class="field"><label for="brief-stage">Momento actual</label><select id="brief-stage" name="stage"><option>Solo existe la idea</option><option>Hay materiales, falta dirección</option><option>Existe un producto que debe mejorar</option><option>Necesitamos automatizar un proceso</option><option>Buscamos un sistema completo</option></select></div>
         <div class="field"><label for="brief-budget">Inversión orientativa</label><select id="brief-budget" name="budget"><option>Por definir</option><option>Hasta 1.500 €</option><option>1.500–4.000 €</option><option>4.000–10.000 €</option><option>Más de 10.000 €</option></select></div>
         <div class="field wide"><label for="brief-message">¿Qué debe cambiar cuando el proyecto funcione?</label><textarea id="brief-message" name="message" required placeholder="Describe el problema, el resultado esperado y cualquier límite importante."></textarea></div>
-        <div class="brief-actions"><div class="group"><button class="cta primary" type="submit">Preparar email →</button><button class="cta" type="button" id="copy-brief">Copiar briefing</button></div><div class="brief-note">Este brief se guarda en el backend de NOIACORE (API real, sin envío a terceros) y además abre tu aplicación de correo para que tú decidas cuándo escribir.</div></div>
+        <div class="brief-actions"><div class="group"><button class="cta primary" type="submit">Preparar email →</button><button class="cta" type="button" id="copy-brief">Copiar briefing</button></div><div class="brief-note">El briefing se prepara en tu navegador. «Preparar email» abre tu aplicación de correo, donde decides si enviarlo. No se almacena automáticamente en NOIACORE.</div></div>
         <div class="form-status" id="brief-status" role="status" aria-live="polite"></div>
       </form>
     </div>
   </div>
 </section>
 
+<section class="noia-proof" id="noia-next" aria-labelledby="noia-next-title">
+ <span>NOIACORE / MAIS ALÉM DA SUPERFÍCIE</span>
+ <h2 id="noia-next-title">A forma é visível.<br>O critério permanece.</h2>
+ <p>O núcleo v8 combina direção criativa, tecnologia e inteligência aplicada em uma experiência. Os ambientes complementares explicam método, decisões e limites sem depender do espetáculo visual.</p>
+ <div class="noia-proof-grid">
+  <a href="/capacidades.html"><strong>Capacidades</strong><small>O que uma disciplina entrega, para quem e sob quais condições.</small><b>Descobrir →</b></a>
+  <a href="/arquitetura.html"><strong>Arquitetura</strong><small>Camadas, limites, segurança e confiabilidade de uma plataforma.</small><b>Explorar →</b></a>
+  <a href="/casos.html"><strong>Casos e método</strong><small>Da necessidade ao protótipo e à evidência verificável.</small><b>Investigar →</b></a>
+ </div>
+</section>
 </main>
 
 <!-- FOOTER -->
@@ -2328,25 +2339,14 @@ $$('.process-tab').forEach(btn=>btn.addEventListener('click',()=>activateProcess
    sigue ofreciendo el mailto — no se elimina el flujo anterior, se amplía. */
 const briefForm=$('#project-brief'),briefStatus=$('#brief-status');
 function briefText(){if(!briefForm)return'';const d=new FormData(briefForm);return `NOIACORE — PROJECT BRIEF\n\nNombre: ${d.get('name')||''}\nEmail: ${d.get('email')||''}\nEmpresa / proyecto: ${d.get('company')||''}\nTipo: ${d.get('type')||''}\nMomento actual: ${d.get('stage')||''}\nInversión orientativa: ${d.get('budget')||''}\n\nResultado esperado / problema:\n${d.get('message')||''}\n\n— Generado desde noiacore.com`;}
-async function persistBrief(d){
-  try{
-    const res=await fetch('/api/contactos',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
-      nombre:d.get('name'),email:d.get('email'),empresa:d.get('company'),tipo:d.get('type'),
-      etapa:d.get('stage'),presupuesto:d.get('budget'),mensaje:d.get('message')
-    })});
-    if(!res.ok)throw new Error('HTTP '+res.status);
-    return await res.json();
-  }catch(err){console.warn('NOIACORE: no se pudo guardar el brief en el backend —',err.message);return null;}
-}
-briefForm?.addEventListener('submit',async e=>{
-  e.preventDefault();if(!briefForm.reportValidity())return;
-  const d=new FormData(briefForm),subject=`NOIACORE · ${d.get('type')} · ${d.get('company')||d.get('name')}`,body=briefText();
-  briefStatus.textContent='Guardando en el sistema…';
-  const saved=await persistBrief(d);
-  briefStatus.textContent=saved
-    ? ('Brief #'+saved.id+' recibido temporalmente · abre tu correo para enviarlo…')
-    : 'No se pudo guardar en el sistema (¿backend caído?) · abriendo tu aplicación de correo…';
-  labEvent('lead','Project brief '+(saved?'guardado (#'+saved.id+')':'preparado sin backend'),{type:d.get('type')});
+/* A prepared email is a draft; never pre-submit private user data to an ephemeral API. */
+briefForm?.addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!briefForm.reportValidity())return;
+  const d=new FormData(briefForm);
+  const subject=`NOIACORE · ${d.get('type')} · ${d.get('company')||d.get('name')}`;
+  const body=briefText();
+  briefStatus.textContent='Brief preparado localmente. Revisa el correo antes de enviarlo; también puedes copiar el texto.';
   location.href=`mailto:belentani7studio@proton.me?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
 $('#copy-brief')?.addEventListener('click',async()=>{if(!briefForm.reportValidity())return;const text=briefText();try{await navigator.clipboard.writeText(text);briefStatus.textContent='Briefing copiado al portapapeles.';showToast('BRIEF COPIED','Ya puedes pegarlo en email, WhatsApp o un documento');}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();briefStatus.textContent='Briefing copiado.';}labEvent('lead','Project brief copied');});
