@@ -149,14 +149,24 @@ test('server rejects unsafe methods, missing routes and private inputs', async (
   assert.equal((await get('/..%2f..%2fetc%2fpasswd')).status, 403);
 });
 
-test('static server refuses a symlink that escapes its public root', async () => {
+test('static server refuses a symlink that escapes its public root', async (t) => {
   const os = require('node:os');
   const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'noia-isolation-'));
   const target = path.join(scratch, 'private.html');
   const link = path.join(root, 'test-symlink-outside.html');
   try {
     fs.writeFileSync(target, 'sensitive content - never public');
-    fs.symlinkSync(target, link);
+    try {
+      fs.symlinkSync(target, link);
+    } catch (err) {
+      if (err.code === 'EPERM') {
+        // Windows sin privilegio de symlinks no puede montar este escenario;
+        // la cobertura se mantiene en CI (ubuntu-latest), donde el test sí corre.
+        t.skip('symlink creation not permitted on this platform');
+        return;
+      }
+      throw err;
+    }
     const response = await get('/test-symlink-outside.html');
     assert.equal(response.status, 403);
     assert.doesNotMatch(response.body, /sensitive content/);

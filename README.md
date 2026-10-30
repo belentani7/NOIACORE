@@ -247,3 +247,10 @@ No hay envío de email desde el servidor (evita configurar SMTP) — el mailto s
 ---
 
 > **Fin del resumen.** Recoge lo ejecutado, verificado y decidido en esta sesión. Con esto, cualquier desarrollador (o una IA) puede retomar el proyecto exactamente donde quedó.
+
+---
+
+## 12. Utilidad
+
+- **Utilidad social:** NOIACORE es un laboratorio creativo abierto que cualquiera puede levantar en local (`./mvnw spring-boot:run`): una landing de marca experimental (22 páginas estáticas + el subproyecto Black Water en `black-water/`) y una API REST sencilla para gestionar proyectos y contactos sin depender de una base de datos externa (repositorio en memoria). Sirve como espacio de exploración visual y de aprendizaje full-stack (Java 17 + Spring Boot + HTML/CSS/JS).
+- **Utilidad comercial:** funciona como escaparate de marca (portafolio vivo de Belentani) y como base de producto reutilizable: los endpoints `/api/proyectos` y `/api/contactos` son el núcleo de un servicio/API que puede extenderse con JPA, autenticación y subida de ficheros (ver sección 11), y la identidad visual NOIACORE/Black Water es un activo comercial por sí misma.

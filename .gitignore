@@ -37,6 +37,14 @@ test-results/
 .cache/
 *.tsbuildinfo
 
+# Python (artefactos compilados)
+__pycache__/
+*.pyc
+
+# Java / Maven (artefactos de build)
+target/
+*.class
+
 # Docker
 .docker/
 
